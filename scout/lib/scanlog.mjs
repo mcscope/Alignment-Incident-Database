@@ -27,11 +27,15 @@ export function normalizeUrl(raw) {
   }
 }
 
-/** Every URL already scanned (any scan log) or cited (any incident), normalized. */
+// Verdicts that settle a URL for good. "lead" and "unreviewed" stay open, so
+// in-scope items a run didn't get to (e.g. over the change cap) come back.
+const FINAL = new Set(["cited", "skipped", "rejected"]);
+
+/** Every URL already settled in a scan log, or cited by an incident, normalized. */
 export function knownUrls() {
   const urls = new Set();
   for (const f of existsSync(scansDir) ? readdirSync(scansDir).filter((f) => f.endsWith(".yaml")) : []) {
-    for (const e of parse(readFileSync(join(scansDir, f), "utf8"))?.scanned ?? []) urls.add(normalizeUrl(e.url));
+    for (const e of parse(readFileSync(join(scansDir, f), "utf8"))?.scanned ?? []) if (FINAL.has(e.verdict)) urls.add(normalizeUrl(e.url));
   }
   const inc = join(root, "data/incidents");
   for (const f of readdirSync(inc).filter((f) => f.endsWith(".yaml"))) {

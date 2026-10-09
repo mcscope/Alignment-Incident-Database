@@ -100,7 +100,7 @@ Work on `main`.
    - Set `verdict: skipped` with a `reason` on leads you decided not to act on.
    - Correct any aggregation verdict you overrode.
    - Append every URL that you or the subagents examined that isn't listed yet (watch-page posts, web-search results, primary sources found while verifying), with `title`, `origin` (which lane), `verdict`, and `incident` or `reason`.
-   - Leave nothing as `lead` or `unreviewed` that you actually examined.
+   - Keep `verdict: lead` only for in-scope items you deliberately deferred (e.g. over the change cap). Those stay open and come back on later runs. Give everything else you examined a final verdict (`cited`, `skipped`, or `rejected`).
 6. Run `npm run validate` and fix every error.
 7. Make **one commit** containing all incident changes plus the scan log. The message is `scout: <today>: <n> new, <m> updated`, followed by one line per change (`AID-…: title`). Then `git pull --rebase` and `git push origin main`.
 

@@ -50,3 +50,33 @@
   name: Palisade Research
   url: https://palisaderesearch.org
   type: research-org
+
+# Added by scout 2026-10-09
+- id: glow-security
+  name: Glow Security
+  url: https://www.glow.io
+  type: company
+- id: irregular
+  name: Irregular
+  url: https://www.irregular.com
+  type: company
+- id: philadelphia-police-department
+  name: Philadelphia Police Department
+  url: https://www.phillypolice.com
+  type: government
+- id: services-australia
+  name: Services Australia
+  url: https://www.servicesaustralia.gov.au
+  type: government
+- id: hugging-face
+  name: Hugging Face
+  url: https://huggingface.co
+  type: company
+- id: metr
+  name: METR
+  url: https://metr.org
+  type: research-org
+- id: redwood-research
+  name: Redwood Research
+  url: https://www.redwoodresearch.org
+  type: research-org
