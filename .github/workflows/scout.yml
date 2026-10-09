@@ -55,6 +55,17 @@ jobs:
             --model claude-opus-5-5
             --max-turns 200
             --allowedTools Agent,Task,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(npm run validate),Bash(git checkout:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(git status:*),Bash(git diff:*),Bash(git switch:*),Bash(gh pr list:*),Bash(gh pr create:*),Bash(gh pr view:*),Bash(date:*),Bash(npm run next-id:*),Bash(mkdir:*)
+      - name: Update seen list
+        # Only after a successful run, so a crashed run's items are retried next time.
+        if: success()
+        run: |
+          git stash -u || true
+          git switch main
+          git pull --rebase --quiet
+          node scout/mark-seen.mjs
+          git add scout/state/seen.json
+          git diff --cached --quiet || git commit -m "scout: update seen list [skip ci]"
+          git push origin main
       - name: Publish run report
         if: always()
         run: |

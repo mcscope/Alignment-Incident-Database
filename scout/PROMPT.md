@@ -28,6 +28,7 @@ Inputs:
 - `scout/out/digest.json` (and `digest.md`): output of the **aggregation pass**. A cheap long-context model (Gemini, via OpenRouter) has already triaged every collected candidate against the scope and grouped them into clusters, each with a suggested action, priority, and match to an existing record. Treat these as **leads, never sources**. That model may misread, mis-cluster, or mis-match. Spot-check its `rejected` list for anything obviously in scope.
 - `scout/out/candidates.json`: the raw collected items. If `digest.json` is missing because aggregation failed or isn't configured, triage these yourself through the `news`, `research`, and `social` lanes in the fallback table below.
 - `scout/sources.yaml`: `watch_pages` and `web_searches`. The collector doesn't cover these yet.
+- `scout/state/seen.json`: every URL triaged on previous runs, mapped to `[first seen date, verdict]`. Collected candidates are already filtered against it. For URLs that subagents find themselves (watch pages, web searches), **check this file first** (Grep for the URL) and skip anything already there unless it is clearly a new development. This keeps each run focused on new material.
 
 Spawn all of these subagents at once:
 
@@ -103,6 +104,10 @@ For each `new` or `update` action, starting from a clean `main`:
    - which lanes and candidates led here
 
 Never push to `main`.
+
+## Record what you examined
+
+Write `scout/out/examined.json`, a JSON array of `{"url": "...", "decision": "new|update|skip|out-of-scope"}`, covering every URL the subagents or you examined that is **not** in `candidates.json` (watch-page posts, web-search results, primary sources found while verifying). The workflow adds these to the seen list after the run.
 
 ## Report
 

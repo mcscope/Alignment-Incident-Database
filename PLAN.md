@@ -89,7 +89,7 @@ Still to decide:
 - `.github/workflows/scout.yml`: runs daily at 13:00 UTC and on manual trigger, posts a job summary report, and keeps findings as an artifact
 
 **Next: move more of the collection into software,** so agents spend tokens on judgment, not fetching:
-- [ ] **Persistent "seen" state** so each item is triaged only once, not every day for 48h. Store it in a `scout-state` branch or the Actions cache.
+- [x] **Persistent seen list** (`scout/state/seen.json`, committed by the workflow with `[skip ci]`). The collector skips seen URLs, the agent checks it for URLs it finds itself and logs what it examined, and entries expire after 180 days.
 - [ ] **Watch pages in code:** fetch HTML, extract post links, and diff them against seen state. This turns Anthropic, xAI, Apollo, and AISI into ordinary feeds.
 - [ ] **Full-text fetch:** extract readable article text into `candidates.json`, so subagents start from text instead of re-fetching.
 - [x] Cheap triage and clustering pre-pass (Gemini, `aggregate.mjs`)

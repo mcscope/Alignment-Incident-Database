@@ -6,6 +6,7 @@ import { readFileSync, readdirSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
 import { XMLParser } from "fast-xml-parser";
+import { loadSeen, normalizeUrl } from "./lib/seen.mjs";
 
 const root = new URL("..", import.meta.url).pathname;
 const cfg = parse(readFileSync(join(root, "scout/sources.yaml"), "utf8"));
@@ -13,11 +14,14 @@ const since = new Date(Date.now() - (cfg.window_hours ?? 48) * 3600_000);
 const keywords = cfg.keywords.map((k) => k.toLowerCase());
 const xml = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "" });
 
+// Skip anything already cited by an incident or already triaged on a previous run.
+const seenBefore = loadSeen();
 const known = new Set(
   readdirSync(join(root, "data/incidents"))
     .filter((f) => f.endsWith(".yaml"))
-    .flatMap((f) => parse(readFileSync(join(root, "data/incidents", f), "utf8")).sources.map((s) => s.url)),
+    .flatMap((f) => parse(readFileSync(join(root, "data/incidents", f), "utf8")).sources.map((s) => normalizeUrl(s.url))),
 );
+let skippedSeen = 0;
 
 const strip = (s = "") => String(s).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 400);
 const text = (v) => (typeof v === "object" && v !== null ? v["#text"] ?? "" : v ?? "");
@@ -103,9 +107,11 @@ results.forEach((r, i) => {
   if (r.status === "rejected") return errors.push(`${jobs[i][0]}: ${r.reason.message}`);
   for (const item of r.value) {
     const date = new Date(item.published);
-    if (!item.url || known.has(item.url) || seen.has(item.url)) continue;
+    const key = item.url && normalizeUrl(item.url);
+    if (!key || known.has(key) || seen.has(key)) continue;
     if (!isNaN(date) && date < since) continue;
-    seen.add(item.url);
+    seen.add(key);
+    if (seenBefore.has(key)) { skippedSeen++; continue; }
     candidates.push({ ...item, published: isNaN(date) ? null : date.toISOString() });
   }
 });
@@ -113,5 +119,5 @@ candidates.sort((a, b) => (b.published ?? "").localeCompare(a.published ?? ""));
 
 mkdirSync(join(root, "scout/out"), { recursive: true });
 writeFileSync(join(root, "scout/out/candidates.json"), JSON.stringify({ since: since.toISOString(), errors, candidates }, null, 2));
-console.log(`${candidates.length} candidates from ${jobs.length - errors.length}/${jobs.length} sources`);
+console.log(`${candidates.length} new candidates from ${jobs.length - errors.length}/${jobs.length} sources (${skippedSeen} skipped as already seen)`);
 for (const e of errors) console.warn(`error ${e}`);
