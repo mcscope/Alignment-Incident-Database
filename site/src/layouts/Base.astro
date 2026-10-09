@@ -6,7 +6,7 @@ interface Props { title?: string; description?: string; nav?: string }
 const { title, description = "A public, source-linked record of AI alignment incidents.", nav } = Astro.props;
 const fullTitle = title ? `${title} · Alignment Incident Database` : "Alignment Incident Database";
 const links = [
-  ["incidents", "/", "Incidents"],
+  ["incidents", "/incidents/", "Incidents"],
   ["timeline", "/timeline/", "Timeline"],
   ["behaviors", "/behaviors/", "Behaviors"],
   ["models", "/models/", "Models"],

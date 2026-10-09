@@ -121,6 +121,37 @@ a.chip:hover { border-color: var(--muted); }
 .incident-row h3 a:hover { text-decoration: underline; }
 .incident-row p { margin: 0 0 10px; color: var(--muted); font-size: 0.93rem; }
 .row-badges { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.incident-list.compact { gap: 8px; }
+.incident-list.compact .incident-row { padding: 10px 14px; }
+.incident-list.compact h3 { font-size: 0.98rem; margin: 2px 0 6px; }
+.incident-list.compact .chips { display: none; }
+
+/* Home page */
+.hero { padding: 8px 0 28px; }
+.hero h1 { font-size: 2.2rem; margin: 0 0 8px; max-width: 24ch; }
+.hero .lede { margin-bottom: 18px; }
+.hero-search { display: flex; gap: 8px; max-width: 640px; }
+.hero-search input {
+  flex: 1; min-width: 0; font: inherit; color: var(--text); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px;
+}
+.hero-search input:focus { outline: 2px solid var(--link); outline-offset: -1px; }
+.btn {
+  font: inherit; font-weight: 600; font-size: 0.95rem; border-radius: 10px; padding: 10px 16px; cursor: pointer;
+  background: var(--text); color: var(--bg); border: 0; text-decoration: none; white-space: nowrap; display: inline-block;
+}
+.hero-links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; font-size: 0.9rem; }
+.section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 36px 0 12px; }
+.section-head h2 { margin: 0; }
+.section-head .eyebrow { display: block; margin-bottom: 2px; }
+.two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px; align-items: start; }
+.two-col h3 { margin: 0 0 10px; font-size: 0.95rem; }
+.explore-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.explore-grid a { text-decoration: none; color: var(--text); display: block; }
+.explore-grid a:hover { border-color: var(--muted); }
+.explore-grid strong { display: block; margin-bottom: 2px; }
+.explore-grid span { color: var(--muted); font-size: 0.875rem; }
+
 .empty { text-align: center; color: var(--muted); padding: 40px 0; }
 
 /* Incident page */

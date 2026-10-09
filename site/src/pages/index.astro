@@ -1,126 +1,121 @@
 ---
+// Home: an information hierarchy from broad to deep.
+//   1. Overview: what this is, headline numbers, the timeline, and top patterns
+//   2. Latest: recently added records and the highest-impact ones
+//   3. Explore: routes into search/filter and every other view
 import Base from "../layouts/Base.astro";
 import IncidentList from "../components/IncidentList.astro";
 import Timeline from "../components/Timeline.astro";
+import HBars from "../components/HBars.astro";
 import {
-  incidents, behaviors, models, organizations, orgIds, formatUsd, url,
-  REACH, HARM, CRIMINALITY, STATUS,
+  incidents, behaviors, organizations, models, scanStats, url, formatUsd, formatDate,
+  HARM, REACH, developers,
 } from "../lib/data";
 
-const used = (ids: string[]) => new Set(ids);
-const usedBehaviors = used(incidents.flatMap((i) => i.behaviors));
-const usedModels = used(incidents.flatMap((i) => i.models));
-const usedOrgs = used(incidents.flatMap(orgIds));
-const years = [...new Set(incidents.map((i) => i.date.slice(0, 4)))].sort().reverse();
+const n = incidents.length;
+const realWorld = incidents.filter((i) => ["deployed", "breakout"].includes(i.assessment.reach.level)).length;
+const low = incidents.reduce((s, i) => s + (i.assessment.monetary_damage.low_usd ?? 0), 0);
+const high = incidents.reduce((s, i) => s + (i.assessment.monetary_damage.high_usd ?? 0), 0);
+const unestimated = incidents.filter((i) => i.assessment.monetary_damage.low_usd === null).length;
+const modelCount = new Set(incidents.flatMap((i) => i.models).filter((m) => m !== "unknown")).size;
 
-const deployed = incidents.filter((i) => ["deployed", "breakout"].includes(i.assessment.reach.level)).length;
-const knownLow = incidents.reduce((s, i) => s + (i.assessment.monetary_damage.low_usd ?? 0), 0);
-const knownHigh = incidents.reduce((s, i) => s + (i.assessment.monetary_damage.high_usd ?? 0), 0);
-const unknownDamage = incidents.filter((i) => i.assessment.monetary_damage.low_usd === null).length;
-const modelCount = usedModels.size - (usedModels.has("unknown") ? 1 : 0);
+// Latest: by when the record was added, then by incident date.
+const latest = [...incidents]
+  .sort((a, b) => b.record.created.localeCompare(a.record.created) || b.date.localeCompare(a.date) || b.id.localeCompare(a.id))
+  .slice(0, 5);
+// Highest impact: harm first, then reach, then recency.
+const impact = [...incidents]
+  .sort((a, b) =>
+    HARM.indexOf(b.assessment.harm.severity) - HARM.indexOf(a.assessment.harm.severity) ||
+    REACH.indexOf(b.assessment.reach.level) - REACH.indexOf(a.assessment.reach.level) ||
+    b.date.localeCompare(a.date))
+  .slice(0, 5);
 
-const filters = [
-  { key: "behavior", label: "All behaviors", options: behaviors.filter((b) => usedBehaviors.has(b.id)).map((b) => [b.id, b.name]) },
-  { key: "model", label: "All models", options: models.filter((m) => usedModels.has(m.id)).map((m) => [m.id, m.name]) },
-  { key: "org", label: "All organizations", options: organizations.filter((o) => usedOrgs.has(o.id)).map((o) => [o.id, o.name]) },
-  { key: "reach", label: "Any reach", options: REACH.map((r) => [r, r]) },
-  { key: "harm", label: "Any harm", options: HARM.map((h) => [h, h]) },
-  { key: "crime", label: "Any criminality", options: CRIMINALITY.map((c) => [c, c]) },
-  { key: "status", label: "Any status", options: STATUS.map((s) => [s, s]) },
-  { key: "year", label: "Any year", options: years.map((y) => [y, y]) },
-];
+const top = <T extends { id: string; name: string }>(terms: T[], count: (id: string) => number, path: string) =>
+  terms.map((t) => ({ label: t.name, value: count(t.id), href: url(`/${path}/${t.id}/`) }))
+    .filter((x) => x.value > 0).sort((a, b) => b.value - a.value || a.label.localeCompare(b.label)).slice(0, 5);
+const topBehaviors = top(behaviors, (id) => incidents.filter((i) => i.behaviors.includes(id)).length, "behaviors");
+const topDevelopers = top(organizations, (id) => incidents.filter((i) => developers(i).includes(id)).length, "organizations");
 ---
-<Base nav="incidents">
-  <p class="lede">
-    A public, source-linked record of AI systems behaving against the intent of their developers,
-    deployers, or users, plus criminal-level human misuse of AI. Every claim links to a source.
-  </p>
+<Base nav="home">
+  <!-- 1. Overview -->
+  <section class="hero">
+    <h1>A public record of AI systems misbehaving</h1>
+    <p class="lede">
+      {n} documented incidents of AI systems acting against the intent of their developers, deployers, or
+      users, from lab findings to real-world harm. Like a CVE list for alignment: every incident gets a permanent
+      id, and every claim links to its source.
+    </p>
+    <form class="hero-search" action={url("/incidents/")} method="get" role="search">
+      <input type="search" name="q" placeholder="Search incidents, models, behaviors…" aria-label="Search incidents" />
+      <button class="btn" type="submit">Search</button>
+    </form>
+    <div class="hero-links">
+      <a href={url("/incidents/")}>Browse all {n} incidents</a>
+      <a href={url("/timeline/")}>Timeline</a>
+      <a href={url("/data/")}>Data &amp; charts</a>
+      <a href={url("/about/")}>How this works</a>
+    </div>
+  </section>
 
-  <section class="stats" aria-label="Summary">
-    <div class="stat"><div class="stat-value">{incidents.length}</div><div class="stat-label">Incidents</div></div>
-    <div class="stat"><div class="stat-value">{deployed}</div><div class="stat-label">Reached the real world</div></div>
+  <section class="stats" aria-label="Headline numbers">
+    <div class="stat"><div class="stat-value">{n}</div><div class="stat-label">Incidents recorded</div></div>
+    <div class="stat"><div class="stat-value">{realWorld}</div><div class="stat-label">Reached the real world</div></div>
     <div class="stat"><div class="stat-value">{modelCount}</div><div class="stat-label">Models implicated</div></div>
     <div class="stat">
-      <div class="stat-value">{unknownDamage && !knownHigh ? "Unknown" : knownLow === knownHigh ? formatUsd(knownLow) : `${formatUsd(knownLow)}–${formatUsd(knownHigh)}`}</div>
-      <div class="stat-label">Est. monetary damage{unknownDamage ? ` · ${unknownDamage} not yet estimable` : ""}</div>
+      <div class="stat-value">{unestimated && !high ? "Unknown" : low === high ? formatUsd(low) : `${formatUsd(low)}–${formatUsd(high)}`}</div>
+      <div class="stat-label">Est. monetary damage{unestimated ? ` · ${unestimated} not yet estimable` : ""}</div>
     </div>
   </section>
 
-  <section class="chart-card" style="margin-bottom:20px">
-    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:baseline">
-      <p class="chart-title">Timeline</p>
-      <a class="small" href={url("/timeline/")}>More views →</a>
+  <section class="chart-card">
+    <div class="section-head" style="margin-top:0">
+      <p class="chart-title">Every incident over time</p>
+      <a class="small" href={url("/timeline/")}>By developer and by behavior →</a>
     </div>
-    <Timeline filterable id="home-timeline" />
+    <Timeline id="home-timeline" />
   </section>
 
-  <form class="filters" id="filters" role="search" onsubmit="return false">
-    <input type="search" name="q" placeholder="Search incidents, models, tags…" aria-label="Search" />
-    {filters.map((f) => (
-      <select name={f.key} aria-label={f.label}>
-        <option value="">{f.label}</option>
-        {f.options.map(([v, l]) => <option value={v}>{l}</option>)}
-      </select>
-    ))}
-  </form>
-  <div class="result-meta">
-    <span id="result-count">{incidents.length} incidents</span>
-    <button type="button" class="linklike" id="clear" hidden>Clear filters</button>
+  <div class="two-col" style="margin-top:16px">
+    <div class="chart-card"><HBars title="Most common behaviors" items={topBehaviors} valueHeader="Incidents" table={false} /></div>
+    <div class="chart-card"><HBars title="Developers most often involved" items={topDevelopers} valueHeader="Incidents" table={false} /></div>
   </div>
 
-  <IncidentList incidents={incidents} filterable />
-  <p class="empty" id="empty" hidden>No incidents match these filters.</p>
+  <!-- 2. Latest -->
+  <div class="two-col">
+    <section>
+      <div class="section-head">
+        <div><span class="eyebrow">Latest</span><h2>Recently added</h2></div>
+        <a class="small" href={url("/incidents/")}>All incidents →</a>
+      </div>
+      <IncidentList incidents={latest} compact meta={(i) => `Added ${formatDate(i.record.created)}`} />
+    </section>
+    <section>
+      <div class="section-head">
+        <div><span class="eyebrow">Start here</span><h2>Highest impact</h2></div>
+        <a class="small" href={url("/incidents/?harm=moderate")}>Filter by harm →</a>
+      </div>
+      <IncidentList incidents={impact} compact />
+    </section>
+  </div>
+
+  <!-- 3. Explore -->
+  <div class="section-head">
+    <div><span class="eyebrow">Explore</span><h2>Go deeper</h2></div>
+  </div>
+  <div class="explore-grid">
+    <a class="card" href={url("/incidents/")}><strong>Search &amp; filter</strong><span>All {n} records by behavior, model, developer, reach, harm, criminality, year</span></a>
+    <a class="card" href={url("/timeline/")}><strong>Timeline</strong><span>Every incident over time, by developer or by behavior</span></a>
+    <a class="card" href={url("/data/")}><strong>Data &amp; charts</strong><span>Breakdowns, reach × harm, and reported misbehavior rates per model</span></a>
+    <a class="card" href={url("/behaviors/")}><strong>Behaviors</strong><span>{behaviors.length} kinds of misbehavior, from deception to sandbox escape</span></a>
+    <a class="card" href={url("/models/")}><strong>Models</strong><span>{models.length - 1} models with their incident records</span></a>
+    <a class="card" href={url("/api/incidents.json")}><strong>Download the data</strong><span>Full JSON export; YAML source on GitHub</span></a>
+  </div>
+
+  {scanStats.sources > 0 && (
+    <p class="muted small" style="margin-top:28px">
+      Kept current by a daily scout that has reviewed {scanStats.sources.toLocaleString("en-US")} sources since {formatDate(scanStats.since)}.
+      New records are marked <span class="badge draft">Draft</span> until a maintainer checks every claim. <a href={url("/about/#status")}>How review works</a>.
+    </p>
+  )}
 </Base>
-
-<script>
-  // Client-side filtering. Filter state lives in the query string, so filtered views can be shared.
-  const form = document.getElementById("filters") as HTMLFormElement;
-  const rows = [...document.querySelectorAll<HTMLElement>("#incident-list > li")];
-  const dots = [...document.querySelectorAll<HTMLElement>(".tl-dot[data-filterable]")];
-  const count = document.getElementById("result-count")!;
-  const empty = document.getElementById("empty")!;
-  const clear = document.getElementById("clear")!;
-  const listAttr: Record<string, string> = { behavior: "behaviors", model: "models", org: "orgs" };
-  const exactAttr: Record<string, string> = { reach: "reach", harm: "harm", crime: "crime", status: "status", year: "year" };
-
-  function apply() {
-    const data = new FormData(form);
-    const q = String(data.get("q") ?? "").trim().toLowerCase();
-    let shown = 0;
-    // Rows that don't match are hidden; timeline dots are dimmed so positions stay put.
-    for (const dot of dots) dot.classList.toggle("dim", !matches(dot, data, q));
-    for (const row of rows) {
-      const ok = matches(row, data, q);
-      row.hidden = !ok;
-      if (ok) shown++;
-    }
-    count.textContent = `${shown} of ${rows.length} incidents`;
-    empty.hidden = shown > 0;
-    const params = new URLSearchParams();
-    for (const [k, v] of data) if (v) params.set(k, String(v));
-    clear.hidden = [...params].length === 0;
-    if (clear.hidden) count.textContent = `${rows.length} incidents`;
-    history.replaceState(null, "", params.size ? `?${params}` : location.pathname);
-  }
-
-  function matches(el: HTMLElement, data: FormData, q: string) {
-    let ok = !q || q.split(/\s+/).every((w) => el.dataset.search!.includes(w));
-    for (const [key, attr] of Object.entries(listAttr)) {
-      const v = data.get(key);
-      if (ok && v) ok = el.dataset[attr]!.split(" ").includes(String(v));
-    }
-    for (const [key, attr] of Object.entries(exactAttr)) {
-      const v = data.get(key);
-      if (ok && v) ok = el.dataset[attr] === v;
-    }
-    return ok;
-  }
-
-  for (const [k, v] of new URLSearchParams(location.search)) {
-    const el = form.elements.namedItem(k) as HTMLInputElement | HTMLSelectElement | null;
-    if (el) el.value = v;
-  }
-  form.addEventListener("input", apply);
-  clear.addEventListener("click", () => { form.reset(); apply(); });
-  apply();
-</script>

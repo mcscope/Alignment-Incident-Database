@@ -47,6 +47,16 @@ export const organizations: Term[] = load("data/taxonomy/organizations.yaml");
 export const harmCategories: Term[] = load("data/taxonomy/harm_categories.yaml");
 export const schema = load("schema/incident.schema.json");
 
+// Scout scan logs (data/scans/YYYY-MM-DD.yaml): how much material has been reviewed.
+const scanFiles = readdirSync(join(root, "data/scans")).filter((f) => f.endsWith(".yaml")).sort();
+const scanEntries = scanFiles.flatMap((f) => (load(`data/scans/${f}`)?.scanned ?? []) as { verdict: string }[]);
+export const scanStats = {
+  days: scanFiles.length,
+  since: scanFiles[0]?.slice(0, 10),
+  sources: scanEntries.length,
+  rejected: scanEntries.filter((e) => e.verdict === "rejected").length,
+};
+
 const index = (terms: Term[]) => new Map(terms.map((t) => [t.id, t]));
 export const behaviorById = index(behaviors);
 export const modelById = index(models);
