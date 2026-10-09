@@ -19,6 +19,7 @@ const taxonomy = {
   models: ids(load("data/taxonomy/models.yaml")),
   organizations: ids(load("data/taxonomy/organizations.yaml")),
   behaviors: ids(behaviors),
+  harmCategories: ids(load("data/taxonomy/harm_categories.yaml")),
 };
 
 const errors = [];
@@ -31,6 +32,7 @@ for (const b of behaviors) {
 const dir = join(root, "data/incidents");
 const files = readdirSync(dir).filter((f) => f.endsWith(".yaml"));
 const incidents = new Map();
+const slugs = new Map();
 
 for (const file of files) {
   const doc = parse(readFileSync(join(dir, file), "utf8"));
@@ -39,10 +41,8 @@ for (const file of files) {
     continue;
   }
   if (doc.id !== basename(file, ".yaml")) err(file, `id "${doc.id}" does not match filename`);
-  if (!doc.id.startsWith(doc.date.slice(0, 7)) && doc.date.length >= 7) {
-    // id prefix is fixed at creation; dates may be refined later, so only warn.
-    console.warn(`warn ${file}: id prefix differs from date ${doc.date}`);
-  }
+  if (slugs.has(doc.slug)) err(file, `slug "${doc.slug}" also used by ${slugs.get(doc.slug)}`);
+  slugs.set(doc.slug, doc.id);
 
   for (const m of doc.models) if (!taxonomy.models.has(m)) err(file, `unknown model "${m}" (add to data/taxonomy/models.yaml)`);
   for (const o of doc.organizations) if (!taxonomy.organizations.has(o.id)) err(file, `unknown organization "${o.id}"`);
@@ -51,9 +51,28 @@ for (const file of files) {
   const sourceIds = doc.sources.map((s) => s.id);
   const dupes = sourceIds.filter((s, i) => sourceIds.indexOf(s) !== i);
   if (dupes.length) err(file, `duplicate source ids: ${dupes.join(", ")}`);
-  const cited = new Set(doc.claims.flatMap((c) => c.sources));
-  for (const c of cited) if (!sourceIds.includes(c)) err(file, `claim cites unknown source "${c}"`);
-  for (const s of sourceIds) if (!cited.has(s)) err(file, `source "${s}" is not cited by any claim`);
+  for (const h of doc.assessment.harm.categories) if (!taxonomy.harmCategories.has(h)) err(file, `unknown harm category "${h}"`);
+  const { severity, categories } = doc.assessment.harm;
+  if (severity === "none" && categories.length) err(file, "harm categories given but severity is none");
+  if (severity !== "none" && !categories.length) err(file, "harm severity is not none but no categories given");
+
+  const { low_usd, high_usd } = doc.assessment.monetary_damage;
+  if ((low_usd === null) !== (high_usd === null)) err(file, "monetary_damage low_usd/high_usd must both be set or both be null");
+  if (low_usd !== null && low_usd > high_usd) err(file, "monetary_damage low_usd > high_usd");
+
+  if (doc.actor === "human-misuse" && ["none", "unlikely", "possible"].includes(doc.assessment.criminality.likelihood)) {
+    err(file, "human-misuse incidents are only in scope at criminal level (criminality likely, charged, or convicted)");
+  }
+
+  // Write-up citations: [@source-id]. Every paragraph needs at least one.
+  const writeupCites = [...doc.writeup.matchAll(/\[@([a-z0-9-]+)\]/g)].map((m) => m[1]);
+  doc.writeup.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean).forEach((para, i) => {
+    if (!/\[@[a-z0-9-]+\]/.test(para)) err(file, `writeup paragraph ${i + 1} has no [@source] citation`);
+  });
+
+  const cited = new Set([...doc.claims.flatMap((c) => c.sources), ...writeupCites]);
+  for (const c of cited) if (!sourceIds.includes(c)) err(file, `cites unknown source "${c}"`);
+  for (const s of sourceIds) if (!cited.has(s)) err(file, `source "${s}" is not cited anywhere`);
 
   incidents.set(doc.id, doc);
 }

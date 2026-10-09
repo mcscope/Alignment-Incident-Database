@@ -1,0 +1,91 @@
+# What the daily scout watches. Edit freely; the collector and the agent both read this file.
+#
+# feeds:        RSS/Atom feeds, fetched by scout/collect.mjs. `filter: true` keeps only
+#               items matching `keywords` (use for broad, high-volume feeds).
+# google_news:  search queries run through Google News RSS.
+# hacker_news:  search queries run through the HN Algolia API.
+# arxiv:        arXiv API search queries.
+# x:            X (Twitter) recent-search queries. Requires X_BEARER_TOKEN; skipped otherwise.
+# watch_pages:  pages without feeds. The agent itself reads these with WebFetch.
+# web_searches: queries the agent runs with WebSearch to catch what the feeds miss.
+
+window_hours: 48
+
+keywords:
+  - deceiv
+  - deception
+  - lied
+  - lying
+  - sycophan
+  - reward hack
+  - specification gaming
+  - sandbag
+  - scheming
+  - blackmail
+  - shutdown
+  - self-exfiltrat
+  - alignment faking
+  - misalign
+  - jailbr
+  - went rogue
+  - deleted
+  - system card
+  - safety incident
+  - unsafe behavior
+  - agentic
+
+feeds:
+  # Labs
+  - { name: OpenAI News, url: "https://openai.com/news/rss.xml", filter: false }
+  - { name: Google DeepMind Blog, url: "https://deepmind.google/blog/rss.xml", filter: false }
+  # Safety research orgs
+  - { name: METR, url: "https://metr.org/feed.xml", filter: false }
+  - { name: Palisade Research, url: "https://palisaderesearch.org/feed.xml", filter: false }
+  - { name: Alignment Forum, url: "https://www.alignmentforum.org/feed.xml", filter: true }
+  - { name: LessWrong, url: "https://www.lesswrong.com/feed.xml", filter: true }
+  # Other incident trackers
+  - { name: AI Incident Database, url: "https://incidentdatabase.ai/rss.xml", filter: false }
+
+google_news:
+  - '"AI agent" deleted OR wiped OR destroyed'
+  - 'chatbot OR "AI model" blackmail OR threatened OR manipulated'
+  - '"AI" "went rogue"'
+  - 'AI sycophancy OR sycophantic'
+  - '"system card" model behavior'
+  - 'AI model "reward hacking" OR "scheming" OR "sandbagging"'
+  - '("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+  - '"alignment" AI incident'
+
+hacker_news:
+  - AI agent deleted
+  - LLM lied
+  - reward hacking
+  - Claude went rogue
+  - ChatGPT went rogue
+  - system card
+
+arxiv:
+  - 'abs:"reward hacking"'
+  - 'abs:"alignment faking"'
+  - 'abs:"scheming" AND abs:"language model"'
+  - 'abs:"sandbagging"'
+  - 'abs:"emergent misalignment"'
+  - 'abs:"shutdown resistance" OR abs:"self-preservation"'
+
+x:
+  - '("AI agent" OR Claude OR ChatGPT OR Gemini OR Grok OR Codex OR Cursor) (deleted OR wiped OR "went rogue" OR lied OR blackmail) -is:retweet lang:en'
+  - '("reward hacking" OR "alignment faking" OR sandbagging OR "scheming") (model OR LLM) -is:retweet lang:en'
+  - '("system card") (Anthropic OR OpenAI OR DeepMind OR xAI) -is:retweet lang:en'
+
+watch_pages:
+  - { name: Anthropic News, url: "https://www.anthropic.com/news" }
+  - { name: Anthropic Research, url: "https://www.anthropic.com/research" }
+  - { name: xAI News, url: "https://x.ai/news" }
+  - { name: Apollo Research, url: "https://www.apolloresearch.ai/blog" }
+  - { name: UK AI Security Institute, url: "https://www.aisi.gov.uk/blog" }
+
+web_searches:
+  - AI agent incident this week
+  - new model system card concerning behavior
+  - AI chatbot lawsuit harmful behavior
+  - criminal charges AI-generated OR AI-assisted

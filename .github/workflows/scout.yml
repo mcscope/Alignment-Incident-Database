@@ -1,0 +1,62 @@
+name: Scout for new incidents
+
+on:
+  schedule:
+    - cron: "0 13 * * *" # daily, 13:00 UTC
+  workflow_dispatch:
+
+concurrency: scout
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    env:
+      # PRs opened with the default GITHUB_TOKEN don't trigger other workflows,
+      # so the Validate check won't run on them. Set SCOUT_GH_TOKEN (fine-grained
+      # PAT or GitHub App token: contents + pull requests write) to fix that.
+      GH_TOKEN: ${{ secrets.SCOUT_GH_TOKEN || github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SCOUT_GH_TOKEN || github.token }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Collect candidates
+        run: npm run scout
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+      - name: Ensure label exists
+        run: gh label create agent-proposed --color 5319e7 --description "Proposed by the scout agent" || true
+      - name: Configure git identity
+        run: |
+          git config user.name "incident-scout[bot]"
+          git config user.email "incident-scout@users.noreply.github.com"
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Follow the instructions in scout/PROMPT.md. Repository: ${{ github.repository }}. Today is the run date of this workflow.
+          claude_args: |
+            --model claude-opus-5-5
+            --max-turns 200
+            --allowedTools Agent,Task,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(npm run validate),Bash(git checkout:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(git status:*),Bash(git diff:*),Bash(git switch:*),Bash(gh pr list:*),Bash(gh pr create:*),Bash(gh pr view:*),Bash(date:*),Bash(npm run next-id:*),Bash(mkdir:*)
+      - name: Publish run report
+        if: always()
+        run: |
+          [ -f scout/out/report.md ] && cat scout/out/report.md >> "$GITHUB_STEP_SUMMARY" || echo "No report written" >> "$GITHUB_STEP_SUMMARY"
+      - name: Keep findings for debugging
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scout-output
+          path: scout/out/
+          retention-days: 14

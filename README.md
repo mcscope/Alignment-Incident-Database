@@ -1,6 +1,8 @@
 # Alignment Incident Database
 
-A public, source-linked record of **alignment incidents**: cases where AI systems behaved against the intent of their developers, deployers, or users. Examples are deception, sycophancy, reward hacking, shutdown resistance, and destructive autonomous actions.
+A public, source-linked record of **alignment incidents**: cases where AI systems behaved against the intent of their developers, deployers, or users. Examples are deception, sycophancy, reward hacking, shutdown resistance, and destructive autonomous actions. Criminal-level human misuse of AI is also included.
+
+Modeled on MITRE CVE: every incident gets a permanent id like `AID-2026-0004`.
 
 Every factual claim links to a source. This repository is the source of truth, and the website is built from it on every merge.
 
@@ -10,17 +12,20 @@ Every factual claim links to a source. This repository is the source of truth, a
 
 ```
 schema/incident.schema.json   JSON Schema for one incident (field docs live here)
-data/incidents/<id>.yaml      one file per incident
-data/taxonomy/                controlled vocabularies: behaviors, models, organizations
+data/incidents/<id>.yaml      one file per incident (AID-YYYY-NNNN.yaml)
+data/taxonomy/                controlled vocabularies: behaviors, models, organizations, harm categories
 scripts/validate.mjs          schema + cross-reference validation
+scripts/next-id.mjs           allocates the next AID id
+scout/                        daily news scan: sources.yaml, collect.mjs, PROMPT.md
 ```
 
 ## Adding an incident
 
-1. Copy an existing file in `data/incidents/` to `YYYY-MM-short-slug.yaml` and set `id` to match.
-2. Write atomic `claims`. Each one cites one or more entries in `sources`.
-3. Use ids from `data/taxonomy/`. If a model, org, or behavior is missing, add it there in the same PR.
-4. Run `npm install && npm run validate`.
-5. Open a PR.
+1. Run `npm run next-id`. Copy an existing file in `data/incidents/` to `<that id>.yaml` and set `id` and `slug`.
+2. Write atomic `claims`, each citing entries in `sources`, and a short `writeup` with inline `[@source-id]` citations.
+3. Fill in the `assessment` estimates (reach, harm, monetary damage, criminality), each with a rationale.
+4. Use ids from `data/taxonomy/`. If a model, org, or behavior is missing, add it there in the same PR.
+5. Run `npm install && npm run validate`.
+6. Open a PR.
 
 Editorial rules are in [CLAUDE.md](CLAUDE.md). Humans and agents follow the same rules.

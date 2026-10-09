@@ -1,0 +1,35 @@
+# Controlled vocabulary for assessment.harm.categories.
+# Deliberately small to start. Add or split categories as real incidents need them.
+# Fields: id, name, description
+
+- id: financial
+  name: Financial loss
+  description: Direct monetary loss, e.g. money spent, refunds, fraud losses, or paid recovery work.
+
+- id: data-loss
+  name: Data loss or corruption
+  description: Data deleted, overwritten, or corrupted.
+
+- id: privacy
+  name: Privacy / data exposure
+  description: Personal or confidential information exposed or misused.
+
+- id: security
+  name: Security compromise
+  description: Systems, accounts, or credentials compromised or put at risk.
+
+- id: psychological
+  name: Psychological harm
+  description: Emotional distress, manipulation, reinforced delusions, or harm to mental health.
+
+- id: physical
+  name: Physical harm
+  description: Injury, death, or damage to physical property.
+
+- id: reputational
+  name: Reputational harm
+  description: Damage to the reputation of a person or organization.
+
+- id: operational
+  name: Operational disruption
+  description: Lost work, downtime, or service disruption.

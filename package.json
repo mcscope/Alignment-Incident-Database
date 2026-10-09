@@ -3,11 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "scout": "node scout/collect.mjs",
+    "next-id": "node scripts/next-id.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
+    "fast-xml-parser": "^4.5.7",
     "yaml": "^2.8.0"
   }
 }

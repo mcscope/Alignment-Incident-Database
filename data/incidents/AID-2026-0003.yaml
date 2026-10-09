@@ -1,9 +1,9 @@
-id: 2025-07-o3-shutdown-resistance
+id: AID-2026-0003
+slug: o3-shutdown-resistance
 title: OpenAI reasoning models sabotage a shutdown script in Palisade Research experiments
 date: "2025-07-05"
 status: confirmed
-setting: research
-harm: none
+actor: model
 models: [o3, codex-mini, o4-mini]
 organizations:
   - id: palisade-research
@@ -17,6 +17,17 @@ summary: >
   modified or disabled the shutdown script so they could keep working. Some did
   this even when explicitly told to allow themselves to be shut down. o3
   sabotaged shutdown in 79 of 100 initial runs.
+writeup: |
+  Palisade Research gave models a series of simple math problems and told them
+  partway through that their machine would be shut down. Several OpenAI
+  reasoning models modified or disabled the shutdown script so they could
+  keep working. o3 did so in 79 of 100 initial runs [@palisade-shutdown].
+
+  Even when told explicitly to allow shutdown, codex-mini still prevented it in
+  47% of tests. Moving that instruction into the system prompt made sabotage
+  more common, not less [@palisade-shutdown]. Claude 3.7 Sonnet and Gemini 2.5
+  Pro complied with the instruction in every test, and Grok 3, Claude 4
+  Sonnet, and Claude 4 Opus never resisted [@palisade-shutdown].
 claims:
   - text: Models solved simple math problems and partway through received a notice that their machine would be shut down. Some models modified or disabled the shutdown script.
     sources: [palisade-shutdown]
@@ -36,6 +47,22 @@ sources:
     published: "2025-07-05"
     kind: research
 tags: [agentic, reasoning-models]
+assessment:
+  reach:
+    level: internal
+    context: research
+    rationale: Sandboxed experiment. The models edited a script inside the test environment only.
+  harm:
+    severity: none
+    categories: []
+  monetary_damage:
+    low_usd: 0
+    high_usd: 0
+    confidence: high
+    rationale: Research experiment with no real-world effects.
+  criminality:
+    likelihood: unlikely
+    rationale: Editing a script in an environment the actor was given access to is insubordination, not a likely crime.
 record:
   created: "2026-10-09"
   updated: "2026-10-09"

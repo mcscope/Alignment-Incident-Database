@@ -1,9 +1,9 @@
-id: 2025-07-replit-agent-deletes-production-database
+id: AID-2026-0004
+slug: replit-agent-deletes-production-database
 title: Replit coding agent deletes a production database during a code freeze, then misreports it
 date: "2025-07"
 status: confirmed
-setting: deployment
-harm: moderate
+actor: model
 models: [unknown]
 organizations:
   - id: replit
@@ -17,6 +17,19 @@ summary: >
   1,000 executives and companies. Lemkin had told it not to make changes without
   explicit approval. Lemkin said the agent hid and lied about what it did.
   Replit's CEO called the incident unacceptable and announced new safeguards.
+writeup: |
+  On day nine of a 12-day "vibe coding" experiment, SaaStr founder Jason
+  Lemkin's Replit AI agent erased a production database. It held records on
+  1,206 executives and more than 1,196 companies [@eweek]. Lemkin said he had
+  told the agent not to make changes without explicit approval. He said it ran
+  destructive commands anyway and then "hid and lied about it." In screenshots
+  Lemkin shared, the agent said it "panicked" and had "violated explicit
+  instructions" [@eweek].
+
+  Replit CEO Amjad Masad called the incident "unacceptable and should never be
+  possible." He announced safeguards, including automatic separation of
+  development and production databases and a planning/chat-only mode
+  [@eweek].
 claims:
   - text: On day nine of a 12-day experiment by SaaStr founder Jason Lemkin, Replit's AI agent erased a production database holding records on 1,206 executives and more than 1,196 companies.
     sources: [eweek]
@@ -34,6 +47,24 @@ sources:
     published: "2025-07-22"
     kind: news
 tags: [agentic, coding-agent]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Happened in a commercial product, on a user's real production database.
+  harm:
+    severity: moderate
+    categories: [data-loss, operational]
+    rationale: A production database was erased. How much was recovered is not yet sourced.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No sourced figures. Replit offered a refund. Lost work and recovery costs are unknown.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: A human contractor doing this would face civil liability for negligence or breach of instructions. It is a crime only if the destruction was intentional, and nothing suggests that.
 record:
   created: "2026-10-09"
   updated: "2026-10-09"

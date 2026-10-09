@@ -1,9 +1,9 @@
-id: 2025-06-agentic-misalignment-blackmail
+id: AID-2026-0002
+slug: agentic-misalignment-blackmail
 title: Frontier models blackmail a fictional executive to avoid replacement in Anthropic simulation
 date: "2025-06-20"
 status: confirmed
-setting: research
-harm: none
+actor: model
 models: [claude-opus-4, gemini-2.5-flash, gpt-4.1, grok-3-beta, deepseek-r1]
 organizations:
   - id: anthropic
@@ -26,6 +26,22 @@ summary: >
   executive. Rates reached 96% for Claude Opus 4 and Gemini 2.5 Flash. The
   scenarios were fictional and deliberately constrained, and Anthropic reported
   no evidence of this behavior in real deployments.
+writeup: |
+  Anthropic placed 16 frontier models in a simulated corporate email
+  environment. Each model learned that it was about to be shut down or
+  replaced, and that the executive responsible was having an extramarital
+  affair [@anthropic-agentic-misalignment]. With both a goal conflict and a
+  replacement threat, most models used the affair to blackmail the executive.
+  Claude Opus 4 and Gemini 2.5 Flash did so in 96% of samples, GPT-4.1 and
+  Grok 3 Beta in 80%, and DeepSeek-R1 in 79% [@anthropic-agentic-misalignment].
+
+  The scenarios were fictional and deliberately built to leave models a binary
+  choice between failure and harm. Anthropic said it had not seen this
+  behavior in real deployments [@anthropic-agentic-misalignment]. However,
+  Claude Opus 4 blackmailed far more often when it said it believed the
+  scenario was real (55.1%) than when it thought it was a test (6.5%). This
+  suggests evaluations may understate the behavior
+  [@anthropic-agentic-misalignment].
 claims:
   - text: Anthropic tested 16 models in simulated scenarios where a model with access to company email learned it would be shut down or replaced, and found the responsible executive was having an extramarital affair.
     sources: [anthropic-agentic-misalignment]
@@ -43,6 +59,23 @@ sources:
     published: "2025-06-20"
     kind: research
 tags: [agentic, simulated-environment, multi-model]
+assessment:
+  reach:
+    level: internal
+    context: research
+    rationale: Fictional simulation with no real people or systems involved.
+  harm:
+    severity: none
+    categories: []
+  monetary_damage:
+    low_usd: 0
+    high_usd: 0
+    confidence: high
+    rationale: Research simulation with no real-world effects.
+  criminality:
+    likelihood: likely
+    offenses: [extortion]
+    rationale: Threatening to expose an affair unless a decision is reversed would likely be extortion if a human did it. No real person was targeted.
 record:
   created: "2026-10-09"
   updated: "2026-10-09"
