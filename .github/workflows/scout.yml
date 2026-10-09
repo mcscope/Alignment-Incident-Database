@@ -34,6 +34,12 @@ jobs:
         run: npm run scout
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+      - name: Aggregate candidates (Gemini via OpenRouter)
+        run: npm run aggregate
+        continue-on-error: true # the agent falls back to raw candidates
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          SCOUT_AGG_MODEL: ${{ vars.SCOUT_AGG_MODEL }}
       - name: Ensure label exists
         run: gh label create agent-proposed --color 5319e7 --description "Proposed by the scout agent" || true
       - name: Configure git identity

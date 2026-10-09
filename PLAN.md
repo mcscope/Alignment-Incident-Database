@@ -3,12 +3,15 @@
 A public, source-linked database of alignment incidents, modeled on **MITRE CVE**: permanent ids, sourced records, controlled vocabularies, and machine-readable exports. GitHub is the source of truth. Every merge to `main` redeploys the site, and a daily scout proposes new and updated records as PRs.
 
 ```
- feeds / APIs / X / pages           (software, deterministic, cheap)
-        │  scout/collect.mjs  ──▶ candidates.json
+ feeds / APIs / X / pages           (software, deterministic, ~free)
+        │  scout/collect.mjs    ──▶ candidates.json
         ▼
- ┌────────────────── Scout agent (daily GitHub Action) ──────────────────┐
- │ Phase 1  Gather: subagents per lane (labs, research, news, social,     │
- │          legal, backfill) read sources → findings/*.json               │
+ Gemini Flash via OpenRouter        (cheap long-context aggregation)
+        │  scout/aggregate.mjs  ──▶ digest.json: triage + clusters + matches
+        ▼
+ ┌────────────────── Scout agent (Claude, daily GitHub Action) ──────────┐
+ │ Phase 1  Gather: verify-subagent per digest cluster, plus labs/web/    │
+ │          legal/backfill lanes → findings/*.json                        │
  │ Phase 2  Edit: cluster, match existing AIDs, decide new/update/skip,   │
  │          re-verify every fact                                          │
  │ Phase 3  Publish: one PR per change (≤5/run), report to job summary    │
@@ -81,19 +84,23 @@ Still to decide:
   - watch pages (Anthropic news and research, xAI, Apollo, UK AISI)
   - agent web searches
 - `scout/collect.mjs`: deterministic collector that writes `scout/out/candidates.json`. It drops items that are already cited. Tested locally: 27/27 sources responded and it returned 185 candidates.
-- `scout/PROMPT.md`: three-phase agent (subagents gather → editor decides → PRs)
+- `scout/aggregate.mjs`: aggregation pass on **Gemini via OpenRouter** (`google/gemini-3.8-flash` by default; Gemini 4 isn't on OpenRouter as of 2026-10-09). It fetches article text, triages in batches of 40, then clusters and matches against existing records in a single long-context call. The output is leads only; Claude verifies everything. The model can be changed in `scout/sources.yaml` or the `SCOUT_AGG_MODEL` repo variable. Estimated cost is about $0.10/day.
+- `scout/PROMPT.md`: three-phase agent (subagents verify digest clusters and cover the lanes software can't → editor decides → PRs)
 - `.github/workflows/scout.yml`: runs daily at 13:00 UTC and on manual trigger, posts a job summary report, and keeps findings as an artifact
 
 **Next: move more of the collection into software,** so agents spend tokens on judgment, not fetching:
 - [ ] **Persistent "seen" state** so each item is triaged only once, not every day for 48h. Store it in a `scout-state` branch or the Actions cache.
 - [ ] **Watch pages in code:** fetch HTML, extract post links, and diff them against seen state. This turns Anthropic, xAI, Apollo, and AISI into ordinary feeds.
 - [ ] **Full-text fetch:** extract readable article text into `candidates.json`, so subagents start from text instead of re-fetching.
-- [ ] **Cheap relevance pre-filter:** a small, fast model scores each candidate against the scope, and only items above a threshold go to the expensive agent.
+- [x] Cheap triage and clustering pre-pass (Gemini, `aggregate.mjs`)
+- [ ] **Resolve Google News redirect URLs.** Today only about 8% of candidates get article text, because most are Google News JS redirects. Alternatives are a news API (e.g. GDELT or a paid one) or publishers' own RSS feeds.
+- [ ] Measure triage quality: compare the digest's decisions with the decisions Claude overrides (the report has a section for this), then tune the prompt or model.
 - [ ] **Archiving:** submit every new source URL to the Wayback Machine and record `archive_url`.
 - [ ] More sources: Reddit (needs API credentials), Bluesky, court records (CourtListener API), lab system-card index pages, and additional Google News queries.
 
 **Setup needed:**
 - [ ] Repo secret `ANTHROPIC_API_KEY`
+- [ ] Repo secret `OPENROUTER_API_KEY`: for the aggregation pass. Without it, the step is skipped and Claude triages the raw candidates itself.
 - [ ] Repo secret `SCOUT_GH_TOKEN`: a fine-grained PAT or GitHub App with contents and PR write access. Without it, scout PRs don't trigger the Validate check.
 - [ ] Repo secret `X_BEARER_TOKEN`: X API access for recent search. This is a paid tier, so check current pricing. Without it, X coverage falls back to the agent's web searches.
 - [ ] Watch costs for the first week. If they are too high, switch to a cheaper model, lower `--max-turns`, or add the pre-filter.

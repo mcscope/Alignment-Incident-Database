@@ -5,7 +5,8 @@
   "scripts": {
     "validate": "node scripts/validate.mjs",
     "scout": "node scout/collect.mjs",
-    "next-id": "node scripts/next-id.mjs"
+    "next-id": "node scripts/next-id.mjs",
+    "aggregate": "node scout/aggregate.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

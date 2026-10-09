@@ -24,25 +24,27 @@ Out of scope:
 ## Phase 1: Gather (subagents, in parallel)
 
 Inputs:
-- `scout/out/candidates.json`: items the collector pulled from feeds, Google News, Hacker News, arXiv, and X over the last ~48h. Mostly noise.
-- `scout/sources.yaml`: `watch_pages` and `web_searches`.
+- `scout/out/digest.json` (and `digest.md`): output of the **aggregation pass**. A cheap long-context model (Gemini, via OpenRouter) has already triaged every collected candidate against the scope and grouped them into clusters, each with a suggested action, priority, and match to an existing record. Treat these as **leads, never sources**. That model may misread, mis-cluster, or mis-match. Spot-check its `rejected` list for anything obviously in scope.
+- `scout/out/candidates.json`: the raw collected items. If `digest.json` is missing because aggregation failed or isn't configured, triage these yourself through the `news`, `research`, and `social` lanes in the fallback table below.
+- `scout/sources.yaml`: `watch_pages` and `web_searches`. The collector doesn't cover these yet.
 
-Spawn one subagent per lane below, all at once. Give each one its lane description, the scope section above, and the output format. Subagents **only research**. They never edit `data/` or touch git.
+Spawn all of these subagents at once:
 
-| Lane | Covers |
+| Subagent | Job |
 |---|---|
-| `labs` | `watch_pages` (Anthropic, xAI, …) and candidates from lab feeds (OpenAI, Google DeepMind). Look especially for new system cards and safety posts, and read their alignment/safety sections for reported model misbehavior. |
-| `research` | Candidates from arXiv, Alignment Forum, LessWrong, METR, Palisade, Apollo, and UK AISI. Look for papers and posts that document misaligned behavior in specific named models. |
-| `news` | Google News and Hacker News candidates, plus every query in `web_searches`. Look for deployed incidents with real-world impact. |
-| `social` | X candidates (if any). Also use WebSearch to find first-hand reports by users or researchers (e.g. "site:x.com <incident>") of incidents found in other lanes. First-hand posts are often the primary source. |
-| `legal` | Criminal-misuse candidates. Also search for recent charges, indictments, convictions, and lawsuits involving AI systems' behavior or AI-enabled crime. |
-| `backfill` | Existing records in `data/incidents/` whose `record.notes` list missing sources or open questions. Try to find those sources. Cap: 3 records per run. |
+| `verify-<n>`, one per digest cluster with action `new` or `update` (highest priority first, max 10) | Read every item in the cluster. Find and read the primary sources: lab post, paper, system card, court filing, or the affected person's own post (search X or other sites for first-hand accounts). Confirm or refute the cluster. |
+| `labs` | `watch_pages` (Anthropic, xAI, Apollo, AISI, …). Look for posts from the last ~48h, especially new system cards and safety write-ups, and read their alignment/safety sections for reported model misbehavior. |
+| `web` | Run every query in `web_searches` to catch what the feeds missed. |
+| `legal` | Search for recent charges, indictments, convictions, and lawsuits involving AI behavior or AI-enabled crime. |
+| `backfill` | Existing records whose `record.notes` list missing sources or open questions. Try to find those sources. Cap: 3 records per run. |
 
-Each subagent writes `scout/out/findings/<lane>.json`:
+Fallback lanes, used only without a digest: `news` (Google News and Hacker News candidates), `research` (arXiv, Alignment Forum, LessWrong, METR, Palisade), and `social` (X candidates).
+
+Give each subagent its job, the scope section above, and the output format. Subagents **only research**. They never edit `data/` or touch git. Each subagent writes `scout/out/findings/<lane>.json`:
 
 ```json
 {
-  "lane": "news",
+  "lane": "verify-3",
   "findings": [
     {
       "headline": "One-line description of what happened",
@@ -73,7 +75,7 @@ Subagent rules:
 
 Once all lanes have finished, read every findings file and decide what changes to make to the database.
 
-1. **Cluster.** The same incident often shows up in several lanes, e.g. a news story, the victim's X thread, and the lab's statement. Merge each cluster into one candidate incident and pool its sources.
+1. **Cluster.** Start from the digest clusters as confirmed or refuted by the `verify-*` subagents. Merge in findings from the other lanes; the same incident often appears more than once (a news story, the victim's X thread, the lab's statement). Pool the sources.
 2. **Match** each cluster against `data/incidents/` (by models, organizations, dates, and source URLs) and against open PRs (`gh pr list --label agent-proposed --json title,body,files`).
 3. **Decide** one action per cluster:
    - `new`: a new incident not in the database or an open PR.
@@ -106,6 +108,6 @@ Never push to `main`.
 Write `scout/out/report.md` with these sections:
 - PRs opened
 - In-scope clusters you skipped, and why
-- Notable rejected items
+- Notable rejected items, including any digest decisions you overrode (this tells us how well the aggregation model is triaging)
 - Broken sources (so a human can fix `scout/sources.yaml`)
 - Suggested new feeds, queries, or taxonomy terms
