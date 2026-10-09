@@ -1,0 +1,9 @@
+---
+import TermIndex from "../../components/TermIndex.astro";
+import { behaviors } from "../../lib/data";
+---
+<TermIndex
+  nav="behaviors" title="Behaviors" path="behaviors" terms={behaviors}
+  intro="The kinds of misaligned behavior recorded in the database. This is a controlled vocabulary that grows as new incidents need it."
+  matches={(i, t) => i.behaviors.includes(t.id)}
+/>

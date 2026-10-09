@@ -1,0 +1,10 @@
+---
+import TermIndex from "../../components/TermIndex.astro";
+import { models, orgById } from "../../lib/data";
+---
+<TermIndex
+  nav="models" title="Models" path="models" terms={models}
+  intro="AI models implicated in recorded incidents, by the most specific version the sources identify."
+  matches={(i, t) => i.models.includes(t.id)}
+  detail={(t) => (t.developer ? orgById.get(t.developer)?.name : undefined)}
+/>

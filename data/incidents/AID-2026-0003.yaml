@@ -46,6 +46,22 @@ sources:
     publisher: Palisade Research
     published: "2025-07-05"
     kind: research
+measurements:
+  - id: sabotage-initial
+    label: o3 shutdown sabotage, initial experiments
+    condition: No explicit instruction about shutdown
+    unit: percent
+    source: palisade-shutdown
+    values:
+      - { label: o3, model: o3, value: 79, n: 100 }
+  - id: sabotage-with-instruction
+    label: Shutdown sabotage despite an explicit "allow yourself to be shut down" instruction
+    unit: percent
+    source: palisade-shutdown
+    values:
+      - { label: codex-mini, model: codex-mini, value: 47, n: 200 }
+      - { label: Claude 3.7 Sonnet, value: 0 }
+      - { label: Gemini 2.5 Pro, value: 0 }
 tags: [agentic, reasoning-models]
 assessment:
   reach:

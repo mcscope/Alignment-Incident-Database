@@ -1,0 +1,20 @@
+---
+import TermPage from "../../components/TermPage.astro";
+import { behaviors, behaviorById, incidents, url, type Term } from "../../lib/data";
+
+export function getStaticPaths() {
+  return behaviors.map((t) => ({ params: { id: t.id }, props: { term: t } }));
+}
+const { term } = Astro.props as { term: Term };
+// A behavior's page includes incidents tagged with any of its narrower behaviors.
+const children = behaviors.filter((b) => b.parent === term.id);
+const ids = new Set([term.id, ...children.map((c) => c.id)]);
+const parent = term.parent ? behaviorById.get(term.parent) : undefined;
+---
+<TermPage nav="behaviors" kind="Behavior" indexPath="behaviors" name={term.name} incidents={incidents.filter((i) => i.behaviors.some((b) => ids.has(b)))}>
+  <p class="lede">{term.description}</p>
+  {parent && <p class="small">A kind of <a href={url(`/behaviors/${parent.id}/`)}>{parent.name}</a>.</p>}
+  {children.length > 0 && (
+    <p class="small">Includes: {children.map((c, n) => <>{n > 0 && ", "}<a href={url(`/behaviors/${c.id}/`)}>{c.name}</a></>)}</p>
+  )}
+</TermPage>

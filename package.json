@@ -6,12 +6,19 @@
     "validate": "node scripts/validate.mjs",
     "scout": "node scout/collect.mjs",
     "next-id": "node scripts/next-id.mjs",
-    "aggregate": "node scout/aggregate.mjs"
+    "aggregate": "node scout/aggregate.mjs",
+    "dev": "astro dev",
+    "build": "npm run validate && astro build",
+    "preview": "astro preview"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "fast-xml-parser": "^4.5.7",
     "yaml": "^2.8.0"
+  },
+  "dependencies": {
+    "astro": "^7.3.8",
+    "marked": "^18.1.0"
   }
 }

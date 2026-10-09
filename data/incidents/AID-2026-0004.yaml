@@ -46,6 +46,15 @@ sources:
     publisher: eWeek
     published: "2025-07-22"
     kind: news
+measurements:
+  - id: records-deleted
+    label: Records in the deleted production database
+    unit: count
+    unit_label: records
+    source: eweek
+    values:
+      - { label: Executives, value: 1206 }
+      - { label: Companies, value: 1196, qualifier: ">" }
 tags: [agentic, coding-agent]
 assessment:
   reach:

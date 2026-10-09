@@ -1,0 +1,74 @@
+---
+import Base from "../layouts/Base.astro";
+import { rubric, repoUrl, url } from "../lib/data";
+
+// Turn the schema's "a: …. b: …." enum descriptions into rubric rows.
+function rows(description: string, values: string[]) {
+  return values.map((v) => {
+    const m = description.match(new RegExp(`(?:^|\\.\\s)${v}:\\s([^]*?)(?=\\.\\s(?:${values.join("|")}):|$)`));
+    return [v, m ? m[1].replace(/\.$/, "") + "." : ""];
+  });
+}
+const reach = rows(rubric.reach.replace(/^How far the behavior got\.\s*/, ""), ["speculative", "internal", "breakout", "deployed"]);
+const harm = rows(rubric.harm.replace(/^Real-world harm that actually occurred, not potential harm\.\s*/, ""), ["none", "minor", "moderate", "severe"]);
+const status = rows(rubric.status, ["confirmed", "reported", "disputed", "retracted"]);
+---
+<Base title="About" nav="about">
+  <article class="prose">
+    <h1>About</h1>
+    <p class="lede">
+      The Alignment Incident Database is a public, source-linked record of AI systems behaving against the intent of
+      their developers, deployers, or users. It is modeled on MITRE's CVE list: every incident gets a permanent id, every
+      claim cites a source, and the data is open.
+    </p>
+
+    <h2 id="scope">Scope</h2>
+    <ul>
+      <li><strong>In:</strong> an AI system acting against its principals' intent. Examples are deception, sycophancy, reward hacking, ignoring instructions, destructive autonomous actions, shutdown resistance, blackmail, and sandbagging. This includes real deployments and published research, evaluations, and system cards.</li>
+      <li><strong>In:</strong> human misuse of AI at a <em>criminal</em> level.</li>
+      <li><strong>Out:</strong> hallucination or factual errors on their own, sub-criminal misuse, and bias, unless goal-directed model behavior is the story.</li>
+    </ul>
+
+    <h2 id="sourcing">Sourcing</h2>
+    <p>
+      Each incident is broken into atomic <em>claims</em>, and each claim cites one or more sources. The write-up only restates
+      sourced facts. We prefer primary sources: the developer's own statement, the paper or system card, or the affected
+      person's own account. Numbers in charts come from the cited sources exactly.
+    </p>
+
+    <h2 id="assessment">Assessments</h2>
+    <p>
+      Each incident also carries editorial <strong>estimates</strong> of reach, harm, monetary damage, and criminality,
+      each with a written rationale. These are our judgment, not sourced facts.
+    </p>
+    <h3>Reach</h3>
+    <table class="rubric"><tbody>{reach.map(([k, v]) => <tr><th>{k}</th><td>{v}</td></tr>)}</tbody></table>
+    <h3>Harm</h3>
+    <table class="rubric"><tbody>{harm.map(([k, v]) => <tr><th>{k}</th><td>{v}</td></tr>)}</tbody></table>
+    <h3>Monetary damage</h3>
+    <p>{rubric.monetary}</p>
+    <h3>Criminality</h3>
+    <p>{rubric.criminality}</p>
+
+    <h2 id="status">Status</h2>
+    <table class="rubric"><tbody>{status.map(([k, v]) => <tr><th>{k}</th><td>{v}</td></tr>)}</tbody></table>
+    <p>
+      Records marked <span class="badge draft">Draft</span> have not yet been checked claim by claim by a maintainer.
+      Many drafts are proposed by an automated scout that scans news, research, and lab publications daily. A human
+      reviews every change before it is published.
+    </p>
+
+    <h2 id="ids">Identifiers</h2>
+    <p>
+      Ids look like <code>AID-2026-0001</code>: the year the id was assigned and a sequence number. Ids are permanent
+      and never reused. Records found to be wrong are marked <em>retracted</em> rather than deleted.
+    </p>
+
+    <h2 id="contribute">Data and contributing</h2>
+    <p>
+      All data lives as YAML in <a href={repoUrl}>the GitHub repository</a>, which is the source of truth. This site
+      rebuilds on every change. Download everything as <a href={url("/api/incidents.json")}>JSON</a>, or
+      <a href={`${repoUrl}/issues/new`}>report an incident or correction</a>.
+    </p>
+  </article>
+</Base>

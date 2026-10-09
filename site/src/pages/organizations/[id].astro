@@ -1,0 +1,18 @@
+---
+import TermPage from "../../components/TermPage.astro";
+import { organizations, incidents, type Term } from "../../lib/data";
+
+export function getStaticPaths() {
+  return organizations.map((t) => ({ params: { id: t.id }, props: { term: t } }));
+}
+const { term } = Astro.props as { term: Term };
+const involved = incidents.filter((i) => i.organizations.some((o) => o.id === term.id));
+const roles = new Map<string, number>();
+for (const i of involved) for (const r of new Set(i.organizations.filter((o) => o.id === term.id).map((o) => o.role))) roles.set(r, (roles.get(r) ?? 0) + 1);
+---
+<TermPage nav="organizations" kind="Organization" indexPath="organizations" name={term.name} incidents={involved}>
+  <p class="lede">
+    {term.url && <a href={term.url} rel="noopener">{term.url.replace(/^https?:\/\//, "")}</a>}
+    {roles.size > 0 && <> · {[...roles].map(([r, n]) => `${r} in ${n}`).join(", ")}</>}
+  </p>
+</TermPage>

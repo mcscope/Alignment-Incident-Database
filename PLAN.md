@@ -105,23 +105,29 @@ Still to decide:
 - [ ] Repo secret `X_BEARER_TOKEN`: X API access for recent search. This is a paid tier, so check current pricing. Without it, X coverage falls back to the agent's web searches.
 - [ ] Watch costs for the first week. If they are too high, switch to a cheaper model, lower `--max-turns`, or add the pre-filter.
 
-## 4. Website
+## 4. Website ✅ (MVP)
 
-**Recommendation: [Astro](https://astro.build)** static site in `site/`. Content collections read the YAML directly, and [Pagefind](https://pagefind.app) provides static search.
+**Built with [Astro](https://astro.build) 7.** The source is in `site/` and it reads `data/` at build time. It's a static site with no client framework; filtering and tooltips are small inline scripts. Charts are plain HTML/CSS with colors validated for colorblind safety and contrast in light and dark mode, and every chart has a table view.
 
-- [ ] `/`: incident list with filters for behavior, model, organization, reach, harm, criminality, status, and year
-- [ ] `/AID-2026-0001` (canonical) and `/i/<slug>` (redirect): writeup with numbered citations, claims, sources and archive links, an assessment panel clearly labeled as estimates, and "edit on GitHub" and "report a correction" links
-- [ ] `/behaviors/…`, `/models/…`, `/organizations/…` index pages
-- [ ] `/timeline`, plus aggregate stats (estimated total damage and incidents by reach over time)
-- [ ] `/about`: scope, methodology, assessment rubrics, and the id policy
-- [ ] CVE-style exports: `/api/incidents.json`, a per-incident JSON file, CSV, and an Atom feed
-- [ ] A "Draft, not yet reviewed" badge on unreviewed records
+- [x] `/`: headline stats, plus filters (search, behavior, model, organization, reach, harm, criminality, status, year) synced to the URL so filtered views can be shared
+- [x] `/incidents/AID-…/`: writeup with numbered citations, **measurement charts**, claims, sources, an assessment panel labeled as estimates, metadata, and correction/edit/history links. Draft and retracted records show a notice.
+- [x] `/data/`: incidents per year by reach, a reach × harm heatmap, counts by behavior, developer, model, criminality, and harm category, and every reported percentage across incidents
+- [x] `/behaviors/`, `/models/`, `/organizations/`, each with a detail page per term. A behavior's page includes its narrower behaviors.
+- [x] `/about/`: scope, sourcing, assessment rubrics (pulled from the schema), and the id policy
+- [x] `/api/incidents.json`: the full export
+- [ ] Pagefind search, once there are enough incidents for plain filtering to struggle
+- [ ] `/i/<slug>` redirects, an Atom feed, CSV export, and OG images
+- [ ] Damage-over-time chart, once enough incidents have dollar estimates
+- [ ] A light/dark toggle (currently follows the OS setting)
+
+**Quantitative data:** incidents carry `measurements`, which are sourced numbers like per-model rates, counts, and dollar amounts, each tied to one source. The site charts them. The scout is told to capture them wherever sources report numbers.
 
 ## 5. Hosting and deploy
 
 **Recommendation: GitHub Pages**, deployed by Actions on push to `main`. Cloudflare Pages is the alternative if we want per-PR previews.
 
-- [ ] `deploy.yml`: validate → `astro build` → `actions/deploy-pages`
+- [x] `deploy.yml`: validate → `astro build` → `actions/deploy-pages` on push to `main`
+- [ ] **Enable Pages:** go to repo Settings → Pages → Source: **GitHub Actions**
 - [ ] Custom domain
 
 ## 6. Other agent workflows
@@ -141,7 +147,7 @@ Still to decide:
 
 1. ~~Format v0.2, seeds, scout v1~~ ✅
 2. Push to GitHub, add secrets and branch protection, trigger the scout manually and review its first PRs
-3. Astro site MVP and Pages deploy
+3. ~~Astro site MVP and Pages deploy~~ ✅ (enable Pages in settings)
 4. Backfill about 50 incidents
 5. Move more collection into software (seen-state, page diffing, pre-filter)
 6. Polish and launch

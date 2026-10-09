@@ -1,0 +1,48 @@
+---
+// Stacked columns: incidents per year, segmented by reach (ordinal ramp).
+import { incidents, REACH } from "../lib/data";
+
+const PLOT = 160; // px
+const years: string[] = [];
+const first = Math.min(...incidents.map((i) => +i.date.slice(0, 4)));
+const last = Math.max(...incidents.map((i) => +i.date.slice(0, 4)));
+for (let y = first; y <= last; y++) years.push(String(y));
+const counts = years.map((y) => REACH.map((r) => incidents.filter((i) => i.date.startsWith(y) && i.assessment.reach.level === r).length));
+const totals = counts.map((c) => c.reduce((a, b) => a + b, 0));
+const step = Math.max(1, Math.ceil(Math.max(...totals) / 4));
+const top = Math.max(step, Math.ceil(Math.max(...totals) / step) * step);
+const ticks = Array.from({ length: top / step + 1 }, (_, k) => k * step).slice(1);
+const label = (r: string) => r[0].toUpperCase() + r.slice(1);
+---
+<figure class="chart">
+  <figcaption>
+    <p class="chart-title">Incidents per year, by reach</p>
+    <p class="chart-sub">By incident date. Darker means the behavior got further toward the real world.</p>
+  </figcaption>
+  <div class="legend">{REACH.map((r) => <span><i style={`background: var(--reach-${r})`} />{label(r)}</span>)}</div>
+  <div class="cols" style={`height:${PLOT + 20}px`}>
+    {ticks.map((t) => <div class="cols-gridline" style={`bottom:${(t / top) * PLOT}px`}><span>{t}</span></div>)}
+    {years.map((y, yi) => (
+      <div class="col">
+        <div class="col-stack">
+          {REACH.map((r, ri) => counts[yi][ri] > 0 && (
+            <div
+              class="col-seg" tabindex="0"
+              style={`height:${(counts[yi][ri] / top) * PLOT - 2}px; background: var(--reach-${r})`}
+              data-tip={`${y} · ${label(r)}: ${counts[yi][ri]}`}
+            />
+          ))}
+        </div>
+        {totals[yi] > 0 && <div class="col-total">{totals[yi]}</div>}
+      </div>
+    ))}
+  </div>
+  <div class="col-labels">{years.map((y) => <span>{y}</span>)}</div>
+  <details class="table-view">
+    <summary>Table</summary>
+    <table>
+      <thead><tr><th>Year</th>{REACH.map((r) => <th>{label(r)}</th>)}<th>Total</th></tr></thead>
+      <tbody>{years.map((y, yi) => <tr><td>{y}</td>{counts[yi].map((c) => <td>{c}</td>)}<td>{totals[yi]}</td></tr>)}</tbody>
+    </table>
+  </details>
+</figure>

@@ -1,0 +1,13 @@
+---
+import TermPage from "../../components/TermPage.astro";
+import { models, orgById, incidents, url, type Term } from "../../lib/data";
+
+export function getStaticPaths() {
+  return models.map((t) => ({ params: { id: t.id }, props: { term: t } }));
+}
+const { term } = Astro.props as { term: Term };
+const dev = term.developer ? orgById.get(term.developer) : undefined;
+---
+<TermPage nav="models" kind="Model" indexPath="models" name={term.name} incidents={incidents.filter((i) => i.models.includes(term.id))}>
+  {dev && <p class="lede">Developed by <a href={url(`/organizations/${dev.id}/`)}>{dev.name}</a>{term.family && <> · family <code>{term.family}</code></>}</p>}
+</TermPage>

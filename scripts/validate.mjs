@@ -70,7 +70,15 @@ for (const file of files) {
     if (!/\[@[a-z0-9-]+\]/.test(para)) err(file, `writeup paragraph ${i + 1} has no [@source] citation`);
   });
 
-  const cited = new Set([...doc.claims.flatMap((c) => c.sources), ...writeupCites]);
+  const measurementIds = new Set();
+  for (const m of doc.measurements ?? []) {
+    if (measurementIds.has(m.id)) err(file, `duplicate measurement id "${m.id}"`);
+    measurementIds.add(m.id);
+    for (const v of m.values) if (v.model && !taxonomy.models.has(v.model)) err(file, `measurement "${m.id}": unknown model "${v.model}"`);
+    if (m.unit === "percent" && m.values.some((v) => v.value < 0 || v.value > 100)) err(file, `measurement "${m.id}": percent out of range`);
+  }
+
+  const cited = new Set([...doc.claims.flatMap((c) => c.sources), ...writeupCites, ...(doc.measurements ?? []).map((m) => m.source)]);
   for (const c of cited) if (!sourceIds.includes(c)) err(file, `cites unknown source "${c}"`);
   for (const s of sourceIds) if (!cited.has(s)) err(file, `source "${s}" is not cited anywhere`);
 

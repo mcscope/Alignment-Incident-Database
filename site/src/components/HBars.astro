@@ -1,0 +1,32 @@
+---
+// Horizontal bar chart, single series. Values are labeled at the bar tip, and
+// a collapsible table view is included.
+interface Item { label: string; value: number; display?: string; href?: string; tip?: string }
+interface Props { items: Item[]; max?: number; title?: string; sub?: string; valueHeader?: string; table?: boolean }
+const { items, max, title, sub, valueHeader = "Value", table = true } = Astro.props;
+const top = max ?? Math.max(1, ...items.map((i) => i.value));
+---
+<figure class="chart">
+  {title && <figcaption><p class="chart-title">{title}</p>{sub && <p class="chart-sub">{sub}</p>}</figcaption>}
+  <div class="hbars">
+    {items.map((i) => (
+      <>
+        <div class="hbar-label">{i.href ? <a href={i.href}>{i.label}</a> : i.label}</div>
+        <div class="hbar-track" tabindex="0" data-tip={i.tip ?? `${i.label}: ${i.display ?? i.value}`}>
+          <div class="hbar-area">
+            <div class={`hbar${i.value === 0 ? " zero" : ""}`} style={`width: ${(i.value / top) * 100}%`} />
+            <span class="hbar-value" style={`left: calc(${(i.value / top) * 100}% + 6px)`}>{i.display ?? i.value}</span>
+          </div>
+        </div>
+      </>
+    ))}
+  </div>
+  {table && (
+    <details class="table-view">
+      <summary>Table</summary>
+      <table><thead><tr><th>Item</th><th>{valueHeader}</th></tr></thead>
+        <tbody>{items.map((i) => <tr><td>{i.label}</td><td>{i.display ?? i.value}</td></tr>)}</tbody>
+      </table>
+    </details>
+  )}
+</figure>

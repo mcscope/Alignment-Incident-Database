@@ -1,0 +1,11 @@
+---
+import TermIndex from "../../components/TermIndex.astro";
+import { organizations, orgIds } from "../../lib/data";
+const types: Record<string, string> = { "ai-lab": "AI lab", company: "Company", "research-org": "Research organization", academic: "Academic", government: "Government", individual: "Individual" };
+---
+<TermIndex
+  nav="organizations" title="Organizations" path="organizations" terms={organizations}
+  intro="Organizations involved in incidents as developers, deployers, researchers, reporters, or affected parties."
+  matches={(i, t) => orgIds(i).includes(t.id)}
+  detail={(t) => types[t.type ?? ""]}
+/>

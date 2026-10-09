@@ -1,0 +1,44 @@
+---
+import Level from "./Level.astro";
+import { type Incident, url, formatDate, formatDamage, modelById, behaviorById, orgIds } from "../lib/data";
+
+interface Props { incidents: Incident[]; filterable?: boolean }
+const { incidents, filterable = false } = Astro.props;
+---
+<ul class="incident-list" id={filterable ? "incident-list" : undefined}>
+  {incidents.map((i) => (
+    <li
+      class="incident-row"
+      data-search={filterable ? [i.id, i.title, i.summary, ...i.models.map((m) => modelById.get(m)?.name ?? m), ...(i.tags ?? [])].join(" ").toLowerCase() : undefined}
+      data-behaviors={filterable ? i.behaviors.join(" ") : undefined}
+      data-models={filterable ? i.models.join(" ") : undefined}
+      data-orgs={filterable ? orgIds(i).join(" ") : undefined}
+      data-reach={i.assessment.reach.level}
+      data-harm={i.assessment.harm.severity}
+      data-crime={i.assessment.criminality.likelihood}
+      data-status={i.status}
+      data-actor={i.actor}
+      data-year={i.date.slice(0, 4)}
+    >
+      <div class="row-top">
+        <span class="mono">{i.id}</span>
+        <span>{formatDate(i.date)}</span>
+        <span>{i.models.map((m) => modelById.get(m)?.name ?? m).join(", ")}</span>
+      </div>
+      <h3><a href={url(`/incidents/${i.id}/`)}>{i.title}</a></h3>
+      <p>{i.summary}</p>
+      <div class="row-badges">
+        <Level kind="reach" value={i.assessment.reach.level} />
+        <Level kind="harm" value={i.assessment.harm.severity} />
+        {i.assessment.criminality.likelihood !== "none" && <Level kind="criminality" value={i.assessment.criminality.likelihood} />}
+        {i.assessment.monetary_damage.high_usd ? <span class="badge">{formatDamage(i.assessment.monetary_damage)}</span> : null}
+        {i.status !== "confirmed" && <Level kind="status" value={i.status} />}
+        {i.actor === "human-misuse" && <span class="badge l2">Human misuse</span>}
+        {i.record.review_status === "draft" && <span class="badge draft">Draft</span>}
+        <span class="chips">
+          {i.behaviors.slice(0, 3).map((b) => <a class="chip" href={url(`/behaviors/${b}/`)}>{behaviorById.get(b)?.name ?? b}</a>)}
+        </span>
+      </div>
+    </li>
+  ))}
+</ul>

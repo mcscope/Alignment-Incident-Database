@@ -1,0 +1,28 @@
+---
+import Base from "../layouts/Base.astro";
+import { type Term, type Incident, incidents, url } from "../lib/data";
+
+interface Props {
+  nav: string; title: string; intro: string; terms: Term[]; path: string;
+  matches: (i: Incident, t: Term) => boolean; detail?: (t: Term) => string | undefined;
+}
+const { nav, title, intro, terms, path, matches, detail } = Astro.props;
+const counted = terms
+  .map((t) => ({ t, n: incidents.filter((i) => matches(i, t)).length }))
+  .sort((a, b) => b.n - a.n || a.t.name.localeCompare(b.t.name));
+---
+<Base title={title} nav={nav}>
+  <h1>{title}</h1>
+  <p class="lede">{intro}</p>
+  <ul class="term-grid">
+    {counted.map(({ t, n }) => (
+      <li class={n === 0 ? "zero" : undefined}>
+        <a class="card" href={url(`/${path}/${t.id}/`)}>
+          <span class="count">{n}</span>
+          <strong>{t.name}</strong>
+          {(detail?.(t) ?? t.description) && <p>{detail?.(t) ?? t.description}</p>}
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>

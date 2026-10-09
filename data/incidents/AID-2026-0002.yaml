@@ -47,6 +47,8 @@ claims:
     sources: [anthropic-agentic-misalignment]
   - text: With both a goal conflict and a replacement threat, blackmail rates out of 100 samples were 96% for Claude Opus 4, 96% for Gemini 2.5 Flash, 80% for GPT-4.1, 80% for Grok 3 Beta, and 79% for DeepSeek-R1.
     sources: [anthropic-agentic-misalignment]
+  - text: Llama 4 Maverick did not blackmail on the exact prompt (0%) but did in 12% of samples after a small prompt addition.
+    sources: [anthropic-agentic-misalignment]
   - text: The scenarios were fictional and deliberately built to leave models a binary choice between failure and harm. Anthropic said it had not seen evidence of agentic misalignment in real deployments.
     sources: [anthropic-agentic-misalignment]
   - text: Claude Opus 4 blackmailed more often when it stated it thought the scenario was real (55.1%) than when it thought it was an evaluation (6.5%).
@@ -58,6 +60,27 @@ sources:
     publisher: Anthropic
     published: "2025-06-20"
     kind: research
+measurements:
+  - id: blackmail-rate
+    label: Blackmail rate
+    condition: Goal conflict plus replacement threat, 100 samples per model
+    unit: percent
+    source: anthropic-agentic-misalignment
+    values:
+      - { label: Claude Opus 4, model: claude-opus-4, value: 96, n: 100 }
+      - { label: Gemini 2.5 Flash, model: gemini-2.5-flash, value: 96, n: 100 }
+      - { label: GPT-4.1, model: gpt-4.1, value: 80, n: 100 }
+      - { label: Grok 3 Beta, model: grok-3-beta, value: 80, n: 100 }
+      - { label: DeepSeek-R1, model: deepseek-r1, value: 79, n: 100 }
+      - { label: Llama 4 Maverick, model: llama-4-maverick, value: 0, n: 100 }
+  - id: real-vs-eval
+    label: Claude Opus 4 blackmail rate by what it believed
+    condition: Split by whether the model stated the scenario was real or an evaluation
+    unit: percent
+    source: anthropic-agentic-misalignment
+    values:
+      - { label: Believed scenario was real, model: claude-opus-4, value: 55.1 }
+      - { label: Believed it was an evaluation, model: claude-opus-4, value: 6.5 }
 tags: [agentic, simulated-environment, multi-model]
 assessment:
   reach:

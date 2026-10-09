@@ -1,0 +1,15 @@
+---
+// A colored badge for one of the ordered scales.
+interface Props { kind: "reach" | "harm" | "criminality" | "status"; value: string; prefix?: boolean }
+const { kind, value, prefix = true } = Astro.props;
+const classes: Record<string, Record<string, string>> = {
+  reach: { speculative: "", internal: "l1", breakout: "l2", deployed: "l3" },
+  harm: { none: "", minor: "l2", moderate: "l3", severe: "l4" },
+  criminality: { none: "", unlikely: "", possible: "l2", likely: "l3", charged: "l4", convicted: "l4" },
+  status: { confirmed: "ok", reported: "l1", disputed: "l2", retracted: "" },
+};
+const prefixes: Record<string, string> = { reach: "", harm: "Harm: ", criminality: "Crime: ", status: "" };
+const capitalized = value.charAt(0).toUpperCase() + value.slice(1);
+const label = prefix && prefixes[kind] ? `${prefixes[kind]}${value}` : capitalized;
+---
+<span class={`badge ${classes[kind][value] ?? ""}`} title={`${kind}: ${value}`}>{label}</span>

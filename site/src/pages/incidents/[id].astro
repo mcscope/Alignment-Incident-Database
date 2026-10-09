@@ -1,0 +1,153 @@
+---
+import Base from "../../layouts/Base.astro";
+import Level from "../../components/Level.astro";
+import Measurements from "../../components/Measurements.astro";
+import {
+  incidents, incidentById, modelById, orgById, behaviorById, harmById,
+  url, formatDate, formatDamage, editUrl, correctionUrl, repoUrl, type Incident,
+} from "../../lib/data";
+import { numberSources, renderWriteup, citeLink } from "../../lib/cite";
+
+export function getStaticPaths() {
+  return incidents.map((i) => ({ params: { id: i.id }, props: { incident: i } }));
+}
+
+const { incident: i } = Astro.props as { incident: Incident };
+const { numbered, num } = numberSources(i);
+const writeupHtml = renderWriteup(i, num);
+const a = i.assessment;
+const titleOf = (id: string) => { const s = i.sources.find((x) => x.id === id)!; return `${s.publisher}: ${s.title}`; };
+
+// Group org roles: anthropic → ["researcher", "developer"]
+const orgRoles = new Map<string, string[]>();
+for (const o of i.organizations) orgRoles.set(o.id, [...(orgRoles.get(o.id) ?? []), o.role]);
+const related = (i.related ?? []).map((r) => incidentById.get(r)).filter(Boolean) as Incident[];
+const kindLabel: Record<string, string> = { primary: "Primary", research: "Research", news: "News", social: "Social", analysis: "Analysis" };
+---
+<Base title={`${i.id}: ${i.title}`} description={i.summary} nav="incidents">
+  <article>
+    <header class="incident-head">
+      <div class="row-top">
+        <span class="mono">{i.id}</span>
+        <span>{formatDate(i.date)}</span>
+        <Level kind="status" value={i.status} />
+        {i.actor === "human-misuse" && <span class="badge l2">Human misuse</span>}
+        {i.record.review_status === "draft" && <span class="badge draft">Draft</span>}
+      </div>
+      <h1>{i.title}</h1>
+      <p class="lede">{i.summary}</p>
+    </header>
+
+    {i.status === "retracted" && (
+      <div class="notice bad">This record has been <strong>retracted</strong>. It is kept for transparency. See the notes for the reason.</div>
+    )}
+    {i.record.review_status === "draft" && (
+      <div class="notice">
+        <strong>Draft:</strong> no maintainer has yet checked every claim against its sources.
+        {" "}<a href={correctionUrl(i)}>Report a problem</a>.
+      </div>
+    )}
+
+    <div class="incident-grid">
+      <div>
+        <section class="prose" set:html={writeupHtml} />
+
+        <Measurements incident={i} num={num} />
+
+        <h2>Claims</h2>
+        <ol class="claims prose">
+          {i.claims.map((c) => (
+            <li>
+              {c.text}<Fragment set:html={c.sources.map((s) => citeLink(num.get(s)!, titleOf(s))).join("")} />
+              {c.quote && <blockquote>“{c.quote}”</blockquote>}
+            </li>
+          ))}
+        </ol>
+
+        <h2>Sources</h2>
+        <ol class="sources">
+          {numbered.map((s) => (
+            <li id={`src-${s.n}`}>
+              <span class="src-n">[{s.n}]</span>
+              <span>
+                <a href={s.url} rel="noopener">{s.title}</a>
+                <span class="src-meta"> · {s.publisher}{s.published && ` · ${formatDate(s.published)}`} · {kindLabel[s.kind]}
+                  {s.archive_url && <> · <a href={s.archive_url} rel="noopener">archived</a></>}
+                </span>
+              </span>
+            </li>
+          ))}
+        </ol>
+
+        {related.length > 0 && (
+          <>
+            <h2>Related incidents</h2>
+            <ul>
+              {related.map((r) => <li><a href={url(`/incidents/${r.id}/`)}><span class="mono">{r.id}</span> {r.title}</a></li>)}
+            </ul>
+          </>
+        )}
+
+        {i.record.notes && (
+          <>
+            <h2>Editor notes</h2>
+            <p class="muted small prose">{i.record.notes}</p>
+          </>
+        )}
+      </div>
+
+      <aside class="side">
+        <section class="card">
+          <h2>Assessment</h2>
+          <div class="assess-item">
+            <div class="assess-label">Reach <Level kind="reach" value={a.reach.level} /></div>
+            <p class="assess-why">{a.reach.context && <span class="chip" style="margin-right:6px">{a.reach.context}</span>}{a.reach.rationale}</p>
+          </div>
+          <div class="assess-item">
+            <div class="assess-label">Harm <Level kind="harm" value={a.harm.severity} prefix={false} /></div>
+            {a.harm.categories.length > 0 && (
+              <div class="chips" style="margin-top:6px">{a.harm.categories.map((h) => <span class="chip">{harmById.get(h)?.name ?? h}</span>)}</div>
+            )}
+            {a.harm.rationale && <p class="assess-why">{a.harm.rationale}</p>}
+          </div>
+          <div class="assess-item">
+            <div class="assess-label">Monetary damage <span class="badge">{formatDamage(a.monetary_damage)}</span></div>
+            <p class="assess-why">{a.monetary_damage.rationale} <em>Confidence: {a.monetary_damage.confidence}.</em></p>
+          </div>
+          <div class="assess-item">
+            <div class="assess-label">Criminality <Level kind="criminality" value={a.criminality.likelihood} prefix={false} /></div>
+            {a.criminality.offenses && a.criminality.offenses.length > 0 && (
+              <p class="assess-why"><strong>Offenses:</strong> {a.criminality.offenses.join(", ")}{a.criminality.jurisdiction && ` (${a.criminality.jurisdiction})`}</p>
+            )}
+            <p class="assess-why">{a.criminality.rationale}</p>
+          </div>
+          <p class="estimate-note">Assessments are editorial estimates, not sourced facts. <a href={url("/about/#assessment")}>How we assess</a>.</p>
+        </section>
+
+        <section class="card">
+          <dl class="meta">
+            <div><dt>Models</dt><dd class="chips">{i.models.map((m) => <a class="chip" href={url(`/models/${m}/`)}>{modelById.get(m)?.name ?? m}</a>)}</dd></div>
+            <div><dt>Organizations</dt><dd>
+              {[...orgRoles].map(([id, roles]) => (
+                <div><a href={url(`/organizations/${id}/`)}>{orgById.get(id)?.name ?? id}</a> <span class="role">{roles.join(", ")}</span></div>
+              ))}
+            </dd></div>
+            <div><dt>Behaviors</dt><dd class="chips">{i.behaviors.map((b) => <a class="chip" href={url(`/behaviors/${b}/`)}>{behaviorById.get(b)?.name ?? b}</a>)}</dd></div>
+            <div><dt>Driven by</dt><dd>{i.actor === "model" ? "The model" : "Human misuse"}</dd></div>
+            {i.tags && i.tags.length > 0 && <div><dt>Tags</dt><dd class="chips">{i.tags.map((t) => <span class="chip">{t}</span>)}</dd></div>}
+            {i.external_refs?.aiid && <div><dt>Elsewhere</dt><dd><a href={`https://incidentdatabase.ai/cite/${i.external_refs.aiid}/`}>AI Incident Database #{i.external_refs.aiid}</a></dd></div>}
+            <div><dt>Record</dt><dd class="small muted">
+              Created {i.record.created} by {i.record.created_by} · updated {i.record.updated}
+            </dd></div>
+          </dl>
+        </section>
+
+        <div class="actions">
+          <a href={correctionUrl(i)}>Report a correction</a>
+          <a href={editUrl(i)}>Edit on GitHub</a>
+          <a href={`${repoUrl}/commits/main/data/incidents/${i.id}.yaml`}>History</a>
+        </div>
+      </aside>
+    </div>
+  </article>
+</Base>

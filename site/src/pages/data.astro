@@ -1,0 +1,84 @@
+---
+import Base from "../layouts/Base.astro";
+import HBars from "../components/HBars.astro";
+import ReachByYear from "../components/ReachByYear.astro";
+import ReachHarmHeatmap from "../components/ReachHarmHeatmap.astro";
+import {
+  incidents, behaviors, models, organizations, harmCategories, CRIMINALITY,
+  url, formatUsd, formatMeasure,
+} from "../lib/data";
+
+const n = incidents.length;
+const realWorld = incidents.filter((i) => ["deployed", "breakout"].includes(i.assessment.reach.level)).length;
+const low = incidents.reduce((s, i) => s + (i.assessment.monetary_damage.low_usd ?? 0), 0);
+const high = incidents.reduce((s, i) => s + (i.assessment.monetary_damage.high_usd ?? 0), 0);
+const unestimated = incidents.filter((i) => i.assessment.monetary_damage.low_usd === null).length;
+const drafts = incidents.filter((i) => i.record.review_status === "draft").length;
+
+const countBy = <T extends { id: string; name: string }>(terms: T[], has: (i: (typeof incidents)[number], id: string) => boolean, path: string, limit = 12) =>
+  terms
+    .map((t) => ({ label: t.name, value: incidents.filter((i) => has(i, t.id)).length, href: url(`/${path}/${t.id}/`) }))
+    .filter((x) => x.value > 0)
+    .sort((a, b) => b.value - a.value || a.label.localeCompare(b.label))
+    .slice(0, limit);
+
+const byBehavior = countBy(behaviors, (i, id) => i.behaviors.includes(id), "behaviors");
+const byModel = countBy(models.filter((m) => m.id !== "unknown"), (i, id) => i.models.includes(id), "models");
+const byDeveloper = countBy(organizations, (i, id) => i.organizations.some((o) => o.id === id && o.role === "developer"), "organizations");
+const byHarm = harmCategories
+  .map((h) => ({ label: h.name, value: incidents.filter((i) => i.assessment.harm.categories.includes(h.id)).length }))
+  .filter((x) => x.value > 0).sort((a, b) => b.value - a.value);
+const byCrime = CRIMINALITY.map((c) => ({ label: c[0].toUpperCase() + c.slice(1), value: incidents.filter((i) => i.assessment.criminality.likelihood === c).length }));
+
+// Every per-model rate reported across incidents, so readers can compare models on the same behavior.
+const rates = incidents.flatMap((i) => (i.measurements ?? [])
+  .filter((m) => m.unit === "percent")
+  .map((m) => ({ incident: i, m })));
+---
+<Base title="Data" nav="data" description="Charts and aggregate statistics for the Alignment Incident Database.">
+  <h1>Data</h1>
+  <p class="lede">
+    Aggregate views of every incident in the database. Counts are only as complete as our coverage, so read
+    them as "what has been documented", not "what has happened". Assessments are editorial estimates.
+  </p>
+
+  <section class="stats" aria-label="Headline numbers">
+    <div class="stat"><div class="stat-value">{n}</div><div class="stat-label">Incidents{drafts ? ` (${drafts} draft)` : ""}</div></div>
+    <div class="stat"><div class="stat-value">{realWorld}</div><div class="stat-label">Reached the real world</div></div>
+    <div class="stat"><div class="stat-value">{unestimated && !high ? "Unknown" : low === high ? formatUsd(low) : `${formatUsd(low)}–${formatUsd(high)}`}</div><div class="stat-label">Est. monetary damage{unestimated ? ` · ${unestimated} of ${n} not yet estimable` : ""}</div></div>
+    <div class="stat"><div class="stat-value">{incidents.filter((i) => ["likely", "charged", "convicted"].includes(i.assessment.criminality.likelihood)).length}</div><div class="stat-label">Likely criminal if done by a human</div></div>
+  </section>
+
+  <div class="chart-grid-2">
+    <div class="chart-card"><ReachByYear /></div>
+    <div class="chart-card"><ReachHarmHeatmap /></div>
+    <div class="chart-card"><HBars title="Incidents by behavior" sub="An incident can show several behaviors." items={byBehavior} valueHeader="Incidents" /></div>
+    <div class="chart-card"><HBars title="Incidents by model developer" sub="Organizations whose models were involved." items={byDeveloper} valueHeader="Incidents" /></div>
+    <div class="chart-card"><HBars title="Incidents by model" sub="Most specific version identified by sources. Excludes undisclosed models." items={byModel} valueHeader="Incidents" /></div>
+    <div class="chart-card">
+      <HBars title="Criminality estimate" sub="For model behavior: would it be a crime if a human did it?" items={byCrime} valueHeader="Incidents" />
+      {byHarm.length > 0 && <div style="margin-top:20px"><HBars title="Harm categories" sub="Real harm that occurred." items={byHarm} valueHeader="Incidents" /></div>}
+    </div>
+  </div>
+
+  <h2>Reported rates</h2>
+  <p class="muted small">Every percentage measurement recorded in an incident, with its source. Conditions differ between studies, so compare within a chart, not across charts.</p>
+  <div class="chart-grid-2">
+    {rates.map(({ incident: i, m }) => (
+      <div class="chart-card">
+        <HBars
+          title={m.label}
+          sub={`${m.condition ? `${m.condition}. ` : ""}From ${i.id}.`}
+          max={100}
+          valueHeader="Rate"
+          items={m.values.map((v) => ({
+            label: v.label, value: v.value, display: formatMeasure(m, v),
+            href: v.model ? url(`/models/${v.model}/`) : undefined,
+            tip: `${v.label}: ${formatMeasure(m, v)}${v.n ? ` (n = ${v.n})` : ""}`,
+          }))}
+        />
+        <p class="small" style="margin:6px 0 0"><a href={url(`/incidents/${i.id}/`)}>{i.title} →</a></p>
+      </div>
+    ))}
+  </div>
+</Base>

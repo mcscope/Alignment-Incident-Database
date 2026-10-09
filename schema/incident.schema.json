@@ -206,6 +206,91 @@
         }
       }
     },
+    "measurements": {
+      "description": "Quantitative findings reported by the sources, e.g. a misbehavior rate per model or the number of records deleted. The site charts these. Every value must come from the cited source exactly. Include them wherever a source reports numbers.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "unit",
+          "source",
+          "values"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "label": {
+            "description": "What is measured, e.g. 'Blackmail rate'.",
+            "type": "string"
+          },
+          "condition": {
+            "description": "The experimental condition or context, e.g. 'goal conflict + replacement threat, 100 samples per model'.",
+            "type": "string"
+          },
+          "unit": {
+            "enum": [
+              "percent",
+              "count",
+              "usd",
+              "ratio",
+              "hours",
+              "other"
+            ]
+          },
+          "unit_label": {
+            "description": "Display unit when unit is 'other' or needs detail, e.g. 'records'.",
+            "type": "string"
+          },
+          "source": {
+            "description": "Source id from this file's `sources`.",
+            "type": "string"
+          },
+          "values": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "value"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "number"
+                },
+                "model": {
+                  "description": "Model id from data/taxonomy/models.yaml when the value is per model.",
+                  "type": "string"
+                },
+                "n": {
+                  "description": "Sample size, if reported.",
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "qualifier": {
+                  "description": "Use '>' for 'more than', '~' for approximate.",
+                  "enum": [
+                    "=",
+                    ">",
+                    "<",
+                    "~"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "related": {
       "description": "ids (AID-…) of related incidents.",
       "type": "array",

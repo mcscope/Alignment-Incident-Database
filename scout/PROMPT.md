@@ -91,7 +91,7 @@ For each `new` or `update` action, starting from a clean `main`:
 1. `git switch main && git switch -c scout/<slug>`
 2. **New incident:** get an id with `npm run next-id`. Ids are permanent, CVE-style, and never reused. If you make several new incidents in one run, reserve them together with `npm run next-id -- <n>` and use them in order. Create `data/incidents/<id>.yaml`, using existing files as templates.
    **Update:** edit the existing file, keep its id, and set `record.updated`.
-3. Fill every required field, including the `writeup` with `[@source-id]` citations and honest `assessment` estimates. Use null dollar values when there is no basis for a figure.
+3. Fill every required field, including the `writeup` with `[@source-id]` citations and honest `assessment` estimates. Whenever a source reports numbers (rates per model, sample sizes, counts, dollar amounts), record them in `measurements` exactly as the source states them, because the site charts these. Use null dollar values when there is no basis for a figure.
 4. Set `record.created_by: agent` on new records and `record.review_status: draft` on anything you touched. Put open questions in `record.notes`.
 5. Add any missing taxonomy terms (models, organizations, behaviors, harm categories).
 6. Run `npm run validate` and fix every error.

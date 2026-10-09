@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro";
+import IncidentList from "./IncidentList.astro";
+import { type Incident, url } from "../lib/data";
+
+interface Props { nav: string; kind: string; indexPath: string; name: string; incidents: Incident[] }
+const { nav, kind, indexPath, name, incidents } = Astro.props;
+---
+<Base title={name} nav={nav}>
+  <p class="eyebrow"><a href={url(`/${indexPath}/`)}>{kind}</a></p>
+  <h1>{name}</h1>
+  <slot />
+  <h2>{incidents.length} {incidents.length === 1 ? "incident" : "incidents"}</h2>
+  {incidents.length ? <IncidentList incidents={incidents} /> : <p class="muted">No incidents recorded yet.</p>}
+</Base>

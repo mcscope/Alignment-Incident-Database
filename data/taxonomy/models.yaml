@@ -51,3 +51,9 @@
   name: DeepSeek-R1
   developer: deepseek
   family: deepseek-r1
+
+# Meta
+- id: llama-4-maverick
+  name: Llama 4 Maverick
+  developer: meta
+  family: llama-4

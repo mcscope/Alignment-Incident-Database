@@ -1,0 +1,45 @@
+---
+import HBars from "./HBars.astro";
+import { type Incident, url, modelById, formatMeasure } from "../lib/data";
+import { citeLink } from "../lib/cite";
+
+interface Props { incident: Incident; num: Map<string, number> }
+const { incident, num } = Astro.props;
+const ms = incident.measurements ?? [];
+const srcTitle = (id: string) => { const s = incident.sources.find((x) => x.id === id)!; return `${s.publisher}: ${s.title}`; };
+---
+{ms.length > 0 && (
+  <section>
+    <h2>Measurements</h2>
+    <div style="display:grid; gap:20px">
+      {ms.map((m) => (
+        <div class="chart-card">
+          <p class="chart-title">{m.label}<Fragment set:html={citeLink(num.get(m.source)!, srcTitle(m.source))} /></p>
+          {m.condition && <p class="chart-sub">{m.condition}</p>}
+          {m.values.length === 1 || m.unit === "count" ? (
+            <div class="tiles">
+              {m.values.map((v) => (
+                <div class="tile">
+                  <div class="tile-value">{formatMeasure(m, v)}</div>
+                  <div class="tile-label">{v.label}{v.n && ` · n = ${v.n.toLocaleString("en-US")}`}{m.unit_label && m.unit !== "other" && ` ${m.unit_label}`}</div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <HBars
+              max={m.unit === "percent" ? 100 : undefined}
+              valueHeader={m.unit === "percent" ? "Rate" : "Value"}
+              items={m.values.map((v) => ({
+                label: v.label,
+                value: v.value,
+                display: formatMeasure(m, v),
+                href: v.model && modelById.has(v.model) ? url(`/models/${v.model}/`) : undefined,
+                tip: `${v.label}: ${formatMeasure(m, v)}${v.n ? ` (n = ${v.n})` : ""}`,
+              }))}
+            />
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+)}

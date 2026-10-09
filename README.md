@@ -16,7 +16,16 @@ data/incidents/<id>.yaml      one file per incident (AID-YYYY-NNNN.yaml)
 data/taxonomy/                controlled vocabularies: behaviors, models, organizations, harm categories
 scripts/validate.mjs          schema + cross-reference validation
 scripts/next-id.mjs           allocates the next AID id
-scout/                        daily news scan: sources.yaml, collect.mjs, PROMPT.md
+scout/                        daily news scan: sources.yaml, collect.mjs, aggregate.mjs, PROMPT.md
+site/                         Astro website (built from data/, deployed to GitHub Pages)
+```
+
+## Website
+
+```
+npm install
+npm run dev      # http://localhost:4321/Alignment-Incident-Database/
+npm run build    # validates data, then builds to dist/
 ```
 
 ## Adding an incident

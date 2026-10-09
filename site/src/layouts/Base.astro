@@ -1,0 +1,80 @@
+---
+import "../styles/global.css";
+import { url, repoUrl } from "../lib/data";
+
+interface Props { title?: string; description?: string; nav?: string }
+const { title, description = "A public, source-linked record of AI alignment incidents.", nav } = Astro.props;
+const fullTitle = title ? `${title} · Alignment Incident Database` : "Alignment Incident Database";
+const links = [
+  ["incidents", "/", "Incidents"],
+  ["behaviors", "/behaviors/", "Behaviors"],
+  ["models", "/models/", "Models"],
+  ["organizations", "/organizations/", "Organizations"],
+  ["data", "/data/", "Data"],
+  ["about", "/about/", "About"],
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" href={url("/favicon.svg")} type="image/svg+xml" />
+    <link rel="alternate" type="application/json" href={url("/api/incidents.json")} title="All incidents (JSON)" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href={url("/")}>
+          <span class="brand-mark" aria-hidden="true">AID</span>
+          <span>Alignment Incident Database</span>
+        </a>
+        <nav>
+          {links.map(([key, href, label]) => (
+            <a href={url(href)} aria-current={nav === key ? "page" : undefined}>{label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <slot />
+    </main>
+    <footer class="site-footer wrap">
+      <p>
+        Every claim links to a source. Assessments are editorial estimates.
+        Data <a href={repoUrl}>on GitHub</a> (CC BY 4.0){" · "}
+        <a href={url("/api/incidents.json")}>JSON export</a>{" · "}
+        <a href={`${repoUrl}/issues/new`}>Report an incident or correction</a>
+      </p>
+    </footer>
+    <script>
+      // One shared tooltip for every chart mark with data-tip (hover and keyboard focus).
+      const tip = document.createElement("div");
+      tip.className = "tooltip";
+      tip.hidden = true;
+      document.body.append(tip);
+      const show = (el: Element, x: number, y: number) => {
+        tip.textContent = el.getAttribute("data-tip");
+        tip.hidden = false;
+        const w = tip.offsetWidth, h = tip.offsetHeight;
+        tip.style.left = `${Math.min(window.innerWidth - w - 8, Math.max(8, x - w / 2))}px`;
+        tip.style.top = `${y - h - 10 < 8 ? y + 18 : y - h - 10}px`;
+      };
+      document.addEventListener("pointermove", (e) => {
+        const el = (e.target as Element).closest?.("[data-tip]");
+        el ? show(el, e.clientX, e.clientY) : (tip.hidden = true);
+      });
+      document.addEventListener("focusin", (e) => {
+        const el = (e.target as Element).closest?.("[data-tip]");
+        if (!el) return (tip.hidden = true);
+        const r = el.getBoundingClientRect();
+        show(el, r.left + r.width / 2, r.top);
+      });
+      document.addEventListener("scroll", () => (tip.hidden = true), { passive: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+---
+import Base from "../layouts/Base.astro";
+import IncidentList from "../components/IncidentList.astro";
+import {
+  incidents, behaviors, models, organizations, orgIds, formatUsd,
+  REACH, HARM, CRIMINALITY, STATUS,
+} from "../lib/data";
+
+const used = (ids: string[]) => new Set(ids);
+const usedBehaviors = used(incidents.flatMap((i) => i.behaviors));
+const usedModels = used(incidents.flatMap((i) => i.models));
+const usedOrgs = used(incidents.flatMap(orgIds));
+const years = [...new Set(incidents.map((i) => i.date.slice(0, 4)))].sort().reverse();
+
+const deployed = incidents.filter((i) => ["deployed", "breakout"].includes(i.assessment.reach.level)).length;
+const knownLow = incidents.reduce((s, i) => s + (i.assessment.monetary_damage.low_usd ?? 0), 0);
+const knownHigh = incidents.reduce((s, i) => s + (i.assessment.monetary_damage.high_usd ?? 0), 0);
+const unknownDamage = incidents.filter((i) => i.assessment.monetary_damage.low_usd === null).length;
+const modelCount = usedModels.size - (usedModels.has("unknown") ? 1 : 0);
+
+const filters = [
+  { key: "behavior", label: "All behaviors", options: behaviors.filter((b) => usedBehaviors.has(b.id)).map((b) => [b.id, b.name]) },
+  { key: "model", label: "All models", options: models.filter((m) => usedModels.has(m.id)).map((m) => [m.id, m.name]) },
+  { key: "org", label: "All organizations", options: organizations.filter((o) => usedOrgs.has(o.id)).map((o) => [o.id, o.name]) },
+  { key: "reach", label: "Any reach", options: REACH.map((r) => [r, r]) },
+  { key: "harm", label: "Any harm", options: HARM.map((h) => [h, h]) },
+  { key: "crime", label: "Any criminality", options: CRIMINALITY.map((c) => [c, c]) },
+  { key: "status", label: "Any status", options: STATUS.map((s) => [s, s]) },
+  { key: "year", label: "Any year", options: years.map((y) => [y, y]) },
+];
+---
+<Base nav="incidents">
+  <p class="lede">
+    A public, source-linked record of AI systems behaving against the intent of their developers,
+    deployers, or users, plus criminal-level human misuse of AI. Every claim links to a source.
+  </p>
+
+  <section class="stats" aria-label="Summary">
+    <div class="stat"><div class="stat-value">{incidents.length}</div><div class="stat-label">Incidents</div></div>
+    <div class="stat"><div class="stat-value">{deployed}</div><div class="stat-label">Reached the real world</div></div>
+    <div class="stat"><div class="stat-value">{modelCount}</div><div class="stat-label">Models implicated</div></div>
+    <div class="stat">
+      <div class="stat-value">{unknownDamage && !knownHigh ? "Unknown" : knownLow === knownHigh ? formatUsd(knownLow) : `${formatUsd(knownLow)}–${formatUsd(knownHigh)}`}</div>
+      <div class="stat-label">Est. monetary damage{unknownDamage ? ` · ${unknownDamage} not yet estimable` : ""}</div>
+    </div>
+  </section>
+
+  <form class="filters" id="filters" role="search" onsubmit="return false">
+    <input type="search" name="q" placeholder="Search incidents, models, tags…" aria-label="Search" />
+    {filters.map((f) => (
+      <select name={f.key} aria-label={f.label}>
+        <option value="">{f.label}</option>
+        {f.options.map(([v, l]) => <option value={v}>{l}</option>)}
+      </select>
+    ))}
+  </form>
+  <div class="result-meta">
+    <span id="result-count">{incidents.length} incidents</span>
+    <button type="button" class="linklike" id="clear" hidden>Clear filters</button>
+  </div>
+
+  <IncidentList incidents={incidents} filterable />
+  <p class="empty" id="empty" hidden>No incidents match these filters.</p>
+</Base>
+
+<script>
+  // Client-side filtering. Filter state lives in the query string, so filtered views can be shared.
+  const form = document.getElementById("filters") as HTMLFormElement;
+  const rows = [...document.querySelectorAll<HTMLElement>("#incident-list > li")];
+  const count = document.getElementById("result-count")!;
+  const empty = document.getElementById("empty")!;
+  const clear = document.getElementById("clear")!;
+  const listAttr: Record<string, string> = { behavior: "behaviors", model: "models", org: "orgs" };
+  const exactAttr: Record<string, string> = { reach: "reach", harm: "harm", crime: "crime", status: "status", year: "year" };
+
+  function apply() {
+    const data = new FormData(form);
+    const q = String(data.get("q") ?? "").trim().toLowerCase();
+    let shown = 0;
+    for (const row of rows) {
+      let ok = !q || q.split(/\s+/).every((w) => row.dataset.search!.includes(w));
+      for (const [key, attr] of Object.entries(listAttr)) {
+        const v = data.get(key);
+        if (ok && v) ok = row.dataset[attr]!.split(" ").includes(String(v));
+      }
+      for (const [key, attr] of Object.entries(exactAttr)) {
+        const v = data.get(key);
+        if (ok && v) ok = row.dataset[attr] === v;
+      }
+      row.hidden = !ok;
+      if (ok) shown++;
+    }
+    count.textContent = `${shown} of ${rows.length} incidents`;
+    empty.hidden = shown > 0;
+    const params = new URLSearchParams();
+    for (const [k, v] of data) if (v) params.set(k, String(v));
+    clear.hidden = [...params].length === 0;
+    if (clear.hidden) count.textContent = `${rows.length} incidents`;
+    history.replaceState(null, "", params.size ? `?${params}` : location.pathname);
+  }
+
+  for (const [k, v] of new URLSearchParams(location.search)) {
+    const el = form.elements.namedItem(k) as HTMLInputElement | HTMLSelectElement | null;
+    if (el) el.value = v;
+  }
+  form.addEventListener("input", apply);
+  clear.addEventListener("click", () => { form.reset(); apply(); });
+  apply();
+</script>

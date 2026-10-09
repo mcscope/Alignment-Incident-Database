@@ -13,6 +13,7 @@ This repo is a public database of AI alignment incidents, modeled on MITRE CVE: 
 - Prefer primary sources: the developer's or deployer's own statement, the research paper or system card, or the affected person's own post. Add news coverage as secondary support.
 - Attribute disputed or one-sided accounts in the claim text ("Lemkin said the agent…"), not as fact.
 - Numbers, dates, and quotes must match the source exactly. If sources conflict, say so in the claim, or leave the detail out and record it in `record.notes`.
+- Capture quantitative findings in `measurements` (rates, counts, dollars, sample sizes), copied exactly from one cited source. The site charts them.
 - Use the least date precision you can source (`YYYY-MM` is fine).
 
 ## Neutral framing
