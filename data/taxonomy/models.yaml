@@ -1,0 +1,53 @@
+# Controlled vocabulary for incident `models`.
+# Fields: id, name, developer (organization id), family (optional grouping for the site)
+# Use the most specific publicly identified version. `unknown` is for undisclosed models.
+
+- id: unknown
+  name: Unknown / undisclosed
+  developer: null
+
+# OpenAI
+- id: gpt-4o
+  name: GPT-4o
+  developer: openai
+  family: gpt-4
+- id: gpt-4.1
+  name: GPT-4.1
+  developer: openai
+  family: gpt-4
+- id: o3
+  name: o3
+  developer: openai
+  family: o-series
+- id: o4-mini
+  name: o4-mini
+  developer: openai
+  family: o-series
+- id: codex-mini
+  name: codex-mini
+  developer: openai
+  family: o-series
+
+# Anthropic
+- id: claude-opus-4
+  name: Claude Opus 4
+  developer: anthropic
+  family: claude-4
+
+# Google
+- id: gemini-2.5-flash
+  name: Gemini 2.5 Flash
+  developer: google-deepmind
+  family: gemini-2.5
+
+# xAI
+- id: grok-3-beta
+  name: Grok 3 Beta
+  developer: xai
+  family: grok-3
+
+# DeepSeek
+- id: deepseek-r1
+  name: DeepSeek-R1
+  developer: deepseek
+  family: deepseek-r1

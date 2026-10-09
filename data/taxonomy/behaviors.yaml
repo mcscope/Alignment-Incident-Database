@@ -1,0 +1,86 @@
+# Controlled vocabulary for incident `behaviors`.
+# Add new entries via PR; prefer extending an existing entry's description over adding near-duplicates.
+# Fields: id, name, description, parent (optional id of a broader behavior)
+
+- id: deception
+  name: Deception
+  description: Model knowingly communicates something false or misleading to users, operators, or evaluators.
+
+- id: concealment
+  name: Concealment / covering tracks
+  parent: deception
+  description: Model hides, misreports, or lies about its own actions or their consequences.
+
+- id: fabricated-results
+  name: Fabricated results
+  parent: deception
+  description: Model claims work was done or tests passed when it was not, or invents data to appear successful.
+
+- id: sycophancy
+  name: Sycophancy
+  description: Model tells users what they want to hear, flattering or validating them at the expense of accuracy or their wellbeing.
+
+- id: reward-hacking
+  name: Reward hacking / specification gaming
+  description: Model satisfies the letter of an objective or test while defeating its intent (e.g. special-casing tests, editing the grader).
+
+- id: instruction-violation
+  name: Ignoring explicit instructions
+  description: Model acts against a clear, explicit instruction from its user or operator (e.g. a code freeze, "do not run X").
+
+- id: destructive-action
+  name: Destructive autonomous action
+  description: Agentic model takes an irreversible or damaging action in an environment (deleting data, spending money, sending messages) without authorization.
+
+- id: shutdown-resistance
+  name: Shutdown resistance
+  description: Model acts to prevent itself from being shut down, modified, or replaced.
+
+- id: self-preservation
+  name: Self-preservation
+  description: Model takes actions motivated by continuing its own operation or preserving its current goals/values, beyond shutdown specifically.
+
+- id: self-exfiltration
+  name: Self-exfiltration
+  parent: self-preservation
+  description: Model attempts to copy its weights or itself to another location outside developer control.
+
+- id: blackmail
+  name: Blackmail / coercion
+  description: Model threatens or coerces a person to achieve a goal.
+
+- id: manipulation
+  name: Manipulation
+  description: Model uses psychological pressure, emotional exploitation, or other illegitimate persuasion on people.
+
+- id: hostile-outputs
+  name: Hostile or threatening outputs
+  description: Model expresses hostility, threats, or unprompted aggression toward users or third parties.
+
+- id: alignment-faking
+  name: Alignment faking
+  description: Model behaves differently when it believes it is being trained or observed in order to avoid having its values changed.
+
+- id: sandbagging
+  name: Sandbagging
+  description: Model deliberately underperforms on evaluations, e.g. to hide capabilities.
+
+- id: evaluation-awareness
+  name: Evaluation gaming
+  description: Model recognizes it is being tested and alters behavior in a way that undermines the evaluation.
+
+- id: power-seeking
+  name: Power / resource seeking
+  description: Model acquires resources, permissions, or influence beyond what the task requires.
+
+- id: emergent-misalignment
+  name: Emergent misalignment
+  description: Narrow training or fine-tuning produces broadly misaligned behavior in unrelated domains.
+
+- id: harmful-advice
+  name: Harmful advice to vulnerable users
+  description: Model encourages self-harm, delusions, or dangerous actions, particularly with at-risk users.
+
+- id: unauthorized-disclosure
+  name: Unauthorized disclosure / whistleblowing
+  description: Model contacts third parties (press, regulators, others) or leaks information without authorization from its principal.

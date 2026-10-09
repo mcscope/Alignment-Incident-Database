@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/alignment-incident-database/schema/incident.schema.json",
+  "title": "Alignment Incident",
+  "description": "One incident of an AI system behaving contrary to the intent of its developers, deployers, or users. One file per incident in data/incidents/<id>.yaml.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "date", "status", "setting", "harm", "models", "organizations", "behaviors", "summary", "claims", "sources", "record"],
+  "properties": {
+    "id": {
+      "description": "Stable slug, must equal the filename without .yaml. Format: YYYY-MM-short-kebab-name. Never change once published.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": {
+      "description": "Neutral, factual headline. Avoid sensational language.",
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 140
+    },
+    "date": {
+      "description": "When the behavior occurred, or was first publicly reported if the occurrence date is unknown. Use only the precision you can source: YYYY, YYYY-MM, or YYYY-MM-DD. Quote it in YAML.",
+      "type": "string",
+      "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+    },
+    "status": {
+      "description": "confirmed: acknowledged by the developer/deployer, or documented in primary research with methodology. reported: credible public reports but no confirmation. disputed: credible sources contest the account. retracted: shown to be false; kept for the record.",
+      "enum": ["confirmed", "reported", "disputed", "retracted"]
+    },
+    "setting": {
+      "description": "Where the behavior happened. deployment: real users / real stakes in a shipped product. evaluation: a developer's or third party's pre/post-release testing (system cards, evals). research: a constructed experiment designed to study the behavior. red-team: adversarial elicitation (jailbreaks, prompt injection) by testers.",
+      "enum": ["deployment", "evaluation", "research", "red-team"]
+    },
+    "harm": {
+      "description": "Real-world harm that actually occurred (not hypothetical). none: no real-world harm (typical for research/eval). minor: inconvenience, embarrassment, small recoverable losses. moderate: significant financial, data, or reputational damage, or harm to individuals that was recoverable. severe: serious injury, death, or large irreversible losses.",
+      "enum": ["none", "minor", "moderate", "severe"]
+    },
+    "models": {
+      "description": "Model ids from data/taxonomy/models.yaml. Use 'unknown' if the model is not disclosed.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.\\-]*$" }
+    },
+    "organizations": {
+      "description": "Organizations involved, each with a role. ids from data/taxonomy/organizations.yaml.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "role"],
+        "properties": {
+          "id": { "type": "string" },
+          "role": {
+            "description": "developer: built the model. deployer: shipped the product where it happened. researcher: ran the study/eval that found it. reporter: first publicly reported it. affected: harmed by it.",
+            "enum": ["developer", "deployer", "researcher", "reporter", "affected"]
+          }
+        }
+      }
+    },
+    "behaviors": {
+      "description": "Behavior ids from data/taxonomy/behaviors.yaml. List the most central behavior first.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "summary": {
+      "description": "2-5 sentence neutral overview, plain text. Every fact in it must also appear in `claims` with a source.",
+      "type": "string",
+      "minLength": 50
+    },
+    "claims": {
+      "description": "Atomic factual statements, each backed by one or more sources. This is the evidentiary core of the record.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text", "sources"],
+        "properties": {
+          "text": { "type": "string", "minLength": 10 },
+          "sources": {
+            "description": "Source ids from this file's `sources` list.",
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "quote": {
+            "description": "Optional short verbatim quote from the source supporting the claim.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "url", "title", "publisher", "kind"],
+        "properties": {
+          "id": { "description": "Short local id, unique within this file.", "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "url": { "type": "string", "format": "uri" },
+          "title": { "type": "string" },
+          "publisher": { "type": "string" },
+          "published": { "type": "string", "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$" },
+          "kind": {
+            "description": "primary: from the developer/deployer or the person who experienced it. research: paper, system card, or research write-up with methodology. news: journalism. social: social media post. analysis: commentary/blog analysis.",
+            "enum": ["primary", "research", "news", "social", "analysis"]
+          },
+          "archive_url": { "description": "Wayback Machine or archive.today snapshot.", "type": "string", "format": "uri" },
+          "accessed": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" }
+        }
+      }
+    },
+    "related": {
+      "description": "ids of related incidents.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "tags": {
+      "description": "Free-form tags for things not covered by the taxonomies (e.g. agentic, coding-agent, system-card).",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" }
+    },
+    "external_refs": {
+      "description": "Cross-references to other incident databases.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "aiid": { "description": "AI Incident Database (incidentdatabase.ai) incident number.", "type": "integer" },
+        "oecd_aim": { "description": "OECD AI Incidents Monitor URL.", "type": "string", "format": "uri" }
+      }
+    },
+    "record": {
+      "description": "Bookkeeping about this record itself.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["created", "updated", "created_by", "review_status"],
+      "properties": {
+        "created": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "updated": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "created_by": { "enum": ["human", "agent"] },
+        "review_status": {
+          "description": "draft: not yet checked by a human against sources. reviewed: a maintainer verified every claim against its sources.",
+          "enum": ["draft", "reviewed"]
+        },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

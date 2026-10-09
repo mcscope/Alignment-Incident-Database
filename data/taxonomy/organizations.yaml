@@ -1,0 +1,52 @@
+# Controlled vocabulary for incident `organizations[].id`.
+# Fields: id, name, url, type (ai-lab | company | research-org | academic | government | individual)
+
+- id: anthropic
+  name: Anthropic
+  url: https://www.anthropic.com
+  type: ai-lab
+
+- id: openai
+  name: OpenAI
+  url: https://openai.com
+  type: ai-lab
+
+- id: google-deepmind
+  name: Google DeepMind
+  url: https://deepmind.google
+  type: ai-lab
+
+- id: meta
+  name: Meta
+  url: https://ai.meta.com
+  type: ai-lab
+
+- id: xai
+  name: xAI
+  url: https://x.ai
+  type: ai-lab
+
+- id: deepseek
+  name: DeepSeek
+  url: https://www.deepseek.com
+  type: ai-lab
+
+- id: microsoft
+  name: Microsoft
+  url: https://www.microsoft.com
+  type: company
+
+- id: replit
+  name: Replit
+  url: https://replit.com
+  type: company
+
+- id: saastr
+  name: SaaStr
+  url: https://www.saastr.com
+  type: company
+
+- id: palisade-research
+  name: Palisade Research
+  url: https://palisaderesearch.org
+  type: research-org
