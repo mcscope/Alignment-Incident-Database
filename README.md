@@ -1,5 +1,9 @@
 # Alignment Incident Database
 
+### 🔎 Browse the database: **[mcscope.github.io/Alignment-Incident-Database](https://mcscope.github.io/Alignment-Incident-Database/)**
+
+[Incidents](https://mcscope.github.io/Alignment-Incident-Database/) · [Data & charts](https://mcscope.github.io/Alignment-Incident-Database/data/) · [About & methodology](https://mcscope.github.io/Alignment-Incident-Database/about/) · [JSON export](https://mcscope.github.io/Alignment-Incident-Database/api/incidents.json)
+
 A public, source-linked record of **alignment incidents**: cases where AI systems behaved against the intent of their developers, deployers, or users. Examples are deception, sycophancy, reward hacking, shutdown resistance, and destructive autonomous actions. Criminal-level human misuse of AI is also included.
 
 Modeled on MITRE CVE: every incident gets a permanent id like `AID-2026-0004`.
