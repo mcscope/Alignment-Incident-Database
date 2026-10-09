@@ -48,7 +48,7 @@ jobs:
           git config user.email "incident-scout@users.noreply.github.com"
       - uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }} # from `claude setup-token` (Pro/Max subscription)
           prompt: |
             Follow the instructions in scout/PROMPT.md. Repository: ${{ github.repository }}. Today is the run date of this workflow.
           claude_args: |

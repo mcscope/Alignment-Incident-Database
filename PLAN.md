@@ -99,7 +99,7 @@ Still to decide:
 - [ ] More sources: Reddit (needs API credentials), Bluesky, court records (CourtListener API), lab system-card index pages, and additional Google News queries.
 
 **Setup needed:**
-- [ ] Repo secret `ANTHROPIC_API_KEY`
+- [ ] Repo secret `CLAUDE_CODE_OAUTH_TOKEN`: run `claude setup-token` locally (needs a Claude Pro/Max subscription). Runs count against the subscription.
 - [ ] Repo secret `OPENROUTER_API_KEY`: for the aggregation pass. Without it, the step is skipped and Claude triages the raw candidates itself.
 - [ ] Repo secret `SCOUT_GH_TOKEN`: a fine-grained PAT or GitHub App with contents and PR write access. Without it, scout PRs don't trigger the Validate check.
 - [ ] Repo secret `X_BEARER_TOKEN`: X API access for recent search. This is a paid tier, so check current pricing. Without it, X coverage falls back to the agent's web searches.
