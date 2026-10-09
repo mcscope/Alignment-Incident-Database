@@ -1,24 +1,13 @@
 ---
 import Level from "./Level.astro";
-import { type Incident, url, formatDate, formatDamage, modelById, behaviorById, orgIds } from "../lib/data";
+import { type Incident, url, formatDate, formatDamage, modelById, behaviorById, filterAttrs } from "../lib/data";
 
 interface Props { incidents: Incident[]; filterable?: boolean }
 const { incidents, filterable = false } = Astro.props;
 ---
 <ul class="incident-list" id={filterable ? "incident-list" : undefined}>
   {incidents.map((i) => (
-    <li
-      class="incident-row"
-      data-search={filterable ? [i.id, i.title, i.summary, ...i.models.map((m) => modelById.get(m)?.name ?? m), ...(i.tags ?? [])].join(" ").toLowerCase() : undefined}
-      data-behaviors={filterable ? i.behaviors.join(" ") : undefined}
-      data-models={filterable ? i.models.join(" ") : undefined}
-      data-orgs={filterable ? orgIds(i).join(" ") : undefined}
-      data-reach={i.assessment.reach.level}
-      data-harm={i.assessment.harm.severity}
-      data-crime={i.assessment.criminality.likelihood}
-      data-status={i.status}
-      data-actor={i.actor}
-      data-year={i.date.slice(0, 4)}
+    <li class="incident-row" data-filterable={filterable ? "" : undefined} {...(filterable ? filterAttrs(i) : {})}
     >
       <div class="row-top">
         <span class="mono">{i.id}</span>

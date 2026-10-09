@@ -112,3 +112,50 @@ export function formatMeasure(m: Measurement, v: Measurement["values"][number]) 
     default: return `${q}${n.toLocaleString("en-US")}${m.unit_label && m.unit === "other" ? ` ${m.unit_label}` : ""}`;
   }
 }
+
+// ---------- Timeline helpers ----------
+
+// Developers with their own color, in fixed palette order. Color follows the
+// entity, never its rank, so adding incidents never repaints anyone. Everyone
+// else is "Other". Past three colors, dots on one axis stop being reliably
+// distinguishable for colorblind readers; the lane views give every developer a row.
+export const DEV_COLORS = [
+  { id: "openai", name: "OpenAI", color: "var(--dev-1)" },
+  { id: "anthropic", name: "Anthropic", color: "var(--dev-2)" },
+  { id: "google-deepmind", name: "Google DeepMind", color: "var(--dev-3)" },
+] as const;
+
+export function developers(i: Incident): string[] {
+  const devs = new Set(i.organizations.filter((o) => o.role === "developer").map((o) => o.id));
+  for (const m of i.models) {
+    const d = modelById.get(m)?.developer;
+    if (d) devs.add(d);
+  }
+  return [...devs];
+}
+
+/** "multiple" | one of DEV_COLORS ids | "other" (including undisclosed). */
+export function devGroup(i: Incident) {
+  const devs = developers(i);
+  if (devs.length > 1) return "multiple";
+  const d = devs[0];
+  return DEV_COLORS.some((c) => c.id === d) ? d : "other";
+}
+
+export const HARM_RADIUS: Record<string, number> = { none: 5, minor: 7, moderate: 10, severe: 14 };
+
+/** data-* attributes the home-page filters match on (shared by list rows and timeline dots). */
+export function filterAttrs(i: Incident) {
+  return {
+    "data-search": [i.id, i.title, i.summary, ...i.models.map((m) => modelById.get(m)?.name ?? m), ...(i.tags ?? [])].join(" ").toLowerCase(),
+    "data-behaviors": i.behaviors.join(" "),
+    "data-models": i.models.join(" "),
+    "data-orgs": orgIds(i).join(" "),
+    "data-reach": i.assessment.reach.level,
+    "data-harm": i.assessment.harm.severity,
+    "data-crime": i.assessment.criminality.likelihood,
+    "data-status": i.status,
+    "data-actor": i.actor,
+    "data-year": i.date.slice(0, 4),
+  };
+}

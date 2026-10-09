@@ -1,0 +1,179 @@
+---
+// Dot timeline of incidents. Each dot is one incident (repeated across lanes in
+// the lane views). Size is harm severity. Color depends on the view:
+//   time      one axis, colored by developer
+//   developer one lane per developer, colored by reach
+//   behavior  one lane per behavior, colored by developer
+// Dots in the same month stack upward, so nothing overlaps.
+import {
+  type Incident, incidents as allIncidents, url, formatDate, orgById, behaviorById,
+  DEV_COLORS, developers, devGroup, HARM_RADIUS, HARM, REACH, filterAttrs,
+} from "../lib/data";
+
+type View = "time" | "developer" | "behavior";
+interface Props { views?: View[]; incidents?: Incident[]; filterable?: boolean; id?: string }
+const { views = ["time"], incidents = allIncidents, filterable = false, id = "timeline" } = Astro.props;
+
+// ----- time axis: whole months, Jan of the first year through the current month -----
+const monthIndex = (date: string) => {
+  const [y, m] = date.split("-").map(Number);
+  return y * 12 + (m ? m - 1 : 5.5); // year-only dates sit mid-year
+};
+const now = new Date();
+const startYear = Math.min(...incidents.map((i) => +i.date.slice(0, 4)));
+const start = startYear * 12;
+const end = Math.max(now.getUTCFullYear() * 12 + now.getUTCMonth(), ...incidents.map((i) => Math.floor(monthIndex(i.date)))) + 1;
+const span = end - start;
+const xPct = (i: Incident) => ((monthIndex(i.date) - start + 0.5) / span) * 100;
+const years = Array.from({ length: Math.ceil(span / 12) + 1 }, (_, k) => startYear + k).filter((y) => (y * 12 - start) / span < 1);
+
+// ----- colors -----
+const devColor = (i: Incident) => {
+  const g = devGroup(i);
+  if (g === "multiple") return { color: "transparent", hollow: true };
+  return { color: DEV_COLORS.find((c) => c.id === g)?.color ?? "var(--dev-other)", hollow: false };
+};
+const reachColor = (i: Incident) => ({ color: `var(--reach-${i.assessment.reach.level})`, hollow: false });
+const devLabel = (i: Incident) => developers(i).map((d) => orgById.get(d)?.name ?? d).join(", ") || "Undisclosed";
+
+type Dot = { i: Incident; x: number; r: number; bottom: number; color: string; hollow: boolean };
+type Lane = { key: string; label?: string; href?: string; dots: Dot[]; height: number };
+
+function lane(key: string, list: Incident[], colorOf: (i: Incident) => { color: string; hollow: boolean }, label?: string, href?: string): Lane {
+  // Stack dots that share a month; biggest at the bottom.
+  const bins = new Map<number, Incident[]>();
+  for (const i of list) {
+    const b = Math.floor(monthIndex(i.date));
+    bins.set(b, [...(bins.get(b) ?? []), i]);
+  }
+  const dots: Dot[] = [];
+  let height = 0;
+  for (const group of bins.values()) {
+    let bottom = 4;
+    for (const i of group.sort((a, b) => HARM_RADIUS[b.assessment.harm.severity] - HARM_RADIUS[a.assessment.harm.severity])) {
+      const r = HARM_RADIUS[i.assessment.harm.severity];
+      dots.push({ i, x: xPct(i), r, bottom, ...colorOf(i) });
+      bottom += 2 * r + 4;
+    }
+    height = Math.max(height, bottom);
+  }
+  return { key, label, href, dots, height: Math.max(height + 6, 40) };
+}
+
+const byCount = <T,>(entries: [T, Incident[]][]) => entries.sort((a, b) => b[1].length - a[1].length);
+
+const laneSets: Record<View, Lane[]> = {
+  time: [lane("all", incidents, devColor)],
+  developer: (() => {
+    const groups = new Map<string, Incident[]>();
+    for (const i of incidents) {
+      const devs = developers(i);
+      for (const d of devs.length ? devs : ["undisclosed"]) groups.set(d, [...(groups.get(d) ?? []), i]);
+    }
+    return byCount([...groups]).map(([d, list]) =>
+      d === "undisclosed"
+        ? lane(d, list, reachColor, "Undisclosed")
+        : lane(d, list, reachColor, orgById.get(d)?.name ?? d, url(`/organizations/${d}/`)));
+  })(),
+  behavior: (() => {
+    const groups = new Map<string, Incident[]>();
+    for (const i of incidents) for (const b of i.behaviors) groups.set(b, [...(groups.get(b) ?? []), i]);
+    return byCount([...groups]).slice(0, 10).map(([b, list]) =>
+      lane(b, list, devColor, behaviorById.get(b)?.name ?? b, url(`/behaviors/${b}/`)));
+  })(),
+};
+
+const viewNames: Record<View, string> = { time: "Timeline", developer: "By developer", behavior: "By behavior" };
+const viewSubs: Record<View, string> = {
+  time: "Every incident by date. Color shows the model's developer, size shows harm.",
+  developer: "One lane per developer whose models were involved. Color shows how far the behavior reached.",
+  behavior: "One lane per behavior (top 10). An incident appears in each of its behaviors. Color shows developer.",
+};
+const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
+const tip = (i: Incident) =>
+  `${i.id} · ${formatDate(i.date)}\n${i.title}\n${devLabel(i)} · reach: ${i.assessment.reach.level} · harm: ${i.assessment.harm.severity}`;
+---
+<figure class="tl" id={id} data-views={views.join(" ")}>
+  {views.length > 1 && (
+    <div class="tl-tabs" role="tablist" aria-label="Timeline view">
+      {views.map((v, n) => <button type="button" role="tab" data-view={v} aria-selected={n === 0 ? "true" : "false"}>{viewNames[v]}</button>)}
+    </div>
+  )}
+
+  {views.map((v, n) => (
+    <div class="tl-view" data-view={v} hidden={n > 0} role={views.length > 1 ? "tabpanel" : undefined}>
+      <p class="chart-sub">{viewSubs[v]}</p>
+      <div class="tl-legends">
+        {v === "developer" ? (
+          <div class="legend">
+            {REACH.map((r) => <span><i class="tl-key" style={`background: var(--reach-${r})`} />{cap(r)}</span>)}
+          </div>
+        ) : (
+          <div class="legend">
+            {DEV_COLORS.map((c) => <span><i class="tl-key" style={`background: ${c.color}`} />{c.name}</span>)}
+            <span><i class="tl-key" style="background: var(--dev-other)" />Other / undisclosed</span>
+            <span><i class="tl-key hollow" />Multiple developers</span>
+          </div>
+        )}
+        <div class="legend tl-sizes" aria-label="Dot size: harm">
+          <span>Harm:</span>
+          {HARM.map((h) => <span><i class="tl-size" style={`width:${HARM_RADIUS[h] * 2}px;height:${HARM_RADIUS[h] * 2}px`} />{h}</span>)}
+        </div>
+      </div>
+
+      <div class={`tl-lanes${v === "time" ? " single" : ""}`}>
+        {laneSets[v].map((l) => (
+          <div class="tl-lane">
+            {l.label && <div class="tl-label">{l.href ? <a href={l.href}>{l.label}</a> : l.label}</div>}
+            <div class="tl-track" style={`height:${l.height}px`}>
+              {years.map((y) => <span class="tl-grid" style={`left:${((y * 12 - start) / span) * 100}%`} />)}
+              {l.dots.map((d) => (
+                <a
+                  class={`tl-dot${d.hollow ? " hollow" : ""}`}
+                  href={url(`/incidents/${d.i.id}/`)}
+                  style={`left:${d.x}%; bottom:${d.bottom}px; width:${d.r * 2}px; height:${d.r * 2}px; background:${d.color}`}
+                  data-tip={tip(d.i)}
+                  aria-label={`${d.i.id}: ${d.i.title}`}
+                  {...(filterable ? { "data-filterable": "", ...filterAttrs(d.i) } : {})}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+        <div class="tl-lane tl-axis-row">
+          {v !== "time" && <div class="tl-label" />}
+          <div class="tl-axis">
+            {years.map((y) => <span style={`left:${((y * 12 - start) / span) * 100}%`}>{y}</span>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <details class="table-view">
+    <summary>Table</summary>
+    <table>
+      <thead><tr><th>Date</th><th>Id</th><th>Developer</th><th>Reach</th><th>Harm</th></tr></thead>
+      <tbody>
+        {[...incidents].sort((a, b) => a.date.localeCompare(b.date)).map((i) => (
+          <tr><td>{i.date}</td><td><a href={url(`/incidents/${i.id}/`)}>{i.id}</a></td><td>{devLabel(i)}</td><td>{i.assessment.reach.level}</td><td>{i.assessment.harm.severity}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </details>
+</figure>
+
+<script>
+  // View tabs; the selected view is kept in the URL hash (#view=developer).
+  for (const fig of document.querySelectorAll<HTMLElement>("figure.tl")) {
+    const tabs = [...fig.querySelectorAll<HTMLButtonElement>(".tl-tabs [data-view]")];
+    if (!tabs.length) continue;
+    const show = (view: string) => {
+      if (!tabs.some((t) => t.dataset.view === view)) view = tabs[0].dataset.view!;
+      for (const t of tabs) t.setAttribute("aria-selected", String(t.dataset.view === view));
+      for (const p of fig.querySelectorAll<HTMLElement>(".tl-view")) p.hidden = p.dataset.view !== view;
+    };
+    for (const t of tabs) t.addEventListener("click", () => { show(t.dataset.view!); history.replaceState(null, "", `#view=${t.dataset.view}`); });
+    show(new URLSearchParams(location.hash.slice(1)).get("view") ?? "");
+  }
+</script>

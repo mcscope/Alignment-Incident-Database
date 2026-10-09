@@ -1,8 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
 import IncidentList from "../components/IncidentList.astro";
+import Timeline from "../components/Timeline.astro";
 import {
-  incidents, behaviors, models, organizations, orgIds, formatUsd,
+  incidents, behaviors, models, organizations, orgIds, formatUsd, url,
   REACH, HARM, CRIMINALITY, STATUS,
 } from "../lib/data";
 
@@ -45,6 +46,14 @@ const filters = [
     </div>
   </section>
 
+  <section class="chart-card" style="margin-bottom:20px">
+    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:baseline">
+      <p class="chart-title">Timeline</p>
+      <a class="small" href={url("/timeline/")}>More views →</a>
+    </div>
+    <Timeline filterable id="home-timeline" />
+  </section>
+
   <form class="filters" id="filters" role="search" onsubmit="return false">
     <input type="search" name="q" placeholder="Search incidents, models, tags…" aria-label="Search" />
     {filters.map((f) => (
@@ -67,6 +76,7 @@ const filters = [
   // Client-side filtering. Filter state lives in the query string, so filtered views can be shared.
   const form = document.getElementById("filters") as HTMLFormElement;
   const rows = [...document.querySelectorAll<HTMLElement>("#incident-list > li")];
+  const dots = [...document.querySelectorAll<HTMLElement>(".tl-dot[data-filterable]")];
   const count = document.getElementById("result-count")!;
   const empty = document.getElementById("empty")!;
   const clear = document.getElementById("clear")!;
@@ -77,16 +87,10 @@ const filters = [
     const data = new FormData(form);
     const q = String(data.get("q") ?? "").trim().toLowerCase();
     let shown = 0;
+    // Rows that don't match are hidden; timeline dots are dimmed so positions stay put.
+    for (const dot of dots) dot.classList.toggle("dim", !matches(dot, data, q));
     for (const row of rows) {
-      let ok = !q || q.split(/\s+/).every((w) => row.dataset.search!.includes(w));
-      for (const [key, attr] of Object.entries(listAttr)) {
-        const v = data.get(key);
-        if (ok && v) ok = row.dataset[attr]!.split(" ").includes(String(v));
-      }
-      for (const [key, attr] of Object.entries(exactAttr)) {
-        const v = data.get(key);
-        if (ok && v) ok = row.dataset[attr] === v;
-      }
+      const ok = matches(row, data, q);
       row.hidden = !ok;
       if (ok) shown++;
     }
@@ -97,6 +101,19 @@ const filters = [
     clear.hidden = [...params].length === 0;
     if (clear.hidden) count.textContent = `${rows.length} incidents`;
     history.replaceState(null, "", params.size ? `?${params}` : location.pathname);
+  }
+
+  function matches(el: HTMLElement, data: FormData, q: string) {
+    let ok = !q || q.split(/\s+/).every((w) => el.dataset.search!.includes(w));
+    for (const [key, attr] of Object.entries(listAttr)) {
+      const v = data.get(key);
+      if (ok && v) ok = el.dataset[attr]!.split(" ").includes(String(v));
+    }
+    for (const [key, attr] of Object.entries(exactAttr)) {
+      const v = data.get(key);
+      if (ok && v) ok = el.dataset[attr] === v;
+    }
+    return ok;
   }
 
   for (const [k, v] of new URLSearchParams(location.search)) {

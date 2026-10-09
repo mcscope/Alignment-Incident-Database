@@ -13,6 +13,7 @@ jobs:
     timeout-minutes: 45
     permissions:
       contents: write
+      id-token: write # the action's default auth path uses OIDC
     steps:
       - uses: actions/checkout@v4
         with:
@@ -38,6 +39,8 @@ jobs:
           git config user.email "incident-scout@users.noreply.github.com"
       - uses: anthropics/claude-code-action@v1
         with:
+          # Use the workflow's own token for git/GitHub access, so the Claude GitHub App isn't required.
+          github_token: ${{ github.token }}
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }} # from `claude setup-token` (Pro/Max subscription)
           prompt: |
             Follow the instructions in scout/PROMPT.md. Repository: ${{ github.repository }}. Today is the run date of this workflow.
