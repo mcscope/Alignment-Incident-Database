@@ -33,7 +33,7 @@ A public, source-linked database of alignment incidents, modeled on **MITRE CVE*
 ## Scope
 
 - **In:** AI systems acting against the intent of their developers, deployers, or users, both in deployment and in published research, evals, or system cards.
-- **In:** human misuse of AI at a **criminal** level.
+- **In:** human misuse of AI at a **criminal** level where the AI's capability was central and novel (agentic or AI-run cyberattacks, AI-conducted fraud). Routine generator misuse, such as AI-CSAM or deepfake arrests, is **out**. This was decided 2026-10-09 after the first scan found such cases dominated.
 - **Out:** hallucination on its own, sub-criminal misuse, and bias unless goal-directed behavior is the story.
 
 ---

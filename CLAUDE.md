@@ -4,7 +4,8 @@ This repo is a public database of AI alignment incidents, modeled on MITRE CVE: 
 
 ## Scope
 - **In:** an AI system acting against the intent of its developers, deployers, or users. This counts in deployment and in published research, evals, or system cards.
-- **In:** human misuse of AI at a **criminal** level (`actor: human-misuse`, criminality `likely` or above).
+- **In:** human misuse of AI at a **criminal** level where the AI's capability was **central and novel**: AI-run or agentic cyberattacks, fraud or extortion conducted by an AI system, models used to plan serious harm (`actor: human-misuse`, criminality `likely` or above).
+- **Out:** routine cases where someone used a generator to make illegal content (AI-generated CSAM or deepfake arrests, AI-written scam texts, AI-music streaming fraud). These are real crimes, but they number in the thousands and other trackers cover them.
 - **Out:** hallucination or factual errors on their own, sub-criminal misuse, and bias, unless goal-directed model behavior is the story.
 
 ## Sourcing

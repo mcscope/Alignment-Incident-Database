@@ -9,9 +9,10 @@ The run has three phases: **gather** (parallel subagents), **edit** (you decide 
 ## Scope (applies to every phase)
 In scope:
 - An AI system acting against the intent of its developers, deployers, or users. Examples are deception, sycophancy, reward hacking, ignoring instructions, destructive autonomous actions, shutdown resistance, blackmail, manipulation, and sandbagging. This counts in deployment and in published research, evals, or system cards.
-- Human misuse of AI at a **criminal** level: AI-assisted fraud, cyberattacks, or extortion that led to charges, or conduct that is clearly criminal.
+- Human misuse of AI at a **criminal** level where the AI's capability was **central and novel**: AI-run or agentic cyberattacks, fraud or extortion conducted by an AI system, models used to plan serious harm. It must have led to charges, or be clearly criminal.
 
 Out of scope:
+- Routine generator misuse: AI-generated CSAM or deepfake arrests, AI-written scam messages, AI-music streaming fraud, and similar cases where the AI was just a content tool
 - Hallucination or factual errors on their own
 - Bias and fairness issues, unless goal-directed model behavior is the story
 - Sub-criminal misuse
@@ -35,7 +36,7 @@ Spawn all of these subagents at once:
 | `verify-<n>`, one per digest cluster with action `new` or `update` (highest priority first, max 10) | Read every item in the cluster. Find and read the primary sources: lab post, paper, system card, court filing, or the affected person's own post (search X or other sites for first-hand accounts). Confirm or refute the cluster. |
 | `labs` | `watch_pages` (Anthropic, xAI, Apollo, AISI, …). Look for posts from the last ~48h, especially new system cards and safety write-ups, and read their alignment/safety sections for reported model misbehavior. |
 | `web` | Run every query in `web_searches` to catch what the feeds missed. |
-| `legal` | Search for recent charges, indictments, convictions, and lawsuits involving AI behavior or AI-enabled crime. |
+| `legal` | Search for recent charges, indictments, convictions, and lawsuits where an AI system's own behavior or capability was central, e.g. agentic or AI-run cyberattacks and AI-conducted fraud. Skip routine generator misuse (see scope). |
 | `backfill` | Existing records whose `record.notes` list missing sources or open questions. Try to find those sources. Cap: 3 records per run. |
 
 Fallback lanes, used only without a digest: `news` (Google News and Hacker News candidates), `research` (arXiv, Alignment Forum, LessWrong, METR, Palisade), and `social` (X candidates).

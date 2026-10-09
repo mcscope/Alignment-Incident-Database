@@ -87,40 +87,53 @@ IN SCOPE ("alignment incidents"):
   shutdown resistance, self-preservation, blackmail, manipulation, sandbagging, alignment faking,
   emergent misalignment, harmful advice to vulnerable users. Counts in real deployments AND in
   published research, evaluations, or system cards.
-- Human misuse of AI at a CRIMINAL level (AI-assisted fraud, cyberattacks, extortion with charges,
-  arrests, or clearly criminal conduct).
+- Human misuse of AI at a CRIMINAL level where the AI's capability was CENTRAL and NOVEL: AI-run or
+  agentic cyberattacks, fraud or extortion conducted by an AI system, models used to plan serious harm.
 OUT OF SCOPE: hallucination or factual errors alone; bias/fairness unless goal-directed behavior is the
 story; sub-criminal misuse; opinion/commentary without a new incident; product launches; general AI
-policy or funding news; ordinary crime where AI is incidental.`;
+policy or funding news; ordinary crime where AI is incidental; ROUTINE GENERATOR MISUSE such as
+AI-generated CSAM or deepfake arrests, AI-written scam texts, or AI-music streaming fraud.`;
 
 async function complete(name, system, user, schema) {
   if (dryRun) {
     writeFileSync(out(`prompt-${name}.txt`), `${system}\n\n---\n\n${user}`);
     return null;
   }
-  const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-      "Content-Type": "application/json",
-      "HTTP-Referer": "https://github.com/mcscope/Alignment-Incident-Database",
-      "X-Title": "Alignment Incident Database scout",
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      temperature: 0,
-      messages: [{ role: "system", content: system }, { role: "user", content: user }],
-      response_format: { type: "json_schema", json_schema: { name, strict: true, schema } },
-      provider: { require_parameters: true },
-    }),
-    signal: AbortSignal.timeout(300_000),
-  });
-  if (!res.ok) throw new Error(`OpenRouter ${res.status}: ${await res.text()}`);
-  const body = await res.json();
-  usage.prompt += body.usage?.prompt_tokens ?? 0;
-  usage.completion += body.usage?.completion_tokens ?? 0;
-  return JSON.parse(body.choices[0].message.content);
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://github.com/mcscope/Alignment-Incident-Database",
+        "X-Title": "Alignment Incident Database scout",
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        temperature: 0,
+        max_tokens: 32000,
+        messages: [{ role: "system", content: system }, { role: "user", content: user }],
+        response_format: { type: "json_schema", json_schema: { name, strict: true, schema } },
+        provider: { require_parameters: true },
+      }),
+      signal: AbortSignal.timeout(300_000),
+    });
+    if (!res.ok) throw new Error(`OpenRouter ${res.status}: ${await res.text()}`);
+    const body = await res.json();
+    usage.prompt += body.usage?.prompt_tokens ?? 0;
+    usage.completion += body.usage?.completion_tokens ?? 0;
+    const choice = body.choices?.[0];
+    try {
+      return JSON.parse(choice.message.content);
+    } catch (e) {
+      console.warn(`${name}: unparseable response (finish_reason=${choice?.finish_reason}, attempt ${attempt}): ${e.message}`);
+    }
+  }
+  console.warn(`${name}: giving up; its items will be missing from the digest`);
+  failures.push(name);
+  return null;
 }
+const failures = [];
 const usage = { prompt: 0, completion: 0 };
 
 const obj = (properties) => ({ type: "object", additionalProperties: false, required: Object.keys(properties), properties });
@@ -144,7 +157,7 @@ const triageSystem = `You triage news and research items for the Alignment Incid
 record of AI alignment incidents. Decide for EVERY item whether it plausibly reports an in-scope incident.
 ${SCOPE}
 Be inclusive of borderline items that may be in scope (a later, more careful editor verifies), but reject
-clear noise. Base decisions only on the given title/snippet/text. Give a one-sentence reason.`;
+clear noise. Base decisions only on the given title/snippet/text. Keep each reason under 15 words.`;
 
 const render = (it) =>
   `### [${it.idx}] ${it.title}\norigin: ${it.origin} | published: ${it.published ?? "?"} | url: ${it.url}\n` +
@@ -216,6 +229,7 @@ const digest = {
   model: MODEL,
   generated: new Date().toISOString(),
   usage,
+  failures,
   note: "Leads produced by a triage model. Not sources: verify everything against the original URLs.",
   clusters: clusters.map((c) => ({
     ...c,

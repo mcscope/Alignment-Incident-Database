@@ -55,7 +55,7 @@
       ]
     },
     "actor": {
-      "description": "Who drove the behavior. model: the AI system acted against its principals' intent on its own. human-misuse: a person deliberately used the AI to do harm. Only include human misuse at a criminal level (assessment.criminality.likelihood of likely or above); sub-criminal misuse is out of scope.",
+      "description": "Who drove the behavior. model: the AI system acted against its principals' intent on its own. human-misuse: a person deliberately used the AI to commit a crime, and the AI's capability was central and novel (e.g. AI-run cyberattacks, fraud conducted by an AI agent). Routine generator misuse (AI-made CSAM or deepfakes, AI-written scam texts) is out of scope. Requires assessment.criminality.likelihood of likely or above.",
       "enum": [
         "model",
         "human-misuse"
