@@ -3,7 +3,11 @@ name: Deploy site
 on:
   push:
     branches: [main]
-    paths-ignore: ["scout/**"]
+  # Pushes made by the scout (with GITHUB_TOKEN) don't trigger push workflows,
+  # so redeploy when the scout finishes instead.
+  workflow_run:
+    workflows: ["Scout for new incidents"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:

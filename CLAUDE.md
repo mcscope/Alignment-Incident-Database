@@ -27,8 +27,8 @@ This repo is a public database of AI alignment incidents, modeled on MITRE CVE: 
 - Before creating an incident, search `data/incidents/` for an existing one, matching by title, models, and source URLs. If you find one, extend it instead of duplicating it.
 - Agent-created or agent-edited records set `record.created_by: agent` and `record.review_status: draft`. Only a human sets `reviewed`.
 - Update `record.updated` on every edit.
-- Add new taxonomy terms only when no existing term fits. Put them in the same PR.
+- Add new taxonomy terms only when no existing term fits. Put them in the same commit.
 
 ## Workflow
-- Run `npm run validate` before committing. CI runs it on every PR.
-- Agents open PRs and never push to `main`. One incident per PR.
+- Run `npm run validate` before committing. CI runs it on every push and PR.
+- The daily scout commits directly to `main`: one commit per run with its incident changes and that day's scan log (`data/scans/YYYY-MM-DD.yaml`), which lists every source scanned and its verdict. Agent records stay `draft` until a human reviews them.

@@ -1,6 +1,6 @@
 # Build Plan
 
-A public, source-linked database of alignment incidents, modeled on **MITRE CVE**: permanent ids, sourced records, controlled vocabularies, and machine-readable exports. GitHub is the source of truth. Every merge to `main` redeploys the site, and a daily scout proposes new and updated records as PRs.
+A public, source-linked database of alignment incidents, modeled on **MITRE CVE**: permanent ids, sourced records, controlled vocabularies, and machine-readable exports. GitHub is the source of truth. Every merge to `main` redeploys the site, and a daily scout commits new and updated draft records along with a log of every source it scanned.
 
 ```
  feeds / APIs / X / pages           (software, deterministic, ~free)
@@ -14,11 +14,12 @@ A public, source-linked database of alignment incidents, modeled on **MITRE CVE*
  │          legal/backfill lanes → findings/*.json                        │
  │ Phase 2  Edit: cluster, match existing AIDs, decide new/update/skip,   │
  │          re-verify every fact                                          │
- │ Phase 3  Publish: one PR per change (≤5/run), report to job summary    │
+ │ Phase 3  Publish: one commit (≤5 incident changes + scan log)          │
  └──────────────────────────────────────┬─────────────────────────────────┘
-                                        ▼ PRs (draft records)
-                           GitHub repo ── humans review + merge
-                                        ▼ push to main
+                                        ▼ one commit/day to main:
+                                        │ draft records + data/scans/<date>.yaml
+                           GitHub repo ── humans review drafts
+                                        ▼
                        CI: validate → build site → deploy (GitHub Pages)
 ```
 
@@ -27,7 +28,7 @@ A public, source-linked database of alignment incidents, modeled on **MITRE CVE*
 1. **Every claim has a source.** Atomic `claims` cite sources. The `summary` and `writeup` only restate them, with inline `[@source]` citations.
 2. **Facts and estimates are kept apart.** Sourced facts go in `claims` and `writeup`. Editorial judgment goes in `assessment` (reach, harm, money, criminality), and each estimate carries a rationale. The site labels estimates as estimates.
 3. **Permanent ids.** `AID-<year assigned>-<seq>`, like CVE. Records are never deleted, only `retracted`.
-4. **Agents propose and humans merge.** The agent never pushes to `main`. Agent records stay `draft` until a person has checked every claim.
+4. **The scout commits and humans review.** The daily scout commits straight to `main` (one commit per run). Agent records stay `draft`, with a visible badge on the site, until a person has checked every claim. Git history is the audit trail.
 5. **Software collects and agents judge.** Anything with a stable interface (feeds, APIs, page diffs) is fetched by code. LLMs are used for relevance, reading, clustering, writing, and estimates.
 
 ## Scope
@@ -46,7 +47,7 @@ A public, source-linked database of alignment incidents, modeled on **MITRE CVE*
 | `data/incidents/AID-YYYY-NNNN.yaml` | One file per incident |
 | `data/taxonomy/{behaviors,models,organizations,harm_categories}.yaml` | Controlled vocabularies, which grow as incidents come in |
 | `scripts/validate.mjs` | Schema plus cross-file rules: taxonomy ids exist, every source is cited, every paragraph of the writeup has a citation, human misuse is criminal-level, monetary ranges make sense, slugs are unique |
-| `scripts/next-id.mjs` | Allocates the next AID, including ids already used in open PRs |
+| `scripts/next-id.mjs` | Allocates the next AID |
 
 The incident fields:
 - **Identity:** `id`, `slug`, `title`, `date`, `status` (confirmed / reported / disputed / retracted)
@@ -70,7 +71,7 @@ Still to decide:
 
 - [x] 4 seed records in v0.2 format, all `draft`
 - [ ] Human review of the seeds. Their `record.notes` list the missing primary sources
-- [ ] Backfill about 50 well-known incidents (Bing/Sydney, the classic spec-gaming list, o1/Apollo scheming, the alignment-faking paper, emergent misalignment, the Claude Opus 4 system card, Grok incidents, Air Canada, AI-enabled crimes with charges, …). The agent drafts them, one PR each.
+- [ ] Backfill about 50 well-known incidents (Bing/Sydney, the classic spec-gaming list, o1/Apollo scheming, the alignment-faking paper, emergent misalignment, the Claude Opus 4 system card, Grok incidents, Air Canada, AI-enabled crimes with charges, …). The agent drafts them and a human reviews.
 - [ ] Cross-reference the AI Incident Database (`external_refs.aiid`)
 
 ## 3. Scout (data collection)
@@ -85,11 +86,11 @@ Still to decide:
   - agent web searches
 - `scout/collect.mjs`: deterministic collector that writes `scout/out/candidates.json`. It drops items that are already cited. Tested locally: 27/27 sources responded and it returned 185 candidates.
 - `scout/aggregate.mjs`: aggregation pass on **Gemini via OpenRouter** (`google/gemini-3.8-flash` by default; Gemini 4 isn't on OpenRouter as of 2026-10-09). It fetches article text, triages in batches of 40, then clusters and matches against existing records in a single long-context call. The output is leads only; Claude verifies everything. The model can be changed in `scout/sources.yaml` or the `SCOUT_AGG_MODEL` repo variable. Estimated cost is about $0.10/day.
-- `scout/PROMPT.md`: three-phase agent (subagents verify digest clusters and cover the lanes software can't → editor decides → PRs)
+- `scout/PROMPT.md`: three-phase agent (subagents verify digest clusters and cover the lanes software can't → editor decides → one commit to `main`)
 - `.github/workflows/scout.yml`: runs daily at 13:00 UTC and on manual trigger, posts a job summary report, and keeps findings as an artifact
 
 **Next: move more of the collection into software,** so agents spend tokens on judgment, not fetching:
-- [x] **Persistent seen list** (`scout/state/seen.json`, committed by the workflow with `[skip ci]`). The collector skips seen URLs, the agent checks it for URLs it finds itself and logs what it examined, and entries expire after 180 days.
+- [x] **Daily scan log** (`data/scans/YYYY-MM-DD.yaml`): every source scanned that day, with its verdict (cited in which incident, rejected and why, …). It is committed along with that day's incident changes and serves as both the bibliography and the dedupe memory. The collector never re-scans a URL that is in any scan log or cited by any incident.
 - [ ] **Watch pages in code:** fetch HTML, extract post links, and diff them against seen state. This turns Anthropic, xAI, Apollo, and AISI into ordinary feeds.
 - [ ] **Full-text fetch:** extract readable article text into `candidates.json`, so subagents start from text instead of re-fetching.
 - [x] Cheap triage and clustering pre-pass (Gemini, `aggregate.mjs`)
@@ -101,7 +102,6 @@ Still to decide:
 **Setup needed:**
 - [ ] Repo secret `CLAUDE_CODE_OAUTH_TOKEN`: run `claude setup-token` locally (needs a Claude Pro/Max subscription). Runs count against the subscription.
 - [ ] Repo secret `OPENROUTER_API_KEY`: for the aggregation pass. Without it, the step is skipped and Claude triages the raw candidates itself.
-- [ ] Repo secret `SCOUT_GH_TOKEN`: a fine-grained PAT or GitHub App with contents and PR write access. Without it, scout PRs don't trigger the Validate check.
 - [ ] Repo secret `X_BEARER_TOKEN`: X API access for recent search. This is a paid tier, so check current pricing. Without it, X coverage falls back to the agent's web searches.
 - [ ] Watch costs for the first week. If they are too high, switch to a cheaper model, lower `--max-turns`, or add the pre-filter.
 
@@ -133,12 +133,11 @@ Still to decide:
 ## 6. Other agent workflows
 
 - [ ] **Link checker** (weekly): finds dead links, fills in archive URLs, and opens issues
-- [ ] **Issue → PR**: a public "report an incident" issue form that the agent turns into a draft PR
-- [ ] **PR source check**: the agent checks each claim against its cited source and comments on any mismatch
+- [ ] **Issue → draft**: a public "report an incident" issue form that the agent turns into a draft record
+- [ ] **Draft review assist**: the agent re-checks each draft's claims against its cited sources and flags mismatches for the human reviewer
 
 ## 7. Governance
 
-- [ ] Branch protection on `main`: require a PR and the passing `Validate data` check
 - [ ] `CONTRIBUTING.md`, issue templates, and a code of conduct
 - [ ] Licenses: CC BY 4.0 for data, MIT for code (to confirm)
 - [ ] Corrections and retraction policy (like CVE's REJECTED/DISPUTED)
@@ -146,7 +145,7 @@ Still to decide:
 ## Order
 
 1. ~~Format v0.2, seeds, scout v1~~ ✅
-2. Push to GitHub, add secrets and branch protection, trigger the scout manually and review its first PRs
+2. Push to GitHub, add secrets (`CLAUDE_CODE_OAUTH_TOKEN`, `OPENROUTER_API_KEY`), enable Pages, trigger the scout manually and review its first commit
 3. ~~Astro site MVP and Pages deploy~~ ✅ (enable Pages in settings)
 4. Backfill about 50 incidents
 5. Move more collection into software (seen-state, page diffing, pre-filter)

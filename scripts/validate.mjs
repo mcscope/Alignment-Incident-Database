@@ -89,6 +89,20 @@ for (const [id, doc] of incidents) {
   for (const r of doc.related ?? []) if (!incidents.has(r)) err(`${id}.yaml`, `related incident "${r}" does not exist`);
 }
 
+// Scan logs: data/scans/YYYY-MM-DD.yaml, the scout's daily bibliography.
+const VERDICTS = new Set(["cited", "lead", "skipped", "rejected", "unreviewed"]);
+const scansDir = join(root, "data/scans");
+for (const file of readdirSync(scansDir).filter((f) => f.endsWith(".yaml"))) {
+  const log = parse(readFileSync(join(scansDir, file), "utf8"));
+  const where = `scans/${file}`;
+  if (`${log?.date}.yaml` !== file) err(where, "date does not match filename");
+  for (const [n, e] of (log?.scanned ?? []).entries()) {
+    if (!e.url) err(where, `entry ${n + 1} has no url`);
+    if (!VERDICTS.has(e.verdict)) err(where, `entry ${n + 1} has invalid verdict "${e.verdict}"`);
+    if (e.verdict === "cited" && !incidents.has(e.incident)) err(where, `entry ${n + 1} cites unknown incident "${e.incident}"`);
+  }
+}
+
 if (errors.length) {
   console.error(errors.join("\n"));
   console.error(`\n${errors.length} error(s) in ${files.length} incident file(s)`);

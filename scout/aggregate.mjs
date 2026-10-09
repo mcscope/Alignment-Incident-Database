@@ -13,6 +13,7 @@
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
+import { normalizeUrl, readLog, writeLog } from "./lib/scanlog.mjs";
 
 const root = new URL("..", import.meta.url).pathname;
 const out = (f) => join(root, "scout/out", f);
@@ -238,6 +239,22 @@ const digest = {
   rejected: triaged.filter((t) => !t.in_scope).map((t) => ({ title: byIdx.get(t.idx)?.title, url: byIdx.get(t.idx)?.url, reason: t.reason })),
 };
 writeFileSync(out("digest.json"), JSON.stringify(digest, null, 2));
+
+// Record triage verdicts in today's scan log.
+const verdicts = new Map();
+for (const t of triaged) {
+  const it = byIdx.get(t.idx);
+  if (it) verdicts.set(normalizeUrl(it.url), t.in_scope ? { verdict: "lead" } : { verdict: "rejected", reason: t.reason });
+}
+for (const c of clusters) {
+  for (const i of c.item_idxs) {
+    const it = byIdx.get(i);
+    if (it && c.suggested_action === "skip") verdicts.set(normalizeUrl(it.url), { verdict: "skipped", reason: c.matched_existing_id ? `covered by ${c.matched_existing_id}` : "triage: skip" });
+  }
+}
+const log = readLog();
+for (const e of log.scanned) Object.assign(e, verdicts.get(normalizeUrl(e.url)) ?? {});
+writeLog(log);
 
 const md = [`# Scout digest (${MODEL})`, "", `${clusters.length} clusters from ${inScope.length}/${items.length} in-scope candidates. Tokens: ${usage.prompt} in / ${usage.completion} out.`, ""];
 for (const c of digest.clusters) {
