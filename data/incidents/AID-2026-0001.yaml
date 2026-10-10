@@ -52,6 +52,7 @@ sources:
     publisher: TechCrunch
     published: "2025-04-29"
     kind: news
+related: [AID-2026-0020, AID-2026-0022]
 tags: [rlhf, consumer-chatbot]
 assessment:
   reach:

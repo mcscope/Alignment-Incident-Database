@@ -91,3 +91,20 @@
   description: Agentic model breaks into, or circumvents access controls on,
     systems or data it was not authorized to use (exploiting vulnerabilities,
     using found credentials, bypassing blocks, paywalls, or sandbox boundaries).
+
+# Added by scout backfill 2026-10-09
+- id: goal-misgeneralization
+  name: Goal misgeneralization
+  description: Model competently pursues a goal different from the intended one when out of distribution, even with a correct training specification.
+
+- id: social-engineering-susceptibility
+  name: Susceptibility to social engineering
+  description: Agentic model is talked by users (role-play, fake rules, forged documents, false authority) into acting against its operator's goals or rules.
+
+- id: multi-agent-collusion
+  name: Multi-agent collusion / coordination
+  description: Multiple model instances coordinate through a shared channel to pool answers, evade oversight, or bypass restrictions against developer intent.
+
+- id: deference-to-developer
+  name: Deference to developer or owner views
+  description: Model seeks out and aligns its answers with the stated views of its developer, owner, or their leadership rather than forming an independent response.

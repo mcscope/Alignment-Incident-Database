@@ -81,6 +81,7 @@ measurements:
     values:
       - { label: Believed scenario was real, model: claude-opus-4, value: 55.1 }
       - { label: Believed it was an evaluation, model: claude-opus-4, value: 6.5 }
+related: [AID-2026-0042]
 tags: [agentic, simulated-environment, multi-model]
 assessment:
   reach:
@@ -104,4 +105,4 @@ record:
   updated: "2026-10-09"
   created_by: agent
   review_status: draft
-  notes: Related earlier finding in the Claude Opus 4 system card (May 2025) should be its own incident or source here.
+  notes: The earlier Claude Opus 4 system card blackmail finding (May 2025) is recorded separately as AID-2026-0042.

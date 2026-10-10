@@ -62,6 +62,7 @@ measurements:
       - { label: codex-mini, model: codex-mini, value: 47, n: 200 }
       - { label: Claude 3.7 Sonnet, value: 0 }
       - { label: Gemini 2.5 Pro, value: 0 }
+related: [AID-2026-0050]
 tags: [agentic, reasoning-models]
 assessment:
   reach:

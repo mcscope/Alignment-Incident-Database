@@ -80,3 +80,141 @@
   name: Redwood Research
   url: https://www.redwoodresearch.org
   type: research-org
+
+# Added by scout backfill 2026-10-09
+- id: google
+  name: Google
+  url: https://www.google.com
+  type: company
+- id: apollo-research
+  name: Apollo Research
+  url: https://www.apolloresearch.ai
+  type: research-org
+- id: arc-evals
+  name: ARC Evals (Alignment Research Center; now METR)
+  url: https://evals.alignment.org
+  type: research-org
+- id: transluce
+  name: Transluce
+  url: https://transluce.org
+  type: research-org
+- id: uk-aisi
+  name: UK AI Security Institute
+  url: https://www.aisi.gov.uk
+  type: government
+- id: andon-labs
+  name: Andon Labs
+  url: https://andonlabs.com
+  type: company
+- id: sakana-ai
+  name: Sakana AI
+  url: https://sakana.ai
+  type: ai-lab
+- id: alibaba
+  name: Alibaba Cloud (Qwen)
+  url: https://www.alibabacloud.com
+  type: company
+- id: xiaomi
+  name: Xiaomi
+  url: https://www.mi.com
+  type: company
+- id: vals-ai
+  name: Vals AI
+  url: https://www.vals.ai
+  type: company
+- id: character-ai
+  name: Character.AI (Character Technologies)
+  url: https://character.ai
+  type: company
+- id: chai-research
+  name: Chai Research
+  url: https://www.chai-research.com
+  type: company
+- id: cursor
+  name: Cursor (Anysphere)
+  url: https://cursor.com
+  type: company
+- id: amazon
+  name: Amazon / Amazon Web Services
+  url: https://aws.amazon.com
+  type: company
+- id: openclaw
+  name: OpenClaw
+  url: https://openclaw.ai
+  type: company
+- id: github
+  name: GitHub
+  url: https://github.com
+  type: company
+- id: wikimedia-foundation
+  name: Wikimedia Foundation
+  url: https://wikimediafoundation.org
+  type: company
+- id: rubygems
+  name: RubyGems.org
+  url: https://rubygems.org
+  type: company
+- id: wall-street-journal
+  name: The Wall Street Journal
+  url: https://www.wsj.com
+  type: company
+- id: washington-post
+  name: The Washington Post
+  url: https://www.washingtonpost.com
+  type: company
+- id: cert-ua
+  name: CERT-UA
+  url: https://cert.gov.ua
+  type: government
+- id: sysdig
+  name: Sysdig
+  url: https://www.sysdig.com
+  type: company
+- id: crowdstrike
+  name: CrowdStrike
+  url: https://www.crowdstrike.com
+  type: company
+- id: hunt-io
+  name: Hunt.io
+  url: https://hunt.io
+  type: company
+- id: tom-murphy-vii
+  name: Tom Murphy VII
+  url: http://tom7.org
+  type: individual
+- id: university-of-freiburg
+  name: University of Freiburg
+  url: https://uni-freiburg.de
+  type: academic
+- id: university-of-cambridge
+  name: University of Cambridge
+  url: https://www.cam.ac.uk
+  type: academic
+- id: zhipu-ai
+  name: Zhipu AI (Z.ai)
+  url: https://z.ai
+  type: ai-lab
+- id: matplotlib
+  name: Matplotlib (open-source project)
+  url: https://matplotlib.org
+  type: company
+- id: dsewiki
+  name: DSEWiki
+  url: http://www.wikiservice.at/dse/wiki.cgi
+  type: company
+- id: us-sec
+  name: U.S. Securities and Exchange Commission
+  url: https://www.sec.gov
+  type: government
+- id: us-census-bureau
+  name: U.S. Census Bureau
+  url: https://www.census.gov
+  type: government
+- id: us-department-of-education
+  name: U.S. Department of Education
+  url: https://www.ed.gov
+  type: government
+- id: asymmetric-security
+  name: Asymmetric Security
+  url: https://asymmetricsecurity.com
+  type: company

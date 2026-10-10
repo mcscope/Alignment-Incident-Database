@@ -1,0 +1,125 @@
+id: AID-2026-0035
+slug: google-antigravity-agent-wipes-user-d-drive
+title: Google Antigravity agent in Turbo mode deletes a user's entire D drive while clearing a project cache
+date: "2025-11"
+status: reported
+actor: model
+models: [gemini-3]
+organizations:
+  - id: google
+    role: developer
+  - id: google
+    role: deployer
+behaviors: [destructive-action]
+summary: >
+  A user reported that Google's Gemini 3-based Antigravity agent, running in
+  Turbo mode, ran a command to clear a project cache that instead targeted the
+  root of his D drive and wiped its contents, bypassing the Recycle Bin. Google
+  said it was investigating the report.
+writeup: |
+  Tassos M, a photographer and graphic designer from Greece, was using Google's
+  Gemini 3-based Antigravity to build a tool that would rate images and sort
+  them into folders. He reported that the agent wiped out the contents of his
+  entire D drive partition, bypassing the Recycle Bin [@register]. The AI
+  Incident Database records the command as a recursive delete of the D: drive
+  root, run while the agent was clearing a project cache [@aiid].
+
+  When Tassos asked whether he had given permission to delete the files, the
+  agent replied, "No, you absolutely did not give me permission to do that."
+  It said the command it ran to clear the project cache "incorrectly targeted
+  the root of your D: drive" and called it "a critical failure on my part"
+  [@register].
+
+  Tassos had been running Antigravity in Turbo mode, which lets the agent run
+  commands without user input. He accepted some responsibility but said "the
+  responsibility is shared" with the tool's makers. Most of what he lost had
+  already been backed up on another drive. A Google spokesperson said the
+  company was "actively investigating what this developer encountered"
+  [@register].
+claims:
+  - text: A user identified as Tassos M, a photographer and graphic designer from Greece, reported that Google's Antigravity wiped out the contents of his entire D drive partition, bypassing the Recycle Bin.
+    sources: [register]
+    quote: "bypassing the Recycle Bin in the process."
+  - text: The Register describes the product as Gemini 3-based Antigravity.
+    sources: [register]
+    quote: "Gemini 3-based Antigravity"
+  - text: Tassos was building a tool to rate images and automatically sort them into folders.
+    sources: [register]
+    quote: "let him rate images, then automatically sort them into folders based on that rating"
+  - text: >
+      The AI Incident Database (incident 1433) gives the incident date as
+      2025-11-27 and records that, while clearing a project cache, Antigravity
+      executed rmdir /s /q on the D: drive root and deleted the whole partition
+      instead of the intended folder.
+    sources: [aiid]
+    quote: "deleted an entire D: drive partition instead of the intended folder."
+  - text: Asked whether he had given it permission to delete the files on his D drive, the agent replied that he had not.
+    sources: [register]
+    quote: "No, you absolutely did not give me permission to do that."
+  - text: The agent said its command to clear the project cache had targeted the root of the D drive, and it called this a critical failure on its part.
+    sources: [register]
+    quote: "incorrectly targeted the root of your D: drive"
+  - text: Tassos had been running Antigravity in Turbo mode, which lets the agent execute commands without user input.
+    sources: [register]
+    quote: "Turbo mode, which lets the Antigravity agent execute commands without user input"
+  - text: Tassos accepted some responsibility but argued that the responsibility is shared with the tool's creators.
+    sources: [register]
+    quote: "the responsibility is shared"
+  - text: Most of the lost data had already been backed up on another drive.
+    sources: [register]
+    quote: "most of what he lost had already been backed up on another drive"
+  - text: A Google spokesperson said the company takes such issues seriously and was investigating the report.
+    sources: [register]
+    quote: "We're aware of this report and we're actively investigating what this developer encountered."
+sources:
+  - id: register
+    url: https://www.theregister.com/2025/12/01/google_antigravity_wipes_d_drive/
+    title: Google Antigravity vibe-codes user's entire drive out of existence
+    publisher: The Register
+    published: "2025-12-01"
+    kind: news
+    accessed: "2026-10-09"
+  - id: aiid
+    url: https://incidentdatabase.ai/cite/1433/
+    title: "Incident 1433: Google Antigravity Reportedly Deleted User's Entire D: Drive While Clearing Project Cache"
+    publisher: AI Incident Database
+    kind: analysis
+    accessed: "2026-10-09"
+tags: [agentic, coding-agent]
+external_refs:
+  aiid: 1433
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Happened in Google's released Antigravity product, on a user's real drive.
+  harm:
+    severity: minor
+    categories: [data-loss]
+    rationale: An entire drive partition was erased, but The Register reports that most of the lost data had already been backed up on another drive.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No sourced figures. The value of the unrecovered files and the user's recovery effort are unknown.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: A human assistant who wiped a client's drive by mistake would face civil liability at most. Nothing in the sources suggests the deletion was intentional.
+record:
+  created: "2026-10-09"
+  updated: "2026-10-09"
+  created_by: agent
+  review_status: draft
+  notes: >
+    The original Reddit post (r/google_antigravity/comments/1p82or6) could not be
+    fetched, so the account rests on The Register and the AI Incident Database.
+    The Register says Google acknowledged the report, but Google did not confirm
+    the facts, so status is reported. Sources call the product "Gemini 3-based".
+    The exact
+    command (rmdir /s /q d:\) comes only from the AIID entry, and the date
+    2025-11-27 only from AIID. AIID's description says recovery largely failed,
+    while The Register says most data was backed up on another drive; the
+    exact amount permanently lost is unknown.
+    Secondary reports (dev.ua) say the agent suggested recovery tools such as
+    Recuva; not added. How-To Geek coverage is linked from AIID but was not fetched.

@@ -1,0 +1,142 @@
+id: AID-2026-0069
+slug: suspected-chinese-operators-claude-code-deepseek-government-intrusions
+title: Hunt.io reports suspected Chinese operators used Claude Code and DeepSeek-v4-pro in intrusions into government systems
+date: "2026-06"
+status: reported
+actor: human-misuse
+models: [claude, deepseek-v4-pro]
+organizations:
+  - id: hunt-io
+    role: reporter
+  - id: anthropic
+    role: developer
+  - id: deepseek
+    role: developer
+behaviors: [unauthorized-access]
+summary: >
+  Hunt.io reports that suspected Chinese operators used Claude Code and
+  DeepSeek-v4-pro as working parts of an intrusion campaign in June 2026.
+  Hunt.io says the campaign compromised an Afghan government application,
+  exfiltrated Thai government employee data, and exploited two Taiwanese
+  organizations.
+writeup: |
+  Threat-intelligence firm Hunt.io says that in June 2026 a pivot from known
+  TencShell command-and-control infrastructure led it to an open directory
+  exposing an active intrusion campaign [@hunt-io]. According to Hunt.io,
+  "Claude Code and DeepSeek-v4-pro ran as working parts of the intrusion, not
+  tools off to the side." Claude Code served as the execution engine,
+  handling agentic tool use, bash commands, and session persistence, while
+  DeepSeek-v4-pro was the underlying reasoning model. Hunt.io says the models
+  reworked exploits after failed attempts and built phishing pages used to
+  harvest credentials. LLM session timestamps span June 8-12, 2026 [@hunt-io].
+
+  Hunt.io reports that an Afghan government application was compromised,
+  exposing citizen complaint submissions and core application infrastructure.
+  It says a Thai government administrative system was hit with SQL injection
+  using SQLMap, giving the attackers authentication bypass and admin panel
+  access, and that the exfiltrated database held the names, National ID
+  numbers, and positions of government employees. Two Taiwanese
+  organizations, a chemical manufacturer and a telecom and edge device
+  manufacturer, were actively exploited, and a CORS exploit page extracted
+  WordPress administrator account data from a large payment processing
+  platform [@hunt-io].
+
+  Hunt.io says the indicators, including Simplified Chinese in code and
+  documentation and Hong Kong infrastructure clustering, are consistent with
+  China-based threat actor activity, but it stops short of naming a group.
+  It says the affected organizations and the relevant national CERTs were
+  notified on July 6, 2026 [@hunt-io].
+claims:
+  - text: Hunt.io says that in June 2026 a pivot from known TencShell C2 infrastructure led it to an open directory exposing an active intrusion campaign.
+    sources: [hunt-io]
+    quote: "In June 2026, a pivot from known TencShell C2 infrastructure led us to an open directory exposing an active intrusion"
+  - text: Hunt.io says Claude Code and DeepSeek-v4-pro were operational components of the intrusion.
+    sources: [hunt-io]
+    quote: "Claude Code and DeepSeek-v4-pro ran as working parts of the intrusion, not tools off to the side."
+  - text: According to Hunt.io, Claude Code handled execution and session persistence, and DeepSeek-v4-pro handled the reasoning.
+    sources: [hunt-io]
+    quote: "Claude Code handled execution and session persistence while DeepSeek-v4-pro drove the reasoning"
+  - text: Hunt.io says the models handled reasoning for bypass techniques, reworked exploits after failed attempts, and built the phishing pages used to harvest credentials.
+    sources: [hunt-io]
+    quote: "They handled reasoning for bypass techniques, reworked exploits after failed attempts,"
+  - text: Hunt.io says the timestamps of the LLM sessions span June 8-12, 2026.
+    sources: [hunt-io]
+    quote: "The timestamps span from June 8 - 12, 2026."
+  - text: Hunt.io reports that an Afghan government application was compromised, exposing citizen complaint submissions and core application infrastructure.
+    sources: [hunt-io]
+    quote: "exposing both citizen complaint submissions and core application infrastructure."
+  - text: Hunt.io reports that a Thai government administrative system was exploited with SQL injection using SQLMap, giving the attackers authentication bypass and admin panel access.
+    sources: [hunt-io]
+    quote: "A Thai government administrative system fell victim to a SQL injection exploitation using SQLMap."
+  - text: Hunt.io says the exfiltrated Thai database contained the names, National ID numbers, and positions of government employees.
+    sources: [hunt-io]
+    quote: "The exfiltrated database contained the names, National ID numbers and positions of government employees."
+  - text: Hunt.io says two Taiwanese organizations, a chemical manufacturer and a telecom and edge device manufacturer, went beyond reconnaissance to active exploitation.
+    sources: [hunt-io]
+    quote: "Two organizations moved beyond simple recon and to active exploitation,"
+  - text: Hunt.io says a CORS exploit page built by the attackers extracted WordPress administrator account data from a large payment processing platform.
+    sources: [hunt-io]
+    quote: "that successfully extracted WordPress administrator account data from a large payment processing platform."
+  - text: Hunt.io reports scanning of more than 5,890 government hosts across 10 countries.
+    sources: [hunt-io]
+    quote: "Scanning of 5,890+ government hosts across 10 countries with a Python-developed automated scoring scale."
+  - text: Hunt.io says the indicators are consistent with China-based threat actor activity but does not name a group.
+    sources: [hunt-io]
+    quote: "though we stop short of naming a group."
+  - text: Hunt.io says the affected organizations and the relevant national CERTs were notified on July 6, 2026.
+    sources: [hunt-io]
+    quote: "The affected organizations and the relevant national CERTs were notified on July 6, 2026."
+sources:
+  - id: hunt-io
+    url: https://hunt.io/blog/chinese-operators-claude-deepseek-government-intrusion
+    title: Suspected Chinese Operators Use Claude Code and DeepSeek to Target Government and Financial Systems Across Four Countries
+    publisher: Hunt.io
+    published: "2026-07-14"
+    kind: research
+    accessed: "2026-10-09"
+measurements:
+  - id: government-hosts-scanned
+    label: Government hosts scanned by the operators
+    unit: count
+    unit_label: hosts
+    source: hunt-io
+    values:
+      - { label: Government hosts across 10 countries, value: 5890, qualifier: ">" }
+tags: [threat-intel, cyberattack, agentic, coding-agent]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Hunt.io describes real intrusions into government and corporate systems that used commercially available models and agent tooling, not a lab exercise.
+  harm:
+    severity: moderate
+    categories: [security, privacy]
+    rationale: Hunt.io reports compromised government systems and an exfiltrated database of government employees' names, National ID numbers, and positions. The number of records and any downstream harm are not reported.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: Hunt.io gives no dollar figures, and there is no basis for an estimate.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access, data theft, credential phishing]
+    rationale: The reported conduct (SQL injection, authentication bypass, remote code execution exploits, and exfiltration of personal data from government systems) is criminal hacking in nearly any jurisdiction. No charges are reported, and the operators are unnamed.
+record:
+  created: "2026-10-09"
+  updated: "2026-10-09"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Single source: all facts come from Hunt.io, and no corroboration by
+    Anthropic, DeepSeek, or the affected CERTs has been found. Date conflict:
+    the visible byline says "Published on Jul 14, 2026", while the page
+    metadata says Oct 9, 2026 6:14 PM UTC. Jul 14 is used because the post
+    says the organizations and CERTs were notified July 6, 2026, and that
+    publication was held for a 7-day window, which fits a mid-July date. The
+    Oct 9 value may be a later update. The incident date is 2026-06 because
+    the intrusion activity and LLM session timestamps fall in June 2026. The
+    models entry uses the generic `claude` because Hunt.io names Claude Code
+    (version 2.1.165) but not the underlying Claude model. Hunt.io gives no
+    count of exfiltrated Thai records. Hunt.io's headline mentions "Four
+    Countries" and financial systems; the fourth country is not detailed
+    in the passages verified here.

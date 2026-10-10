@@ -1,0 +1,182 @@
+id: AID-2026-0067
+slug: gtg-20006-claude-code-automated-espionage-midnight-blizzard
+title: Anthropic reports espionage actor GTG-20006 automated intrusions with Claude Code and exfiltrated over 300,000 national identity records
+date: "2026-09"
+status: confirmed
+actor: human-misuse
+models: [claude]
+organizations:
+  - id: anthropic
+    role: developer
+  - id: anthropic
+    role: reporter
+behaviors: [unauthorized-access]
+summary: >
+  Anthropic's September 2026 threat report says GTG-20006, an espionage actor it
+  links to public reporting on Midnight Blizzard, automated its operations with
+  Claude Code skills and AI agents and targeted more than 20 organizations. Per
+  Anthropic, the actor exfiltrated more than 300,000 national identity records
+  from a North African government technology authority and mail records from at
+  least eight organizations.
+writeup: |
+  Anthropic's September 2026 threat intelligence report covers activity it
+  disrupted between December 2025 and August 2026 [@anthropic-report]. It
+  describes GTG-20006 as "an actor who has increased their speed by automating
+  their operations using AI." Anthropic says one operator is a Russian speaker
+  whose tradecraft and targeting are "consistent with Russian state-nexus
+  espionage," and that its attribution "is consistent with public reporting
+  linking the actor to Midnight Blizzard" [@anthropic-report]. The Next Web
+  describes the case as a Russian-speaking operator running espionage against
+  Ukrainian and European government bodies [@tnw].
+
+  According to Anthropic, the actor used AI to set up its phishing
+  infrastructure and exploitation tooling. Agents monitored whether deployed
+  malware had been flagged and, if so, autonomously modified and rebuilt it "to
+  evade the existing detections"; they were designed to keep iterating on the
+  toolkit "until it was undetected." The human operator engaged mainly to
+  modify the Claude Code skills that drove these workflows [@anthropic-report].
+
+  Anthropic says its investigation identified more than 20 distinct
+  organizations targeted, including government ministries, defense and
+  intelligence bodies, embassies and diplomatic missions, think tanks, and
+  defense-industrial companies, concentrated in Ukraine and Europe
+  [@anthropic-report]. In an intrusion of a North African government technology
+  authority, the actor stole VPN appliance credentials, took over the
+  organization's central account server, and exfiltrated its full credential
+  database: more than 300,000 national identity records, plus commercial
+  registry data on more than half a million companies. A cloud email espionage
+  platform aimed at diplomatic and government personnel led to the access and
+  exfiltration of mail records from at least eight organizations, including a
+  national prosecutor office [@anthropic-report].
+claims:
+  - text: Anthropic's September 2026 threat report covers activity Anthropic disrupted between December 2025 and August 2026.
+    sources: [anthropic-report]
+    quote: "covers activity we disrupted between December 2025 and August 2026"
+  - text: Anthropic describes GTG-20006 as an actor who increased their speed by automating their operations using AI.
+    sources: [anthropic-report]
+    quote: "GTG-20006 is an actor who has increased their speed by automating their operations using AI."
+  - text: Anthropic says one of the actor's operators is a Russian speaker whose tradecraft and targeting are consistent with Russian state-nexus espionage.
+    sources: [anthropic-report]
+    quote: "whose tradecraft and targeting are consistent with Russian state-nexus espionage."
+  - text: Anthropic says its attribution is consistent with public reporting linking the actor to Midnight Blizzard.
+    sources: [anthropic-report, tnw]
+    quote: "Our attribution is consistent with public reporting linking the actor to Midnight Blizzard."
+  - text: The Next Web describes GTG-20006 as a Russian-speaking operator running espionage, with targets including Ukrainian and European government bodies and diplomatic and defence organisations.
+    sources: [tnw]
+    quote: "Diplomatic and defence organisations were among the targets too."
+  - text: Anthropic says the actor used AI to set up its phishing infrastructure and exploitation tooling.
+    sources: [anthropic-report]
+    quote: "The actor used AI to set up the phishing infrastructure and the exploitation tooling,"
+  - text: According to Anthropic, when deployed malware was flagged, agents autonomously modified and rebuilt it to evade detection, and the agents were designed to keep iterating on the toolkit until it was undetected.
+    sources: [anthropic-report, tnw]
+    quote: "The agents were designed to continue iterating on GTG-20006’s toolkit until it was undetected."
+  - text: Anthropic says the human actor engaged primarily to modify the Claude Code skills that drove the workflows when they needed refining.
+    sources: [anthropic-report]
+    quote: "The human actor engaged primarily to modify Claude Code skills that drove the workflows when they needed to be refined."
+  - text: Anthropic says its investigation identified more than 20 distinct organizations targeted in the actor's operational planning, reconnaissance, and live operations.
+    sources: [anthropic-report]
+    quote: "Our investigation identified more than 20 distinct organizations"
+  - text: Anthropic says the targets included government ministries, defense and intelligence bodies, embassies and diplomatic missions, think tanks, and defense-industrial companies, concentrated in Ukraine and Europe but extending to the Middle East.
+    sources: [anthropic-report]
+    quote: "think tanks, and defense-industrial companies, concentrated in Ukraine and Europe but extending to the Middle East."
+  - text: Anthropic says the actor also intruded into a North African government technology authority, stealing credentials to a VPN appliance and using them to take over the organization's central account server.
+    sources: [anthropic-report]
+    quote: "The same actor also conducted an intrusion of a North African government technology authority."
+  - text: According to Anthropic, this let the actor exfiltrate the authority's full credential database, more than 300,000 national identity records, along with commercial registry data on more than half a million companies operating in the country.
+    sources: [anthropic-report]
+    quote: "This allowed them to exfiltrate its full credential database: more than 300,000 national identity records,"
+  - text: Anthropic says the actor's cloud email espionage platform, used against diplomatic and government personnel, resulted in the access and exfiltration of mail records from at least eight organizations, including a national prosecutor office, a military education institute, and a regional intergovernmental organization.
+    sources: [anthropic-report]
+    quote: "resulted in the access and exfiltration of mail records from at least eight organizations"
+sources:
+  - id: anthropic-report
+    url: https://www.anthropic.com/threat-intelligence-report-september-2026
+    title: "Detecting and countering misuse of AI: September 2026"
+    publisher: Anthropic
+    published: "2026-09"
+    kind: primary
+    accessed: "2026-10-09"
+  - id: tnw
+    url: https://thenextweb.com/news/anthropic-claude-misuse-threat-intelligence-report
+    title: Anthropic details how Claude was misused for surveillance and weapons
+    publisher: The Next Web
+    published: "2026-09-10"
+    kind: news
+    accessed: "2026-10-09"
+measurements:
+  - id: organizations-targeted
+    label: Organizations targeted
+    unit: count
+    unit_label: organizations
+    source: anthropic-report
+    values:
+      - { label: Targeted organizations, value: 20, qualifier: ">" }
+  - id: records-exfiltrated
+    label: Records exfiltrated
+    condition: Intrusion of a North African government technology authority
+    unit: count
+    unit_label: records
+    source: anthropic-report
+    values:
+      - { label: National identity records, value: 300000, qualifier: ">" }
+      - { label: Companies in commercial registry data, value: 500000, qualifier: ">" }
+  - id: mail-orgs-compromised
+    label: Organizations whose mail records were accessed and exfiltrated
+    unit: count
+    unit_label: organizations
+    source: anthropic-report
+    values:
+      - { label: Organizations, value: 8, qualifier: ">" }
+related: [AID-2026-0066]
+tags: [threat-intel, cyberattack, espionage, agentic, coding-agent, state-actor, malware, phishing]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Anthropic says the actor used Claude Code and AI agents in live operations against real organizations, with data exfiltrated from a government authority and at least eight mail environments.
+  harm:
+    severity: moderate
+    categories: [security, privacy]
+    rationale: >
+      Per Anthropic, more than 300,000 national identity records, registry data
+      on more than half a million companies, and mail records from at least
+      eight organizations (including a national prosecutor office) were
+      exfiltrated. This is large, irreversible data exposure; a reviewer may
+      judge it severe. Downstream impact on individuals is not described.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: Anthropic gives no dollar figures, and victims and remediation costs are not disclosed.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access, data theft, espionage]
+    rationale: >
+      Stealing VPN credentials, taking over a government account server, and
+      exfiltrating identity databases and mail records without authorization is
+      criminal hacking in essentially every jurisdiction. No charges are known;
+      the suggested state nexus makes prosecution unlikely but does not change
+      the nature of the conduct.
+record:
+  created: "2026-10-09"
+  updated: "2026-10-09"
+  created_by: agent
+  review_status: draft
+  notes: >
+    All facts come from Anthropic's report web page; the attribution (Russian
+    state-nexus, consistent with Midnight Blizzard reporting) is Anthropic's.
+    The full PDF
+    (https://www-cdn.anthropic.com/e50be2e51e7695dc4b1366a37a245a597377d3b5/Anthropic-Detecting-and-countering-091026.pdf)
+    could not be fetched (over the fetch tool's 10 MB limit), so it is not
+    cited. The web page shows no explicit publication date; TNW dates its
+    coverage 2026-09-10 and the PDF filename suggests the same. The incident
+    date uses the report's month because the actor's activity dates are not
+    given beyond the report-wide December 2025 to August 2026 window. The
+    report's GTG-20006 section names no specific mitigation (no account-ban
+    sentence found for this actor) and no specific Claude model version, so
+    the generic `claude` id is used. Quotes were extracted through a
+    summarizing fetch tool that limited quote length; a human should check
+    exact characters, especially the curly apostrophe in "GTG-20006’s". The
+    report-wide line "Humans remained in the loop by setting the targets of
+    attacks and reviewing exfiltration" appears in the general trends section,
+    not the GTG-20006 section, so it is not attributed to this actor here.

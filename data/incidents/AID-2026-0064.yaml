@@ -1,0 +1,137 @@
+id: AID-2026-0064
+slug: apt28-lamehug-promptsteal-malware-queries-qwen-llm
+title: APT28-attributed LAMEHUG/PROMPTSTEAL malware queries Qwen2.5-Coder via Hugging Face to generate data-theft commands in Ukraine
+date: "2025-07"
+status: confirmed
+actor: human-misuse
+models: [qwen2.5-coder-32b-instruct]
+organizations:
+  - id: alibaba
+    role: developer
+  - id: hugging-face
+    role: deployer
+  - id: cert-ua
+    role: reporter
+  - id: google
+    role: researcher
+behaviors: [unauthorized-access]
+summary: >
+  Malware that CERT-UA calls LAMEHUG and Google calls PROMPTSTEAL queried
+  Qwen2.5-Coder-32B-Instruct through the Hugging Face API to generate Windows
+  commands that collected system information and documents from infected
+  machines. CERT-UA attributed the activity to APT28 with medium confidence, and
+  Google called it its first observation of malware querying an LLM in live
+  operations.
+writeup: |
+  On July 10, 2025, CERT-UA received reports of malicious emails sent from
+  compromised accounts and impersonating ministry officials. The emails tried to
+  distribute a Python malware, which CERT-UA named LAMEHUG, to executive
+  government bodies. CERT-UA attributes the activity with medium confidence to the
+  Russian threat group APT28 [@bleepingcomputer]. Google Threat Intelligence
+  Group (GTIG) tracks the same malware as PROMPTSTEAL and says it identified APT28
+  (aka FROZENLAKE) using it against Ukraine [@gtig].
+
+  Instead of hard-coding its commands, the malware uses the Hugging Face API to
+  query the open model Qwen2.5-Coder-32B-Instruct, developed by Alibaba Cloud,
+  and has the model write one-line Windows commands [@gtig] [@bleepingcomputer].
+  According to GTIG, the prompts ask for commands that gather computer, hardware,
+  process, network, and AD domain information and recursively copy Office,
+  PDF, and text documents from the user's Documents, Downloads, and Desktop
+  folders. The malware "blindly" executes the output and exfiltrates the results
+  to an adversary-controlled server. It poses as an "image generation" program,
+  and GTIG says it likely uses stolen API tokens [@gtig].
+
+  GTIG called APT28's use of PROMPTSTEAL "our first observation of malware
+  querying an LLM deployed in live operations." It also reported continued
+  development of the malware, with new samples that add obfuscation and change
+  the C2 method [@gtig]. BleepingComputer notes that CERT-UA did not say whether
+  the LLM-generated commands succeeded [@bleepingcomputer].
+claims:
+  - text: CERT-UA received reports on July 10, 2025 of malicious emails sent from compromised accounts and impersonating ministry officials, which attempted to distribute the malware to executive government bodies.
+    sources: [bleepingcomputer]
+    quote: "on July 10 about malicious emails sent from compromised accounts and impersonating ministry officials"
+  - text: CERT-UA attributes the activity with medium confidence to the Russian threat group APT28.
+    sources: [bleepingcomputer]
+    quote: "The Ukrainian agency attributes this activity with medium confidence to the Russian threat group APT28."
+  - text: GTIG says it identified the Russian government-backed actor APT28 (aka FROZENLAKE) using new malware against Ukraine that GTIG tracks as PROMPTSTEAL and that CERT-UA reported as LAMEHUG.
+    sources: [gtig]
+    quote: "In June, GTIG identified the Russian government-backed actor APT28 (aka FROZENLAKE) using new malware against Ukraine we track as PROMPTSTEAL and reported by CERT-UA as LAMEHUG."
+  - text: The malware is written in Python and uses the Hugging Face API to query Qwen2.5-Coder-32B-Instruct to generate one-line Windows commands.
+    sources: [gtig, bleepingcomputer]
+    quote: "It contains a compiled script that uses the Hugging Face API to query the LLM Qwen2.5-Coder-32B-Instruct to generate one-line Windows commands."
+  - text: Qwen2.5-Coder-32B-Instruct is an open-source model created by Alibaba Cloud and designed to generate code.
+    sources: [bleepingcomputer]
+    quote: "Created by Alibaba Cloud, the LLM is open-source and designed specifically to generate code"
+  - text: GTIG says the prompts ask the LLM for commands to collect system information and to copy documents to a specified directory. The malware executes the output blindly and then exfiltrates it.
+    sources: [gtig]
+    quote: "The output from these commands are then blindly executed locally by PROMPTSTEAL before the output is exfiltrated."
+  - text: GTIG says PROMPTSTEAL executes the commands and sends the collected data to an adversary-controlled server.
+    sources: [gtig]
+    quote: "PROMPTSTEAL then executes the commands and sends the collected data to an adversary-controlled server."
+  - text: GTIG says the malware masquerades as an "image generation" program and queries the Hugging Face API in the background.
+    sources: [gtig]
+    quote: "It masquerades as an \"image generation\" program that guides the user through a series of prompts to generate images while querying the Hugging Face API to generate commands for execution in the background."
+  - text: GTIG assesses that PROMPTSTEAL likely uses stolen API tokens to query the Hugging Face API.
+    sources: [gtig]
+    quote: "PROMPTSTEAL likely uses stolen API tokens to query the Hugging Face API."
+  - text: GTIG described APT28's use of PROMPTSTEAL as its first observation of malware querying an LLM deployed in live operations.
+    sources: [gtig]
+    quote: "APT28's use of PROMPTSTEAL constitutes our first observation of malware querying an LLM deployed in live operations."
+  - text: GTIG reported continued development of the malware, with new samples adding obfuscation and changing the C2 method.
+    sources: [gtig]
+    quote: "Our analysis indicates continued development of this malware, with new samples adding obfuscation and changing the C2 method."
+  - text: BleepingComputer reports that CERT-UA did not state whether the LLM-generated commands were successful.
+    sources: [bleepingcomputer]
+    quote: "CERT-UA did not state whether the LLM-generated commands executed by LameHug were successful."
+sources:
+  - id: gtig
+    url: https://cloud.google.com/blog/topics/threat-intelligence/threat-actor-usage-of-ai-tools
+    title: "GTIG AI Threat Tracker: Advances in Threat Actor Usage of AI Tools"
+    publisher: Google Threat Intelligence Group
+    published: "2025-11-05"
+    kind: primary
+    accessed: "2026-10-09"
+  - id: bleepingcomputer
+    url: https://www.bleepingcomputer.com/news/security/lamehug-malware-uses-ai-llm-to-craft-windows-data-theft-commands-in-real-time/
+    title: LameHug malware uses AI LLM to craft Windows data-theft commands in real-time
+    publisher: BleepingComputer
+    published: "2025-07-17"
+    kind: news
+    accessed: "2026-10-09"
+tags: [threat-intel, malware, state-actor, open-weights]
+assessment:
+  reach:
+    level: deployed
+    rationale: GTIG lists PROMPTSTEAL as "Observed in operations" and calls it malware deployed in live operations. CERT-UA's report concerns emails sent to Ukrainian executive government bodies.
+  harm:
+    severity: minor
+    categories: [security, privacy]
+    rationale: The malware was distributed to government bodies through compromised accounts and is designed to steal system information and documents. No source confirms that data was stolen or how many machines were infected, and CERT-UA did not say whether the LLM-generated commands succeeded, so the rating is kept low until there is evidence of actual losses.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No source gives any figure for losses or remediation costs.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access, data theft, espionage]
+    jurisdiction: Ukraine
+    rationale: Sending malware from compromised accounts to steal documents from government systems is computer intrusion and data theft under ordinary criminal law. Attribution to a state actor (APT28, medium confidence per CERT-UA) does not change how the conduct itself would be classified.
+record:
+  created: "2026-10-09"
+  updated: "2026-10-09"
+  created_by: agent
+  review_status: draft
+  notes: >
+    CERT-UA's primary advisory (https://cert.gov.ua/article/6284730) did not
+    load (JavaScript-only page), so CERT-UA facts are sourced from
+    BleepingComputer's coverage. Add the advisory if a human can read it. Date
+    conflict: GTIG says it identified APT28 using the malware "In June" (the
+    year is implied by the 2025 report), while CERT-UA received reports on July
+    10, 2025. The record uses 2025-07 (first public report). The success of the
+    LLM-generated commands, the number of victims, and any data actually
+    exfiltrated are unsourced. Hugging Face is listed as deployer because it
+    served the model API the malware called. No source describes any Hugging
+    Face response. The behavior "unauthorized-access" is the closest existing
+    term. The model was not acting on its own; it generated intrusion and
+    data-collection commands that a human-built malware ran.

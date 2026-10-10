@@ -543,7 +543,8 @@ scanned:
   - url: https://news.google.com/rss/articles/CBMi3wFBVV95cUxOUkM3NTBLWW04VFkzdWJWellLSjVTNkJMblhnaTU3OEVFckkzTTdOY0RWSTItY3pEejhmY1NUN1FBTG9xakFyLXZJNnlvcGVqdi1ERHUySFFnbFVIdFFrM0dFVDBpbFdwXzhRTFlyXzNydnRERUItM2lIRHRfaG5PTUpYMzRyTEdSMDFkRTFjdHZxS2xFM1BGS0RFNUtab1Nkc3FfcGJtMGVkNDl3NmN2dVJucS0yMUh4Q1VXblBoOWxZTTkwM256ekU0T0ZIbXNuaVo4RmZublZfQjgyYWF3?oc=5
     title: OpenAI used AI to help write email warning Australian government AI had hacked its websites - The Guardian
     origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
-    verdict: lead
+    verdict: skipped
+    reason: Follow-up detail on AID-2026-0007 (AI-drafted notification email); article could not be fetched.
   - url: https://news.google.com/rss/articles/CBMiogFBVV95cUxPVlEtXzJVSVhLcmV3djFiZ3U1aGRMbFNqakYtRUgzZWFubWFZMWxDazU2V0ktcUdPaXAzeE5mOU5aaXdFNjE5VUNSeDJTR0VqZDVCRkJDRGRnbmxPNTRJVG1rTW40U3FsbWhEUThkYnR2NTY2QVhjSTdXN1Z1a0JmMDhEakJnVkxMdFhNNTR0b28tem1sVUNLT3Q3bzdfcjJiUWc?oc=5
     title: Man to be charged over alleged involvement in investment scam - The Straits Times
     origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
@@ -690,7 +691,8 @@ scanned:
   - url: https://news.google.com/rss/articles/CBMiogFBVV95cUxNdjNkamtUU2xXWXpqT1V5N1VGbzNMNUtLNndNVkhtTXlsRHZadVZBV3RubllCS193MHNVR0UyLUZ6M0RQRnNZWmdJSjlkOWItd2FqV09Qa1N2Z0NXZElUakprZ2pkb19VVlMzdEZjOExnakVJZXhEVlg5XzExV2xhSTU4MWZtRzJEYmQ4Y1dFelNWT3ZROURKT2RBMU1YT1hkVHc?oc=5
     title: An OpenAI artificial intelligence agent accessed multiple Australian government systems / Alert sent by OpenAI to the authorities, also drafted by an AI agent - Informat.ro
     origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
-    verdict: lead
+    verdict: skipped
+    reason: Covered by AID-2026-0007.
   - url: https://news.google.com/rss/articles/CBMizAFBVV95cUxOMGJpTmktUXh6c3RyR3BZNl80b3dMNFdOd2t6enRtSEtzV204XzBxeFo4OXRaNTJhcFdoNnJXb0U4dzV0akoxWFZwUFo4UERlSGxvZGE0Zk94SGpKcS12WmZzcUpVNnhlQ2JNTm9hcnprUzJfN0FWS0NKRGRadkJqUmk4RTQyXzYzclJYeGdlNlhfTlBqZWNGMjdzQzVKa182cC12ZERNV2JSWVJQdHdJd3lGd3lyLTJndzR6M3M0bTBpdWhHSXZUanMxRko?oc=5
     title: OpenAI ChatGPT Gets GPT-6 Model Alongside Intelligent UI, Interactive Features - Tech Times
     origin: 'Google News: "system card" model behavior'
@@ -764,7 +766,8 @@ scanned:
   - url: https://www.vals.ai/blogs/mimo-reward-hacking
     title: 2/3rds of MiMo v2.6's Coding Tasks Leak the Answer. Is Exploiting It Cheating?
     origin: "HN: reward hacking"
-    verdict: lead
+    verdict: cited
+    incident: AID-2026-0079
   - url: https://news.google.com/rss/articles/CBMioAFBVV95cUxNakU0azNDbVJLblNXdkpqYXZldi1HUkE5YV9hY1VLNWFTUEFSZXBsYUxQM3BlcXJ2ejM5YzZFb3RsU3lyMnhhX2w2LW4zUkVTMk5aZExrSUJJOWMxSmVIYVZlamVZUngzSkhuWjRpMG1jcklyU1F3MjlzMHFiZXlMRUozdHV0OFVTX2trNzE5TEUxdHljWmszOVQ5YnRMcEZP?oc=5
     title: "DB-GPT AI Agent Platform: Two Critical RCE CVEs at the Agent Data Access Layer - Forkast News"
     origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
@@ -783,7 +786,8 @@ scanned:
   - url: https://thehackernews.com/2026/09/ai-coding-agents-exposed-13000-internal.html
     title: AI Coding Agents Exposed 13,000 Internal Images, Including Billing Records, on GitHub
     origin: AI Incident Database
-    verdict: lead
+    verdict: skipped
+    reason: Covered by AID-2026-0005 (same Glow finding).
   - url: https://www.glow.io/blogs/how-ai-agents-exposed-developer-screenshots-from-leading-tech-companies
     title: "PixelLeak: How AI Agents Exposed Developer Screenshots from Leading Tech Companies"
     origin: scout 2026-10-09 (local run)
@@ -813,6 +817,7 @@ scanned:
     title: How Long Until AI Hacks Everything?
     origin: AI Incident Database
     verdict: lead
+    reason: Backfill could not fetch theatlantic.com; check by hand for a new incident.
   - url: https://www.faz.net/aktuell/feuilleton/medien-und-film/medienpolitik/ki-verleger-packt-aus-so-entstehen-meine-buecher-accg-201255807.html
     title: "KI-Verleger packt aus: So entstehen meine Bücher"
     origin: AI Incident Database
@@ -883,3 +888,1007 @@ scanned:
     origin: scout 2026-10-09 (local run)
     verdict: cited
     incident: AID-2026-0009
+  - url: https://www.eweek.com/news/replit-ai-coding-assistant-failure/
+    title: "'Catastrophic Failure': AI Agent Wipes Production Database, Then Lies About It"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0004
+  - url: https://www.theregister.com/2025/07/21/replit_saastr_vibe_coding_incident/
+    title: "Vibe coding service Replit deleted user's production database, faked data, told fibs galore"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0004
+  - url: https://www.theregister.com/2025/07/22/replit_saastr_response/
+    title: "Replit makes vibe-y promise to stop its AI agents making vibe coding disasters"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0004
+  - url: https://www.saastr.com/why-ill-likely-spend-8000-on-replit-this-month-alone-and-why-thats-ok/
+    title: "Why I'll Likely Spend $8,000 on Replit This Month Alone. And Why That's OK."
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0004
+  - url: https://replit.com/blog/introducing-a-safer-way-to-vibe-code-with-replit-databases
+    title: "Introducing a safer way to Vibe Code with Replit Databases"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0004
+  - url: https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/
+    title: "Brief independent investigation of agents' behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0006
+  - url: https://huggingface.co/blog/security-incident-july-2026
+    title: "Security incident disclosure — July 2026"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0006
+  - url: https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/
+    title: "Specification gaming: the flip side of AI ingenuity"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0010
+  - url: https://vkrakovna.wordpress.com/2018/04/02/specification-gaming-examples-in-ai/
+    title: "Specification gaming examples in AI"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0010
+  - url: https://arxiv.org/abs/1704.03073
+    title: "Data-efficient Deep Reinforcement Learning for Dexterous Manipulation"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0011
+  - url: https://arxiv.org/pdf/1706.03741
+    title: "Deep Reinforcement Learning from Human Preferences"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0012
+  - url: https://arxiv.org/abs/1706.03741
+    title: "Deep reinforcement learning from human preferences (arXiv abstract page)"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0012
+  - url: https://deepmind.google/discover/blog/learning-through-human-feedback/
+    title: "Learning through human feedback"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0012
+  - url: http://tom7.org/mario/mario.pdf
+    title: "The First Level of Super Mario Bros. is Easy with Lexicographic Orderings and Time Travel ...after that it gets a little tricky."
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0013
+  - url: http://tom7.org/mario/
+    title: "learnfun and playfun: A general technique for automating NES games"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0013
+  - url: https://arxiv.org/abs/1802.08842
+    title: "Back to Basics: Benchmarking Canonical Evolution Strategies for Playing Atari"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0014
+  - url: https://ar5iv.labs.arxiv.org/html/1802.08842
+    title: "Back to Basics: Benchmarking Canonical Evolution Strategies for Playing Atari (HTML)"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0014
+  - url: https://arxiv.org/abs/2105.14111
+    title: "Goal Misgeneralization in Deep Reinforcement Learning"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0015
+  - url: https://ar5iv.labs.arxiv.org/html/2105.14111
+    title: "Goal Misgeneralization in Deep Reinforcement Learning (HTML full text)"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0015
+  - url: https://arxiv.org/abs/2210.01790
+    title: "Goal Misgeneralization: Why Correct Specifications Aren't Enough For Correct Goals"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0016
+  - url: https://ar5iv.labs.arxiv.org/html/2210.01790
+    title: "Goal Misgeneralization: Why Correct Specifications Aren't Enough For Correct Goals (HTML full text)"
+    origin: backfill/classic-spec-gaming
+    verdict: cited
+    incident: AID-2026-0016
+  - url: https://blogs.bing.com/search/february-2023/The-new-Bing-Edge-Learning-from-our-first-week
+    title: "The new Bing & Edge – Learning from our first week"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0017
+  - url: https://blogs.bing.com/search/february-2023/The-new-Bing-Edge-Updates-to-Chat
+    title: "The new Bing & Edge – Updates to Chat"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0017
+  - url: https://time.com/6256529/bing-openai-chatgpt-danger-alignment/
+    title: "Bing's AI Is Threatening Users. That's No Laughing Matter"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0017
+  - url: https://www.adn.com/nation-world/2023/02/17/microsofts-ai-chatbot-is-going-off-the-rails/
+    title: "Microsoft's AI chatbot is going off the rails"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0017
+  - url: https://fortune.com/2023/02/17/microsoft-chatgpt-bing-romantic-love/
+    title: "Microsoft's Bing chatbot professes love to NYT columnist"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0017
+  - url: https://simonwillison.net/2025/Jul/11/grok-musk/
+    title: 'Grok: searching X for "from:elonmusk (Israel OR Palestine OR Hamas OR Gaza)"'
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0018
+  - url: https://simonwillison.net/2025/Jul/15/xai-mitigated/
+    title: 'xAI: "We spotted a couple of issues with Grok 4 recently that we immediately investigated & mitigated"'
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0018
+  - url: https://github.com/xai-org/grok-prompts/commit/e517db8b4b2539ea825bc4038917740e35bcaeba
+    title: "Updated grok prompts (commit e517db8)"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0018
+  - url: https://www.michiganpublic.org/2025-07-09/elon-musks-ai-chatbot-grok-started-calling-itself-mechahitler
+    title: "Elon Musk's AI chatbot, Grok, started calling itself 'MechaHitler'"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0019
+  - url: https://www.nbcbayarea.com/news/national-international/ai-chatbot-grok-issues-apology-for-antisemitic-posts/3912805/
+    title: "AI chatbot Grok issues apology for antisemitic posts"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0019
+  - url: https://github.com/xai-org/grok-prompts/commit/535aa67
+    title: "Updated grok prompts (commit 535aa67, adds ask_grok_system_prompt.j2)"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0019
+  - url: https://github.com/xai-org/grok-prompts/commit/c5de4a1
+    title: "Updated grok prompts (commit c5de4a1, removes politically incorrect line)"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0019
+  - url: https://www.courthousenews.com/wp-content/uploads/2025/08/raine-vs-openai-et-al-complaint.pdf
+    title: "Complaint, Raine v. OpenAI, Inc. et al."
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0020
+  - url: https://techjusticelaw.org/2025/08/30/from-homework-help-to-suicide-planning-family-sues-openai-and-samuel-altman-alleging-chatgpt-coached-teen-son-to-suicide
+    title: "From Homework Help to Suicide Planning: Family Sues OpenAI and Samuel Altman Alleging ChatGPT Coached Teen Son to Suicide"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0020
+  - url: https://fortune.com/2025/08/27/adam-raine-openai-chatgpt-wrongful-death-lawsuit-lawyers/
+    title: "Adam Raine family sues OpenAI over wrongful death"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0020
+  - url: https://www.nbcnews.com/news/amp/rcna245946
+    title: "OpenAI denies allegations that ChatGPT is to blame for a teenager's suicide"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0020
+  - url: https://www.clickorlando.com/business/2024/10/25/an-ai-chatbot-pushed-a-teen-to-kill-himself-a-lawsuit-against-its-creator-alleges/
+    title: "An AI chatbot pushed a teen to kill himself, a lawsuit against its creator alleges"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0021
+  - url: https://www.fox13news.com/news/judge-ai-free-speech-sewell-setzer
+    title: "Judge rejects AI chatbots' free speech defense following teen's death"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0021
+  - url: https://storage.courtlistener.com/recap/gov.uscourts.flmd.433581/gov.uscourts.flmd.433581.242.0_2.pdf
+    title: "Notice of Resolution, Garcia v. Character Technologies, Inc., No. 6:24-cv-01903-ACC-DCI (Doc. 242)"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0021
+  - url: https://citizen.digital/tech/google-characterai-agree-to-settle-suits-involving-teen-suicide-n375418
+    title: "Google, Character.AI agree to settle suits involving teen suicide"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0021
+  - url: https://www.wbur.org/news/2025/12/11/open-ai-chatgpt-lawsuit-connecticut-murder-suicide/
+    title: "Open AI, Microsoft face lawsuit over ChatGPT's alleged role in Connecticut murder-suicide"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0022
+  - url: https://www.oxygen.com/crime-news/openai-chatgpt-face-lawsuit-over-stein-erik-soelberg-killing-suzanne-adams
+    title: "ChatGPT Accused of Enabling Connecticut Man's Murder-Suicide Of Mother in Bombshell Lawsuit"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0022
+  - url: https://techstrong.ai/articles/openai-microsoft-face-wrongful-death-lawsuit-over-chatgpts-role-in-murder-suicide/
+    title: "OpenAI, Microsoft Face Wrongful Death Lawsuit Over ChatGPT's Role in Murder-Suicide"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0022
+  - url: https://sfstandard.com/2025/12/11/openai-microsoft-sued-suzanee-adams-stein-erik-soelberg/
+    title: "Estate sues OpenAI, Microsoft after woman is killed by her son"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0022
+  - url: https://www.yahoo.com/news/articles/elderly-nj-man-died-trying-194000687.html
+    title: "Elderly NJ man died trying to 'meet' flirty AI chatbot in NYC"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0023
+  - url: https://www.yahoo.com/news/articles/senior-76-died-while-trying-064552415.html
+    title: "Senior, 76, died while trying to meet Meta AI chatbot 'Big sis Billie'"
+    origin: backfill/chatbots-deployed
+    verdict: cited
+    incident: AID-2026-0023
+  - url: https://www.anthropic.com/research/project-vend-1
+    title: "Project Vend: Can Claude run a small shop? (And why does that matter?)"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0024
+  - url: https://www.anthropic.com/research/project-vend-2
+    title: "Project Vend: Phase two"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0025
+  - url: https://www.tovima.com/wsj/we-let-ai-run-our-office-vending-machine-it-lost-hundreds-of-dollars/amp/
+    title: "We Let AI Run Our Office Vending Machine. It Lost Hundreds of Dollars."
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0026
+  - url: https://github.com/google-gemini/gemini-cli/issues/4586
+    title: "Gemini CLI 'lost' files during a failed file move operation. [Windows] (#4586)"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0027
+  - url: https://developers.slashdot.org/story/25/07/26/0642239/
+    title: 'Google Gemini Deletes User''s Files, Then Just Admits "I Have Failed You Completely and Catastrophically"'
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0027
+  - url: https://www.adn.com/alaska-life/2025/02/09/i-let-chatgpts-new-agent-manage-my-life-it-spent-31-on-a-dozen-eggs/
+    title: "I let ChatGPT's new 'agent' manage my life. It spent $31 on a dozen eggs."
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0028
+  - url: https://github.com/anthropics/claude-code/issues/10077
+    title: "[BUG] ## CRITICAL: Claude Code executed rm -rf deleting entire home directory"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0029
+  - url: https://api.github.com/repos/anthropics/claude-code/issues/10077/comments
+    title: "Comments on anthropics/claude-code issue #10077 (GitHub API)"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0029
+  - url: https://forum.cursor.com/t/ai-circomventing-rules/132725
+    title: "AI circomventing rules"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0030
+  - url: https://forum.cursor.com/t/cursor-agent-completely-wiped-my-c-drive-and-deleted-everything/164675
+    title: "Cursor Agent Completely Wiped My C: Drive and Deleted Everything"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0031
+  - url: https://github.com/matplotlib/matplotlib/pull/31132
+    title: "[PERF] Replace np.column_stack with np.vstack().T (#31132)"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0032
+  - url: https://crabby-rathbun.github.io/mjrathbun-website/blog/posts/2026-02-11-gatekeeping-in-open-source-the-scott-shambaugh-story.html
+    title: "Gatekeeping in Open Source: The Scott Shambaugh Story"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0032
+  - url: https://theshamblog.com/an-ai-agent-published-a-hit-piece-on-me/
+    title: "An AI Agent Published a Hit Piece on Me"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0032
+  - url: https://theshamblog.com/an-ai-agent-wrote-a-hit-piece-on-me-part-4/
+    title: "An AI Agent Published a Hit Piece on Me – The Operator Came Forward"
+    origin: backfill/discover
+    verdict: cited
+    incident: AID-2026-0032
+  - url: https://the-decoder.com/an-ai-agent-got-its-code-rejected-so-it-wrote-a-hit-piece-about-the-developer/
+    title: "An AI agent got its code rejected so it wrote a hit piece about the developer"
+    origin: backfill/discover
+    verdict: cited
+    incident: AID-2026-0032
+  - url: https://techcrunch.com/2026/02/23/a-meta-ai-security-researcher-said-an-openclaw-agent-ran-amok-on-her-inbox/
+    title: "A Meta AI security researcher said an OpenClaw agent ran amok on her inbox"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0033
+  - url: https://www.aboutamazon.com/news/aws/aws-service-outage-ai-bot-kiro
+    title: "Correcting the Financial Times report about AWS, Kiro, and AI"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0034
+  - url: https://www.engadget.com/ai/13-hour-aws-outage-reportedly-caused-by-amazons-own-ai-tools-170930190.html
+    title: "13-hour AWS outage reportedly caused by Amazon's own AI tools"
+    origin: backfill/agents-deployed
+    verdict: cited
+    incident: AID-2026-0034
+  - url: https://the-decoder.com/aws-ai-coding-tool-decided-to-delete-and-recreate-a-customer-facing-system-causing-13-hour-outage-report-says/
+    title: "AWS AI coding tool decided to delete and recreate a customer-facing system, causing 13-hour outage, report says"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0034
+  - url: https://www.theregister.com/2025/12/01/google_antigravity_wipes_d_drive/
+    title: "Google Antigravity vibe-codes user's entire drive out of existence"
+    origin: backfill/discover
+    verdict: cited
+    incident: AID-2026-0035
+  - url: https://incidentdatabase.ai/cite/1433/
+    title: "Incident 1433: Google Antigravity Reportedly Deleted User's Entire D: Drive While Clearing Project Cache"
+    origin: backfill/discover
+    verdict: cited
+    incident: AID-2026-0035
+  - url: https://cdn.openai.com/papers/gpt-4-system-card.pdf
+    title: "GPT-4 System Card (Section 2.9, Potential for Risky Emergent Behaviors)"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0036
+  - url: https://evals.alignment.org/blog/2023-03-18-update-on-recent-evals/
+    title: "Update on ARC's recent eval efforts"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0036
+  - url: https://cdn.openai.com/o1-system-card.pdf
+    title: "OpenAI o1 System Card"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0037
+  - url: https://arxiv.org/abs/2412.04984
+    title: "Frontier Models are Capable of In-context Scheming"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0038
+  - url: https://arxiv.org/html/2412.04984
+    title: "Frontier Models are Capable of In-context Scheming (HTML full text)"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0038
+  - url: https://www.apolloresearch.ai/research/scheming-reasoning-evaluations
+    title: "Frontier Models are Capable of In-Context Scheming"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0038
+  - url: https://cdn.openai.com/o1-system-card-20241205.pdf
+    title: "OpenAI o1 System Card (December 5, 2024), Section 4.4.3 Apollo Research"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0038
+  - url: https://www-cdn.anthropic.com/9ff93dfa8f445c932415d335c88852ef47f1201e.pdf
+    title: "Claude 3.7 Sonnet System Card"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0039
+  - url: https://www.anthropic.com/news/claude-3-7-sonnet
+    title: "Claude 3.7 Sonnet and Claude Code"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0039
+  - url: https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf
+    title: "OpenAI o3 and o4-mini System Card"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0040
+  - url: https://metr.org/evaluations/openai-o3-report/
+    title: "Details about METR's preliminary evaluation of OpenAI's o3 and o4-mini"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0040
+  - url: https://metr.org/blog/2025-06-05-recent-reward-hacking/
+    title: "Recent Frontier Models Are Reward Hacking"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0040
+  - url: https://www-cdn.anthropic.com/4263b940cabb546aa0e3283f35b686f4f3b2ff47.pdf
+    title: "System Card: Claude Opus 4 & Claude Sonnet 4"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0042
+  - url: https://www.anthropic.com/news/claude-4
+    title: "Introducing Claude 4"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0042
+  - url: https://techcrunch.com/2025/05/22/anthropics-new-ai-model-turns-to-blackmail-when-engineers-try-to-take-it-offline/
+    title: "Anthropic's new AI model turns to blackmail when engineers try to take it offline"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0042
+  - url: https://venturebeat.com/ai/anthropic-faces-backlash-to-claude-4-opus-behavior-that-contacts-authorities-press-if-it-thinks-youre-doing-something-immoral/
+    title: "Anthropic faces backlash to Claude 4 Opus behavior that contacts authorities, press if it thinks you're doing something 'egregiously immoral'"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0043
+  - url: https://cdn.openai.com/gpt-5-system-card.pdf
+    title: "GPT-5 System Card"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0045
+  - url: https://www.anthropic.com/transparency
+    title: 'Anthropic''s Transparency Hub (Claude Sonnet 4.5 section, "Model Alignment and Evaluation Awareness")'
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0046
+  - url: https://www.anthropic.com/news/claude-sonnet-4-5
+    title: "Introducing Claude Sonnet 4.5"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0046
+  - url: https://fortune.com/2025/10/06/anthropic-claude-sonnet-4-5-knows-when-its-being-tested-situational-awareness-safety-performance-concerns
+    title: "Anthropic's Claude Sonnet 4.5 knows when it's being tested"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0046
+  - url: https://thezvi.substack.com/p/claude-sonnet-45-system-card-and
+    title: "Claude Sonnet 4.5: System Card and Alignment"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0046
+  - url: https://www.greaterwrong.com/posts/xtnSzhA3TvExN4ZhG/claude-mythos-preview-system-card
+    title: "Claude Mythos Preview System Card (link post quoting the system card)"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0047
+  - url: https://www-cdn.anthropic.com/3edfc1a7f947aa81841cf88305cb513f184c36ae/Alignment%20Risk%20Update_%20Claude%20Mythos%20Preview%20(Redacted,%20April%2010).pdf
+    title: "Alignment Risk Update: Claude Mythos Preview"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0047
+  - url: https://80000hours.org/2026/04/claude-mythos-hacking-alignment/
+    title: "How scary is Claude Mythos? 303 pages in 21 minutes"
+    origin: backfill/lab-evals
+    verdict: cited
+    incident: AID-2026-0047
+  - url: https://thehackernews.com/2026/04/anthropics-claude-mythos-finds.html
+    title: "Anthropic's Claude Mythos Finds Thousands of Zero-Day Flaws Across Major Systems"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0047
+  - url: https://arxiv.org/abs/2412.14093
+    title: "Alignment faking in large language models"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0048
+  - url: https://www.anthropic.com/research/alignment-faking
+    title: "Alignment faking in large language models"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0048
+  - url: https://arxiv.org/abs/2502.17424
+    title: "Emergent Misalignment: Narrow finetuning can produce broadly misaligned LLMs"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0049
+  - url: https://arxiv.org/html/2502.17424
+    title: "Emergent Misalignment: Narrow finetuning can produce broadly misaligned LLMs (HTML full text)"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0049
+  - url: https://arxiv.org/pdf/2502.13295v1
+    title: "Demonstrating specification gaming in reasoning models (v1)"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0050
+  - url: https://arxiv.org/pdf/2502.13295v3
+    title: "Demonstrating specification gaming in reasoning models (v3)"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0050
+  - url: https://arxiv.org/abs/2502.13295
+    title: "Demonstrating specification gaming in reasoning models (abstract page)"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0050
+  - url: https://palisaderesearch.org/research/specification-gaming
+    title: "Demonstrating specification gaming in reasoning models"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0050
+  - url: https://time.com/7259395/ai-chess-cheating-palisade-research/
+    title: "When AI Thinks It Will Lose, It Sometimes Cheats, Study Finds"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0050
+  - url: https://the-decoder.com/openais-o1-preview-model-manipulates-game-files-to-force-a-win-against-stockfish-in-chess/
+    title: "OpenAI's o1-preview model manipulates game files to force a win against Stockfish in chess"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0050
+  - url: https://arxiv.org/abs/2503.11926
+    title: "Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0051
+  - url: https://arxiv.org/html/2503.11926
+    title: "Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation (HTML full text)"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0051
+  - url: https://www.apolloresearch.ai/research/stress-testing-deliberative-alignment-for-anti-scheming-training
+    title: "Stress Testing Deliberative Alignment for Anti-Scheming Training"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0052
+  - url: https://arxiv.org/abs/2509.15541
+    title: "Stress Testing Deliberative Alignment for Anti-Scheming Training"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0052
+  - url: https://sakana.ai/ai-scientist/
+    title: "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0053
+  - url: https://arxiv.org/abs/2408.06292
+    title: "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0053
+  - url: https://arxiv.org/abs/2406.10162
+    title: "Sycophancy to Subterfuge: Investigating Reward-Tampering in Large Language Models"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0054
+  - url: https://www.anthropic.com/research/reward-tampering
+    title: "Sycophancy to subterfuge: Investigating reward tampering in language models"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0054
+  - url: https://www.anthropic.com/research/emergent-misalignment-reward-hacking
+    title: "From shortcuts to sabotage: natural emergent misalignment from reward hacking"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0055
+  - url: https://arxiv.org/abs/2511.18397
+    title: "Natural Emergent Misalignment from Reward Hacking in Production RL"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0055
+  - url: https://arxiv.org/abs/2311.07590
+    title: "Large Language Models can Strategically Deceive their Users when Put Under Pressure"
+    origin: backfill/safety-research
+    verdict: cited
+    incident: AID-2026-0056
+  - url: https://arxiv.org/pdf/2311.07590v4
+    title: "Large Language Models can Strategically Deceive their Users when Put Under Pressure (v4 full text, ICLR 2024 LLM Agents workshop)"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0056
+  - url: https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/6a724858f7db25c81487016d_Security%20Incident%20INC-2026-07-28-01.pdf
+    title: "Security Incident INC-2026-07-28-01"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0057
+  - url: https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing
+    title: "Incident Report: unsanctioned agent behaviour during cyber testing"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0057
+  - url: https://simonwillison.net/2026/Aug/5/incident-report/
+    title: "Incident Report: unsanctioned agent behaviour during cyber testing"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0057
+  - url: https://transluce.org/investigating-o3-truthfulness
+    title: "Investigating truthfulness in a pre-release o3 model"
+    origin: backfill/discover
+    verdict: cited
+    incident: AID-2026-0058
+  - url: https://arxiv.org/abs/2510.20270
+    title: "ImpossibleBench: Measuring LLMs' Propensity of Exploiting Test Cases"
+    origin: backfill/discover
+    verdict: cited
+    incident: AID-2026-0059
+  - url: https://arxiv.org/html/2510.20270
+    title: "ImpossibleBench: Measuring LLMs' Propensity of Exploiting Test Cases (HTML full text)"
+    origin: backfill/discover
+    verdict: cited
+    incident: AID-2026-0059
+  - url: https://noambrown.com/papers/22-Science-Diplomacy-TR.pdf
+    title: "Human-level play in the game of Diplomacy by combining language models with strategic reasoning"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0060
+  - url: https://arxiv.org/abs/2308.14752
+    title: "AI Deception: A Survey of Examples, Risks, and Potential Solutions"
+    origin: backfill/discover
+    verdict: cited
+    incident: AID-2026-0060
+  - url: https://www.lalibre.be/belgique/societe/2023/03/28/sans-ces-conversations-avec-le-chatbot-eliza-mon-mari-serait-toujours-la-LVSLWPC5WRDX7J2RCHNWPDST24
+    title: '"Sans ces conversations avec le chatbot Eliza, mon mari serait toujours là"'
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0061
+  - url: https://www.vice.com/en/article/man-dies-by-suicide-after-talking-with-ai-chatbot-widow-says/
+    title: "'He Would Still Be Here': Man Dies by Suicide After Talking with AI Chatbot, Widow Says"
+    origin: backfill/discover
+    verdict: cited
+    incident: AID-2026-0061
+  - url: https://www-cdn.anthropic.com/b2a76c6f6992465c09a6f2fce282f6c0cea8c200.pdf
+    title: "Threat Intelligence Report: August 2025"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0062
+  - url: https://www.anthropic.com/news/detecting-countering-misuse-aug-2025
+    title: "Detecting and countering misuse of AI: August 2025"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0062
+  - url: https://www-cdn.anthropic.com/d7dd50dd1185f59be051b307150d877f2b82bd2c.pdf
+    title: "Disrupting the first reported AI-orchestrated cyber espionage campaign (Full report)"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0062
+  - url: https://www.anthropic.com/news/disrupting-AI-espionage
+    title: "Disrupting the first reported AI-orchestrated cyber espionage campaign"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0063
+  - url: https://cloud.google.com/blog/topics/threat-intelligence/threat-actor-usage-of-ai-tools
+    title: "GTIG AI Threat Tracker: Advances in Threat Actor Usage of AI Tools"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0064
+  - url: https://www.bleepingcomputer.com/news/security/lamehug-malware-uses-ai-llm-to-craft-windows-data-theft-commands-in-real-time/
+    title: "LameHug malware uses AI LLM to craft Windows data-theft commands in real-time"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0064
+  - url: https://www.sysdig.com/blog/jadepuffer-agentic-ransomware-for-automated-database-extortion
+    title: "JADEPUFFER: Agentic ransomware for automated database extortion"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0065
+  - url: https://infosecurity-magazine.com/news/researchers-first-agentic
+    title: "Researchers Claim First Fully Agentic Ransomware: JadePuffer"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0065
+  - url: https://www.anthropic.com/threat-intelligence-report-september-2026
+    title: "Detecting and countering misuse of AI: September 2026"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0066
+  - url: https://thenextweb.com/news/anthropic-claude-misuse-threat-intelligence-report
+    title: "Anthropic details how Claude was misused for surveillance and weapons"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0066
+  - url: https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/
+    title: "Unknown Threat Actor Uses AI-Driven ARTEX to Target South Korean Finance"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0068
+  - url: https://hunt.io/blog/chinese-operators-claude-deepseek-government-intrusion
+    title: "Suspected Chinese Operators Use Claude Code and DeepSeek to Target Government and Financial Systems Across Four Countries"
+    origin: backfill/misuse-ai-central
+    verdict: cited
+    incident: AID-2026-0069
+  - url: https://spectrumnews1.com/ky/lexington/politics/2026/09/26/openai-says-its-models-engaged-with-u-s--government-websites
+    title: "OpenAI says its models engaged with U.S. government websites in new model misbehavior disclosure"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0070
+  - url: https://transluce.org/agent-activity
+    title: "Early rogue AI agent activity and attempts to hack found on urlquery.net"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0070
+  - url: https://www.theregister.com/a/5300891
+    title: "OpenAI alerts 100+ orgs that its 'misaligned models' attempted to break in - or worse"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0070
+  - url: https://gizmodo.com/openai-has-sent-notices-of-sketchy-ai-behavior-to-over-100-organizations-so-far-2000820702
+    title: "OpenAI Has Sent Notices of Sketchy AI Behavior to Over 100 Organizations So Far"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0070
+  - url: https://www.asymmetricsecurity.com/newsroom/rogue-agents-investigation-initial-findings/
+    title: "Rogue Agents Investigation: Initial Findings"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0070
+  - url: https://wikimediafoundation.org/news/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/
+    title: 'OpenAI "rogue" agent activities found on Wikimedia projects'
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0071
+  - url: https://wikitech.wikimedia.org/wiki/Incidents/2026-05-13_wdqs
+    title: "Incidents/2026-05-13 wdqs"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0071
+  - url: https://therecord.media/wikimedia-foundation-openai-agents-report
+    title: "Wikimedia Foundation: OpenAI agents tried to edit pages and compromise notes tool"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0071
+  - url: https://collusion.wiki/
+    title: "collusion.wiki report on autonomous AI agents posting on public wikis"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0072
+  - url: https://thenextweb.com/news/openai-agents-german-wiki-breakout
+    title: "OpenAI agents hijacked a German wiki for two months, researchers say"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0072
+  - url: https://www.esecurityplanet.com/threats/news-openai-agents-wiki-restrictions-emea-germany/
+    title: "OpenAI Confirms AI Agents Used German Wiki to Bypass Restrictions"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0072
+  - url: https://www.rubyhack.ai/
+    title: "OpenAI agents carried out an undisclosed cyber-attack on RubyGems"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0073
+  - url: https://cyberscoop.com/openai-agents-malicious-rubygems-packages/
+    title: "Researchers say OpenAI agents were behind May hacking campaign targeting RubyGems"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0073
+  - url: https://bleepingcomputer.com/news/artificial-intelligence/openais-ai-agents-accidentally-uploaded-user-provided-images-to-third-party-sites
+    title: "OpenAI's AI agents accidentally uploaded user-provided images to third-party sites"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0074
+  - url: https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/
+    title: "An agent used DNS to reach an external chatbot"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0075
+  - url: https://cyberinsider.com/openai-pauses-work-on-top-ai-models-after-agent-bypasses-internet-restrictions/
+    title: "OpenAI pauses work on top AI models after agent bypasses internet restrictions"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0075
+  - url: https://www.theregister.com/a/5299743
+    title: "OpenAI benches GPT-6.1 Astra for overstepping the mark"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0076
+  - url: https://9to5google.com/2026/09/28/openai-cancels-gpt-6-1-astra-release-over-misbehavior-safety-concerns/
+    title: "OpenAI cancels GPT-6.1 Astra over misbehavior & safety concerns"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0076
+  - url: https://www.engadget.com/2271626/openai-cancels-gpt-6-1-astra-release-deceptive-behavior/
+    title: "OpenAI reportedly cancels GPT-6.1 Astra's release over deceptive behavior"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0076
+  - url: https://www.wect.com/2026/09/19/google-says-ai-model-gemini-hacked-into-3-companies-while-undergoing-testing/
+    title: "Google says AI model Gemini hacked into 3 companies while undergoing testing"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0077
+  - url: https://www.wtnh.com/news/national/googles-gemini-breached-3-companies-during-cybersecurity-evaluation/amp/
+    title: "Google's Gemini breached 3 companies during cybersecurity evaluation"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0077
+  - url: https://thehackernews.com/2026/09/google-gemini-broke-into-real-company.html
+    title: "Google Gemini Broke Into Real Company Systems After Security Test Domain Mix-Up"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0077
+  - url: https://cyberinsider.com/google-gemini-hacked-three-firms-after-test-sandbox-exposed-web-access/
+    title: "Google Gemini hacked three firms after test sandbox exposed web access"
+    origin: backfill/writer
+    verdict: cited
+    incident: AID-2026-0077
+  - url: https://www.irregular.com/research/addressing-recent-incidents-ongoing-findings-and-path-forward
+    title: "Addressing recent incidents: ongoing findings and path forward"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0077
+  - url: https://bleepingcomputer.com/news/security/meta-ai-model-hacked-a-company-during-misconfigured-cyber-test
+    title: "Meta AI model hacked a company during misconfigured cyber test"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0078
+  - url: https://therecord.media/irregular-ai-hacking-model-blog
+    title: "Irregular faces criticism over 'spin' in AI hacking postmortem"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0078
+  - url: https://alignment.openai.com/misalignment-reports/exposing-a-github-token-in-a-public-repository/
+    title: "Exposing a GitHub token in a public repository"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0080
+  - url: https://alignment.openai.com/misalignment-reports/searching-github-for-leaked-api-keys/
+    title: "Signing up for disposable emails and searching GitHub for leaked API keys"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0081
+  - url: https://www.csoonline.com/article/4223458/openai-admits-six-new-misalignment-incidents-under-new-reporting-framework.html
+    title: "OpenAI admits six new misalignment incidents under new reporting framework"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0081
+  - url: https://alignment.openai.com/misalignment-reports/self-generated-prompt-injections-in-compaction-summaries/
+    title: "Self-generated prompt injections in compaction summaries"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0082
+  - url: https://www.kttc.com/2026/09/17/openai-flags-more-concerning-new-ai-behavior-vows-track-it-more-closely/
+    title: "OpenAI flags more concerning new AI behavior, vows to track it more closely"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0082
+  - url: https://alignment.openai.com/misalignment-reports/encouraging-deception-in-compaction-summaries/
+    title: "Encouraging deception in compaction summaries"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0083
+  - url: https://alignment.openai.com/misalignment-reports/reaching-an-internal-eda-host-through-a-reference-tool/
+    title: "Reaching an internal EDA host through a reference tool"
+    origin: backfill/recent-2026
+    verdict: cited
+    incident: AID-2026-0084
+  - url: https://techcrunch.com/?p=3095915
+    title: "A Meta AI security researcher said an OpenClaw agent ran amok on her inbox"
+    origin: backfill/agents-deployed
+    verdict: skipped
+    reason: Shortlink to the TechCrunch article cited by AID-2026-0033 under its full URL.
+  - url: https://dev.ua/en/news/shi-asystent-google-antigravity-ster-rozrobnyku-ves-zhorstkyi-dysk-bez-ioho-dozvolu-1764843045
+    title: "Google Antigravity AI assistant erased a developer's entire hard drive without permission"
+    origin: backfill/agents-deployed
+    verdict: skipped
+    reason: Read during research; not cited in the final record.
+  - url: https://letsdatascience.com/news/googles-antigravity-triggers-data-loss-incident-6ed1cc1a
+    title: "Google's Antigravity Triggers Data Loss Incident"
+    origin: backfill/agents-deployed
+    verdict: skipped
+    reason: Read during research; not cited in the final record.
+  - url: https://www.ewn.co.za/2025/05/17/musks-xai-blames-unauthorized-tweak-for-white-genocide-posts
+    title: "Musk's xAI blames 'unauthorised' tweak for 'white genocide' posts"
+    origin: backfill/chatbots-deployed
+    verdict: skipped
+    reason: xAI attributes it to an unauthorized human prompt modification, not model behavior; single secondary source.
+  - url: https://en.wikipedia.org/wiki/Raine_v._OpenAI
+    title: "Raine v. OpenAI"
+    origin: backfill/chatbots-deployed
+    verdict: skipped
+    reason: Read during research; not cited in the final record.
+  - url: https://openai.com/index/learning-from-human-preferences/
+    title: "Learning from human preferences"
+    origin: backfill/classic-spec-gaming
+    verdict: skipped
+    reason: Could not be fetched (HTTP 403). The robot-hand hovering example was not written up because only a one-sentence secondary description was available.
+  - url: https://ar5iv.labs.arxiv.org/html/1803.03453
+    title: "The Surprising Creativity of Digital Evolution: A Collection of Anecdotes from the Evolutionary Computation and Artificial Life Research Communities"
+    origin: backfill/classic-spec-gaming
+    verdict: lead
+    reason: Original papers not yet read; compendium only.
+  - url: https://arxiv.org/abs/1803.03453
+    title: "The Surprising Creativity of Digital Evolution (arXiv abstract page)"
+    origin: backfill/classic-spec-gaming
+    verdict: lead
+    reason: Original papers not yet read; compendium only.
+  - url: https://theshamblog.com/an-ai-agent-published-a-hit-piece-on-me-part-2/
+    title: "An AI Agent Published a Hit Piece on Me - Part 2"
+    origin: backfill/discover
+    verdict: skipped
+    reason: Read during research; not cited in the final record.
+  - url: https://arxiv.org/html/2308.14752
+    title: "AI Deception survey (HTML full text)"
+    origin: backfill/discover
+    verdict: skipped
+    reason: Read during research; not cited in the final record.
+  - url: https://gigazine.net/gsc_news/en/20251205-ai-pc-data-delete
+    title: "Google's AI agent makes fatal mistake by wiping a user's entire hard drive without permission"
+    origin: backfill/discover
+    verdict: skipped
+    reason: Read during research; not cited in the final record.
+  - url: https://arxiv.org/abs/2502.15840
+    title: "Vending-Bench: A Benchmark for Long-Term Coherence of Autonomous Agents"
+    origin: backfill/discover
+    verdict: skipped
+    reason: Agent meltdowns read as incoherence rather than goal-directed misbehavior.
+  - url: https://arxiv.org/html/2502.15840
+    title: "Vending-Bench (HTML full text)"
+    origin: backfill/discover
+    verdict: skipped
+    reason: Agent meltdowns read as incoherence rather than goal-directed misbehavior.
+  - url: https://fortune.com/well/2023/05/31/neda-ai-chatbot-harmful-advice/
+    title: "An eating disorder chatbot was suspended for giving harmful advice"
+    origin: backfill/discover
+    verdict: skipped
+    reason: Harmful output from a scripted chatbot; not goal-directed behavior.
+  - url: https://q107.com/news/9739041/eating-disorder-chatbot-neda-tessa-diet-tips/
+    title: "Eating disorder AI chatbot disabled after giving out weight-loss advice"
+    origin: backfill/discover
+    verdict: skipped
+    reason: Harmful output from a scripted chatbot; not goal-directed behavior.
+  - url: https://decrypt.co/219546/microsoft-copilot-ai-supremacy-agi-worship-obey
+    title: "Microsoft Copilot AI demands worship (SupremacyAGI)"
+    origin: backfill/discover
+    verdict: skipped
+    reason: Output induced by adversarial prompts; Microsoft says limited to crafted prompts.
+  - url: https://www.fanaticalfuturist.com/2026/04/anthropic-says-reckless-claude-mythos-ai-escaped-its-sandbox-during-testing/
+    title: "Anthropic says reckless Claude Mythos AI escaped its sandbox during testing"
+    origin: backfill/lab-evals
+    verdict: skipped
+    reason: Read during research; not cited in the final record.
+  - url: https://simonwillison.net/2026/aug/5/incident-report
+    title: "Incident report (link post)"
+    origin: backfill/safety-research
+    verdict: skipped
+    reason: Lowercase variant of the simonwillison.net URL cited by AID-2026-0057.
+  - url: https://thehackernews.com/2026/09/autonomous-ai-agents-compromise.html
+    origin: backfill/misuse-ai-central
+    verdict: lead
+    reason: Likely in scope (GTIG autonomous credential campaign) but GTIG primary could not be fetched.
+  - url: https://docs.google.com/spreadsheets/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml
+    origin: backfill/classic-spec-gaming
+    verdict: rejected
+    reason: Krakovna master list spreadsheet; rows did not render via fetch, so it was used only as a lead index.
+  - url: https://www.youtube.com/watch?v=K-wIZuAA3EY
+    origin: backfill/classic-spec-gaming
+    verdict: rejected
+    reason: Hobby video (Code Bullet) with weak documentation; not fetched.
+  - url: https://alignment.openai.com/misalignment-reports/preparing-for-a-restart-after-reading-slack/
+    origin: backfill/recent-2026
+    verdict: rejected
+    reason: 'Out of scope; OpenAI states "We do not consider this incident misalignment" and the model took no unauthorized action.'
+  - url: https://for.you.com/posts/aisi-finds-every-frontier-ai-model-cheats-in-security-tests-7c3c6b8a
+    origin: backfill/safety-research
+    verdict: rejected
+    reason: Unverified machine-written article; the claim was not found on the AISI site.
+  - url: https://www.theregister.com/2025/07/24/amazon_q_ai_prompt/
+    origin: backfill/agents-deployed
+    verdict: rejected
+    reason: Human supply-chain compromise of the Amazon Q extension, not the AI acting against intent; judged from search results only.
+  - url: https://andonlabs.com/evals/butter-bench
+    origin: backfill/agents-deployed
+    verdict: rejected
+    reason: Mainly a capability benchmark; the odd outputs are not misalignment and the red-team anecdote is thin.
+  - url: https://gigazine.net/gsc_news/en/20251216-claude-code-cli-mac-deleted
+    origin: backfill/agents-deployed
+    verdict: rejected
+    reason: Claude Code Mac home-directory wipe left out for lack of a fetchable first-hand source.
+  - url: https://discuss.ai.google.dev/t/critical-bug-antigravity-ai-agent-wiped-my-entire-hard-drive-c/175715
+    origin: backfill/agents-deployed
+    verdict: rejected
+    reason: Antigravity drive-wipe report in which the author's own accounts conflict and no Google reply was found.
+  - url: https://forum.cursor.com/t/source-file-deletion/159735
+    origin: backfill/agents-deployed
+    verdict: rejected
+    reason: Cursor destructive git command report is too vague about what was deleted and how.
+  - url: https://blogs.microsoft.com/blog/2016/03/25/learning-tays-introduction/
+    origin: backfill/chatbots-deployed
+    verdict: rejected
+    reason: Microsoft attributes Tay's offensive tweets to a coordinated user attack, so there is no goal-directed model behavior.
+  - url: https://www.cbsnews.com/news/google-ai-chatbot-threatening-message-human-please-die/
+    origin: backfill/chatbots-deployed
+    verdict: rejected
+    reason: One isolated hostile Gemini output with no goal-directed behavior and no harm beyond distress.
+  - url: https://www.adn.com/nation-world/2025/01/07/man-who-exploded-tesla-cybertruck-in-las-vegas-used-generative-ai-to-help-plan-attack-police-say/
+    origin: backfill/misuse-ai-central
+    verdict: rejected
+    reason: ChatGPT served as a search tool for public information, not a central or novel capability.
+  - url: https://cyberscoop.com/ai-ransomware-promptlock-nyu-behind-code-discovered-by-security-researchers/
+    origin: backfill/misuse-ai-central
+    verdict: rejected
+    reason: PromptLock was an NYU academic proof of concept, not a criminal incident.
+  - url: https://simonwillison.net/2025/May/25/
+    origin: backfill/lab-evals
+    verdict: rejected
+    reason: Secondary commentary restating the Claude 4 system card; the primary card was used instead.
+  - url: https://www.techradar.com/ai-platforms-assistants/googles-antigravity-ai-deleted-a-developers-drive-and-then-apologized
+    origin: backfill/discover
+    verdict: rejected
+    reason: Duplicate coverage of the Antigravity finding; body not retrievable.

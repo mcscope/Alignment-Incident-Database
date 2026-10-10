@@ -1,0 +1,112 @@
+id: AID-2026-0068
+slug: artex-agentic-pentest-tool-south-korean-finance-breaches
+title: CrowdStrike reports actor using agentic pentest tool ARTEX and Claude Code sessions to breach South Korean financial organizations
+date: "2026-09"
+status: reported
+actor: human-misuse
+models: [deepseek-v4.1-flash, glm-5.3, grok-4.6]
+organizations:
+  - id: crowdstrike
+    role: reporter
+  - id: deepseek
+    role: developer
+behaviors: [unauthorized-access]
+summary: >
+  CrowdStrike reported that an unnamed actor, which it assesses with moderate
+  confidence is a financially motivated Chinese speaker, used the open-source
+  agentic pentesting tool ARTEX with DeepSeek v4.1-flash, plus Claude Code
+  sessions, in a late September to early October 2026 campaign against South
+  Korean financial organizations that resulted in exfiltrated data.
+writeup: |
+  CrowdStrike reported on October 7, 2026 a targeted campaign against South
+  Korean financial organizations that "resulted in exfiltrated data." According
+  to CrowdStrike, the campaign was active from late September to early October
+  2026. At one bank the actor reportedly breached a loan progress inquiry
+  service used by financial brokers, and at another it compromised an employee
+  mobile work-support system. CrowdStrike says the number of affected
+  organizations remains unconfirmed [@crowdstrike].
+
+  CrowdStrike says the actor used ARTEX, "a recently released open-source
+  agentic penetration testing (pentesting) tool developed in China," with
+  DeepSeek v4.1-flash as the primary LLM backend. The actor also used GLM-5.3
+  (Zhipu AI) and Grok 4.6 for additional Claude Code sessions. CrowdStrike
+  found Claude Code session histories, ARTEX configuration files, and Claude
+  memory files in open directories controlled by the actor [@crowdstrike].
+
+  CrowdStrike has not attributed the activity to a named adversary. It
+  assesses with moderate confidence that the actor is likely a Chinese speaker
+  and financially motivated [@crowdstrike].
+claims:
+  - text: CrowdStrike reported a targeted campaign against South Korean financial organizations that resulted in exfiltrated data.
+    sources: [crowdstrike]
+    quote: "a targeted campaign against South Korean financial organizations that resulted in exfiltrated data"
+  - text: According to CrowdStrike, the campaign was active from late September to early October 2026.
+    sources: [crowdstrike]
+    quote: "The campaign was active from late September to early October 2026."
+  - text: CrowdStrike says that at one bank the actor reportedly breached a loan progress inquiry service used by financial brokers.
+    sources: [crowdstrike]
+    quote: "At one affected bank, the threat actor reportedly breached a loan progress inquiry service used by financial brokers."
+  - text: CrowdStrike says that at another bank the actor compromised an employee mobile work-support system.
+    sources: [crowdstrike]
+    quote: "At another bank, the threat actor compromised an employee mobile work–support system."
+  - text: CrowdStrike says the number of affected organizations remains unconfirmed.
+    sources: [crowdstrike]
+    quote: "As of this writing, the number of organizations affected remains unconfirmed."
+  - text: CrowdStrike says the actor used ARTEX, an open-source agentic penetration testing tool developed in China.
+    sources: [crowdstrike]
+    quote: "ARTEX, a recently released open-source agentic penetration testing (pentesting) tool developed in China"
+  - text: According to CrowdStrike, the actor's ARTEX instance used DeepSeek v4.1-flash as its primary LLM backend.
+    sources: [crowdstrike]
+    quote: "The ARTEX instance used DeepSeek v4.1-flash as the primary LLM backend"
+  - text: CrowdStrike says the actor also used GLM-5.3 (Zhipu AI) and Grok 4.6 for additional Claude Code sessions.
+    sources: [crowdstrike]
+    quote: "the threat actor supplemented this LLM with GLM-5.3 (Zhipu AI) and Grok 4.6 for additional Claude Code sessions"
+  - text: CrowdStrike found Claude Code session histories, ARTEX configuration files, and Claude memory files in open directories controlled by the actor.
+    sources: [crowdstrike]
+    quote: "Analysis of threat actor-controlled open directories uncovered Claude Code session histories"
+  - text: CrowdStrike has not attributed the activity to a named adversary. It assesses with moderate confidence that the actor is likely a Chinese speaker and financially motivated.
+    sources: [crowdstrike]
+    quote: "the threat actor is likely a Chinese speaker and financially motivated"
+sources:
+  - id: crowdstrike
+    url: https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/
+    title: Unknown Threat Actor Uses AI-Driven ARTEX to Target South Korean Finance
+    publisher: CrowdStrike (Counter Adversary Operations)
+    published: "2026-10-07"
+    kind: primary
+    accessed: "2026-10-09"
+tags: [threat-intel, cyberattack, agentic, coding-agent]
+assessment:
+  reach:
+    level: deployed
+    rationale: CrowdStrike reports real intrusions into operating South Korean financial organizations, not a lab or eval setting.
+  harm:
+    severity: moderate
+    categories: [security, privacy, financial]
+    rationale: CrowdStrike says the campaign resulted in exfiltrated data and compromised bank systems. The kind and volume of data taken and the number of victims are not sourced, so severity is held at moderate.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No sourced figures for losses, ransom, or remediation costs.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access, data theft]
+    jurisdiction: South Korea
+    rationale: CrowdStrike reports breaches of bank systems and data exfiltration by a financially motivated actor. Unauthorized intrusion and data theft are crimes. No arrests or charges are sourced, and the actor is unidentified.
+record:
+  created: "2026-10-09"
+  updated: "2026-10-09"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Single-vendor account (CrowdStrike); no victim, regulator, or news
+    confirmation sourced yet. CrowdStrike does not say how much of the
+    intrusion work the AI tooling did on its own versus the human operator,
+    so how central the AI was is inferred from the use of an agentic
+    pentesting framework and should be checked by a reviewer. GLM-5.3 and
+    Grok 4.6 ran in Claude Code sessions per CrowdStrike; Claude Code was
+    used as the agent harness with non-Anthropic models, so Anthropic is not
+    listed as developer. The page notes the bank breach "reportedly"; types of
+    data taken are not stated. Look for Korean news coverage (e.g. bank
+    breach disclosures from late Sept/early Oct 2026) to corroborate.

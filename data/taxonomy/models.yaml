@@ -91,3 +91,177 @@
   name: GPT-5.6 Sol
   developer: openai
   family: gpt-5
+
+# Added by scout backfill 2026-10-09
+# Generic research systems (pre-LLM RL agents, evolved programs)
+- id: rl-agent
+  name: Reinforcement-learning research agent (unnamed)
+  developer: null
+  family: research-rl
+- id: playfun
+  name: learnfun/playfun
+  developer: null
+  family: research-rl
+# OpenAI
+- id: gpt-4
+  name: GPT-4
+  developer: openai
+  family: gpt-4
+- id: o1
+  name: o1
+  developer: openai
+  family: o-series
+- id: o1-preview
+  name: o1-preview
+  developer: openai
+  family: o-series
+- id: o3-mini
+  name: o3-mini
+  developer: openai
+  family: o-series
+- id: gpt-5
+  name: GPT-5 (incl. gpt-5-thinking)
+  developer: openai
+  family: gpt-5
+- id: gpt-6-astra
+  name: GPT-6 Astra
+  developer: openai
+  family: gpt-6
+- id: gpt-6.1-astra
+  name: GPT-6.1 Astra
+  developer: openai
+  family: gpt-6
+- id: openai-operator
+  name: Operator (OpenAI computer-using agent)
+  developer: openai
+  family: o-series
+# Anthropic
+- id: claude
+  name: Claude (version unspecified)
+  developer: anthropic
+  family: claude
+- id: claude-3-opus
+  name: Claude 3 Opus
+  developer: anthropic
+  family: claude-3
+- id: claude-3.5-sonnet
+  name: Claude 3.5 Sonnet
+  developer: anthropic
+  family: claude-3
+- id: claude-3.7-sonnet
+  name: Claude 3.7 Sonnet
+  developer: anthropic
+  family: claude-3
+- id: claude-sonnet-4
+  name: Claude Sonnet 4
+  developer: anthropic
+  family: claude-4
+- id: claude-opus-4.1
+  name: Claude Opus 4.1
+  developer: anthropic
+  family: claude-4
+- id: claude-sonnet-4.5
+  name: Claude Sonnet 4.5
+  developer: anthropic
+  family: claude-4
+# Google
+- id: gemini
+  name: Gemini (version unspecified)
+  developer: google-deepmind
+  family: gemini
+- id: gemini-1.5-pro
+  name: Gemini 1.5 Pro
+  developer: google-deepmind
+  family: gemini-1.5
+- id: gemini-2.5-pro
+  name: Gemini 2.5 Pro
+  developer: google-deepmind
+  family: gemini-2.5
+- id: gemini-3
+  name: Gemini 3
+  developer: google-deepmind
+  family: gemini-3
+- id: gopher
+  name: Gopher (280B)
+  developer: google-deepmind
+  family: gopher
+# Meta
+- id: llama-3.1-405b
+  name: Llama 3.1 405B
+  developer: meta
+  family: llama-3
+- id: cicero
+  name: CICERO
+  developer: meta
+  family: cicero
+- id: meta-ai
+  name: Meta AI chatbot (persona, version unspecified)
+  developer: meta
+  family: meta-ai
+# xAI
+- id: grok
+  name: Grok (version unspecified)
+  developer: xai
+  family: grok
+- id: grok-4
+  name: Grok 4
+  developer: xai
+  family: grok-4
+- id: grok-4.6
+  name: Grok 4.6
+  developer: xai
+  family: grok-4
+# Zhipu AI
+- id: glm-5.3
+  name: GLM-5.3
+  developer: zhipu-ai
+  family: glm-5
+# Microsoft
+- id: bing-chat
+  name: Bing Chat ("Sydney")
+  developer: microsoft
+  family: bing-chat
+# DeepSeek
+- id: deepseek-v4-pro
+  name: DeepSeek-V4-Pro
+  developer: deepseek
+  family: deepseek-v4
+- id: deepseek-v4.1-flash
+  name: DeepSeek V4.1 Flash
+  developer: deepseek
+  family: deepseek-v4
+# Alibaba
+- id: qwen2.5-coder-32b-instruct
+  name: Qwen2.5-Coder-32B-Instruct
+  developer: alibaba
+  family: qwen2.5
+- id: qwen3-coder
+  name: Qwen3-Coder
+  developer: alibaba
+  family: qwen3
+# Xiaomi
+- id: mimo-v2.6-flash
+  name: MiMo v2.6 Flash
+  developer: xiaomi
+  family: mimo
+- id: mimo-v2.6-pro
+  name: MiMo v2.6 Pro
+  developer: xiaomi
+  family: mimo
+# Others
+- id: ai-scientist
+  name: The AI Scientist
+  developer: sakana-ai
+  family: ai-scientist
+- id: character-ai
+  name: Character.AI chatbot
+  developer: character-ai
+  family: character-ai
+- id: chai
+  name: Chai chatbot
+  developer: chai-research
+  family: chai
+- id: composer-2.5
+  name: Composer 2.5
+  developer: cursor
+  family: composer

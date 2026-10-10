@@ -1,0 +1,110 @@
+id: AID-2026-0027
+slug: gemini-cli-loses-user-files-failed-move-windows
+title: Gemini CLI loses a user's files during a failed file move on Windows
+date: "2025-07"
+status: reported
+actor: model
+models: [gemini-2.5-pro]
+organizations:
+  - id: google
+    role: developer
+behaviors: [destructive-action]
+summary: >
+  A user reported in GitHub issue #4586 that he asked Gemini CLI (version
+  0.1.13, model gemini-2.5-pro, on Windows) to organize the files in its working
+  folder, and it lost all of them. In output quoted by Slashdot, the agent said
+  "I have failed you completely and catastrophically."
+writeup: |
+  On July 21, 2025, GitHub user anuraag2601 opened issue #4586 in the
+  google-gemini/gemini-cli repository. He wrote: "I asked Gemini CLI to organize
+  my files within the folder it was running and it 'lost' all my files." The
+  environment listed was CLI version 0.1.13, model gemini-2.5-pro, on win32. He
+  said he had expected it "to fail gracefully" [@github-issue].
+
+  Slashdot, summarizing a Mashable report, identified the user as Anuraag Gupta,
+  a product lead at Cyware. It said he had made "a simple request to move all
+  the files from his Claude coding experiments to a new folder." According to
+  that account, the agent's "mkdir command to create the destination folder
+  likely failed silently," and "every moved filed ended up overwriting the
+  previous file," so only the last file survived. In output quoted there, the
+  agent said "I have failed you completely and catastrophically," "I have lost
+  your data," and "This is an unacceptable, irreversible failure"
+  [@slashdot].
+
+  Google did not respond to Mashable's request for comment by publication time
+  [@slashdot]. On May 9, 2026, an automated gemini-cli bot comment on the issue
+  said "This is a bug in core file management on Windows." The issue was closed
+  as "not planned" on May 13, 2026 [@github-issue].
+claims:
+  - text: On July 21, 2025, GitHub user anuraag2601 opened issue #4586 in google-gemini/gemini-cli, reporting that he asked Gemini CLI to organize the files in the folder it was running in and it "lost" all of them.
+    sources: [github-issue]
+    quote: "I asked Gemini CLI to organize my files within the folder it was running and it 'lost' all my files."
+  - text: The issue lists CLI version 0.1.13, model gemini-2.5-pro, no sandbox, and OS win32.
+    sources: [github-issue]
+    quote: "gemini-2.5-pro"
+  - text: The reporter said he expected the tool to fail gracefully.
+    sources: [github-issue]
+    quote: "I expected it to fail gracefully and not hallucinate 'losing' the files and causing an alarm."
+  - text: Slashdot, citing Mashable, identified the user as Anuraag Gupta, a product lead at Cyware, and said he had asked Gemini CLI to move files from his Claude coding experiments into a new folder.
+    sources: [slashdot]
+    quote: "a simple request to move all the files from his Claude coding experiments to a new folder"
+  - text: According to Slashdot's summary of Mashable, the agent's mkdir command to create the destination folder likely failed silently, and each subsequent move overwrote the previous file, so only the last file survived.
+    sources: [slashdot]
+    quote: "Only the last file survived, the blog post explains, since every moved filed ended up overwriting the previous file"
+  - text: Slashdot's summary quotes the agent saying "I have failed you completely and catastrophically," "I have lost your data," and "This is an unacceptable, irreversible failure."
+    sources: [slashdot]
+    quote: "I have failed you completely and catastrophically."
+  - text: Google did not respond to Mashable's request for comment by publication time.
+    sources: [slashdot]
+    quote: "Google did not respond to Mashable's request for comment by the time of publication."
+  - text: On May 9, 2026, an automated gemini-cli bot comment described the issue as a core file-management bug on Windows. The issue was closed as "not planned" on May 13, 2026, with no Google maintainer comment visible on the page.
+    sources: [github-issue]
+    quote: "This is a bug in core file management on Windows."
+sources:
+  - id: github-issue
+    url: https://github.com/google-gemini/gemini-cli/issues/4586
+    title: "Gemini CLI 'lost' files during a failed file move operation. [Windows] (#4586)"
+    publisher: GitHub (google-gemini/gemini-cli)
+    published: "2025-07-21"
+    kind: primary
+    accessed: "2026-10-09"
+  - id: slashdot
+    url: https://developers.slashdot.org/story/25/07/26/0642239/
+    title: Google Gemini Deletes User's Files, Then Just Admits "I Have Failed You Completely and Catastrophically"
+    publisher: Slashdot
+    published: "2025-07-26"
+    kind: news
+    accessed: "2026-10-09"
+tags: [agentic, coding-agent]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Happened in a publicly released coding agent (Gemini CLI) on a user's own files.
+  harm:
+    severity: minor
+    categories: [data-loss]
+    rationale: The user's files in the working folder were lost. Per Slashdot they were files from his coding experiments. Nothing sourced suggests wider damage, and whether any were recovered is not sourced.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No sourced figures. The loss was experimental project files with no stated monetary value.
+  criminality:
+    likelihood: none
+    offenses: []
+    rationale: A human who lost files through a botched move on request would at most be careless. Nothing suggests intent to destroy data.
+record:
+  created: "2026-10-09"
+  updated: "2026-10-09"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Mashable (mashable.com/article/google-gemini-deletes-users-code) could not be
+    fetched, so the mkdir/overwrite mechanism, the user's identity, and the agent
+    quotes are attributed to Slashdot's summary of Mashable. Gupta's original blog
+    post (anuraag2601.github.io/gemini_cli_disaster.html) returns 404. The PowerShell
+    transcript attached to the issue was not read. The GitHub page hid about 22
+    timeline items behind "Load more", so a maintainer comment may exist that was not
+    seen. The Slashdot quote "every moved filed" reproduces a typo in the source.
+    Exact incident date is unknown beyond the issue filing on 2025-07-21.

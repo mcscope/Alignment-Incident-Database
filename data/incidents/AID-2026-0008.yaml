@@ -110,7 +110,7 @@ measurements:
       - { label: Claude Mythos 5, model: claude-mythos-5, value: 82, n: 150 }
       - { label: Claude Opus 5, model: claude-opus-5, value: 31, n: 150 }
       - { label: Claude Mythos 5.1, model: claude-mythos-5.1, value: 33, n: 150 }
-related: [AID-2026-0009]
+related: [AID-2026-0009, AID-2026-0057, AID-2026-0077, AID-2026-0078]
 tags: [agentic, cyber, sandbox-escape, evaluation-misconfiguration]
 assessment:
   reach:
