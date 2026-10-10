@@ -218,3 +218,8 @@
   name: Asymmetric Security
   url: https://asymmetricsecurity.com
   type: company
+
+- id: sage
+  name: Sage (AI Village)
+  url: https://theaidigest.org/village
+  type: research-org

@@ -9,7 +9,8 @@
     "aggregate": "node scout/aggregate.mjs",
     "dev": "astro dev",
     "build": "npm run validate && astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "write-incident": "node scout/write.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

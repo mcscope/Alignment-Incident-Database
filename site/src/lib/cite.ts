@@ -7,7 +7,7 @@ import type { Incident, Source } from "./data";
 export function numberSources(i: Incident) {
   const order: string[] = [];
   const see = (id: string) => { if (!order.includes(id)) order.push(id); };
-  for (const m of i.writeup.matchAll(/\[@([a-z0-9-]+)\]/g)) see(m[1]);
+  for (const m of i.writeup.matchAll(/\[(@[a-z0-9-]+(?:;\s*@[a-z0-9-]+)*)\]/g)) for (const id of m[1].split(/;\s*/)) see(id.slice(1));
   for (const c of i.claims) c.sources.forEach(see);
   for (const s of i.sources) see(s.id);
   const byId = new Map(i.sources.map((s) => [s.id, s]));
@@ -21,6 +21,7 @@ export const citeLink = (n: number, title = "") =>
 
 export function renderWriteup(i: Incident, num: Map<string, number>) {
   const titles = new Map(i.sources.map((s) => [s.id, `${s.publisher}: ${s.title}`]));
-  const md = i.writeup.replace(/\s*\[@([a-z0-9-]+)\]/g, (_, id) => citeLink(num.get(id)!, titles.get(id)));
+  const md = i.writeup.replace(/\s*\[(@[a-z0-9-]+(?:;\s*@[a-z0-9-]+)*)\]/g, (_, ids: string) =>
+    ids.split(/;\s*/).map((id) => citeLink(num.get(id.slice(1))!, titles.get(id.slice(1)))).join(""));
   return marked.parse(md, { async: false }) as string;
 }

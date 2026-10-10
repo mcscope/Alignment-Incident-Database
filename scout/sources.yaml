@@ -18,6 +18,10 @@ window_hours: 48
 # Aggregation pass (scout/aggregate.mjs): a cheap long-context model on OpenRouter
 # triages and clusters candidates before the Claude editor sees them.
 # Model ids: https://openrouter.ai/models. Override per run with SCOUT_AGG_MODEL.
+# Incident writer (scout/write.mjs): drafts each record from fetched source text.
+writer:
+  model: google/gemini-3.8-flash
+
 aggregation:
   model: google/gemini-3.8-flash
   batch_size: 40      # candidates per triage call

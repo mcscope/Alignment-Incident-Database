@@ -38,7 +38,7 @@ prompt="Follow the instructions in $instructions. Repository: mcscope/Alignment-
 
 LOCAL RUN: work on the current branch \`$branch\` wherever the instructions say main, and do NOT run git pull or git push. Just commit."
 
-tools="Agent,Task,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(npm run validate),Bash(npm run next-id:*),Bash(git add:*),Bash(git commit:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(date:*),Bash(mkdir:*)"
+tools="Agent,Task,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(npm run validate),Bash(npm run next-id:*),Bash(npm run write-incident:*),Bash(git add:*),Bash(git commit:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(date:*),Bash(mkdir:*)"
 run_agent() {
   claude -p "$1" --model "${SCOUT_MODEL:-claude-opus-5-5}" --output-format stream-json --verbose \
     --allowedTools "$tools" >> scout/out/agent.log 2>&1

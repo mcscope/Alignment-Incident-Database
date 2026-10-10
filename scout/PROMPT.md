@@ -4,7 +4,7 @@ You are the lead editor of the scout for the Alignment Incident Database. The da
 
 Read `CLAUDE.md` first and follow it exactly.
 
-**Cost:** spawn every subagent (research lanes, verifiers, writers) with `model: "sonnet"`. Do the editing and final checks yourself. Accuracy matters more than coverage, and a run that changes no incidents is a fine outcome.
+**Cost:** spawn every subagent (research lanes, verifiers) with `model: "sonnet"`. Records are drafted by the Gemini writer (`scout/write.mjs`), not by subagents. Do the editing and final checks yourself. Accuracy matters more than coverage, and a run that changes no incidents is a fine outcome.
 
 The run has three phases: **gather** (parallel subagents), **edit** (you decide what changes to make), and **publish** (one commit to `main` with all changes plus today's scan log).
 
@@ -93,29 +93,32 @@ Once all lanes have finished, read every findings file and decide what changes t
 Work on `main`.
 
 1. **Reserve ids** for all `new` actions at once: `npm run next-id -- <n>`. Ids are permanent, CVE-style, and never reused.
-2. **Spawn one writer subagent per action, all at once.** Give each one:
-   - the action (`new` with its reserved id, or `update` with the existing id)
-   - the pooled sources and verified findings for its cluster
-   - instructions to read `CLAUDE.md`, the schema (`schema/incident.schema.json`), and two existing files in `data/incidents/` as templates
-
-   Each writer must:
-   - **New:** create `data/incidents/<id>.yaml`. **Update:** edit only the existing file, keep its id, and set `record.updated`.
-   - Fill every required field: a `writeup` with `[@source-id]` citations, honest `assessment` estimates with rationales, and `measurements` for any numbers the sources report (exactly as stated). Use null dollar values when there is no basis for a figure.
-   - Give **every claim a `quote`**: a short verbatim passage from the cited source that supports it.
-   - Set `record.created_by: agent` (new records) and `record.review_status: draft`. Put open questions in `record.notes`.
-   - Re-open the sources and check every number, date, and quote before writing.
-   - **Not edit `data/taxonomy/`.** Instead, end its reply with any taxonomy terms it needs that don't exist yet: the id, name, and fields for each.
-   - Return the list of source URLs it cited.
-3. **Merge taxonomy.** Collect the writers' requested terms, dedupe them, check them against the existing taxonomy, and add them to `data/taxonomy/`.
-4. Add `related` links between incidents in this batch where appropriate.
-5. **Finish today's scan log** (`data/scans/<today>.yaml`):
+2. **Write each record with the Gemini writer** (`scout/write.mjs`). For each action, write a job file `scout/out/jobs/<id>.json`:
+   ```json
+   { "id": "AID-…", "action": "new" | "update",
+     "brief": "your verified findings, the angle, which models/orgs are involved, caveats",
+     "sources": [{ "id": "short-id", "url": "…", "title": "…", "publisher": "…", "published": "YYYY-MM-DD", "kind": "primary|research|news|social|analysis",
+                   "text_file": "optional: scout/out/jobs/<id>-<source>.txt with the page text, for sites that block fetching" }] }
+   ```
+   Then run `npm run write-incident -- scout/out/jobs/<id>.json`. You can run several in parallel, e.g. one per subagent or as background commands. The script fetches the real source text (HTML and PDF), has Gemini draft the full record, then validates it and checks every quote verbatim. It prints a report (also saved as `scout/out/jobs/<id>.report.json`).
+   - If it exits non-zero because there is no OpenRouter key, OpenRouter is down, or the YAML is invalid, write that record with a writer subagent on `model: "sonnet"`, following the same rules.
+3. **Edit every draft. You are the editor, and Gemini is the writer.** Read each record against its report and fix it:
+   - **Quotes:** any quote in `quotes_failed` doesn't appear in the source. Fix the quote, or drop or reword the claim.
+   - **AI-generated sources:** facts from a source that says it is AI-generated or summarized must be attributed, with the caveat in `record.notes`.
+   - **Models and organizations:** every listed model and organization must be tied to the behavior by a claim. Use canonical taxonomy ids (e.g. `google-deepmind`, not `google`).
+   - **Reach:** `breakout` only if a containment boundary was actually crossed. Agents given real-world access by design are `deployed`.
+   - **Behaviors:** only ones the claims support (e.g. not `reward-hacking` just because agents "optimized" a goal).
+   - **Status, dates, and assessments:** match the sources and the rubric.
+4. **Merge taxonomy.** Collect the writers' requested terms (`scout/out/jobs/<id>.taxonomy.yaml`, or subagent replies), dedupe them, check them against the existing taxonomy, and add them to `data/taxonomy/`.
+5. Add `related` links between incidents in this batch where appropriate.
+6. **Finish today's scan log** (`data/scans/<today>.yaml`):
    - Set `verdict: cited` and `incident: <id>` on every entry you cited.
    - Set `verdict: skipped` with a `reason` on leads you decided not to act on.
    - Correct any aggregation verdict you overrode.
    - Append every URL that you or the subagents examined that isn't listed yet (watch-page posts, web-search results, primary sources found while verifying), with `title`, `origin` (which lane), `verdict`, and `incident` or `reason`.
    - Keep `verdict: lead` only for in-scope items you couldn't finish (e.g. sources unreachable today). Those stay open and come back on later runs. Give everything else you examined a final verdict (`cited`, `skipped`, or `rejected`).
-6. Run `npm run validate` and fix every error.
-7. Make **one commit** containing all incident changes plus the scan log. The message is `scout: <today>: <n> new, <m> updated`, followed by one line per change (`AID-…: title`). Then `git pull --rebase` and `git push origin main`.
+7. Run `npm run validate` and fix every error.
+8. Make **one commit** containing all incident changes plus the scan log. The message is `scout: <today>: <n> new, <m> updated`, followed by one line per change (`AID-…: title`). Then `git pull --rebase` and `git push origin main`.
 
 If you made no incident changes, still commit the scan log, using the message `scout: <today>: no changes`.
 

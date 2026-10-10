@@ -65,9 +65,10 @@ for (const file of files) {
   }
 
   // Write-up citations: [@source-id]. Every paragraph needs at least one.
-  const writeupCites = [...doc.writeup.matchAll(/\[@([a-z0-9-]+)\]/g)].map((m) => m[1]);
+  // Citations: [@id] or [@a; @b].
+  const writeupCites = [...doc.writeup.matchAll(/\[(@[a-z0-9-]+(?:;\s*@[a-z0-9-]+)*)\]/g)].flatMap((m) => m[1].split(/;\s*/).map((c) => c.slice(1)));
   doc.writeup.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean).forEach((para, i) => {
-    if (!/\[@[a-z0-9-]+\]/.test(para)) err(file, `writeup paragraph ${i + 1} has no [@source] citation`);
+    if (!/\[@[a-z0-9-]+(?:;\s*@[a-z0-9-]+)*\]/.test(para)) err(file, `writeup paragraph ${i + 1} has no [@source] citation`);
   });
 
   const measurementIds = new Set();
