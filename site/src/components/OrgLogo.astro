@@ -1,0 +1,19 @@
+---
+// An organization's icon on a small white tile (so dark logos stay visible in dark
+// mode), or an initials badge when we have no icon. Icons are fetched into
+// site/public/logos/ by `npm run logos`.
+import { orgById, url } from "../lib/data";
+import manifest from "../../public/logos/index.json";
+
+interface Props { id: string; size?: number; title?: boolean }
+const { id, size = 18, title = true } = Astro.props;
+const org = orgById.get(id);
+const file = (manifest as Record<string, string>)[id];
+const name = org?.name ?? id;
+const initials = name.replace(/\(.*?\)/g, "").split(/[\s/-]+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+---
+{file ? (
+  <img class="org-logo" src={url(`/logos/${file}`)} width={size} height={size} alt={title ? name : ""} title={title ? name : undefined} loading="lazy" decoding="async" style={`--logo:${size}px`} />
+) : (
+  <span class="org-logo org-initials" title={title ? name : undefined} aria-label={title ? name : undefined} style={`--logo:${size}px`}>{initials}</span>
+)}

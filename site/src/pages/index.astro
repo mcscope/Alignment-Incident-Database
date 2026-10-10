@@ -32,7 +32,7 @@ const impact = [...incidents]
   .slice(0, 5);
 
 const top = <T extends { id: string; name: string }>(terms: T[], count: (id: string) => number, path: string) =>
-  terms.map((t) => ({ label: t.name, value: count(t.id), href: url(`/${path}/${t.id}/`) }))
+  terms.map((t) => ({ label: t.name, value: count(t.id), href: url(`/${path}/${t.id}/`), logo: path === "organizations" ? t.id : undefined }))
     .filter((x) => x.value > 0).sort((a, b) => b.value - a.value || a.label.localeCompare(b.label)).slice(0, 5);
 const topBehaviors = top(behaviors, (id) => incidents.filter((i) => i.behaviors.includes(id)).length, "behaviors");
 const topDevelopers = top(organizations, (id) => incidents.filter((i) => developers(i).includes(id)).length, "organizations");

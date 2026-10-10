@@ -1,7 +1,8 @@
 ---
 // Horizontal bar chart, single series. Values are labeled at the bar tip, and
 // a collapsible table view is included.
-interface Item { label: string; value: number; display?: string; href?: string; tip?: string }
+import OrgLogo from "./OrgLogo.astro";
+interface Item { label: string; value: number; display?: string; href?: string; tip?: string; logo?: string }
 interface Props { items: Item[]; max?: number; title?: string; sub?: string; valueHeader?: string; table?: boolean }
 const { items, max, title, sub, valueHeader = "Value", table = true } = Astro.props;
 const top = max ?? Math.max(1, ...items.map((i) => i.value));
@@ -11,7 +12,9 @@ const top = max ?? Math.max(1, ...items.map((i) => i.value));
   <div class="hbars">
     {items.map((i) => (
       <>
-        <div class="hbar-label">{i.href ? <a href={i.href}>{i.label}</a> : i.label}</div>
+        <div class="hbar-label">{i.href
+          ? <a class="with-logo" href={i.href}>{i.logo && <OrgLogo id={i.logo} title={false} />}<span>{i.label}</span></a>
+          : <span class="with-logo">{i.logo && <OrgLogo id={i.logo} title={false} />}<span>{i.label}</span></span>}</div>
         <div class="hbar-track" tabindex="0" data-tip={i.tip ?? `${i.label}: ${i.display ?? i.value}`}>
           <div class="hbar-area">
             <div class={`hbar${i.value === 0 ? " zero" : ""}`} style={`width: ${(i.value / top) * 100}%`} />

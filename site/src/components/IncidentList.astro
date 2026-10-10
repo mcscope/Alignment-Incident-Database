@@ -1,6 +1,7 @@
 ---
 import Level from "./Level.astro";
-import { type Incident, url, formatDate, formatDamage, modelById, behaviorById, filterAttrs } from "../lib/data";
+import { type Incident, url, formatDate, formatDamage, modelById, behaviorById, filterAttrs, developers } from "../lib/data";
+import OrgLogo from "./OrgLogo.astro";
 
 interface Props { incidents: Incident[]; filterable?: boolean; compact?: boolean; meta?: (i: Incident) => string }
 const { incidents, filterable = false, compact = false, meta } = Astro.props;
@@ -12,7 +13,7 @@ const { incidents, filterable = false, compact = false, meta } = Astro.props;
       <div class="row-top">
         <span class="mono">{i.id}</span>
         <span>{meta ? meta(i) : formatDate(i.date)}</span>
-        <span>{i.models.map((m) => modelById.get(m)?.name ?? m).join(", ")}</span>
+        <span class="with-logo">{developers(i).slice(0, 4).map((d) => <OrgLogo id={d} size={15} />)}<span>{i.models.filter((m) => m !== "unknown").map((m) => modelById.get(m)?.name ?? m).join(", ") || "Undisclosed model"}</span></span>
       </div>
       <h3><a href={url(`/incidents/${i.id}/`)}>{i.title}</a></h3>
       {!compact && <p>{i.summary}</p>}

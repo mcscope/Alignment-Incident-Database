@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import IncidentList from "../../components/IncidentList.astro";
 import ReachBars from "../../components/ReachBars.astro";
+import OrgLogo from "../../components/OrgLogo.astro";
 import { organizations, incidents, url, type Term, type Incident } from "../../lib/data";
 
 export function getStaticPaths() {
@@ -16,7 +17,7 @@ const total = new Set(byRole.flatMap((r) => r.list.map((i) => i.id))).size;
 ---
 <Base title={term.name} nav="organizations">
   <p class="eyebrow"><a href={url("/organizations/")}>Organization</a></p>
-  <h1>{term.name}</h1>
+  <h1 class="with-logo" style="gap:12px"><OrgLogo id={term.id} size={40} title={false} />{term.name}</h1>
   <p class="lede">
     {term.url && <a href={term.url} rel="noopener">{term.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</a>}
     {total > 0 ? <> · involved in {total} incident{total === 1 ? "" : "s"}</> : <> · no incidents recorded yet</>}

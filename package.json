@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "build": "npm run validate && astro build",
     "preview": "astro preview",
-    "write-incident": "node scout/write.mjs"
+    "write-incident": "node scout/write.mjs",
+    "logos": "node scripts/fetch-logos.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

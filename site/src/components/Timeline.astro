@@ -9,6 +9,7 @@ import {
   type Incident, incidents as allIncidents, url, formatDate, orgById, behaviorById,
   DEV_COLORS, developers, devGroup, HARM_RADIUS, HARM, REACH, filterAttrs, timelineDate,
 } from "../lib/data";
+import OrgLogo from "./OrgLogo.astro";
 
 type View = "time" | "developer" | "behavior";
 interface Props { views?: View[]; incidents?: Incident[]; filterable?: boolean; id?: string }
@@ -41,7 +42,7 @@ const reachColor = (i: Incident) => ({ color: `var(--reach-${i.assessment.reach.
 const devLabel = (i: Incident) => developers(i).map((d) => orgById.get(d)?.name ?? d).join(", ") || "Undisclosed";
 
 type Dot = { i: Incident; x: number; r: number; bottom: number; color: string; hollow: boolean };
-type Lane = { key: string; label?: string; href?: string; dots: Dot[]; height: number };
+type Lane = { key: string; label?: string; href?: string; dots: Dot[]; height: number; logo?: string };
 
 function lane(key: string, list: Incident[], colorOf: (i: Incident) => { color: string; hollow: boolean }, label?: string, href?: string): Lane {
   // Stack dots that share a month; biggest at the bottom.
@@ -77,7 +78,7 @@ const laneSets: Record<View, Lane[]> = {
     return byCount([...groups]).map(([d, list]) =>
       d === "undisclosed"
         ? lane(d, list, reachColor, "Undisclosed")
-        : lane(d, list, reachColor, orgById.get(d)?.name ?? d, url(`/organizations/${d}/`)));
+        : { ...lane(d, list, reachColor, orgById.get(d)?.name ?? d, url(`/organizations/${d}/`)), logo: d });
   })(),
   behavior: (() => {
     const groups = new Map<string, Incident[]>();
@@ -133,7 +134,7 @@ const tip = (i: Incident) =>
           </div>
         ) : (
           <div class="legend">
-            {DEV_COLORS.map((c) => <span><i class="tl-key" style={`background: ${c.color}`} />{c.name}</span>)}
+            {DEV_COLORS.map((c) => <span><i class="tl-key" style={`background: ${c.color}`} /><OrgLogo id={c.id} size={14} title={false} />{c.name}</span>)}
             <span><i class="tl-key" style="background: var(--dev-other)" />Other / undisclosed</span>
             <span><i class="tl-key hollow" />Multiple developers</span>
           </div>
@@ -149,7 +150,7 @@ const tip = (i: Incident) =>
           {laneSets[v].map((l) => (
             <div class="tl-track" data-labelled={l.label ? "" : undefined} style={`height:${l.height + (l.label ? 18 : 0)}px`}>
               {months.map((mo) => <span class={mo.m === 0 ? "tl-grid" : "tl-mgrid"} style={`left:${mo.x}%`} />)}
-              {l.label && <span class="tl-label">{l.href ? <a href={l.href}>{l.label}</a> : l.label}</span>}
+              {l.label && <span class="tl-label with-logo">{l.logo && <OrgLogo id={l.logo} size={15} title={false} />}{l.href ? <a href={l.href}>{l.label}</a> : l.label}</span>}
               {l.dots.map((d) => (
                 <a
                   class={`tl-dot${d.hollow ? " hollow" : ""}`}

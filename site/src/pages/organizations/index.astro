@@ -46,7 +46,7 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
         <ReachBars
           by="harm"
           label={`Incidents per organization as ${s.id}, by harm`}
-          rows={s.rows.map((r) => ({ label: r.o.type ? `${r.o.name}` : r.o.name, href: url(`/organizations/${r.o.id}/`), incidents: r.list }))}
+          rows={s.rows.map((r) => ({ label: r.o.name, href: url(`/organizations/${r.o.id}/`), incidents: r.list, logo: r.o.id }))}
         />
       </div>
     </section>

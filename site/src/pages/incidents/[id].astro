@@ -3,6 +3,7 @@ import Base from "../../layouts/Base.astro";
 import Level from "../../components/Level.astro";
 import Measurements from "../../components/Measurements.astro";
 import Scale from "../../components/Scale.astro";
+import OrgLogo from "../../components/OrgLogo.astro";
 import {
   incidents, incidentById, modelById, orgById, behaviorById, harmById,
   url, formatDate, formatDamage, editUrl, correctionUrl, repoUrl, type Incident,
@@ -147,7 +148,7 @@ const kindLabel: Record<string, string> = { primary: "Primary", research: "Resea
             <div><dt>Models</dt><dd class="chips">{i.models.map((m) => <a class="chip" href={url(`/models/${m}/`)}>{modelById.get(m)?.name ?? m}</a>)}</dd></div>
             <div><dt>Organizations</dt><dd>
               {[...orgRoles].map(([id, roles]) => (
-                <div><a href={url(`/organizations/${id}/`)}>{orgById.get(id)?.name ?? id}</a> <span class="role">{roles.join(", ")}</span></div>
+                <div class="org-line"><a class="with-logo" href={url(`/organizations/${id}/`)}><OrgLogo id={id} title={false} /><span>{orgById.get(id)?.name ?? id}</span></a> <span class="role">{roles.join(", ")}</span></div>
               ))}
             </dd></div>
             <div><dt>Behaviors</dt><dd class="chips">{i.behaviors.map((b) => <a class="chip" href={url(`/behaviors/${b}/`)}>{behaviorById.get(b)?.name ?? b}</a>)}</dd></div>

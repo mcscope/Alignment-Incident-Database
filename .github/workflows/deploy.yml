@@ -29,6 +29,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Fetch logos for any new organizations
+        run: npm run logos || echo "logo fetch failed; new orgs will show initials"
       - run: npm run build # validates data first
       - uses: actions/upload-pages-artifact@v3
         with:

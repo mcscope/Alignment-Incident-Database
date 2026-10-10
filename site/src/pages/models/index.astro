@@ -5,6 +5,7 @@
 // split by reach); every model lists its incidents.
 import Base from "../../layouts/Base.astro";
 import ReachBars from "../../components/ReachBars.astro";
+import OrgLogo from "../../components/OrgLogo.astro";
 import {
   incidents, models, orgById, REACH, url, formatDate, type Incident, type Term,
 } from "../../lib/data";
@@ -57,7 +58,7 @@ const withIncidents = models.filter((m) => m.id !== "unknown" && count(m) > 0).l
   </p>
 
   <nav class="jump" aria-label="Developers">
-    {devList.map((d) => <a href={`#dev-${d.id}`}>{d.name} <span>{d.total}</span></a>)}
+    {devList.map((d) => <a class="with-logo" href={`#dev-${d.id}`}>{d.id !== "other" && <OrgLogo id={d.id} size={16} title={false} />}{d.name} <span>{d.total}</span></a>)}
   </nav>
 
   <div class="legend reach-legend">
@@ -67,7 +68,7 @@ const withIncidents = models.filter((m) => m.id !== "unknown" && count(m) > 0).l
   {devList.map((d) => (
     <section class="dev" id={`dev-${d.id}`}>
       <div class="section-head">
-        <h2>{d.href ? <a href={d.href}>{d.name}</a> : d.name}</h2>
+        <h2 class="with-logo" style="gap:10px">{d.id !== "other" && <OrgLogo id={d.id} size={26} title={false} />}{d.href ? <a href={d.href}>{d.name}</a> : d.name}</h2>
         <span class="muted small">{d.total} incident{d.total === 1 ? "" : "s"} · {d.families.length} famil{d.families.length === 1 ? "y" : "ies"}</span>
       </div>
       <div class="fam-grid">

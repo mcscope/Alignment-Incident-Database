@@ -17,7 +17,7 @@ const drafts = incidents.filter((i) => i.record.review_status === "draft").lengt
 
 const countBy = <T extends { id: string; name: string }>(terms: T[], has: (i: (typeof incidents)[number], id: string) => boolean, path: string, limit = 12) =>
   terms
-    .map((t) => ({ label: t.name, value: incidents.filter((i) => has(i, t.id)).length, href: url(`/${path}/${t.id}/`) }))
+    .map((t) => ({ label: t.name, value: incidents.filter((i) => has(i, t.id)).length, href: url(`/${path}/${t.id}/`), logo: path === "organizations" ? t.id : undefined }))
     .filter((x) => x.value > 0)
     .sort((a, b) => b.value - a.value || a.label.localeCompare(b.label))
     .slice(0, limit);
