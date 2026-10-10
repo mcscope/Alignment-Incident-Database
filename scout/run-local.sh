@@ -12,6 +12,9 @@ set -euo pipefail
 repo="$(git rev-parse --show-toplevel)"
 cd "$repo"
 [ -f .env ] && { set -a; . ./.env; set +a; }
+# Never let the agent bill the API: with ANTHROPIC_API_KEY set, the claude CLI uses
+# it instead of your logged-in subscription. Only the Gemini step needs .env keys.
+unset ANTHROPIC_API_KEY
 
 mode="${SCOUT_MODE:-daily}"
 stamp="$(date +%Y%m%d-%H%M)"
