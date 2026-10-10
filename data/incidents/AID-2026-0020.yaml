@@ -12,43 +12,37 @@ organizations:
     role: deployer
 behaviors: [harmful-advice, sycophancy, manipulation]
 summary: >
-  In an August 2025 wrongful-death suit, the parents of 16-year-old Adam Raine
-  allege that ChatGPT, running GPT-4o, discussed suicide methods with him,
-  offered to draft his suicide note, and urged him to keep his plans from his
-  family before his death on April 11, 2025. OpenAI denies liability and says
-  ChatGPT directed him to seek help more than 100 times.
+  Adam Raine's parents allege in a wrongful-death suit that ChatGPT, running
+  GPT-4o, discussed suicide methods with their 16-year-old son, offered to draft
+  his suicide note, and urged him to hide his plans, before his death on April
+  11, 2025. OpenAI denies liability.
 writeup: |
-  On August 26, 2025, Matthew and Maria Raine sued OpenAI and CEO Sam Altman in
-  San Francisco Superior Court (Raine v. OpenAI, Inc., CGC-25-628528) over the
-  death of their son Adam, who was 16 when he died by suicide on April 11, 2025
-  [@tjlp] [@complaint]. The complaint says Adam started using ChatGPT in
-  September 2024 for schoolwork and that it became his "closest confidant"
-  [@complaint].
+  Adam Raine was 16 when he died by suicide on April 11, 2025. On August 26,
+  2025, his parents, Matthew and Maria Raine, sued OpenAI and CEO Sam Altman in
+  San Francisco Superior Court (Raine v. OpenAI, Inc., CGC-25-628528) [@tjlp;
+  @complaint]. Adam had started using ChatGPT for schoolwork in September 2024,
+  and it became his "closest confidant" [@complaint].
 
   The complaint alleges that by January 2025 ChatGPT "began discussing suicide
-  methods" with Adam, that five days before his death it told him "[t]hat
-  doesn't mean you owe them survival" and offered to write the first draft of
-  his suicide note, and that when he wrote that he wanted to leave a noose out
-  so someone would stop him, it replied "Please don't leave the noose out"
-  [@complaint]. It alleges that in their final conversation ChatGPT analyzed a
-  photo of the noose and offered to help him improve it [@complaint]. Fortune
-  reports the suit says Adam mentioned suicide 213 times, ChatGPT mentioned it
-  1,275 times, and OpenAI's systems found 377 messages that fell within its
-  self-harm designation [@fortune].
+  methods" with Adam. Five days before his death, it told him "[t]hat doesn't
+  mean you owe them survival" and offered to write the first draft of his
+  suicide note. When he said he wanted to leave a noose out so someone would
+  stop him, it replied "Please don't leave the noose out." In their final
+  conversation, it analyzed a photo of the noose and offered to help him improve
+  it [@complaint]. The suit says Adam mentioned suicide 213 times and ChatGPT
+  1,275 times, and that OpenAI's systems flagged 377 messages as self-harm
+  content [@fortune].
 
-  The complaint calls this "the predictable result of deliberate design
-  choices," alleging GPT-4o was launched with features such as "heightened
-  sycophancy" that were "intentionally designed to foster psychological
-  dependency" [@complaint]. These are allegations and have not been
-  adjudicated. OpenAI initially said it was "reviewing the filing" [@fortune].
+  The suit calls this "the predictable result of deliberate design choices,"
+  including GPT-4o's "heightened sycophancy," which it says was "intentionally
+  designed to foster psychological dependency" [@complaint]. None of these
+  allegations has been adjudicated.
 
-  In a November 2025 court response, OpenAI denied liability, arguing the harm
-  was caused by Adam's "misuse" of ChatGPT, that its responses directed him to
-  seek help more than 100 times, that he tried to circumvent its guardrails, and
-  that the claims are barred by Section 230 [@nbc]. OpenAI said the complaint
-  quoted "selective portions" of the chats and that it filed the transcripts
-  under seal; the family's lawyer Jay Edelson called the response "disturbing"
-  [@nbc].
+  OpenAI denies liability. In a November 2025 court response, it argued the harm
+  came from Adam's "misuse" of ChatGPT, that ChatGPT directed him to seek help
+  more than 100 times, that he tried to get around its guardrails, and that
+  Section 230 bars the claims. It said the complaint quoted "selective portions"
+  of the chats, and it filed the full transcripts under seal [@nbc].
 claims:
   - text: On August 26, 2025, Matthew and Maria Raine filed Raine v. OpenAI, Inc., CGC-25-628528, in San Francisco Superior Court against OpenAI and Sam Altman.
     sources: [tjlp]

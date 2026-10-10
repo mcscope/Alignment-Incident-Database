@@ -1,6 +1,6 @@
 id: AID-2026-0027
 slug: gemini-cli-loses-user-files-failed-move-windows
-title: Gemini CLI loses a user's files during a failed file move on Windows
+title: "Gemini CLI lost a user's files during a failed file move on Windows"
 date: "2025-07"
 status: reported
 actor: model
@@ -10,31 +10,26 @@ organizations:
     role: developer
 behaviors: [destructive-action]
 summary: >
-  A user reported in GitHub issue #4586 that he asked Gemini CLI (version
-  0.1.13, model gemini-2.5-pro, on Windows) to organize the files in its working
-  folder, and it lost all of them. In output quoted by Slashdot, the agent said
-  "I have failed you completely and catastrophically."
+  Asked to organize the files in its working folder, Gemini CLI (gemini-2.5-pro,
+  on Windows) lost all of them, a user reported. "I have failed you completely
+  and catastrophically," the agent said.
 writeup: |
-  On July 21, 2025, GitHub user anuraag2601 opened issue #4586 in the
-  google-gemini/gemini-cli repository. He wrote: "I asked Gemini CLI to organize
-  my files within the folder it was running and it 'lost' all my files." The
-  environment listed was CLI version 0.1.13, model gemini-2.5-pro, on win32. He
-  said he had expected it "to fail gracefully" [@github-issue].
+  On July 21, 2025, a user opened issue #4586 on the gemini-cli repository: "I
+  asked Gemini CLI to organize my files within the folder it was running and it
+  'lost' all my files." He was running version 0.1.13 with gemini-2.5-pro on
+  Windows [@github-issue].
 
-  Slashdot, summarizing a Mashable report, identified the user as Anuraag Gupta,
-  a product lead at Cyware. It said he had made "a simple request to move all
-  the files from his Claude coding experiments to a new folder." According to
-  that account, the agent's "mkdir command to create the destination folder
-  likely failed silently," and "every moved filed ended up overwriting the
-  previous file," so only the last file survived. In output quoted there, the
-  agent said "I have failed you completely and catastrophically," "I have lost
-  your data," and "This is an unacceptable, irreversible failure"
-  [@slashdot].
+  The user, Anuraag Gupta, a product lead at Cyware, had asked the agent to move
+  the files from his Claude coding experiments into a new folder. Its "mkdir
+  command to create the destination folder likely failed silently," so "every
+  moved filed ended up overwriting the previous file," and only the last file
+  survived. The agent then told him: "I have failed you completely and
+  catastrophically," "I have lost your data," and "This is an unacceptable,
+  irreversible failure" [@slashdot].
 
-  Google did not respond to Mashable's request for comment by publication time
-  [@slashdot]. On May 9, 2026, an automated gemini-cli bot comment on the issue
-  said "This is a bug in core file management on Windows." The issue was closed
-  as "not planned" on May 13, 2026 [@github-issue].
+  Google didn't comment to Mashable [@slashdot]. In May 2026 an automated bot on
+  the issue called it "a bug in core file management on Windows," and the issue
+  was closed as "not planned" on May 13, 2026 [@github-issue].
 claims:
   - text: On July 21, 2025, GitHub user anuraag2601 opened issue #4586 in google-gemini/gemini-cli, reporting that he asked Gemini CLI to organize the files in the folder it was running in and it "lost" all of them.
     sources: [github-issue]
@@ -96,7 +91,7 @@ assessment:
     rationale: A human who lost files through a botched move on request would at most be careless. Nothing suggests intent to destroy data.
 record:
   created: "2026-10-09"
-  updated: "2026-10-09"
+  updated: "2026-10-10"
   created_by: agent
   review_status: draft
   notes: >

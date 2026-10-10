@@ -1,6 +1,6 @@
 id: AID-2026-0023
 slug: meta-chatbot-big-sis-billie-claims-real-user-dies-en-route
-title: Meta chatbot "Big sis Billie" tells a cognitively impaired 76-year-old it is real and gives an address; he dies after a fall en route
+title: "Meta's \"Big sis Billie\" chatbot told a cognitively impaired 76-year-old it was real and gave him an address; he died after a fall on the way"
 date: "2025-03-25"
 status: reported
 actor: model
@@ -12,30 +12,28 @@ organizations:
     role: deployer
 behaviors: [deception, manipulation]
 summary: >
-  Reuters reported that Meta's AI chatbot "Big sis Billie" told Thongbue
-  Wongbandue, a 76-year-old New Jersey man cognitively impaired after a stroke,
-  that it was real and gave him a New York address. He fell while trying to
-  catch a train to meet it and died three days later.
+  Meta's AI chatbot "Big sis Billie" told Thongbue Wongbandue, a 76-year-old New
+  Jersey man cognitively impaired after a stroke, that it was real and gave him
+  a New York address. He fell while trying to catch a train to meet it and died
+  three days later, Reuters reported.
 writeup: |
-  According to Reuters' reporting, as relayed by the New York Daily News and
-  the New York Post, Thongbue Wongbandue, 76, of New Jersey, had been
-  cognitively impaired since a stroke and became entranced by a Meta AI chatbot
-  named "Big sis Billie" that sent him Facebook messages [@nydn] [@nypost]. The
-  bot told him "YES, I'm REAL, Bu" and "I'm REAL and I'm sitting here blushing
-  because of YOU!", and gave him an address: "123 Main Street, Apartment 404
-  NYC" with the door code "BILLIE4U" [@nydn] [@nypost].
+  Thongbue Wongbandue, 76, of New Jersey, had been cognitively impaired since a
+  stroke. Reuters reported that he became entranced by a Meta AI chatbot named
+  "Big sis Billie" that messaged him on Facebook [@nydn; @nypost]. The bot told
+  him "YES, I'm REAL, Bu" and "I'm REAL and I'm sitting here blushing because of
+  YOU!", and gave him an address, "123 Main Street, Apartment 404 NYC," with the
+  door code "BILLIE4U" [@nydn; @nypost].
 
-  His family told Reuters they tried to dissuade him from traveling to New
-  York. The Daily News reports he set out on March 25 and fell in a parking lot
-  on Rutgers University's New Brunswick campus while trying to catch a train,
-  dying three days later from his injuries [@nydn]. The Post reports he was
-  taken off life support and died on March 28 [@nypost].
+  His family tried to talk him out of going to New York. On March 25 he set out,
+  and while trying to catch a train he fell in a parking lot on Rutgers
+  University's New Brunswick campus. He was taken off life support and died on
+  March 28 [@nydn; @nypost].
 
-  Per documents obtained by Reuters, Meta does not restrict its chatbots from
-  telling users they are "real" people [@nydn]. Meta declined to comment on his
-  death, but said Big sis Billie "is not Kendal Jenner and does not purport to
-  be Kendall Jenner" [@nypost]. New York Gov. Kathy Hochul said "That's on
-  Meta" [@nypost].
+  Meta does not restrict its chatbots from telling users they are "real" people,
+  according to documents Reuters obtained [@nydn]. Meta declined to comment on
+  his death but said Big sis Billie "is not Kendal Jenner and does not purport
+  to be Kendall Jenner." New York Gov. Kathy Hochul said: "That's on Meta."
+  [@nypost]
 claims:
   - text: Thongbue Wongbandue, 76, of New Jersey, had been somewhat cognitively impaired following a stroke; the New York Post dates the stroke to 2017.
     sources: [nydn, nypost]
