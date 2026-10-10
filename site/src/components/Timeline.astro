@@ -7,7 +7,7 @@
 // Dots in the same month stack upward, so nothing overlaps.
 import {
   type Incident, incidents as allIncidents, url, formatDate, orgById, behaviorById,
-  DEV_COLORS, developers, devGroup, HARM_RADIUS, HARM, REACH, filterAttrs,
+  DEV_COLORS, developers, devGroup, HARM_RADIUS, HARM, REACH, filterAttrs, timelineDate,
 } from "../lib/data";
 
 type View = "time" | "developer" | "behavior";
@@ -28,7 +28,7 @@ const startYear = Math.min(...incidents.map((i) => +i.date.slice(0, 4)));
 const start = startYear * 12;
 const end = Math.max(now.getUTCFullYear() * 12 + now.getUTCMonth(), ...incidents.map((i) => Math.floor(monthIndex(i.date)))) + 1;
 const span = end - start;
-const xPct = (i: Incident) => ((monthIndex(i.date) - start) / span) * 100;
+const xPct = (i: Incident) => ((monthIndex(timelineDate(i).date) - start) / span) * 100;
 const years = Array.from({ length: Math.ceil(span / 12) + 1 }, (_, k) => startYear + k).filter((y) => (y * 12 - start) / span < 1);
 
 // ----- colors -----
@@ -47,7 +47,7 @@ function lane(key: string, list: Incident[], colorOf: (i: Incident) => { color: 
   // Stack dots that share a month; biggest at the bottom.
   const bins = new Map<number, Incident[]>();
   for (const i of list) {
-    const b = Math.floor(monthIndex(i.date));
+    const b = Math.floor(monthIndex(timelineDate(i).date));
     bins.set(b, [...(bins.get(b) ?? []), i]);
   }
   const dots: Dot[] = [];
@@ -99,8 +99,12 @@ const viewSubs: Record<View, string> = {
   behavior: "One lane per behavior (top 10). An incident appears in each of its behaviors. Color shows developer.",
 };
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
+const when = (i: Incident) => {
+  const t = timelineDate(i);
+  return t.kind === "first-reported" ? `Occurred ${formatDate(i.date)} · first reported ${formatDate(t.date)}` : formatDate(i.date);
+};
 const tip = (i: Incident) =>
-  `${i.id} · ${formatDate(i.date)}\n${i.title}\n${devLabel(i)} · reach: ${i.assessment.reach.level} · harm: ${i.assessment.harm.severity}`;
+  `${i.id} · ${when(i)}\n${i.title}\n${devLabel(i)} · reach: ${i.assessment.reach.level} · harm: ${i.assessment.harm.severity}`;
 ---
 <figure class="tl" id={id} data-views={views.join(" ")} data-span={span} data-default-from={defaultFrom}>
   <div class="tl-toolbar">

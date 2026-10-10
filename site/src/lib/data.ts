@@ -97,6 +97,17 @@ export function formatDamage(m: Incident["assessment"]["monetary_damage"]) {
   return `${formatUsd(m.low_usd)} – ${formatUsd(m.high_usd)}`;
 }
 
+/**
+ * Best day-precision date for placing an incident in time: the occurrence date when
+ * it has a day; otherwise the earliest day-dated source published within the same
+ * month or year (the first public report). `kind` says which one it is.
+ */
+export function timelineDate(i: Incident): { date: string; kind: "occurred" | "first-reported" | "approximate" } {
+  if (i.date.length === 10) return { date: i.date, kind: "occurred" };
+  const reported = i.sources.map((s) => s.published).filter((d): d is string => !!d && d.length === 10 && d.startsWith(i.date)).sort()[0];
+  return reported ? { date: reported, kind: "first-reported" } : { date: i.date, kind: "approximate" };
+}
+
 export function formatDate(d: string) {
   const [y, m, day] = d.split("-").map(Number);
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

@@ -6,7 +6,7 @@ import Scale from "../../components/Scale.astro";
 import {
   incidents, incidentById, modelById, orgById, behaviorById, harmById,
   url, formatDate, formatDamage, editUrl, correctionUrl, repoUrl, type Incident,
-  REACH, HARM, CRIMINALITY,
+  REACH, HARM, CRIMINALITY, timelineDate,
 } from "../../lib/data";
 import { numberSources, renderLinkedWriteup, citeLink } from "../../lib/cite";
 
@@ -32,7 +32,7 @@ const kindLabel: Record<string, string> = { primary: "Primary", research: "Resea
     <header class="incident-head">
       <div class="row-top">
         <span class="mono">{i.id}</span>
-        <span>{formatDate(i.date)}</span>
+        <span>{formatDate(i.date)}{timelineDate(i).kind === "first-reported" && ` · first reported ${formatDate(timelineDate(i).date)}`}</span>
         <Level kind="status" value={i.status} />
         {i.actor === "human-misuse" && <span class="badge l2">Human misuse</span>}
         {i.record.review_status === "draft" && <span class="badge draft">Draft</span>}
