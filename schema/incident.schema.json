@@ -322,6 +322,16 @@
           "description": "OECD AI Incidents Monitor URL.",
           "type": "string",
           "format": "uri"
+        },
+        "felonybench": {
+          "description": "FelonyBench incident URL (felonybench.ai). It is a cross-reference only: the site describes itself as satire.",
+          "type": "string",
+          "format": "uri"
+        },
+        "aiaaic": {
+          "description": "AIAAIC Repository entry URL.",
+          "type": "string",
+          "format": "uri"
         }
       }
     },

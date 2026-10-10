@@ -12,7 +12,8 @@ const root = new URL("..", import.meta.url).pathname;
 const cfg = parse(readFileSync(join(root, "scout/sources.yaml"), "utf8"));
 const since = new Date(Date.now() - (cfg.window_hours ?? 48) * 3600_000);
 const keywords = cfg.keywords.map((k) => k.toLowerCase());
-const xml = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "" });
+// processEntities off: some feeds (e.g. HTML-heavy Atom) exceed the parser's entity-expansion limit.
+const xml = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "", processEntities: false });
 
 // Skip anything already in a scan log (data/scans/) or cited by an incident.
 const known = knownUrls();
@@ -72,6 +73,20 @@ for (const q of cfg.arxiv ?? []) {
   jobs.push([`arXiv: ${q}`, () =>
     readFeed(`arXiv: ${q}`, `https://export.arxiv.org/api/query?search_query=${encodeURIComponent(q)}&sortBy=submittedDate&sortOrder=descending&max_results=25`)]);
 }
+// GitHub issues in agent tools' repos: first-hand reports of agents destroying work.
+for (const q of cfg.github_issues?.queries ?? []) {
+  jobs.push([`GitHub issues: ${q}`, async () => {
+    const repos = cfg.github_issues.repos.map((r) => `repo:${r}`).join(" ");
+    const query = `${q} in:title is:issue created:>=${since.toISOString().slice(0, 10)} ${repos}`;
+    const headers = { Accept: "application/vnd.github+json", ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}) };
+    const { items = [] } = await (await get(`https://api.github.com/search/issues?per_page=50&sort=created&q=${encodeURIComponent(query)}`, headers)).json();
+    return items.map((it) => ({
+      origin: `GitHub issues: ${q}`, title: it.title, url: it.html_url, published: it.created_at,
+      snippet: `${it.repository_url.split("/repos/")[1]} · ${it.comments} comments · ${strip(it.body ?? "")}`,
+    }));
+  }]);
+}
+
 if (process.env.X_BEARER_TOKEN) {
   for (const q of cfg.x ?? []) {
     jobs.push([`X: ${q}`, async () => {

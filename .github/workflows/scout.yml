@@ -33,6 +33,7 @@ jobs:
         run: npm run scout
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Aggregate candidates (Gemini via OpenRouter)
         run: npm run aggregate
         continue-on-error: true # the agent falls back to raw candidates

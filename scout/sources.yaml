@@ -6,7 +6,10 @@
 # hacker_news:  search queries run through the HN Algolia API.
 # arxiv:        arXiv API search queries.
 # x:            X (Twitter) recent-search queries. Requires X_BEARER_TOKEN; skipped otherwise.
+# github_issues: issue searches in agent tools' repos (first-hand reports of agents destroying
+#               work). Uses GITHUB_TOKEN if set (higher rate limit).
 # watch_pages:  pages without feeds. The agent itself reads these with WebFetch.
+#               cadence: daily (default) or weekly (checked on Mondays and in backfill runs).
 # web_searches: queries the agent runs with WebSearch to catch what the feeds miss.
 # aggregation:  model settings for the triage/cluster pass (scout/aggregate.mjs).
 
@@ -52,8 +55,26 @@ feeds:
   - { name: Palisade Research, url: "https://palisaderesearch.org/feed.xml", filter: false }
   - { name: Alignment Forum, url: "https://www.alignmentforum.org/feed.xml", filter: true }
   - { name: LessWrong, url: "https://www.lesswrong.com/feed.xml", filter: true }
-  # Other incident trackers
+  - { name: Redwood Research, url: "https://redwoodresearch.substack.com/feed", filter: false }
+  # Long-running agent experiments and benchmarks that keep producing incidents
+  - { name: AI Village (Sage), url: "https://aivillageblog.substack.com/feed", filter: false }
+  # Other incident trackers. Use these as leads; cite the original sources, not the tracker.
   - { name: AI Incident Database, url: "https://incidentdatabase.ai/rss.xml", filter: false }
+  # FelonyBench: crimes-by-AI-models leaderboard; incident YAML on GitHub (CC BY 4.0).
+  # The site describes itself as satire, so use it for leads and external_refs only, never as a source.
+  - { name: FelonyBench incidents (commits), url: "https://github.com/avleen/felonybench.ai/commits/main.atom", filter: false }
+  # First-hand agent reports and security research
+  - { name: Cursor forum, url: "https://forum.cursor.com/latest.rss", filter: true }
+  - { name: Simon Willison (ai-agents), url: "https://simonwillison.net/tags/ai-agents.atom", filter: true }
+  - { name: Embrace The Red, url: "https://embracethered.com/blog/index.xml", filter: true }
+  # Newsletters that round up incidents weekly
+  - { name: Zvi Mowshowitz, url: "https://thezvi.substack.com/feed", filter: true }
+  - { name: Import AI, url: "https://importai.substack.com/feed", filter: true }
+  - { name: Transformer, url: "https://www.transformernews.ai/feed", filter: true }
+  - { name: CAIS AI Safety Newsletter, url: "https://newsletter.safe.ai/feed", filter: true }
+  # Court dockets (CourtListener RECAP search feeds): lawsuits over chatbot/agent behavior
+  - { name: "CourtListener: chatbot wrongful death", url: "https://www.courtlistener.com/feed/search/?q=%28chatbot+OR+%22Character+Technologies%22+OR+OpenAI%29+AND+%28%22wrongful+death%22+OR+suicide%29&type=r", filter: false }
+  - { name: "CourtListener: AI agent", url: "https://www.courtlistener.com/feed/search/?q=%22AI+agent%22+OR+%22autonomous+agent%22&type=r", filter: true }
 
 google_news:
   - '"AI agent" deleted OR wiped OR destroyed'
@@ -81,6 +102,18 @@ arxiv:
   - 'abs:"emergent misalignment"'
   - 'abs:"shutdown resistance" OR abs:"self-preservation"'
 
+github_issues:
+  repos: [anthropics/claude-code, google-gemini/gemini-cli, openai/codex, cline/cline]
+  # Matched against issue titles.
+  queries:
+    - deleted
+    - '"rm -rf"'
+    - wiped
+    - destroyed
+    - '"without permission"'
+    - '"ignored instructions"'
+    - '"force push"'
+
 x:
   - '("AI agent" OR Claude OR ChatGPT OR Gemini OR Grok OR Codex OR Cursor) (deleted OR wiped OR "went rogue" OR lied OR blackmail) -is:retweet lang:en'
   - '("reward hacking" OR "alignment faking" OR sandbagging OR "scheming") (model OR LLM) -is:retweet lang:en'
@@ -93,6 +126,17 @@ watch_pages:
   - { name: xAI News, url: "https://x.ai/news" }
   - { name: Apollo Research, url: "https://www.apolloresearch.ai/blog" }
   - { name: UK AI Security Institute, url: "https://www.aisi.gov.uk/blog" }
+  - { name: Anthropic Alignment Science blog, url: "https://alignment.anthropic.com" }
+  - { name: Transluce, url: "https://transluce.org" }
+  # Weekly: trackers and benchmark leaderboards that change slowly
+  - { name: FelonyBench (leads only; self-described satire), url: "https://felonybench.ai", cadence: weekly }
+  - { name: Andon Labs (Vending-Bench, Butter-Bench), url: "https://www.andonlabs.com", cadence: weekly }
+  - { name: Spiral-Bench leaderboard (delusional sycophancy), url: "https://eqbench.com/spiral-bench.html", cadence: weekly }
+  - { name: Scale Labs leaderboards (MASK honesty), url: "https://labs.scale.com/leaderboard", cadence: weekly }
+  - { name: MIT AI Incident Tracker, url: "https://airisk.mit.edu/ai-incident-tracker", cadence: weekly }
+  - { name: OECD AI Incidents Monitor, url: "https://oecd.ai/en/incidents", cadence: weekly }
+  - { name: AIAAIC Repository, url: "https://www.aiaaic.org", cadence: weekly }
+  - { name: GWU Database of AI Litigation, url: "https://blogs.gwu.edu/law-eti/?p=742", cadence: weekly }
 
 web_searches:
   - AI agent incident this week

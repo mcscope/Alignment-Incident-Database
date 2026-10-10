@@ -35,7 +35,7 @@ Spawn all of these subagents at once:
 | Subagent | Job |
 |---|---|
 | `verify-<n>`, one per digest cluster with action `new` or `update` (highest priority first, max 10) | Read every item in the cluster. Find and read the primary sources: lab post, paper, system card, court filing, or the affected person's own post (search X or other sites for first-hand accounts). Confirm or refute the cluster. |
-| `labs` | `watch_pages` (Anthropic, xAI, Apollo, AISI, …). Look for posts from the last ~48h, especially new system cards and safety write-ups, and read their alignment/safety sections for reported model misbehavior. |
+| `labs` | `watch_pages` (Anthropic, xAI, Apollo, AISI, trackers, benchmark leaderboards, …). Check pages with `cadence: weekly` only on Mondays (`date +%u` is 1). Look for posts from the last ~48h, especially new system cards and safety write-ups, and read their alignment/safety sections for reported model misbehavior. |
 | `web` | Run every query in `web_searches` to catch what the feeds missed. |
 | `legal` | Search for recent charges, indictments, convictions, and lawsuits where an AI system's own behavior or capability was central, e.g. agentic or AI-run cyberattacks and AI-conducted fraud. Skip routine generator misuse (see scope). |
 | `backfill` | Existing records whose `record.notes` list missing sources or open questions. Try to find those sources. Cap: 3 records per run. |
