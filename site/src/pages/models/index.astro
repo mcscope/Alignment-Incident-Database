@@ -1,10 +1,158 @@
 ---
-import TermIndex from "../../components/TermIndex.astro";
-import { models, orgById } from "../../lib/data";
+// Models, grouped by developer → family, built entirely from the data: a new
+// model or family in data/taxonomy/models.yaml shows up here automatically.
+// Each family with 2+ models gets a stacked bar chart (incidents per model,
+// split by reach); every model lists its incidents.
+import Base from "../../layouts/Base.astro";
+import {
+  incidents, models, orgById, REACH, url, formatDate, type Incident, type Term,
+} from "../../lib/data";
+
+const byModel = new Map<string, Incident[]>(models.map((m) => [m.id, incidents.filter((i) => i.models.includes(m.id)).sort((a, b) => b.date.localeCompare(a.date))]));
+const count = (m: Term) => byModel.get(m.id)!.length;
+
+type Family = { id: string; models: Term[]; total: number };
+type Dev = { id: string; name: string; href?: string; families: Family[]; total: number };
+
+const devs = new Map<string, Dev>();
+for (const m of models) {
+  const devId = m.developer ?? "other";
+  const dev = devs.get(devId) ?? {
+    id: devId,
+    name: devId === "other" ? "Other and undisclosed" : orgById.get(devId)?.name ?? devId,
+    href: devId === "other" ? undefined : url(`/organizations/${devId}/`),
+    families: [], total: 0,
+  };
+  const famId = m.family ?? (m.id === "unknown" ? "undisclosed" : m.id);
+  let fam = dev.families.find((f) => f.id === famId);
+  if (!fam) dev.families.push((fam = { id: famId, models: [], total: 0 }));
+  fam.models.push(m);
+  devs.set(devId, dev);
+}
+// Totals count distinct incidents, so a multi-model incident isn't double-counted.
+const distinct = (ms: Term[]) => new Set(ms.flatMap((m) => byModel.get(m.id)!.map((i) => i.id))).size;
+for (const d of devs.values()) {
+  for (const f of d.families) {
+    f.total = distinct(f.models);
+    f.models.sort((a, b) => count(b) - count(a) || a.name.localeCompare(b.name));
+  }
+  d.families.sort((a, b) => b.total - a.total || a.id.localeCompare(b.id));
+  d.total = distinct(d.families.flatMap((f) => f.models));
+}
+const devList = [...devs.values()]
+  .filter((d) => d.total > 0)
+  .sort((a, b) => (a.id === "other" ? 1 : b.id === "other" ? -1 : b.total - a.total || a.name.localeCompare(b.name)));
+
+const familyLabel = (f: Family) => f.id.replace(/-/g, " ").replace(/\b([a-z])/g, (c) => c.toUpperCase()).replace(/^Gpt/, "GPT").replace(/^O Series$/, "o-series");
+const reachCounts = (m: Term) => REACH.map((r) => byModel.get(m.id)!.filter((i) => i.assessment.reach.level === r).length);
+const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
+const withIncidents = models.filter((m) => m.id !== "unknown" && count(m) > 0).length;
 ---
-<TermIndex
-  nav="models" title="Models" path="models" terms={models}
-  intro="AI models implicated in recorded incidents, by the most specific version the sources identify."
-  matches={(i, t) => i.models.includes(t.id)}
-  detail={(t) => (t.developer ? orgById.get(t.developer)?.name : undefined)}
-/>
+<Base title="Models" nav="models" description="Incidents grouped by AI model and model family.">
+  <h1>Models</h1>
+  <p class="lede">
+    {withIncidents} models from {devList.filter((d) => d.id !== "other").length} developers appear in recorded incidents.
+    Grouped by developer and model family; bars show each model's incidents, shaded by how far the behavior reached.
+  </p>
+
+  <nav class="jump" aria-label="Developers">
+    {devList.map((d) => <a href={`#dev-${d.id}`}>{d.name} <span>{d.total}</span></a>)}
+  </nav>
+
+  <div class="legend reach-legend">
+    {REACH.map((r) => <span><i style={`background: var(--reach-${r})`} />{cap(r)}</span>)}
+  </div>
+
+  {devList.map((d) => (
+    <section class="dev" id={`dev-${d.id}`}>
+      <div class="section-head">
+        <h2>{d.href ? <a href={d.href}>{d.name}</a> : d.name}</h2>
+        <span class="muted small">{d.total} incident{d.total === 1 ? "" : "s"} · {d.families.length} famil{d.families.length === 1 ? "y" : "ies"}</span>
+      </div>
+      <div class="fam-grid">
+        {d.families.filter((f) => f.total > 0).map((f) => {
+          const shown = f.models.filter((m) => count(m) > 0);
+          const max = Math.max(...shown.map(count));
+          return (
+            <article class="chart-card fam">
+              <div class="fam-head">
+                <p class="chart-title">{familyLabel(f)}</p>
+                <span class="muted small">{f.total} incident{f.total === 1 ? "" : "s"}</span>
+              </div>
+
+              {shown.length > 1 ? (
+                <div class="stackbars" role="img" aria-label={`Incidents per model in the ${familyLabel(f)} family`}>
+                  {shown.map((m) => {
+                    const rc = reachCounts(m);
+                    return (
+                      <>
+                        <a class="sb-label" href={url(`/models/${m.id}/`)}>{m.name}</a>
+                        <div class="sb-track">
+                          <div class="sb-bar" style={`width:${(count(m) / max) * 100}%`}>
+                            {rc.map((n, k) => n > 0 && (
+                              <span class="sb-seg" tabindex="0" style={`flex:${n}; background: var(--reach-${REACH[k]})`} data-tip={`${m.name} · ${REACH[k]}: ${n}`} />
+                            ))}
+                          </div>
+                          <span class="sb-val">{count(m)}</span>
+                        </div>
+                      </>
+                    );
+                  })}
+                </div>
+              ) : null}
+
+              <div class="fam-models">
+                {shown.map((m) => (
+                  <details open={shown.length === 1}>
+                    <summary><a href={url(`/models/${m.id}/`)}>{m.name}</a> <span class="muted small">{count(m)} incident{count(m) === 1 ? "" : "s"}</span></summary>
+                    <ul>
+                      {byModel.get(m.id)!.map((i) => (
+                        <li>
+                          <i class="reach-dot" style={`background: var(--reach-${i.assessment.reach.level})`} title={`Reach: ${i.assessment.reach.level}`} />
+                          <a href={url(`/incidents/${i.id}/`)}>{i.title}</a>
+                          <span class="muted small">{formatDate(i.date)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                ))}
+                {f.models.some((m) => count(m) === 0) && (
+                  <p class="muted small">No incidents yet: {f.models.filter((m) => count(m) === 0).map((m) => m.name).join(", ")}</p>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .jump { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
+  .jump a { font-size: 0.85rem; text-decoration: none; color: var(--text); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; background: var(--surface); }
+  .jump a:hover { border-color: var(--muted); }
+  .jump span { color: var(--muted); font-variant-numeric: tabular-nums; margin-left: 2px; }
+  .reach-legend i { border-radius: 3px; }
+  .dev { scroll-margin-top: 16px; }
+  .dev h2 a { color: var(--text); text-decoration: none; }
+  .dev h2 a:hover { text-decoration: underline; }
+  .fam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 14px; align-items: start; }
+  .fam { display: grid; gap: 12px; }
+  .fam-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .stackbars { display: grid; grid-template-columns: minmax(5.5rem, max-content) minmax(0, 1fr); gap: 6px 10px; align-items: center; font-size: 0.85rem; }
+  .sb-label { color: var(--text); overflow-wrap: anywhere; }
+  .sb-track { display: flex; align-items: center; gap: 6px; min-height: 20px; border-left: 1px solid var(--chart-axis); padding-right: 1.5rem; }
+  .sb-bar { display: flex; gap: 2px; height: 14px; min-width: 4px; }
+  .sb-seg { height: 100%; min-width: 3px; }
+  .sb-seg:last-child { border-radius: 0 4px 4px 0; }
+  .sb-seg:focus-visible { outline: 2px solid var(--text); outline-offset: 1px; }
+  .sb-val { color: var(--muted); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+  .fam-models { display: grid; gap: 4px; }
+  .fam-models details { border-top: 1px solid var(--border); padding-top: 6px; }
+  .fam-models summary { cursor: pointer; font-size: 0.9rem; }
+  .fam-models summary a { color: var(--text); font-weight: 600; }
+  .fam-models ul { list-style: none; padding: 0; margin: 6px 0 4px; display: grid; gap: 4px; font-size: 0.85rem; }
+  .fam-models li { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 8px; align-items: baseline; }
+  .reach-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+</style>
