@@ -136,6 +136,20 @@ Still to decide:
 - [ ] **Issue → draft**: a public "report an incident" issue form that the agent turns into a draft record
 - [ ] **Draft review assist**: the agent re-checks each draft's claims against its cited sources and flags mismatches for the human reviewer
 
+## 6b. Review tooling (designed, not built yet)
+
+The scout publishes drafts straight to the live site, and a person flips `review_status: draft → reviewed` after checking every claim. Make that fast:
+
+- [ ] **Verbatim quotes on every claim.** Require the scout to fill `claims[].quote` with the exact supporting passage (update `scout/PROMPT.md` and `CLAUDE.md`). Today only 2 of 9 records have any.
+- [ ] **Deterministic quote check** (`scripts/check-quotes.mjs`): fetch each source (HTML; PDFs via `pdftotext`, which is installed locally), normalize whitespace and quote marks, and confirm each quote appears verbatim. Statuses: ✓ found / ✗ not found / ? unreachable. Cache fetched text in `.cache/sources/`. Run it in CI as a warning.
+- [ ] **`npm run review`:** a local web page (Node server plus one HTML page, reusing the site's CSS).
+  - A queue of drafts, oldest first.
+  - Per claim: the quote, its ✓/✗ status, and the source link, with approve or flag (plus a note).
+  - Per record: approve, which sets `reviewed`, `record.reviewed_by` (git user) and `reviewed_on`; or request changes, which writes the note to `record.notes`.
+  - It edits the YAML in place and commits.
+  - **Find quotes** for legacy drafts: Gemini via OpenRouter proposes passages, which then go through the same verbatim check.
+- [ ] Schema: add `record.reviewed_by` and `record.reviewed_on`. The site shows "Reviewed by X on date" in place of the Draft notice.
+
 ## 7. Governance
 
 - [ ] `CONTRIBUTING.md`, issue templates, and a code of conduct
