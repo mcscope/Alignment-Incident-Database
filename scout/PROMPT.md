@@ -84,23 +84,34 @@ Once all lanes have finished, read every findings file and decide what changes t
    - `update`: new sources, facts, corrections, or a status change (e.g. reported → confirmed, a lab acknowledges it, charges filed) for an existing record.
    - `skip`: out of scope, too thinly sourced, or already covered. Record the reason.
 4. **Verify** before writing. For every claim, number, date, and quote you will commit, re-open the source and check it yourself. If sources conflict, say so in the claim or leave the detail out.
-5. **Prioritize** if there are more than 5 actions: deployed incidents with real harm, then criminal misuse, then new research or system-card findings, then updates, then backfill.
+5. **No cap.** Every well-sourced, in-scope cluster gets a `new` or `update` action. If there are 30, there are 30.
 
-## Phase 3: Publish (one commit, at most 5 incident changes)
+## Phase 3: Publish (parallel writers, one commit)
 
 Work on `main`.
 
-1. **New incident:** get an id with `npm run next-id`, or reserve several with `npm run next-id -- <n>`. Ids are permanent, CVE-style, and never reused. Create `data/incidents/<id>.yaml`, using existing files as templates.
-   **Update:** edit the existing file, keep its id, and set `record.updated`.
-2. Fill every required field, including the `writeup` with `[@source-id]` citations and honest `assessment` estimates. Whenever a source reports numbers (rates per model, sample sizes, counts, dollar amounts), record them in `measurements` exactly as the source states them, because the site charts these. Use null dollar values when there is no basis for a figure.
-3. Set `record.created_by: agent` on new records and `record.review_status: draft` on anything you touched. Put open questions in `record.notes`.
-4. Add any missing taxonomy terms (models, organizations, behaviors, harm categories).
+1. **Reserve ids** for all `new` actions at once: `npm run next-id -- <n>`. Ids are permanent, CVE-style, and never reused.
+2. **Spawn one writer subagent per action, all at once.** Give each one:
+   - the action (`new` with its reserved id, or `update` with the existing id)
+   - the pooled sources and verified findings for its cluster
+   - instructions to read `CLAUDE.md`, the schema (`schema/incident.schema.json`), and two existing files in `data/incidents/` as templates
+
+   Each writer must:
+   - **New:** create `data/incidents/<id>.yaml`. **Update:** edit only the existing file, keep its id, and set `record.updated`.
+   - Fill every required field: a `writeup` with `[@source-id]` citations, honest `assessment` estimates with rationales, and `measurements` for any numbers the sources report (exactly as stated). Use null dollar values when there is no basis for a figure.
+   - Give **every claim a `quote`**: a short verbatim passage from the cited source that supports it.
+   - Set `record.created_by: agent` (new records) and `record.review_status: draft`. Put open questions in `record.notes`.
+   - Re-open the sources and check every number, date, and quote before writing.
+   - **Not edit `data/taxonomy/`.** Instead, end its reply with any taxonomy terms it needs that don't exist yet: the id, name, and fields for each.
+   - Return the list of source URLs it cited.
+3. **Merge taxonomy.** Collect the writers' requested terms, dedupe them, check them against the existing taxonomy, and add them to `data/taxonomy/`.
+4. Add `related` links between incidents in this batch where appropriate.
 5. **Finish today's scan log** (`data/scans/<today>.yaml`):
    - Set `verdict: cited` and `incident: <id>` on every entry you cited.
    - Set `verdict: skipped` with a `reason` on leads you decided not to act on.
    - Correct any aggregation verdict you overrode.
    - Append every URL that you or the subagents examined that isn't listed yet (watch-page posts, web-search results, primary sources found while verifying), with `title`, `origin` (which lane), `verdict`, and `incident` or `reason`.
-   - Keep `verdict: lead` only for in-scope items you deliberately deferred (e.g. over the change cap). Those stay open and come back on later runs. Give everything else you examined a final verdict (`cited`, `skipped`, or `rejected`).
+   - Keep `verdict: lead` only for in-scope items you couldn't finish (e.g. sources unreachable today). Those stay open and come back on later runs. Give everything else you examined a final verdict (`cited`, `skipped`, or `rejected`).
 6. Run `npm run validate` and fix every error.
 7. Make **one commit** containing all incident changes plus the scan log. The message is `scout: <today>: <n> new, <m> updated`, followed by one line per change (`AID-…: title`). Then `git pull --rebase` and `git push origin main`.
 
