@@ -1,0 +1,29 @@
+---
+// Horizontal bars, one row per item, each split into reach segments (ordinal ramp).
+// Used wherever we'd otherwise show a bare incident count.
+import { REACH, type Incident } from "../lib/data";
+
+interface Row { label: string; href?: string; incidents: Incident[] }
+interface Props { rows: Row[]; max?: number; compact?: boolean; label?: string }
+const { rows, max, compact = false, label = "Incidents by reach" } = Astro.props;
+const top = max ?? Math.max(1, ...rows.map((r) => r.incidents.length));
+const split = (list: Incident[]) => REACH.map((r) => list.filter((i) => i.assessment.reach.level === r).length);
+---
+<div class={`stackbars${compact ? " compact" : ""}`} role="img" aria-label={label}>
+  {rows.map((row) => {
+    const n = row.incidents.length;
+    return (
+      <>
+        {!compact && (row.href ? <a class="sb-label" href={row.href}>{row.label}</a> : <span class="sb-label">{row.label}</span>)}
+        <div class="sb-track">
+          <div class="sb-bar" style={`width:${(n / top) * 100}%`}>
+            {split(row.incidents).map((c, k) => c > 0 && (
+              <span class="sb-seg" tabindex="0" style={`flex:${c}; background: var(--reach-${REACH[k]})`} data-tip={`${row.label} · ${REACH[k]}: ${c}`} />
+            ))}
+          </div>
+          <span class="sb-val">{n}</span>
+        </div>
+      </>
+    );
+  })}
+</div>

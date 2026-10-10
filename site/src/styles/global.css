@@ -371,3 +371,14 @@ details.table-view th, details.table-view td { text-align: left; padding: 3px 10
 .scale-harm .seg.at, .scale-crime .seg.at { background: var(--lvl-3-fg); opacity: 1; }
 .scale-ends { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--muted); text-transform: capitalize; }
 .side .assess-item { padding: 12px 0; }
+
+/* Stacked reach bars (ReachBars component) */
+.stackbars { display: grid; grid-template-columns: minmax(5.5rem, max-content) minmax(0, 1fr); gap: 6px 10px; align-items: center; font-size: 0.85rem; }
+.sb-label { color: var(--text); overflow-wrap: anywhere; }
+.sb-track { display: flex; align-items: center; gap: 6px; min-height: 20px; border-left: 1px solid var(--chart-axis); padding-right: 1.5rem; }
+.sb-bar { display: flex; gap: 2px; height: 14px; min-width: 4px; }
+.sb-seg { height: 100%; min-width: 3px; }
+.sb-seg:last-child { border-radius: 0 4px 4px 0; }
+.sb-seg:focus-visible { outline: 2px solid var(--text); outline-offset: 1px; }
+.sb-val { color: var(--muted); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+.stackbars.compact { grid-template-columns: minmax(0, 1fr); }

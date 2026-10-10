@@ -4,6 +4,7 @@
 // Each family with 2+ models gets a stacked bar chart (incidents per model,
 // split by reach); every model lists its incidents.
 import Base from "../../layouts/Base.astro";
+import ReachBars from "../../components/ReachBars.astro";
 import {
   incidents, models, orgById, REACH, url, formatDate, type Incident, type Term,
 } from "../../lib/data";
@@ -81,24 +82,7 @@ const withIncidents = models.filter((m) => m.id !== "unknown" && count(m) > 0).l
               </div>
 
               {shown.length > 1 ? (
-                <div class="stackbars" role="img" aria-label={`Incidents per model in the ${familyLabel(f)} family`}>
-                  {shown.map((m) => {
-                    const rc = reachCounts(m);
-                    return (
-                      <>
-                        <a class="sb-label" href={url(`/models/${m.id}/`)}>{m.name}</a>
-                        <div class="sb-track">
-                          <div class="sb-bar" style={`width:${(count(m) / max) * 100}%`}>
-                            {rc.map((n, k) => n > 0 && (
-                              <span class="sb-seg" tabindex="0" style={`flex:${n}; background: var(--reach-${REACH[k]})`} data-tip={`${m.name} · ${REACH[k]}: ${n}`} />
-                            ))}
-                          </div>
-                          <span class="sb-val">{count(m)}</span>
-                        </div>
-                      </>
-                    );
-                  })}
-                </div>
+                <ReachBars label={`Incidents per model in the ${familyLabel(f)} family`} rows={shown.map((m) => ({ label: m.name, href: url(`/models/${m.id}/`), incidents: byModel.get(m.id)! }))} />
               ) : null}
 
               <div class="fam-models">
@@ -140,14 +124,6 @@ const withIncidents = models.filter((m) => m.id !== "unknown" && count(m) > 0).l
   .fam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 14px; align-items: start; }
   .fam { display: grid; gap: 12px; }
   .fam-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-  .stackbars { display: grid; grid-template-columns: minmax(5.5rem, max-content) minmax(0, 1fr); gap: 6px 10px; align-items: center; font-size: 0.85rem; }
-  .sb-label { color: var(--text); overflow-wrap: anywhere; }
-  .sb-track { display: flex; align-items: center; gap: 6px; min-height: 20px; border-left: 1px solid var(--chart-axis); padding-right: 1.5rem; }
-  .sb-bar { display: flex; gap: 2px; height: 14px; min-width: 4px; }
-  .sb-seg { height: 100%; min-width: 3px; }
-  .sb-seg:last-child { border-radius: 0 4px 4px 0; }
-  .sb-seg:focus-visible { outline: 2px solid var(--text); outline-offset: 1px; }
-  .sb-val { color: var(--muted); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
   .fam-models { display: grid; gap: 4px; }
   .fam-models details { border-top: 1px solid var(--border); padding-top: 6px; }
   .fam-models summary { cursor: pointer; font-size: 0.9rem; }

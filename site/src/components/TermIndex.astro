@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import ReachBars from "./ReachBars.astro";
 import { type Term, type Incident, incidents, url } from "../lib/data";
 
 interface Props {
@@ -8,18 +9,19 @@ interface Props {
 }
 const { nav, title, intro, terms, path, matches, detail } = Astro.props;
 const counted = terms
-  .map((t) => ({ t, n: incidents.filter((i) => matches(i, t)).length }))
+  .map((t) => ({ t, list: incidents.filter((i) => matches(i, t)) }))
+  .map((x) => ({ ...x, n: x.list.length }))
   .sort((a, b) => b.n - a.n || a.t.name.localeCompare(b.t.name));
 ---
 <Base title={title} nav={nav}>
   <h1>{title}</h1>
   <p class="lede">{intro}</p>
   <ul class="term-grid">
-    {counted.map(({ t, n }) => (
+    {counted.map(({ t, n, list }) => (
       <li class={n === 0 ? "zero" : undefined}>
         <a class="card" href={url(`/${path}/${t.id}/`)}>
-          <span class="count">{n}</span>
           <strong>{t.name}</strong>
+          {n > 0 ? <ReachBars compact rows={[{ label: t.name, incidents: list }]} max={Math.max(...counted.map((c) => c.n))} /> : <p class="muted small">No incidents yet</p>}
           {(detail?.(t) ?? t.description) && <p>{detail?.(t) ?? t.description}</p>}
         </a>
       </li>

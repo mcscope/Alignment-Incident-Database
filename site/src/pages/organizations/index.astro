@@ -1,11 +1,59 @@
 ---
-import TermIndex from "../../components/TermIndex.astro";
-import { organizations, orgIds } from "../../lib/data";
-const types: Record<string, string> = { "ai-lab": "AI lab", company: "Company", "research-org": "Research organization", academic: "Academic", government: "Government", individual: "Individual" };
+// Organizations, split by the role they played in incidents. An organization can
+// appear under several roles (e.g. a lab that both built a model and studied it).
+import Base from "../../layouts/Base.astro";
+import ReachBars from "../../components/ReachBars.astro";
+import { incidents, organizations, REACH, url, type Incident } from "../../lib/data";
+
+const ROLES = [
+  { id: "developer", name: "Developers", desc: "Built the model involved." },
+  { id: "deployer", name: "Deployers", desc: "Shipped the product or system where it happened." },
+  { id: "researcher", name: "Researchers", desc: "Ran the study, evaluation, or investigation that documented it." },
+  { id: "reporter", name: "Reporters", desc: "First reported it publicly." },
+  { id: "affected", name: "Affected", desc: "Were harmed or targeted." },
+];
+const typeName: Record<string, string> = { "ai-lab": "AI lab", company: "Company", "research-org": "Research org", academic: "Academic", government: "Government", individual: "Individual" };
+const sections = ROLES.map((role) => {
+  const rows = organizations
+    .map((o) => ({ o, list: incidents.filter((i) => i.organizations.some((x) => x.id === o.id && x.role === role.id)) as Incident[] }))
+    .filter((r) => r.list.length)
+    .sort((a, b) => b.list.length - a.list.length || a.o.name.localeCompare(b.o.name));
+  return { ...role, rows, total: new Set(rows.flatMap((r) => r.list.map((i) => i.id))).size };
+}).filter((s) => s.rows.length);
+const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 ---
-<TermIndex
-  nav="organizations" title="Organizations" path="organizations" terms={organizations}
-  intro="Organizations involved in incidents as developers, deployers, researchers, reporters, or affected parties."
-  matches={(i, t) => orgIds(i).includes(t.id)}
-  detail={(t) => types[t.type ?? ""]}
-/>
+<Base title="Organizations" nav="organizations" description="Organizations in alignment incidents, by the role they played.">
+  <h1>Organizations</h1>
+  <p class="lede">
+    Who built the models, who deployed them, who found the problems, and who was hurt. An organization can appear under
+    more than one role. Bars show incidents, shaded by how far the behavior reached.
+  </p>
+  <nav class="jump" aria-label="Roles">
+    {sections.map((s) => <a href={`#role-${s.id}`}>{s.name} <span>{s.rows.length}</span></a>)}
+  </nav>
+  <div class="legend">
+    {REACH.map((r) => <span><i style={`background: var(--reach-${r}); border-radius: 3px`} />{cap(r)}</span>)}
+  </div>
+
+  {sections.map((s) => (
+    <section class="role" id={`role-${s.id}`}>
+      <div class="section-head">
+        <div><h2>{s.name}</h2><p class="muted small" style="margin:2px 0 0">{s.desc}</p></div>
+        <span class="muted small">{s.rows.length} organization{s.rows.length === 1 ? "" : "s"} · {s.total} incident{s.total === 1 ? "" : "s"}</span>
+      </div>
+      <div class="chart-card">
+        <ReachBars
+          label={`Incidents per organization as ${s.id}`}
+          rows={s.rows.map((r) => ({ label: r.o.type ? `${r.o.name}` : r.o.name, href: url(`/organizations/${r.o.id}/`), incidents: r.list }))}
+        />
+      </div>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .jump { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .jump a { font-size: 0.85rem; text-decoration: none; color: var(--text); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; background: var(--surface); }
+  .jump span { color: var(--muted); margin-left: 2px; font-variant-numeric: tabular-nums; }
+  .role { scroll-margin-top: 16px; }
+</style>

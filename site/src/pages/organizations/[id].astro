@@ -1,18 +1,38 @@
 ---
-import TermPage from "../../components/TermPage.astro";
-import { organizations, incidents, type Term } from "../../lib/data";
+import Base from "../../layouts/Base.astro";
+import IncidentList from "../../components/IncidentList.astro";
+import ReachBars from "../../components/ReachBars.astro";
+import { organizations, incidents, url, type Term, type Incident } from "../../lib/data";
 
 export function getStaticPaths() {
   return organizations.map((t) => ({ params: { id: t.id }, props: { term: t } }));
 }
 const { term } = Astro.props as { term: Term };
-const involved = incidents.filter((i) => i.organizations.some((o) => o.id === term.id));
-const roles = new Map<string, number>();
-for (const i of involved) for (const r of new Set(i.organizations.filter((o) => o.id === term.id).map((o) => o.role))) roles.set(r, (roles.get(r) ?? 0) + 1);
+const ROLE_NAMES: Record<string, string> = { developer: "As developer", deployer: "As deployer", researcher: "As researcher", reporter: "As reporter", affected: "As affected party" };
+const byRole = Object.keys(ROLE_NAMES)
+  .map((role) => ({ role, list: incidents.filter((i) => i.organizations.some((o) => o.id === term.id && o.role === role)) as Incident[] }))
+  .filter((r) => r.list.length);
+const total = new Set(byRole.flatMap((r) => r.list.map((i) => i.id))).size;
 ---
-<TermPage nav="organizations" kind="Organization" indexPath="organizations" name={term.name} incidents={involved}>
+<Base title={term.name} nav="organizations">
+  <p class="eyebrow"><a href={url("/organizations/")}>Organization</a></p>
+  <h1>{term.name}</h1>
   <p class="lede">
-    {term.url && <a href={term.url} rel="noopener">{term.url.replace(/^https?:\/\//, "")}</a>}
-    {roles.size > 0 && <> · {[...roles].map(([r, n]) => `${r} in ${n}`).join(", ")}</>}
+    {term.url && <a href={term.url} rel="noopener">{term.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</a>}
+    {total > 0 ? <> · involved in {total} incident{total === 1 ? "" : "s"}</> : <> · no incidents recorded yet</>}
   </p>
-</TermPage>
+
+  {byRole.length > 1 && (
+    <div class="chart-card" style="margin-bottom:8px">
+      <p class="chart-title">Roles</p>
+      <ReachBars rows={byRole.map((r) => ({ label: ROLE_NAMES[r.role], href: `#as-${r.role}`, incidents: r.list }))} label="Incidents by role" />
+    </div>
+  )}
+
+  {byRole.map((r) => (
+    <section id={`as-${r.role}`}>
+      <h2>{ROLE_NAMES[r.role]} <span class="muted small">({r.list.length})</span></h2>
+      <IncidentList incidents={r.list} compact />
+    </section>
+  ))}
+</Base>
