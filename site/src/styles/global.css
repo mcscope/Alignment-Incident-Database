@@ -394,3 +394,20 @@ details.table-view th, details.table-view td { text-align: left; padding: 3px 10
 }
 .org-initials { display: inline-grid; place-items: center; font: 700 calc(var(--logo) * 0.42)/1 var(--sans); color: #fff; background: #6b6862; letter-spacing: 0; padding: 0; }
 .with-logo { display: inline-flex; align-items: center; gap: 6px; min-width: 0; }
+
+/* Timeline logo dots: developer logo in a circle, sized by harm, ring colored by harm */
+.tl-dot.logo { background: #fff !important; border: 2.5px solid var(--ring); padding: 2px; display: grid; place-items: center; }
+.tl-dot.logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; pointer-events: none; }
+.tl-dot.logo .tl-unknown { font: 700 0.7rem/1 var(--sans); color: #6b6862; }
+.tl-more { position: absolute; right: -7px; bottom: -5px; font: 700 0.6rem/1 var(--sans); background: var(--text); color: var(--bg); border-radius: 999px; padding: 2px 4px; pointer-events: none; }
+.tl-more-demo { font: 700 0.65rem/1 var(--sans); background: var(--text); color: var(--bg); border-radius: 999px; padding: 2px 4px; }
+.tl-size.tl-ring { background: #fff; border: 2.5px solid var(--ring); opacity: 1; box-sizing: border-box; }
+
+/* Logos in dark mode: a soft off-white tile (pure white glares; black logos need a light ground) */
+:root { --logo-tile: #ffffff; --logo-edge: var(--border); }
+@media (prefers-color-scheme: dark) { :root { --logo-tile: #e6e4df; --logo-edge: transparent; } }
+.org-logo { background: var(--logo-tile); box-shadow: 0 0 0 1px var(--logo-edge); }
+.tl-dot.logo { background: var(--logo-tile) !important; border-width: 3px; padding: 3px; box-shadow: 0 0 0 2px var(--surface); }
+.tl-size.tl-ring { background: var(--logo-tile); border-width: 3px; }
+.tl-dot { text-decoration: none; }
+.tl-dot.logo { padding: 2px; }

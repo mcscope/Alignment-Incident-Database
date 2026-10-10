@@ -10,6 +10,7 @@ import {
   DEV_COLORS, developers, devGroup, HARM_RADIUS, HARM, REACH, filterAttrs, timelineDate,
 } from "../lib/data";
 import OrgLogo from "./OrgLogo.astro";
+import logoManifest from "../../public/logos/index.json";
 
 type View = "time" | "developer" | "behavior";
 interface Props { views?: View[]; incidents?: Incident[]; filterable?: boolean; id?: string }
@@ -41,10 +42,19 @@ const devColor = (i: Incident) => {
 const reachColor = (i: Incident) => ({ color: `var(--reach-${i.assessment.reach.level})`, hollow: false });
 const devLabel = (i: Incident) => developers(i).map((d) => orgById.get(d)?.name ?? d).join(", ") || "Undisclosed";
 
-type Dot = { i: Incident; x: number; r: number; bottom: number; color: string; hollow: boolean };
+type Dot = { i: Incident; x: number; r: number; bottom: number; color: string; hollow: boolean; logo?: string | null; more?: number };
 type Lane = { key: string; label?: string; href?: string; dots: Dot[]; height: number; logo?: string };
 
-function lane(key: string, list: Incident[], colorOf: (i: Incident) => { color: string; hollow: boolean }, label?: string, href?: string): Lane {
+// Logo mode (Timeline and By-behavior views): each dot is the developer's logo,
+// sized by harm (logos need a minimum size to be legible) with a harm-colored ring.
+const LOGO_RADIUS: Record<string, number> = { none: 12, minor: 14, moderate: 17, severe: 21 };
+const logoOf = (i: Incident) => {
+  const devs = developers(i);
+  const file = devs[0] ? (logoManifest as Record<string, string>)[devs[0]] : undefined;
+  return { color: "transparent", hollow: false, logo: file ? url(`/logos/${file}`) : null, more: Math.max(0, devs.length - 1) };
+};
+
+function lane(key: string, list: Incident[], colorOf: (i: Incident) => { color: string; hollow: boolean; logo?: string | null; more?: number }, label?: string, href?: string): Lane {
   // Stack dots that share a month; biggest at the bottom.
   const bins = new Map<number, Incident[]>();
   for (const i of list) {
@@ -56,8 +66,9 @@ function lane(key: string, list: Incident[], colorOf: (i: Incident) => { color: 
   for (const group of bins.values()) {
     let bottom = 4;
     for (const i of group.sort((a, b) => HARM_RADIUS[b.assessment.harm.severity] - HARM_RADIUS[a.assessment.harm.severity])) {
-      const r = HARM_RADIUS[i.assessment.harm.severity];
-      dots.push({ i, x: xPct(i), r, bottom, ...colorOf(i) });
+      const c = colorOf(i);
+      const r = ("logo" in c ? LOGO_RADIUS : HARM_RADIUS)[i.assessment.harm.severity];
+      dots.push({ i, x: xPct(i), r, bottom, ...c });
       bottom += 2 * r + 4;
     }
     height = Math.max(height, bottom);
@@ -68,7 +79,7 @@ function lane(key: string, list: Incident[], colorOf: (i: Incident) => { color: 
 const byCount = <T,>(entries: [T, Incident[]][]) => entries.sort((a, b) => b[1].length - a[1].length);
 
 const laneSets: Record<View, Lane[]> = {
-  time: [lane("all", incidents, devColor)],
+  time: [lane("all", incidents, logoOf)],
   developer: (() => {
     const groups = new Map<string, Incident[]>();
     for (const i of incidents) {
@@ -84,7 +95,7 @@ const laneSets: Record<View, Lane[]> = {
     const groups = new Map<string, Incident[]>();
     for (const i of incidents) for (const b of i.behaviors) groups.set(b, [...(groups.get(b) ?? []), i]);
     return byCount([...groups]).slice(0, 10).map(([b, list]) =>
-      lane(b, list, devColor, behaviorById.get(b)?.name ?? b, url(`/behaviors/${b}/`)));
+      lane(b, list, logoOf, behaviorById.get(b)?.name ?? b, url(`/behaviors/${b}/`)));
   })(),
 };
 
@@ -95,9 +106,9 @@ const defaultFrom = Math.max(0, Math.min(span - 1, now.getUTCFullYear() * 12 - s
 
 const viewNames: Record<View, string> = { time: "Timeline", developer: "By developer", behavior: "By behavior" };
 const viewSubs: Record<View, string> = {
-  time: "Every incident by date. Color shows the model's developer, size shows harm.",
+  time: "Every incident by date. The icon shows the model's developer; size and ring show harm.",
   developer: "One lane per developer whose models were involved. Color shows how far the behavior reached.",
-  behavior: "One lane per behavior (top 10). An incident appears in each of its behaviors. Color shows developer.",
+  behavior: "One lane per behavior (top 10). An incident appears in each of its behaviors. The icon shows the developer; size and ring show harm.",
 };
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 const when = (i: Incident) => {
@@ -134,15 +145,20 @@ const tip = (i: Incident) =>
           </div>
         ) : (
           <div class="legend">
-            {DEV_COLORS.map((c) => <span><i class="tl-key" style={`background: ${c.color}`} /><OrgLogo id={c.id} size={14} title={false} />{c.name}</span>)}
-            <span><i class="tl-key" style="background: var(--dev-other)" />Other / undisclosed</span>
-            <span><i class="tl-key hollow" />Multiple developers</span>
+            <span>Icon = the model's developer · <span class="tl-more-demo">+N</span> more developers</span>
           </div>
         )}
-        <div class="legend tl-sizes" aria-label="Dot size: harm">
-          <span>Harm:</span>
-          {HARM.map((h) => <span><i class="tl-size" style={`width:${HARM_RADIUS[h] * 2}px;height:${HARM_RADIUS[h] * 2}px`} />{h}</span>)}
-        </div>
+        {v === "developer" ? (
+          <div class="legend tl-sizes" aria-label="Dot size: harm">
+            <span>Harm:</span>
+            {HARM.map((h) => <span><i class="tl-size" style={`width:${HARM_RADIUS[h] * 2}px;height:${HARM_RADIUS[h] * 2}px`} />{h}</span>)}
+          </div>
+        ) : (
+          <div class="legend tl-sizes" aria-label="Icon size and ring: harm">
+            <span>Harm:</span>
+            {HARM.map((h) => <span><i class="tl-size tl-ring" style={`width:${LOGO_RADIUS[h] * 2}px;height:${LOGO_RADIUS[h] * 2}px; --ring: var(--harm-${h})`} />{h}</span>)}
+          </div>
+        )}
       </div>
 
       <div class="tl-scroller" tabindex="0" aria-label="Timeline; scroll sideways for earlier incidents">
@@ -153,15 +169,15 @@ const tip = (i: Incident) =>
               {l.label && <span class="tl-label with-logo">{l.logo && <OrgLogo id={l.logo} size={15} title={false} />}{l.href ? <a href={l.href}>{l.label}</a> : l.label}</span>}
               {l.dots.map((d) => (
                 <a
-                  class={`tl-dot${d.hollow ? " hollow" : ""}`}
+                  class={`tl-dot${d.hollow ? " hollow" : ""}${"logo" in d ? " logo" : ""}`}
                   data-x={d.x.toFixed(4)}
                   data-r={d.r}
                   href={url(`/incidents/${d.i.id}/`)}
-                  style={`left:${d.x}%; bottom:${d.bottom}px; width:${d.r * 2}px; height:${d.r * 2}px; background:${d.color}`}
+                  style={`left:${d.x}%; bottom:${d.bottom}px; width:${d.r * 2}px; height:${d.r * 2}px; ${"logo" in d ? `--ring: var(--harm-${d.i.assessment.harm.severity})` : `background:${d.color}`}`}
                   data-tip={tip(d.i)}
                   aria-label={`${d.i.id}: ${d.i.title}`}
                   {...(filterable ? { "data-filterable": "", ...filterAttrs(d.i) } : {})}
-                />
+                >{"logo" in d && (d.logo ? <img src={d.logo} alt="" loading="lazy" decoding="async" /> : <span class="tl-unknown">?</span>)}{d.more ? <span class="tl-more">+{d.more}</span> : null}</a>
               ))}
             </div>
           ))}
