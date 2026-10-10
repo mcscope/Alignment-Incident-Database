@@ -2,11 +2,13 @@
 import Base from "../../layouts/Base.astro";
 import Level from "../../components/Level.astro";
 import Measurements from "../../components/Measurements.astro";
+import Scale from "../../components/Scale.astro";
 import {
   incidents, incidentById, modelById, orgById, behaviorById, harmById,
   url, formatDate, formatDamage, editUrl, correctionUrl, repoUrl, type Incident,
+  REACH, HARM, CRIMINALITY,
 } from "../../lib/data";
-import { numberSources, renderWriteup, citeLink } from "../../lib/cite";
+import { numberSources, renderLinkedWriteup, citeLink } from "../../lib/cite";
 
 export function getStaticPaths() {
   return incidents.map((i) => ({ params: { id: i.id }, props: { incident: i } }));
@@ -14,7 +16,8 @@ export function getStaticPaths() {
 
 const { incident: i } = Astro.props as { incident: Incident };
 const { numbered, num } = numberSources(i);
-const writeupHtml = renderWriteup(i, num);
+const { html: writeupHtml, unmatched } = renderLinkedWriteup(i, num);
+const srcOf = (id: string) => i.sources.find((x) => x.id === id)!;
 const a = i.assessment;
 const titleOf = (id: string) => { const s = i.sources.find((x) => x.id === id)!; return `${s.publisher}: ${s.title}`; };
 
@@ -50,19 +53,34 @@ const kindLabel: Record<string, string> = { primary: "Primary", research: "Resea
 
     <div class="incident-grid">
       <div>
-        <section class="prose" set:html={writeupHtml} />
+        <p class="evidence-hint">Hover or tap a sentence to see the quotes that back it up.</p>
+        <section class="writeup" id="writeup" set:html={writeupHtml} />
+
+        <div id="claim-cards" hidden>
+          {i.claims.map((c, k) => (
+            <div class="claim-card" data-claim={k}>
+              <p class="claim-text">{c.text}</p>
+              {c.quote && <blockquote>“{c.quote}”</blockquote>}
+              <p class="claim-src">
+                {c.sources.map((s, n) => <>{n > 0 && " · "}<a href={srcOf(s).url} rel="noopener">{srcOf(s).publisher}</a> <a class="src-jump" href={`#src-${num.get(s)}`}>[{num.get(s)}]</a></>)}
+              </p>
+            </div>
+          ))}
+        </div>
 
         <Measurements incident={i} num={num} />
 
-        <h2>Claims</h2>
-        <ol class="claims prose">
-          {i.claims.map((c) => (
-            <li>
-              {c.text}<Fragment set:html={c.sources.map((s) => citeLink(num.get(s)!, titleOf(s))).join("")} />
-              {c.quote && <blockquote>“{c.quote}”</blockquote>}
-            </li>
-          ))}
-        </ol>
+        <details class="all-claims">
+          <summary>All {i.claims.length} claims with their quotes{unmatched.length > 0 && ` (${unmatched.length} not linked to a sentence above)`}</summary>
+          <ol class="claims">
+            {i.claims.map((c, k) => (
+              <li class={unmatched.includes(k) ? "unlinked" : undefined}>
+                {c.text}<Fragment set:html={c.sources.map((s) => citeLink(num.get(s)!, titleOf(s))).join("")} />
+                {c.quote && <blockquote>“{c.quote}”</blockquote>}
+              </li>
+            ))}
+          </ol>
+        </details>
 
         <h2>Sources</h2>
         <ol class="sources">
@@ -100,11 +118,11 @@ const kindLabel: Record<string, string> = { primary: "Primary", research: "Resea
         <section class="card">
           <h2>Assessment</h2>
           <div class="assess-item">
-            <div class="assess-label">Reach <Level kind="reach" value={a.reach.level} /></div>
+            <Scale levels={REACH} value={a.reach.level} label="Reach" tone="reach" />
             <p class="assess-why">{a.reach.context && <span class="chip" style="margin-right:6px">{a.reach.context}</span>}{a.reach.rationale}</p>
           </div>
           <div class="assess-item">
-            <div class="assess-label">Harm <Level kind="harm" value={a.harm.severity} prefix={false} /></div>
+            <Scale levels={HARM} value={a.harm.severity} label="Harm" tone="harm" />
             {a.harm.categories.length > 0 && (
               <div class="chips" style="margin-top:6px">{a.harm.categories.map((h) => <span class="chip">{harmById.get(h)?.name ?? h}</span>)}</div>
             )}
@@ -115,7 +133,7 @@ const kindLabel: Record<string, string> = { primary: "Primary", research: "Resea
             <p class="assess-why">{a.monetary_damage.rationale} <em>Confidence: {a.monetary_damage.confidence}.</em></p>
           </div>
           <div class="assess-item">
-            <div class="assess-label">Criminality <Level kind="criminality" value={a.criminality.likelihood} prefix={false} /></div>
+            <Scale levels={CRIMINALITY} value={a.criminality.likelihood} label="Criminality" tone="crime" />
             {a.criminality.offenses && a.criminality.offenses.length > 0 && (
               <p class="assess-why"><strong>Offenses:</strong> {a.criminality.offenses.join(", ")}{a.criminality.jurisdiction && ` (${a.criminality.jurisdiction})`}</p>
             )}
@@ -151,3 +169,54 @@ const kindLabel: Record<string, string> = { primary: "Primary", research: "Resea
     </div>
   </article>
 </Base>
+
+<script>
+  // Evidence popover: hovering, focusing or tapping a sentence shows the claims it
+  // was matched to, with their verbatim quotes and source links.
+  const cards = document.getElementById("claim-cards");
+  const pop = document.createElement("div");
+  pop.className = "evidence-pop";
+  pop.setAttribute("role", "dialog");
+  pop.setAttribute("aria-label", "Evidence for this sentence");
+  pop.hidden = true;
+  document.body.append(pop);
+  let current: HTMLElement | null = null;
+  let hideTimer = 0;
+
+  function show(sent: HTMLElement, x?: number) {
+    clearTimeout(hideTimer);
+    if (current === sent && !pop.hidden) return;
+    current?.classList.remove("active");
+    current = sent;
+    sent.classList.add("active");
+    pop.replaceChildren(...sent.dataset.claims!.split(",").map((k) => cards!.querySelector(`[data-claim="${k}"]`)!.cloneNode(true)));
+    pop.hidden = false;
+    // Place under the line the pointer is on (sentences can span several lines).
+    const rects = [...sent.getClientRects()];
+    const r = rects.find((rc) => x !== undefined && x >= rc.left && x <= rc.right) ?? rects[rects.length - 1];
+    const w = Math.min(420, window.innerWidth - 24);
+    pop.style.width = `${w}px`;
+    pop.style.left = `${Math.max(12, Math.min(window.innerWidth - w - 12, (x ?? r.left) - 40))}px`;
+    const below = r.bottom + 8, h = pop.offsetHeight;
+    pop.style.top = `${below + h > window.innerHeight - 8 && r.top - h - 8 > 8 ? r.top - h - 8 : below}px`;
+  }
+  function hide(delay = 180) {
+    clearTimeout(hideTimer);
+    hideTimer = window.setTimeout(() => { pop.hidden = true; current?.classList.remove("active"); current = null; }, delay);
+  }
+  for (const sent of document.querySelectorAll<HTMLElement>("#writeup .sent")) {
+    sent.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") show(sent, e.clientX); });
+    sent.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") hide(); });
+    sent.addEventListener("focus", () => show(sent));
+    sent.addEventListener("blur", () => hide(250));
+    sent.addEventListener("click", (e) => {
+      if ((e.target as Element).closest("a")) return; // let citation links work
+      current === sent && !pop.hidden ? hide(0) : show(sent, (e as MouseEvent).clientX);
+    });
+  }
+  pop.addEventListener("pointerenter", () => clearTimeout(hideTimer));
+  pop.addEventListener("pointerleave", () => hide());
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") hide(0); });
+  document.addEventListener("scroll", () => hide(0), { passive: true });
+  document.addEventListener("click", (e) => { if (!(e.target as Element).closest(".sent, .evidence-pop")) hide(0); });
+</script>

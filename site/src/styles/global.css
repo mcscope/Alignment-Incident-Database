@@ -331,3 +331,43 @@ details.table-view th, details.table-view td { text-align: left; padding: 3px 10
 .tl-axis .tl-mlabel { display: none; }
 .tl-fine .tl-axis .tl-mlabel { display: block; }
 .tl-size { border-radius: 50% !important; }
+
+/* ---------- Incident page: reading and evidence ---------- */
+:root { --serif: "Source Serif 4", "Iowan Old Style", Charter, Georgia, serif; --hl: #fff1b8; }
+@media (prefers-color-scheme: dark) { :root { --hl: #3d3517; } }
+.incident-head h1 { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem); line-height: 1.2; max-width: 30ch; text-wrap: balance; margin: 6px 0 12px; }
+.incident-head .lede { font-family: var(--serif); font-size: 1.2rem; line-height: 1.55; color: var(--text); opacity: 0.85; max-width: 62ch; }
+.evidence-hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 10px; }
+.writeup { font-family: var(--serif); font-size: 1.125rem; line-height: 1.75; max-width: 66ch; }
+.writeup p { margin: 0 0 1.1em; }
+.writeup sup.cite { font-family: var(--sans); font-size: 0.62em; }
+.sent { cursor: help; border-radius: 3px; transition: background-color 0.12s; text-decoration: underline dotted transparent; text-underline-offset: 4px; }
+.sent:hover, .sent.active, .sent:focus-visible { background: var(--hl); text-decoration-color: var(--muted); outline: none; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.evidence-pop {
+  position: fixed; z-index: 60; max-height: min(60vh, 440px); overflow-y: auto;
+  background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18); padding: 4px 14px; font-size: 0.875rem; line-height: 1.5;
+}
+.evidence-pop .claim-card + .claim-card { border-top: 1px solid var(--border); }
+.claim-card { padding: 10px 0; }
+.claim-card .claim-text { margin: 0 0 6px; font-weight: 600; }
+.claim-card blockquote { margin: 0 0 6px; padding: 6px 10px; border-left: 3px solid var(--accent); background: var(--surface-2); border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 0.95rem; color: var(--text); }
+.claim-card .claim-src { margin: 0; font-size: 0.8rem; color: var(--muted); }
+.all-claims { margin: 28px 0 8px; max-width: 70ch; }
+.all-claims summary { cursor: pointer; color: var(--muted); font-size: 0.9rem; }
+.all-claims .claims { margin-top: 12px; font-size: 0.95rem; }
+.all-claims .unlinked { border-left: 2px solid var(--draft-fg); padding-left: 8px; margin-left: -10px; }
+
+/* Graded scales in the assessment panel */
+.scale { display: grid; gap: 4px; }
+.scale-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.85rem; }
+.scale-label { font-weight: 600; }
+.scale-value { font-weight: 600; text-transform: capitalize; }
+.scale-bar { display: flex; gap: 3px; }
+.scale-bar .seg { flex: 1; height: 8px; border-radius: 2px; background: var(--surface-2); }
+.scale-reach .seg.on { background: var(--reach-internal); }
+.scale-reach .seg.at { background: var(--reach-deployed); }
+.scale-harm .seg.on, .scale-crime .seg.on { background: var(--lvl-2-fg); opacity: 0.55; }
+.scale-harm .seg.at, .scale-crime .seg.at { background: var(--lvl-3-fg); opacity: 1; }
+.scale-ends { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--muted); text-transform: capitalize; }
+.side .assess-item { padding: 12px 0; }

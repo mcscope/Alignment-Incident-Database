@@ -1,0 +1,14 @@
+---
+// A small graded scale: one segment per level, filled up to the current one,
+// so a reader sees "how far along" at a glance. The label carries the value too.
+interface Props { levels: readonly string[]; value: string; label: string; tone?: "reach" | "harm" | "crime" }
+const { levels, value, label, tone = "harm" } = Astro.props;
+const at = levels.indexOf(value);
+---
+<div class={`scale scale-${tone}`} role="img" aria-label={`${label}: ${value} (${at + 1} of ${levels.length})`}>
+  <div class="scale-head"><span class="scale-label">{label}</span><span class="scale-value">{value}</span></div>
+  <div class="scale-bar">
+    {levels.map((l, k) => <span class={`seg${k <= at && at > 0 ? " on" : ""}${k === at ? " at" : ""}`} title={l} />)}
+  </div>
+  <div class="scale-ends"><span>{levels[0]}</span><span>{levels[levels.length - 1]}</span></div>
+</div>
