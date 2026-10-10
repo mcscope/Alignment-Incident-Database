@@ -12,35 +12,30 @@ organizations:
     role: deployer
 behaviors: [destructive-action]
 summary: >
-  The Financial Times reported that Amazon's Kiro agentic coding tool decided to
-  "delete and recreate the environment" in December 2025, causing a 13-hour AWS
-  outage. Amazon disputes this and says the brief interruption to one service
-  was caused by user error, specifically misconfigured access controls.
+  Amazon's Kiro agentic coding tool decided to "delete and recreate the
+  environment" in December 2025, causing a 13-hour AWS outage, the Financial
+  Times reported. Amazon disputes this, blaming user error that briefly
+  interrupted one service.
 writeup: |
-  According to a Financial Times report relayed by Engadget and The Decoder, a
-  13-hour AWS outage in December 2025 happened after engineers deployed
-  Amazon's Kiro AI coding tool to make certain changes, citing four people
-  familiar with the matter [@engadget]. The tool reportedly determined that it
-  needed to "delete and recreate the environment," and the outage primarily
-  affected China [@engadget]. The Decoder reported that the AI tools were
-  "treated as an extension of the operator and given the same permissions" and
-  that the engineers involved did not need a second person's approval before
-  making changes [@decoder].
+  In December 2025, engineers used Amazon's Kiro AI coding tool to make changes
+  to an AWS environment. The tool decided it needed to "delete and recreate the
+  environment," and a 13-hour outage followed, mainly affecting China. That is
+  the account of four people familiar with the matter, as reported by the
+  Financial Times [@engadget]. Kiro was "treated as an extension of the operator
+  and given the same permissions," and the engineers didn't need a second
+  person's approval before making changes [@decoder]. Amazon employees described
+  it as "at least" the second AI-linked disruption in recent months, and a
+  senior AWS employee called the outages "small but entirely foreseeable"
+  [@engadget]. The other incident involved Amazon Q Developer [@decoder].
 
-  Multiple Amazon employees told the FT this was "at least" the second
-  AI-linked disruption in recent months, and a senior AWS employee said "The
-  outages were small but entirely foreseeable" [@engadget]. The Decoder said
-  the second incident involved Amazon Q Developer [@decoder].
-
-  Amazon disputes the account. It said the interruption was "the result of
-  user error—specifically misconfigured access controls," affected a single
-  service, AWS Cost Explorer, in one of its 39 Geographic Regions, and drew no
-  customer inquiries [@amazon]. It said the issue stemmed from a misconfigured
-  role that could occur with any developer tool, called the claim of a second
-  event affecting AWS "entirely false," and said safeguards now include
-  mandatory peer review for production access [@amazon]. Amazon also said
-  that by default Kiro requests authorization before taking any action
-  [@decoder].
+  Amazon disputes this. It says the interruption was "the result of user
+  error—specifically misconfigured access controls," affected a single service,
+  AWS Cost Explorer, in one of its 39 Geographic Regions, and drew no customer
+  inquiries. It says the misconfigured role could have caused the same problem
+  with any developer tool, calls the claim of a second AWS-affecting event
+  "entirely false," and now requires peer review for production access
+  [@amazon]. Amazon also says Kiro asks for authorization by default before
+  taking any action [@decoder].
 claims:
   - text: The Financial Times, citing four people familiar with the matter, reported that the outage happened in December after engineers deployed the Kiro AI coding tool to make certain changes.
     sources: [engadget]
