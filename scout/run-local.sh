@@ -38,12 +38,27 @@ prompt="Follow the instructions in $instructions. Repository: mcscope/Alignment-
 
 LOCAL RUN: work on the current branch \`$branch\` wherever the instructions say main, and do NOT run git pull or git push. Just commit."
 
-echo "[$mode] agent running in $wt (log: $wt/scout/out/agent.log)"
-claude -p "$prompt" \
-  --model "${SCOUT_MODEL:-claude-opus-5-5}" \
-  --output-format stream-json --verbose \
-  --allowedTools "Agent,Task,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(npm run validate),Bash(npm run next-id:*),Bash(git add:*),Bash(git commit:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(date:*),Bash(mkdir:*)" \
-  > scout/out/agent.log 2>&1 || echo "agent exited non-zero"
+tools="Agent,Task,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(npm run validate),Bash(npm run next-id:*),Bash(git add:*),Bash(git commit:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(date:*),Bash(mkdir:*)"
+run_agent() {
+  claude -p "$1" --model "${SCOUT_MODEL:-claude-opus-5-5}" --output-format stream-json --verbose \
+    --allowedTools "$tools" >> scout/out/agent.log 2>&1
+}
+
+# 1. Subscription first (the logged-in claude CLI; ANTHROPIC_API_KEY is unset above).
+echo "[$mode] agent running on subscription in $wt (log: $wt/scout/out/agent.log)"
+if ! run_agent "$prompt" && grep -qiE "usage limit|hit your limit|limit reached" scout/out/agent.log; then
+  # 2. Only if the subscription's usage limit was hit: retry via OpenRouter.
+  if [ -n "${OPENROUTER_API_KEY:-}" ]; then
+    echo "subscription usage limit hit; continuing via OpenRouter"
+    ANTHROPIC_BASE_URL="https://openrouter.ai/api" ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY" ANTHROPIC_API_KEY="" \
+      run_agent "$prompt
+
+Resume: a previous attempt stopped at a usage limit. Check git log and data/ for work already committed in this branch and continue from there." \
+      || echo "agent exited non-zero"
+  else
+    echo "subscription usage limit hit and no OPENROUTER_API_KEY for fallback"
+  fi
+fi
 
 echo
 git log --oneline "$(git -C "$repo" rev-parse HEAD)..$branch"
