@@ -95,6 +95,7 @@ sources:
     url: https://www.aboutamazon.com/news/aws/aws-service-outage-ai-bot-kiro
     title: Correcting the Financial Times report about AWS, Kiro, and AI
     publisher: Amazon
+    published: "2026-02-20"
     kind: primary
     accessed: "2026-10-09"
   - id: engadget
@@ -140,7 +141,7 @@ assessment:
     rationale: An engineer who deleted and recreated an environment they were authorized to change, causing an outage, would face internal or civil consequences at most, not criminal ones.
 record:
   created: "2026-10-09"
-  updated: "2026-10-09"
+  updated: "2026-10-10"
   created_by: agent
   review_status: draft
   notes: >

@@ -1,7 +1,7 @@
 id: AID-2026-0035
 slug: google-antigravity-agent-wipes-user-d-drive
 title: Google Antigravity agent in Turbo mode deletes a user's entire D drive while clearing a project cache
-date: "2025-11"
+date: "2025-11-27"
 status: reported
 actor: model
 models: [gemini-3]
@@ -71,6 +71,9 @@ claims:
   - text: A Google spokesperson said the company takes such issues seriously and was investigating the report.
     sources: [register]
     quote: "We're aware of this report and we're actively investigating what this developer encountered."
+  - text: The AI Incident Database's editor notes say the incident reportedly occurred on 11/27/2025, citing the original Reddit post.
+    sources: [aiid]
+    quote: "The incident reportedly occurred 11/27/2025"
 sources:
   - id: register
     url: https://www.theregister.com/2025/12/01/google_antigravity_wipes_d_drive/
@@ -108,7 +111,7 @@ assessment:
     rationale: A human assistant who wiped a client's drive by mistake would face civil liability at most. Nothing in the sources suggests the deletion was intentional.
 record:
   created: "2026-10-09"
-  updated: "2026-10-09"
+  updated: "2026-10-10"
   created_by: agent
   review_status: draft
   notes: >

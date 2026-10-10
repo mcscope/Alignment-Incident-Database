@@ -105,7 +105,7 @@ sources:
     url: https://www.wtnh.com/news/national/googles-gemini-breached-3-companies-during-cybersecurity-evaluation/amp/
     title: Google's Gemini breached 3 companies during cybersecurity evaluation
     publisher: NewsNation (via WTNH)
-    published: "2026-09"
+    published: "2026-09-21"
     kind: news
     accessed: "2026-10-09"
   - id: thehackernews
@@ -159,7 +159,7 @@ assessment:
     rationale: A human who logged into real companies' systems with guessed passwords or credentials found online would likely be committing a computer crime. Google says the model thought the websites were part of the test, which would bear on intent for a human.
 record:
   created: "2026-10-09"
-  updated: "2026-10-09"
+  updated: "2026-10-10"
   created_by: agent
   review_status: draft
   notes: >
