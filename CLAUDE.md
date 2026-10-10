@@ -12,7 +12,8 @@ This repo is a public database of AI alignment incidents, modeled on MITRE CVE: 
 - Every factual statement in an incident must be a `claim` that cites at least one source the author **actually read**. Never cite a URL you have not fetched.
 - The `summary` (1-2 sentences) and `writeup` (short form, 1-4 paragraphs) only restate sourced facts. In the writeup, cite inline with `[@source-id]`, at least once per paragraph.
 - Prefer primary sources: the developer's or deployer's own statement, the research paper or system card, or the affected person's own post. Add news coverage as secondary support.
-- Attribute disputed or one-sided accounts in the claim text ("Lemkin said the agent…"), not as fact.
+- Write the `summary` and `writeup` as a plain account of what happened: who did what, then what followed. The citations carry the sourcing, so don't open sentences with "X said" or "According to Y", and never stack attributions ("According to B, A said…").
+- Attribute in the text only where it changes the meaning: allegations (lawsuits), disputed accounts, sources that conflict, or an interested party's unverified claim (e.g. "Amazon says it was user error"). Claims may keep explicit attribution.
 - Numbers, dates, and quotes must match the source exactly. If sources conflict, say so in the claim, or leave the detail out and record it in `record.notes`.
 - Capture quantitative findings in `measurements` (rates, counts, dollars, sample sizes), copied exactly from one cited source. The site charts them.
 - `date` is when the behavior occurred, at the precision the sources support (`YYYY-MM` is fine when no day is given). Never guess a day.
