@@ -109,6 +109,7 @@ Work on `main`.
    - **Reach:** `breakout` only if a containment boundary was actually crossed. Agents given real-world access by design are `deployed`.
    - **Behaviors:** only ones the claims support (e.g. not `reward-hacking` just because agents "optimized" a goal).
    - **Status, dates, and assessments:** match the sources and the rubric.
+   - **Style:** the title, summary, and writeup follow `STYLE.md`. Fix any sentence that routes facts through "X said" or "according to" when attribution doesn't change the meaning.
 4. **Merge taxonomy.** Collect the writers' requested terms (`scout/out/jobs/<id>.taxonomy.yaml`, or subagent replies), dedupe them, check them against the existing taxonomy, and add them to `data/taxonomy/`.
 5. Add `related` links between incidents in this batch where appropriate.
 6. **Finish today's scan log** (`data/scans/<today>.yaml`):

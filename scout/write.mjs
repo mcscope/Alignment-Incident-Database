@@ -85,6 +85,11 @@ Follow these editorial rules exactly:
 ${readFileSync(join(root, "CLAUDE.md"), "utf8")}
 </rules>
 
+Write the title, summary, and writeup following this style guide exactly:
+<style>
+${readFileSync(join(root, "STYLE.md"), "utf8")}
+</style>
+
 The record must validate against this JSON Schema:
 <schema>
 ${readFileSync(join(root, "schema/incident.schema.json"), "utf8")}
@@ -98,7 +103,7 @@ Allowed taxonomy ids (use only these; if you truly need a new one, list it under
 
 Style template (an existing record):
 <example>
-${readFileSync(join(root, "data/incidents/AID-2026-0006.yaml"), "utf8")}
+${readFileSync(join(root, "data/incidents/AID-2026-0004.yaml"), "utf8")}
 </example>
 ${existing ? `\nThis is an UPDATE. The current record is below; return the complete updated record, keeping its id, existing sources and claims unless the new sources correct them, and setting record.updated to "${today}".\n<current>\n${existing}\n</current>\n` : ""}
 Editor's brief (verified by the editor; use it to choose what matters, but every fact you write must come from the sources below):
