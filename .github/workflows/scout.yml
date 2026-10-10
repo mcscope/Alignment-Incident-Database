@@ -89,6 +89,9 @@ jobs:
         run: |
           echo "::error::Scout agent failed (usage limit hit: ${{ steps.limit.outputs.hit }})"
           exit 1
+      - name: Spend this run
+        if: always()
+        run: node scout/cost-report.mjs --claude "${{ steps.agent.outputs.execution_file }}" --fallback "${{ steps.fallback.outputs.execution_file }}" >> "$GITHUB_STEP_SUMMARY" || true
       - name: Publish run report
         if: always()
         run: |

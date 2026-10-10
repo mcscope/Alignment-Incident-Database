@@ -61,6 +61,8 @@ Resume: a previous attempt stopped at a usage limit. Check git log and data/ for
 fi
 
 echo
+node scout/cost-report.mjs --claude scout/out/agent.log || true
+echo
 git log --oneline "$(git -C "$repo" rev-parse HEAD)..$branch"
 [ -f scout/out/report.md ] && cat scout/out/report.md
 echo

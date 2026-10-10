@@ -123,6 +123,7 @@ async function complete(name, system, user, schema) {
     const body = await res.json();
     usage.prompt += body.usage?.prompt_tokens ?? 0;
     usage.completion += body.usage?.completion_tokens ?? 0;
+    usage.cost_usd += body.usage?.cost ?? 0;
     const choice = body.choices?.[0];
     try {
       return JSON.parse(choice.message.content);
@@ -135,7 +136,7 @@ async function complete(name, system, user, schema) {
   return null;
 }
 const failures = [];
-const usage = { prompt: 0, completion: 0 };
+const usage = { prompt: 0, completion: 0, cost_usd: 0 };
 
 const obj = (properties) => ({ type: "object", additionalProperties: false, required: Object.keys(properties), properties });
 const str = { type: "string" };
