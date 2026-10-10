@@ -1,135 +1,86 @@
 ---
-// Models, grouped by developer → family, built entirely from the data: a new
-// model or family in data/taxonomy/models.yaml shows up here automatically.
-// Each family with 2+ models gets a stacked bar chart (incidents per model,
-// split by reach); every model lists its incidents.
+// Models, one card per developer. The card shows the developer's incidents at a
+// glance; its models (newest activity first) appear when the card is expanded.
+// Built from the taxonomy, so new models and developers appear automatically.
 import Base from "../../layouts/Base.astro";
 import ReachBars from "../../components/ReachBars.astro";
 import OrgLogo from "../../components/OrgLogo.astro";
-import {
-  incidents, models, orgById, REACH, url, formatDate, type Incident, type Term,
-} from "../../lib/data";
+import { incidents, models, orgById, HARM, url, formatDate, type Incident, type Term } from "../../lib/data";
 
-const byModel = new Map<string, Incident[]>(models.map((m) => [m.id, incidents.filter((i) => i.models.includes(m.id)).sort((a, b) => b.date.localeCompare(a.date))]));
-const count = (m: Term) => byModel.get(m.id)!.length;
+const byModel = new Map<string, Incident[]>(models.map((m) => [m.id, incidents.filter((i) => i.models.includes(m.id))]));
+const latest = (list: Incident[]) => list.reduce((d, i) => (i.date > d ? i.date : d), "");
 
-type Family = { id: string; models: Term[]; total: number };
-type Dev = { id: string; name: string; href?: string; families: Family[]; total: number };
-
+type Dev = { id: string; name: string; href?: string; models: Term[]; incidents: Incident[] };
 const devs = new Map<string, Dev>();
 for (const m of models) {
-  const devId = m.developer ?? "other";
-  const dev = devs.get(devId) ?? {
-    id: devId,
-    name: devId === "other" ? "Other and undisclosed" : orgById.get(devId)?.name ?? devId,
-    href: devId === "other" ? undefined : url(`/organizations/${devId}/`),
-    families: [], total: 0,
-  };
-  const famId = m.family ?? (m.id === "unknown" ? "undisclosed" : m.id);
-  let fam = dev.families.find((f) => f.id === famId);
-  if (!fam) dev.families.push((fam = { id: famId, models: [], total: 0 }));
-  fam.models.push(m);
-  devs.set(devId, dev);
+  if (!byModel.get(m.id)!.length) continue;
+  const id = m.developer ?? "other";
+  const dev = devs.get(id) ?? { id, name: id === "other" ? "Other and undisclosed" : orgById.get(id)?.name ?? id, href: id === "other" ? undefined : url(`/organizations/${id}/`), models: [], incidents: [] };
+  dev.models.push(m);
+  devs.set(id, dev);
 }
-// Totals count distinct incidents, so a multi-model incident isn't double-counted.
-const distinct = (ms: Term[]) => new Set(ms.flatMap((m) => byModel.get(m.id)!.map((i) => i.id))).size;
 for (const d of devs.values()) {
-  for (const f of d.families) {
-    f.total = distinct(f.models);
-    f.models.sort((a, b) => count(b) - count(a) || a.name.localeCompare(b.name));
-  }
-  d.families.sort((a, b) => b.total - a.total || a.id.localeCompare(b.id));
-  d.total = distinct(d.families.flatMap((f) => f.models));
+  // Distinct incidents, so a multi-model incident counts once per developer.
+  d.incidents = [...new Map(d.models.flatMap((m) => byModel.get(m.id)!).map((i) => [i.id, i])).values()];
+  // Newest activity first: most recent incident, then incident count.
+  d.models.sort((a, b) => latest(byModel.get(b.id)!).localeCompare(latest(byModel.get(a.id)!)) || byModel.get(b.id)!.length - byModel.get(a.id)!.length);
 }
-const devList = [...devs.values()]
-  .filter((d) => d.total > 0)
-  .sort((a, b) => (a.id === "other" ? 1 : b.id === "other" ? -1 : b.total - a.total || a.name.localeCompare(b.name)));
-
-const familyLabel = (f: Family) => f.id.replace(/-/g, " ").replace(/\b([a-z])/g, (c) => c.toUpperCase()).replace(/^Gpt/, "GPT").replace(/^O Series$/, "o-series");
-const reachCounts = (m: Term) => REACH.map((r) => byModel.get(m.id)!.filter((i) => i.assessment.reach.level === r).length);
+const devList = [...devs.values()].sort((a, b) => (a.id === "other" ? 1 : b.id === "other" ? -1 : b.incidents.length - a.incidents.length || a.name.localeCompare(b.name)));
+const modelCount = devList.reduce((n, d) => n + d.models.filter((m) => m.id !== "unknown").length, 0);
+const max = Math.max(...devList.map((x) => x.incidents.length));
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
-const withIncidents = models.filter((m) => m.id !== "unknown" && count(m) > 0).length;
 ---
-<Base title="Models" nav="models" description="Incidents grouped by AI model and model family.">
+<Base title="Models" nav="models" description="AI models in recorded incidents, by developer.">
   <h1>Models</h1>
   <p class="lede">
-    {withIncidents} models from {devList.filter((d) => d.id !== "other").length} developers appear in recorded incidents.
-    Grouped by developer and model family; bars show each model's incidents, shaded by how far the behavior reached.
+    {modelCount} models from {devList.filter((d) => d.id !== "other").length} developers appear in recorded incidents.
+    Bars show incidents, shaded by the real-world harm each caused. Open a developer to see its models, newest first.
   </p>
-
-  <nav class="jump" aria-label="Developers">
-    {devList.map((d) => <a class="with-logo" href={`#dev-${d.id}`}>{d.id !== "other" && <OrgLogo id={d.id} size={16} title={false} />}{d.name} <span>{d.total}</span></a>)}
-  </nav>
-
-  <div class="legend reach-legend">
-    {REACH.map((r) => <span><i style={`background: var(--reach-${r})`} />{cap(r)}</span>)}
+  <div class="legend">
+    <span>Harm:</span>
+    {HARM.map((h) => <span><i style={`background: var(--harm-${h}); border-radius: 3px`} />{cap(h)}</span>)}
   </div>
 
-  {devList.map((d) => (
-    <section class="dev" id={`dev-${d.id}`}>
-      <div class="section-head">
-        <h2 class="with-logo" style="gap:10px">{d.id !== "other" && <OrgLogo id={d.id} size={26} title={false} />}{d.href ? <a href={d.href}>{d.name}</a> : d.name}</h2>
-        <span class="muted small">{d.total} incident{d.total === 1 ? "" : "s"} · {d.families.length} famil{d.families.length === 1 ? "y" : "ies"}</span>
-      </div>
-      <div class="fam-grid">
-        {d.families.filter((f) => f.total > 0).map((f) => {
-          const shown = f.models.filter((m) => count(m) > 0);
-          const max = Math.max(...shown.map(count));
-          return (
-            <article class="chart-card fam">
-              <div class="fam-head">
-                <p class="chart-title">{familyLabel(f)}</p>
-                <span class="muted small">{f.total} incident{f.total === 1 ? "" : "s"}</span>
-              </div>
-
-              {shown.length > 1 ? (
-                <ReachBars label={`Incidents per model in the ${familyLabel(f)} family`} rows={shown.map((m) => ({ label: m.name, href: url(`/models/${m.id}/`), incidents: byModel.get(m.id)! }))} />
-              ) : null}
-
-              <div class="fam-models">
-                {shown.map((m) => (
-                  <details open={shown.length === 1}>
-                    <summary><a href={url(`/models/${m.id}/`)}>{m.name}</a> <span class="muted small">{count(m)} incident{count(m) === 1 ? "" : "s"}</span></summary>
-                    <ul>
-                      {byModel.get(m.id)!.map((i) => (
-                        <li>
-                          <i class="reach-dot" style={`background: var(--reach-${i.assessment.reach.level})`} title={`Reach: ${i.assessment.reach.level}`} />
-                          <a href={url(`/incidents/${i.id}/`)}>{i.title}</a>
-                          <span class="muted small">{formatDate(i.date)}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                ))}
-                {f.models.some((m) => count(m) === 0) && (
-                  <p class="muted small">No incidents yet: {f.models.filter((m) => count(m) === 0).map((m) => m.name).join(", ")}</p>
-                )}
-              </div>
-            </article>
-          );
-        })}
-      </div>
-    </section>
-  ))}
+  <div class="dev-grid">
+    {devList.map((d) => (
+      <details class="chart-card dev-card">
+        <summary>
+          <div class="dev-top">
+            <span class="with-logo dev-name">
+              {d.id !== "other" ? <OrgLogo id={d.id} size={28} title={false} /> : <span class="org-logo org-initials" style="--logo:28px">?</span>}
+              <span>{d.name}</span>
+            </span>
+            <span class="muted small">{d.incidents.length} incident{d.incidents.length === 1 ? "" : "s"} · {d.models.length} model{d.models.length === 1 ? "" : "s"}</span>
+          </div>
+          <ReachBars compact by="harm" max={max} rows={[{ label: d.name, incidents: d.incidents }]} label={`${d.name} incidents by harm`} />
+          <span class="dev-more small">
+            <span class="when-closed">Show models</span><span class="when-open">Hide models</span>
+            <span class="muted"> · latest {formatDate(latest(d.incidents))}</span>
+          </span>
+        </summary>
+        <div class="dev-models">
+          <ReachBars
+            by="harm"
+            label={`${d.name} incidents per model`}
+            rows={d.models.map((m) => ({ label: m.name, href: url(`/models/${m.id}/`), incidents: byModel.get(m.id)! }))}
+          />
+          {d.href && <p class="small" style="margin:10px 0 0"><a href={d.href}>All {d.name} incidents by role →</a></p>}
+        </div>
+      </details>
+    ))}
+  </div>
 </Base>
 
 <style>
-  .jump { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
-  .jump a { font-size: 0.85rem; text-decoration: none; color: var(--text); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; background: var(--surface); }
-  .jump a:hover { border-color: var(--muted); }
-  .jump span { color: var(--muted); font-variant-numeric: tabular-nums; margin-left: 2px; }
-  .reach-legend i { border-radius: 3px; }
-  .dev { scroll-margin-top: 16px; }
-  .dev h2 a { color: var(--text); text-decoration: none; }
-  .dev h2 a:hover { text-decoration: underline; }
-  .fam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 14px; align-items: start; }
-  .fam { display: grid; gap: 12px; }
-  .fam-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-  .fam-models { display: grid; gap: 4px; }
-  .fam-models details { border-top: 1px solid var(--border); padding-top: 6px; }
-  .fam-models summary { cursor: pointer; font-size: 0.9rem; }
-  .fam-models summary a { color: var(--text); font-weight: 600; }
-  .fam-models ul { list-style: none; padding: 0; margin: 6px 0 4px; display: grid; gap: 4px; font-size: 0.85rem; }
-  .fam-models li { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 8px; align-items: baseline; }
-  .reach-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dev-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 14px; align-items: start; margin-top: 8px; }
+  .dev-card summary { list-style: none; cursor: pointer; display: grid; gap: 10px; }
+  .dev-card summary::-webkit-details-marker { display: none; }
+  .dev-card summary:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; border-radius: 6px; }
+  .dev-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .dev-name { font-weight: 650; font-size: 1.05rem; gap: 10px; }
+  .dev-more { color: var(--link); }
+  .dev-card .when-open { display: none; }
+  .dev-card[open] .when-open { display: inline; }
+  .dev-card[open] .when-closed { display: none; }
+  .dev-models { border-top: 1px solid var(--border); margin-top: 12px; padding-top: 12px; }
 </style>
