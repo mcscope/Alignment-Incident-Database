@@ -31,6 +31,14 @@ This repo is a public database of AI alignment incidents, modeled on MITRE CVE: 
 - Update `record.updated` on every edit.
 - Add new taxonomy terms only when no existing term fits. Put them in the same commit.
 
+## AI spend
+Use models where they add real value, and get good value for each call.
+- Never pay twice. If a model call for a task is already running or finished, use its output (review and fix it) instead of regenerating.
+- Use the cheapest tool that does the job well: deterministic code first (parsing, fetching, validation, date and metadata extraction), then Gemini via OpenRouter (triage, drafting), then Claude for judgment and editing. Run subagents on Sonnet unless the work needs more.
+- The Claude subscription comes before the API. Keep `ANTHROPIC_API_KEY` unset for `claude` CLI runs. OpenRouter is only a fallback when the subscription hits its usage limit.
+- Before a large run (backfills, many subagents, re-processing every record), state the rough cost and ask first.
+- Batch work into one call where possible, and send only the context the task needs.
+
 ## Workflow
 - Run `npm run validate` before committing. CI runs it on every push and PR.
 - The daily scout commits directly to `main`: one commit per run with its incident changes and that day's scan log (`data/scans/YYYY-MM-DD.yaml`), which lists every source scanned and its verdict. Agent records stay `draft` until a human reviews them.
