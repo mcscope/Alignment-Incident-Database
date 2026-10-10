@@ -3,7 +3,7 @@
 // appear under several roles (e.g. a lab that both built a model and studied it).
 import Base from "../../layouts/Base.astro";
 import ReachBars from "../../components/ReachBars.astro";
-import { incidents, organizations, REACH, url, type Incident } from "../../lib/data";
+import { incidents, organizations, HARM, url, type Incident } from "../../lib/data";
 
 const ROLES = [
   { id: "developer", name: "Developers", desc: "Built the model involved." },
@@ -26,13 +26,14 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
   <h1>Organizations</h1>
   <p class="lede">
     Who built the models, who deployed them, who found the problems, and who was hurt. An organization can appear under
-    more than one role. Bars show incidents, shaded by how far the behavior reached.
+    more than one role. Bars show incidents, shaded by the real-world harm each caused.
   </p>
   <nav class="jump" aria-label="Roles">
     {sections.map((s) => <a href={`#role-${s.id}`}>{s.name} <span>{s.rows.length}</span></a>)}
   </nav>
   <div class="legend">
-    {REACH.map((r) => <span><i style={`background: var(--reach-${r}); border-radius: 3px`} />{cap(r)}</span>)}
+    <span>Harm:</span>
+    {HARM.map((h) => <span><i style={`background: var(--harm-${h}); border-radius: 3px`} />{cap(h)}</span>)}
   </div>
 
   {sections.map((s) => (
@@ -43,7 +44,8 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
       </div>
       <div class="chart-card">
         <ReachBars
-          label={`Incidents per organization as ${s.id}`}
+          by="harm"
+          label={`Incidents per organization as ${s.id}, by harm`}
           rows={s.rows.map((r) => ({ label: r.o.type ? `${r.o.name}` : r.o.name, href: url(`/organizations/${r.o.id}/`), incidents: r.list }))}
         />
       </div>

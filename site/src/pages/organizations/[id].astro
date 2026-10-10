@@ -25,7 +25,7 @@ const total = new Set(byRole.flatMap((r) => r.list.map((i) => i.id))).size;
   {byRole.length > 1 && (
     <div class="chart-card" style="margin-bottom:8px">
       <p class="chart-title">Roles</p>
-      <ReachBars rows={byRole.map((r) => ({ label: ROLE_NAMES[r.role], href: `#as-${r.role}`, incidents: r.list }))} label="Incidents by role" />
+      <ReachBars by="harm" rows={byRole.map((r) => ({ label: ROLE_NAMES[r.role], href: `#as-${r.role}`, incidents: r.list }))} label="Incidents by role, by harm" />
     </div>
   )}
 

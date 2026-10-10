@@ -1,13 +1,15 @@
 ---
-// Horizontal bars, one row per item, each split into reach segments (ordinal ramp).
-// Used wherever we'd otherwise show a bare incident count.
-import { REACH, type Incident } from "../lib/data";
+// Horizontal bars, one row per item, each split into segments by reach or by harm
+// severity (each an ordinal one-hue ramp). Used wherever we'd otherwise show a bare count.
+import { REACH, HARM, type Incident } from "../lib/data";
 
 interface Row { label: string; href?: string; incidents: Incident[] }
-interface Props { rows: Row[]; max?: number; compact?: boolean; label?: string }
-const { rows, max, compact = false, label = "Incidents by reach" } = Astro.props;
+interface Props { rows: Row[]; max?: number; compact?: boolean; label?: string; by?: "reach" | "harm" }
+const { rows, max, compact = false, label = "Incidents by reach", by = "reach" } = Astro.props;
+const LEVELS: readonly string[] = by === "harm" ? HARM : REACH;
+const levelOf = (i: Incident) => (by === "harm" ? i.assessment.harm.severity : i.assessment.reach.level);
 const top = max ?? Math.max(1, ...rows.map((r) => r.incidents.length));
-const split = (list: Incident[]) => REACH.map((r) => list.filter((i) => i.assessment.reach.level === r).length);
+const split = (list: Incident[]) => LEVELS.map((l) => list.filter((i) => levelOf(i) === l).length);
 ---
 <div class={`stackbars${compact ? " compact" : ""}`} role="img" aria-label={label}>
   {rows.map((row) => {
@@ -18,7 +20,7 @@ const split = (list: Incident[]) => REACH.map((r) => list.filter((i) => i.assess
         <div class="sb-track">
           <div class="sb-bar" style={`width:${(n / top) * 100}%`}>
             {split(row.incidents).map((c, k) => c > 0 && (
-              <span class="sb-seg" tabindex="0" style={`flex:${c}; background: var(--reach-${REACH[k]})`} data-tip={`${row.label} · ${REACH[k]}: ${c}`} />
+              <span class="sb-seg" tabindex="0" style={`flex:${c}; background: var(--${by}-${LEVELS[k]})`} data-tip={`${row.label} · ${by === "harm" ? "harm " : ""}${LEVELS[k]}: ${c}`} />
             ))}
           </div>
           <span class="sb-val">{n}</span>
