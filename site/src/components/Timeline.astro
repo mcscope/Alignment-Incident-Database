@@ -83,6 +83,11 @@ const laneSets: Record<View, Lane[]> = {
   })(),
 };
 
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const months = Array.from({ length: span }, (_, k) => ({ x: (k / span) * 100, m: (start + k) % 12, y: Math.floor((start + k) / 12) }));
+// Default window: the current year to now. Anything earlier is history, scrolled off to the left.
+const defaultFrom = Math.max(0, Math.min(span - 1, now.getUTCFullYear() * 12 - start));
+
 const viewNames: Record<View, string> = { time: "Timeline", developer: "By developer", behavior: "By behavior" };
 const viewSubs: Record<View, string> = {
   time: "Every incident by date. Color shows the model's developer, size shows harm.",
@@ -93,12 +98,22 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 const tip = (i: Incident) =>
   `${i.id} · ${formatDate(i.date)}\n${i.title}\n${devLabel(i)} · reach: ${i.assessment.reach.level} · harm: ${i.assessment.harm.severity}`;
 ---
-<figure class="tl" id={id} data-views={views.join(" ")}>
-  {views.length > 1 && (
-    <div class="tl-tabs" role="tablist" aria-label="Timeline view">
-      {views.map((v, n) => <button type="button" role="tab" data-view={v} aria-selected={n === 0 ? "true" : "false"}>{viewNames[v]}</button>)}
+<figure class="tl" id={id} data-views={views.join(" ")} data-span={span} data-default-from={defaultFrom}>
+  <div class="tl-toolbar">
+    {views.length > 1 && (
+      <div class="tl-tabs" role="tablist" aria-label="Timeline view">
+        {views.map((v, n) => <button type="button" role="tab" data-view={v} aria-selected={n === 0 ? "true" : "false"}>{viewNames[v]}</button>)}
+      </div>
+    )}
+    <div class="tl-zoom" role="group" aria-label="Zoom">
+      <button type="button" data-zoom="year" aria-pressed="true">{now.getUTCFullYear()}</button>
+      <button type="button" data-zoom="24">2 yrs</button>
+      <button type="button" data-zoom="60">5 yrs</button>
+      <button type="button" data-zoom="all">All</button>
+      <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+      <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
     </div>
-  )}
+  </div>
 
   {views.map((v, n) => (
     <div class="tl-view" data-view={v} hidden={n > 0} role={views.length > 1 ? "tabpanel" : undefined}>
@@ -121,12 +136,12 @@ const tip = (i: Incident) =>
         </div>
       </div>
 
-      <div class={`tl-lanes${v === "time" ? " single" : ""}`}>
-        {laneSets[v].map((l) => (
-          <div class="tl-lane">
-            {l.label && <div class="tl-label">{l.href ? <a href={l.href}>{l.label}</a> : l.label}</div>}
-            <div class="tl-track" style={`height:${l.height}px`}>
-              {years.map((y) => <span class="tl-grid" style={`left:${((y * 12 - start) / span) * 100}%`} />)}
+      <div class="tl-scroller" tabindex="0" aria-label="Timeline; scroll sideways for earlier incidents">
+        <div class="tl-canvas">
+          {laneSets[v].map((l) => (
+            <div class="tl-track" style={`height:${l.height + (l.label ? 18 : 0)}px`}>
+              {months.map((mo) => <span class={mo.m === 0 ? "tl-grid" : "tl-mgrid"} style={`left:${mo.x}%`} />)}
+              {l.label && <span class="tl-label">{l.href ? <a href={l.href}>{l.label}</a> : l.label}</span>}
               {l.dots.map((d) => (
                 <a
                   class={`tl-dot${d.hollow ? " hollow" : ""}`}
@@ -138,12 +153,11 @@ const tip = (i: Incident) =>
                 />
               ))}
             </div>
-          </div>
-        ))}
-        <div class="tl-lane tl-axis-row">
-          {v !== "time" && <div class="tl-label" />}
+          ))}
           <div class="tl-axis">
-            {years.map((y) => <span style={`left:${((y * 12 - start) / span) * 100}%`}>{y}</span>)}
+            {months.map((mo) => mo.m === 0
+              ? <span class="tl-ylabel" style={`left:${mo.x}%`}>{mo.y}</span>
+              : <span class="tl-mlabel" style={`left:${mo.x}%`}>{monthNames[mo.m]}</span>)}
           </div>
         </div>
       </div>
@@ -164,16 +178,58 @@ const tip = (i: Incident) =>
 </figure>
 
 <script>
-  // View tabs; the selected view is kept in the URL hash (#view=developer).
+  // View tabs (selected view kept in the URL hash, #view=developer) and zoom.
+  // Zoom sets how many months fill the visible width; dots are positioned in % of
+  // the full span, so only the canvas width changes. Default: current year to now,
+  // with earlier years scrolled off to the left.
   for (const fig of document.querySelectorAll<HTMLElement>("figure.tl")) {
+    const span = Number(fig.dataset.span);
+    const defaultFrom = Number(fig.dataset.defaultFrom);
+    let visible = Math.max(3, span - defaultFrom + 0.6); // months in view (+ a little so the year label shows)
+    let anchor: "right" | number = "right";       // keep right edge, or a centre month
+
+    const activeScroller = () => [...fig.querySelectorAll<HTMLElement>(".tl-view")].find((v) => !v.hidden)?.querySelector<HTMLElement>(".tl-scroller");
+    function apply(center?: number) {
+      const sc = activeScroller();
+      if (!sc || !sc.clientWidth) return;
+      visible = Math.min(span, Math.max(3, visible));
+      const width = (sc.clientWidth * span) / visible;
+      for (const c of fig.querySelectorAll<HTMLElement>(".tl-canvas")) c.style.width = `${width}px`;
+      fig.classList.toggle("tl-fine", width / span >= 34);
+      const target = center ?? (anchor === "right" ? span : anchor);
+      sc.scrollLeft = anchor === "right" && center === undefined ? sc.scrollWidth : (target / span) * width - sc.clientWidth / 2;
+    }
+    const centerMonth = () => { const sc = activeScroller(); return sc ? ((sc.scrollLeft + sc.clientWidth / 2) / sc.scrollWidth) * span : span; };
+    const press = (key: string) => { for (const b of fig.querySelectorAll<HTMLElement>("[data-zoom]")) if (!["in", "out"].includes(b.dataset.zoom!)) b.setAttribute("aria-pressed", String(b.dataset.zoom === key)); };
+
+    for (const b of fig.querySelectorAll<HTMLButtonElement>("[data-zoom]")) {
+      b.addEventListener("click", () => {
+        const z = b.dataset.zoom!;
+        if (z === "in" || z === "out") {
+          const c = centerMonth();
+          visible = z === "in" ? visible / 2 : visible * 2;
+          anchor = c; press(""); apply(c);
+          return;
+        }
+        visible = z === "year" ? span - defaultFrom + 0.6 : z === "all" ? span : Number(z);
+        anchor = "right"; press(z); apply();
+      });
+    }
+
     const tabs = [...fig.querySelectorAll<HTMLButtonElement>(".tl-tabs [data-view]")];
-    if (!tabs.length) continue;
     const show = (view: string) => {
+      if (!tabs.length) return;
       if (!tabs.some((t) => t.dataset.view === view)) view = tabs[0].dataset.view!;
       for (const t of tabs) t.setAttribute("aria-selected", String(t.dataset.view === view));
       for (const p of fig.querySelectorAll<HTMLElement>(".tl-view")) p.hidden = p.dataset.view !== view;
     };
-    for (const t of tabs) t.addEventListener("click", () => { show(t.dataset.view!); history.replaceState(null, "", `#view=${t.dataset.view}`); });
+    for (const t of tabs) t.addEventListener("click", () => {
+      const c = centerMonth();
+      show(t.dataset.view!); history.replaceState(null, "", `#view=${t.dataset.view}`);
+      apply(anchor === "right" ? undefined : c);
+    });
     show(new URLSearchParams(location.hash.slice(1)).get("view") ?? "");
+    apply();
+    new ResizeObserver(() => apply()).observe(fig);
   }
 </script>

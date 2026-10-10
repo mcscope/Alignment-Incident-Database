@@ -293,29 +293,41 @@ details.table-view th, details.table-view td { text-align: left; padding: 3px 10
 .tl-key.hollow { background: transparent; border: 2px solid var(--dev-ring); box-sizing: border-box; }
 .tl-sizes { align-items: center; }
 .tl-size { display: inline-block; border-radius: 50%; background: var(--chart-muted); opacity: 0.6; }
-.tl-lanes { --tl-label: 11rem; display: grid; gap: 0; margin-top: 4px; }
-.tl-lanes.single { --tl-label: 0px; }
-.tl-lane { display: grid; grid-template-columns: var(--tl-label) minmax(0, 1fr); align-items: end; }
-.tl-lanes.single .tl-lane { grid-template-columns: minmax(0, 1fr); }
-.tl-label { font-size: 0.85rem; padding: 0 12px 8px 0; text-align: right; overflow-wrap: anywhere; }
-.tl-label a { color: var(--text); }
+.tl-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 8px 16px; flex-wrap: wrap; margin-bottom: 12px; }
+.tl-toolbar .tl-tabs { margin-bottom: 0; }
+.tl-zoom { display: inline-flex; gap: 2px; padding: 3px; border-radius: 9px; background: var(--surface-2); flex-wrap: wrap; }
+.tl-zoom button {
+  font: inherit; font-size: 0.8rem; color: var(--muted); background: none; border: 0; padding: 4px 10px;
+  border-radius: 7px; cursor: pointer; font-variant-numeric: tabular-nums; min-width: 2rem;
+}
+.tl-zoom button:hover { color: var(--text); }
+.tl-zoom button[aria-pressed="true"] { background: var(--surface); color: var(--text); font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+.tl-zoom button:focus-visible, .tl-tabs button:focus-visible { outline: 2px solid var(--link); outline-offset: 1px; }
+.tl-scroller { overflow-x: auto; overflow-y: hidden; margin-top: 4px; overscroll-behavior-x: contain; scrollbar-width: thin; }
+.tl-scroller:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 4px; }
+.tl-canvas { position: relative; width: 100%; min-width: 100%; padding: 0 10px; box-sizing: content-box; }
 .tl-track { position: relative; border-bottom: 1px solid var(--chart-grid); }
-.tl-lane:nth-last-child(2) .tl-track { border-bottom-color: var(--chart-axis); }
-.tl-grid { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--chart-grid); }
+.tl-track:last-of-type { border-bottom-color: var(--chart-axis); }
+.tl-grid { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--chart-axis); opacity: 0.6; }
+.tl-mgrid { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--chart-grid); display: none; }
+.tl-fine .tl-mgrid { display: block; }
+.tl-label {
+  position: sticky; left: 0; z-index: 3; display: inline-block; margin-top: 2px; padding: 0 6px 0 2px;
+  font-size: 0.8rem; background: var(--surface); border-radius: 0 4px 4px 0; max-width: 60vw;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.tl-label a { color: var(--text); }
 .tl-dot {
   position: absolute; transform: translateX(-50%); border-radius: 50%; box-sizing: border-box;
-  box-shadow: 0 0 0 2px var(--surface); transition: opacity 0.15s;
+  box-shadow: 0 0 0 2px var(--surface); transition: opacity 0.15s; z-index: 1;
 }
 .tl-dot::before { content: ""; position: absolute; inset: -7px; border-radius: 50%; } /* bigger hit target */
 .tl-dot.hollow { background: var(--surface) !important; border: 2.5px solid var(--dev-ring); }
-.tl-dot:hover, .tl-dot:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; z-index: 2; }
+.tl-dot:hover, .tl-dot:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; z-index: 4; }
 .tl-dot.dim { opacity: 0.12; }
 .tl-axis { position: relative; height: 22px; }
-.tl-axis span { position: absolute; top: 4px; font-size: 0.75rem; color: var(--chart-muted); font-variant-numeric: tabular-nums; padding-left: 4px; }
-@media (max-width: 640px) {
-  .tl-lanes { --tl-label: 0px; }
-  .tl-lane { grid-template-columns: minmax(0, 1fr); }
-  .tl-label { text-align: left; padding: 10px 0 2px; }
-  .tl-axis-row .tl-label { display: none; }
-}
+.tl-axis span { position: absolute; top: 4px; font-size: 0.75rem; color: var(--chart-muted); font-variant-numeric: tabular-nums; padding-left: 4px; white-space: nowrap; }
+.tl-axis .tl-ylabel { font-weight: 600; color: var(--muted); }
+.tl-axis .tl-mlabel { display: none; }
+.tl-fine .tl-axis .tl-mlabel { display: block; }
 .tl-size { border-radius: 50% !important; }
