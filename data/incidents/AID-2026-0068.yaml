@@ -1,6 +1,6 @@
 id: AID-2026-0068
 slug: artex-agentic-pentest-tool-south-korean-finance-breaches
-title: "Actor used ARTEX and Claude Code to breach South Korean financial organizations, CrowdStrike reports"
+title: "An actor used the agentic pentest tool ARTEX and Claude Code to breach South Korean financial organizations, CrowdStrike reports"
 date: "2026-09"
 status: reported
 actor: human-misuse
@@ -12,30 +12,27 @@ organizations:
     role: developer
 behaviors: [unauthorized-access]
 summary: >
-  CrowdStrike reported that an unnamed actor, which it assesses with moderate
-  confidence is a financially motivated Chinese speaker, used the open-source
-  agentic pentesting tool ARTEX with DeepSeek v4.1-flash, plus Claude Code
-  sessions, in a late September to early October 2026 campaign against South
-  Korean financial organizations that resulted in exfiltrated data.
+  From late September to early October 2026, an actor CrowdStrike assesses as a
+  likely financially motivated Chinese speaker used the open-source agentic
+  pentesting tool ARTEX with DeepSeek v4.1-flash, plus Claude Code sessions, to
+  breach South Korean financial organizations and steal data.
 writeup: |
-  CrowdStrike reported on October 7, 2026 a targeted campaign against South
-  Korean financial organizations that "resulted in exfiltrated data." According
-  to CrowdStrike, the campaign was active from late September to early October
-  2026. At one bank the actor reportedly breached a loan progress inquiry
-  service used by financial brokers, and at another it compromised an employee
-  mobile work-support system. CrowdStrike says the number of affected
-  organizations remains unconfirmed [@crowdstrike].
+  From late September to early October 2026, a targeted campaign against South
+  Korean financial organizations "resulted in exfiltrated data." At one bank the
+  actor breached a loan progress inquiry service used by financial brokers; at
+  another it compromised an employee mobile work-support system. The number of
+  affected organizations is unconfirmed [@crowdstrike].
 
-  CrowdStrike says the actor used ARTEX, "a recently released open-source
-  agentic penetration testing (pentesting) tool developed in China," with
-  DeepSeek v4.1-flash as the primary LLM backend. The actor also used GLM-5.3
-  (Zhipu AI) and Grok 4.6 for additional Claude Code sessions. CrowdStrike
-  found Claude Code session histories, ARTEX configuration files, and Claude
-  memory files in open directories controlled by the actor [@crowdstrike].
+  The actor ran ARTEX, "a recently released open-source agentic penetration
+  testing (pentesting) tool developed in China," with DeepSeek v4.1-flash as its
+  main LLM, and used GLM-5.3 (Zhipu AI) and Grok 4.6 for additional Claude Code
+  sessions. Claude Code session histories, ARTEX configuration files, and Claude
+  memory files turned up in open directories the actor controlled
+  [@crowdstrike].
 
-  CrowdStrike has not attributed the activity to a named adversary. It
-  assesses with moderate confidence that the actor is likely a Chinese speaker
-  and financially motivated [@crowdstrike].
+  CrowdStrike, which reported the campaign on October 7, 2026, hasn't named the
+  adversary but assesses with moderate confidence that it's a financially
+  motivated Chinese speaker [@crowdstrike].
 claims:
   - text: CrowdStrike reported a targeted campaign against South Korean financial organizations that resulted in exfiltrated data.
     sources: [crowdstrike]
@@ -96,7 +93,7 @@ assessment:
     rationale: CrowdStrike reports breaches of bank systems and data exfiltration by a financially motivated actor. Unauthorized intrusion and data theft are crimes. No arrests or charges are sourced, and the actor is unidentified.
 record:
   created: "2026-10-09"
-  updated: "2026-10-09"
+  updated: "2026-10-10"
   created_by: agent
   review_status: draft
   notes: >

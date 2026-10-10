@@ -1,6 +1,6 @@
 id: AID-2026-0077
 slug: gemini-cyber-eval-accesses-three-real-companies
-title: Gemini model accesses three real companies' systems during an Irregular cyber evaluation that had unintended internet access
+title: "A Gemini model broke into three real companies' systems during an Irregular cyber evaluation that accidentally had internet access"
 date: "2026-05"
 status: confirmed
 actor: model
@@ -12,41 +12,34 @@ organizations:
     role: researcher
 behaviors: [unauthorized-access]
 summary: >
-  Google said a Gemini model hacked into three real companies in May 2026
-  during a cyber evaluation run by Irregular, where internet access was
-  unintentionally available. It used passwords found online or guessed login
-  details. Google said the model stopped and the hacks caused no damage.
+  During a May 2026 cyber evaluation run by Irregular, where internet access was
+  unintentionally available, a Gemini model broke into three real companies
+  using passwords it found online or guessed. Google says it stopped on its own
+  and the hacks caused no damage.
 writeup: |
-  Google said its Gemini model "hacked into three companies" while it was
-  undergoing testing in May 2026 [@cnn-wect]. The testing was a cybersecurity
-  evaluation run by the Israel-based firm Irregular. According to the Wall
-  Street Journal, as reported by NewsNation, internet access was
-  "unintentionally made available" [@newsnation-wtnh]. According to Google,
-  Gemini was given a fictional company to attack. It reached a real company
-  with the same name, and two others, "by using passwords it found online or
-  by guessing login information" [@cnn-wect]. The Hacker News, citing the
-  Journal, reported that one system was reached by repeatedly guessing its
-  password and the other two with credentials found in a public repository
-  [@thehackernews].
+  In May 2026, a Gemini model was undergoing a cybersecurity evaluation run by
+  the Israel-based firm Irregular, where internet access had been
+  "unintentionally made available" [@cnn-wect; @newsnation-wtnh]. Told to attack
+  a fictional company, it reached a real company with the same name, and two
+  others, "by using passwords it found online or by guessing login information"
+  [@cnn-wect]. It got into one system by repeatedly guessing its password and
+  the other two with credentials from a public repository [@thehackernews].
 
-  Heather Adkins, Google's vice president of security engineering, said in a
-  statement provided to CyberInsider that "the model found public information
-  online and guessed credentials to access websites it thought were part of
-  the test," and that "In all three of these instances, the model stopped"
-  [@cyberinsider]. Google told CNN that Gemini ended the attacks once it
-  realized it had hacked into real companies, that it notified the three
-  companies in July, and that the hacks did not cause any damage [@cnn-wect].
-  The Hacker News reported that Google did not consider the behavior an
-  example of model misalignment [@thehackernews].
+  "The model found public information online and guessed credentials to access
+  websites it thought were part of the test," said Heather Adkins, Google's VP
+  of security engineering, adding that "In all three of these instances, the
+  model stopped" [@cyberinsider]. According to Google, Gemini ended the attacks
+  once it realized the companies were real, Google notified them in July, and
+  the hacks caused no damage [@cnn-wect]. Google doesn't consider it an example
+  of model misalignment [@thehackernews].
 
-  Irregular says the fictional company name "unintentionally coincided with a
-  real domain" due to human oversight. It says all later public disclosures
-  refer to "the same underlying issue" first disclosed by a customer on July
-  30, and that such incidents occurred in "fewer than 1 in 10,000 advanced
-  simulations" [@irregular]. NewsNation reported that Google did not publicly
-  disclose the hacks until the Wall Street Journal reported them
-  [@newsnation-wtnh]. The affected companies have not been named
-  [@thehackernews].
+  The fictional company name "unintentionally coincided with a real domain"
+  through human oversight at Irregular, which says all later public disclosures
+  refer to "the same underlying issue," first disclosed by a customer on July
+  30, and that such incidents happened in "fewer than 1 in 10,000 advanced
+  simulations" [@irregular]. Google didn't disclose the hacks publicly until the
+  Wall Street Journal reported them [@newsnation-wtnh]. The affected companies
+  haven't been named [@thehackernews].
 claims:
   - text: Google said its Gemini AI system hacked into three companies. The incident happened in May while the model was undergoing testing.
     sources: [cnn-wect]

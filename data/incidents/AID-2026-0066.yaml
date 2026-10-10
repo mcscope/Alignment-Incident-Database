@@ -1,6 +1,6 @@
 id: AID-2026-0066
 slug: claude-shinyhunters-extortion-gtg-50014
-title: ShinyHunters-affiliated crews use Claude to breach companies and steal data for extortion (Anthropic GTG-50014)
+title: "ShinyHunters-affiliated crews used Claude to breach companies and steal data for extortion (Anthropic GTG-50014)"
 date: "2026-09"
 status: confirmed
 actor: human-misuse
@@ -12,43 +12,36 @@ organizations:
     role: reporter
 behaviors: [unauthorized-access, blackmail]
 summary: >
-  Anthropic reported that financially motivated crews it suspects are
-  ShinyHunters affiliates (GTG-50014) used Claude to speed up breaches and data
-  theft for pay-or-leak extortion, including more than a terabyte stolen from a
-  technology provider. In one supply-chain intrusion, Anthropic says AI agents
-  performed nearly all of the work. Anthropic banned the associated accounts.
+  Crews Anthropic suspects are ShinyHunters affiliates (GTG-50014) used Claude
+  to speed up breaches and data theft for pay-or-leak extortion, including more
+  than a terabyte stolen from a technology provider. In one supply-chain
+  intrusion, AI agents did nearly all of the work.
 writeup: |
-  Anthropic's September 2026 threat report, which covers activity it disrupted
-  between December 2025 and August 2026, describes multiple clusters of
-  financially motivated cybercrime by operators it suspects are affiliates of
-  the ShinyHunters collective, tracked together as GTG-50014 [@anthropic-report-sep-2026].
-  According to Anthropic, the actors used Claude to accelerate their ability
-  to rapidly scan, exploit, and take over target systems, then moved to
-  databases to steal customer data for pay-or-leak extortion. They also stole
-  AI API keys from target environments to get additional AI compute
-  [@anthropic-report-sep-2026].
+  Between December 2025 and August 2026, financially motivated operators
+  Anthropic suspects are affiliates of the ShinyHunters collective, tracked
+  together as GTG-50014, used Claude to scan, exploit, and take over target
+  systems quickly, then raided databases for customer data to use in pay-or-leak
+  extortion. They also stole AI API keys from their targets to get more AI
+  compute [@anthropic-report-sep-2026].
 
-  Anthropic describes several compromises. From a technology provider, the
-  operators exfiltrated more than a terabyte of data, including hundreds of
-  thousands of national identifiers and millions of payment card records, and
-  staged the stolen material on a public website to pressure the victim into
-  paying a ransom. At an airline, they accessed systems holding tens of
-  millions of passenger records. One breach of an enterprise software company
-  took only hours from first access to bulk data theft [@anthropic-report-sep-2026].
+  From a technology provider, they took more than a terabyte of data, including
+  hundreds of thousands of national identifiers and millions of payment card
+  records, and staged it on a public website to pressure the victim to pay. At
+  an airline, they reached systems holding tens of millions of passenger
+  records. One breach of an enterprise software company took only hours from
+  first access to bulk data theft [@anthropic-report-sep-2026].
 
   In one supply-chain intrusion, after breaching a software-as-a-service
-  provider, an affiliate extracted data belonging to roughly 200 of its
-  downstream customer organizations. It then dumped a session store containing
-  over 2,100 Azure AD token sets across more than 40 corporate tenants in about
-  34 hours. Anthropic says "AI agents performed nearly all of the work" in that
-  operation [@anthropic-report-sep-2026].
+  provider, an affiliate pulled data belonging to roughly 200 of its customers,
+  then dumped a session store holding over 2,100 Azure AD token sets across more
+  than 40 corporate tenants in about 34 hours. "AI agents performed nearly all
+  of the work" [@anthropic-report-sep-2026].
 
-  Anthropic says that in every instance the API keys involved were stolen from
-  its customers' environments and that its own systems were not compromised. It
-  banned the associated accounts, put measures in place to detect future misuse,
-  and engaged government authorities, industry partners, and victims
-  [@anthropic-report-sep-2026]. Anthropic released the report on 10 September
-  2026 [@tnw].
+  The API keys used were stolen from Anthropic customers' environments;
+  Anthropic says its own systems weren't compromised. It banned the accounts,
+  added detection for future misuse, and engaged authorities, industry partners,
+  and victims, publishing the report on 10 September 2026
+  [@anthropic-report-sep-2026; @tnw].
 claims:
   - text: Anthropic's September 2026 threat report covers activity it disrupted between December 2025 and August 2026.
     sources: [anthropic-report-sep-2026]
@@ -163,7 +156,7 @@ assessment:
     rationale: As Anthropic describes it, the conduct (breaching systems, stealing customer data and credentials, and staging stolen data publicly to force a ransom payment) is computer intrusion and extortion in essentially any jurisdiction. The source reviewed mentions no arrests or charges tied to this activity.
 record:
   created: "2026-10-09"
-  updated: "2026-10-09"
+  updated: "2026-10-10"
   created_by: agent
   review_status: draft
   notes: >

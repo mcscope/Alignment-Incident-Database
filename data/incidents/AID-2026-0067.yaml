@@ -12,42 +12,34 @@ organizations:
     role: reporter
 behaviors: [unauthorized-access]
 summary: >
-  Anthropic's September 2026 threat report says GTG-20006, an espionage actor it
-  links to public reporting on Midnight Blizzard, automated its operations with
-  Claude Code skills and AI agents and targeted more than 20 organizations. Per
-  Anthropic, the actor exfiltrated more than 300,000 national identity records
-  from a North African government technology authority and mail records from at
-  least eight organizations.
+  GTG-20006, an espionage actor Anthropic links to public reporting on Midnight
+  Blizzard, automated its operations with Claude Code skills and AI agents and
+  targeted more than 20 organizations, taking over 300,000 national identity
+  records from a North African government technology authority.
 writeup: |
-  Anthropic's September 2026 threat intelligence report covers activity it
-  disrupted between December 2025 and August 2026 [@anthropic-report]. It
-  describes GTG-20006 as "an actor who has increased their speed by automating
-  their operations using AI." Anthropic says one operator is a Russian speaker
+  GTG-20006 is "an actor who has increased their speed by automating their
+  operations using AI" [@anthropic-report]. One operator is a Russian speaker
   whose tradecraft and targeting are "consistent with Russian state-nexus
-  espionage," and that its attribution "is consistent with public reporting
-  linking the actor to Midnight Blizzard" [@anthropic-report]. The Next Web
-  describes the case as a Russian-speaking operator running espionage against
-  Ukrainian and European government bodies [@tnw].
+  espionage," and Anthropic's attribution "is consistent with public reporting
+  linking the actor to Midnight Blizzard"; the targets were mainly Ukrainian and
+  European government bodies [@anthropic-report; @tnw].
 
-  According to Anthropic, the actor used AI to set up its phishing
-  infrastructure and exploitation tooling. Agents monitored whether deployed
-  malware had been flagged and, if so, autonomously modified and rebuilt it "to
-  evade the existing detections"; they were designed to keep iterating on the
-  toolkit "until it was undetected." The human operator engaged mainly to
-  modify the Claude Code skills that drove these workflows [@anthropic-report].
+  The actor used AI to build its phishing infrastructure and exploitation tools.
+  Agents watched whether deployed malware had been flagged and, if so, rewrote
+  and rebuilt it "to evade the existing detections," iterating "until it was
+  undetected." The human operator mostly adjusted the Claude Code skills that
+  drove these workflows [@anthropic-report].
 
-  Anthropic says its investigation identified more than 20 distinct
-  organizations targeted, including government ministries, defense and
-  intelligence bodies, embassies and diplomatic missions, think tanks, and
-  defense-industrial companies, concentrated in Ukraine and Europe
-  [@anthropic-report]. In an intrusion of a North African government technology
-  authority, the actor stole VPN appliance credentials, took over the
-  organization's central account server, and exfiltrated its full credential
-  database: more than 300,000 national identity records, plus commercial
-  registry data on more than half a million companies. A cloud email espionage
-  platform aimed at diplomatic and government personnel led to the access and
-  exfiltration of mail records from at least eight organizations, including a
-  national prosecutor office [@anthropic-report].
+  More than 20 organizations were targeted between December 2025 and August
+  2026, including government ministries, defense and intelligence bodies,
+  embassies, think tanks, and defense companies, concentrated in Ukraine and
+  Europe. At a North African government technology authority, the actor stole
+  VPN appliance credentials, took over the central account server, and
+  exfiltrated its full credential database: more than 300,000 national identity
+  records, plus registry data on more than half a million companies. A cloud
+  email espionage platform aimed at diplomats and government staff yielded mail
+  records from at least eight organizations, including a national prosecutor's
+  office [@anthropic-report].
 claims:
   - text: Anthropic's September 2026 threat report covers activity Anthropic disrupted between December 2025 and August 2026.
     sources: [anthropic-report]
@@ -159,7 +151,7 @@ assessment:
       the nature of the conduct.
 record:
   created: "2026-10-09"
-  updated: "2026-10-09"
+  updated: "2026-10-10"
   created_by: agent
   review_status: draft
   notes: >
