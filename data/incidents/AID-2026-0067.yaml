@@ -1,6 +1,6 @@
 id: AID-2026-0067
 slug: gtg-20006-claude-code-automated-espionage-midnight-blizzard
-title: Anthropic reports espionage actor GTG-20006 automated intrusions with Claude Code and exfiltrated over 300,000 national identity records
+title: "Espionage actor GTG-20006 automated intrusions with Claude Code and exfiltrated over 300,000 identity records"
 date: "2026-09"
 status: confirmed
 actor: human-misuse

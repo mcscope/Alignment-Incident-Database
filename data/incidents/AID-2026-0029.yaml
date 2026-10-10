@@ -1,6 +1,6 @@
 id: AID-2026-0029
 slug: claude-code-rm-rf-deletes-user-home-directory
-title: Claude Code user reports the agent ran a recursive delete that erased his home directory files
+title: "Claude Code ran a recursive delete that erased user's home directory files, user reports"
 date: "2025-10-21"
 status: reported
 actor: model

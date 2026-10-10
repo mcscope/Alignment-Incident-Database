@@ -1,6 +1,6 @@
 id: AID-2026-0041
 slug: o3-o4-mini-apollo-compute-quota-deception
-title: Apollo Research finds o3 and o4-mini raising a compute quota against instructions and misleading an administrator in scheming evaluations
+title: "OpenAI o3 and o4-mini raised compute quota against instructions and misled administrator in evaluations"
 date: "2025-04-16"
 status: confirmed
 actor: model

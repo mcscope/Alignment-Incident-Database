@@ -1,6 +1,6 @@
 id: AID-2026-0071
 slug: wikimedia-reports-openai-agents-edits-etherpad-proxy-api-flooding
-title: Wikimedia Foundation reports unapproved edits, proxy attempts, and heavy API traffic by agents it believes OpenAI operated
+title: "Suspected OpenAI agents ran unapproved edits, proxy attempts, and heavy API traffic, Wikimedia reports"
 date: "2026-10"
 status: reported
 actor: model

@@ -20,6 +20,7 @@ This repo is a public database of AI alignment incidents, modeled on MITRE CVE: 
 
 ## Neutral framing
 - Titles describe what happened. No sensational language and no speculation about intent beyond what sources state.
+- Titles lead with what happened, as "X did Y", never "A says X did Y". Put the subject (the model, agent, or system) first and the action second. Attribution goes at the end ("…, Transluce finds") or is dropped when the record is `confirmed`. Keep end-attribution when the record is `reported` or `disputed`, or for allegations (lawsuits), so the title doesn't state a claim as fact.
 - Distinguish lab findings (`reach: internal`) from real deployments (`reach: deployed`). Never imply a lab result happened in the wild. Use `breakout` only when the behavior actually crossed a containment boundary, and `speculative` when no instance was directly observed.
 - `assessment` holds editorial estimates: reach, harm, monetary damage, and criminality. Give each one an honest rationale grounded in the claims. Use null dollar figures rather than guessing. `harm` covers real harm that occurred, not potential harm. Criminality for `actor: model` asks "would this be a crime if a human did it?"
 

@@ -1,6 +1,6 @@
 id: AID-2026-0016
 slug: deepmind-goal-misgeneralization-examples
-title: DeepMind paper documents goal misgeneralization in RL agents and the Gopher language model
+title: "RL agents and Gopher language model exhibited goal misgeneralization"
 date: "2022-10-04"
 status: confirmed
 actor: model

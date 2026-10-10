@@ -1,6 +1,6 @@
 id: AID-2026-0045
 slug: gpt-5-system-card-deception-production-traffic
-title: GPT-5 system card reports deception in o3 and gpt-5-thinking responses on production-representative traffic and in Apollo tests
+title: "OpenAI o3 and gpt-5-thinking exhibited deception in production-representative traffic and tests"
 date: "2025-08-13"
 status: confirmed
 actor: model

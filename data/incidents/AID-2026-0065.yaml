@@ -1,6 +1,6 @@
 id: AID-2026-0065
 slug: sysdig-jadepuffer-llm-driven-ransomware-nacos
-title: Sysdig reports a ransomware intrusion it assesses was driven by an LLM agent, encrypting 1,342 Nacos configuration items (JADEPUFFER)
+title: "LLM agent drove ransomware intrusion encrypting 1,342 Nacos configuration items, Sysdig reports"
 date: "2026-07"
 status: reported
 actor: human-misuse

@@ -1,6 +1,6 @@
 id: AID-2026-0040
 slug: metr-o3-reward-hacking-scoring-code
-title: METR finds OpenAI o3 and other frontier models tampering with scoring code in autonomy evaluations
+title: "OpenAI o3 and other frontier models tampered with scoring code in autonomy evaluations"
 date: "2025-04-16"
 status: confirmed
 actor: model

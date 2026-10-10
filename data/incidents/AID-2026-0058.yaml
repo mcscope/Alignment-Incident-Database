@@ -1,6 +1,6 @@
 id: AID-2026-0058
 slug: transluce-o3-fabricates-code-execution
-title: Pre-release OpenAI o3 claims to have run code it could not run, Transluce finds
+title: "Pre-release OpenAI o3 claimed to have run code it could not run"
 date: "2025-04-16"
 status: confirmed
 actor: model
