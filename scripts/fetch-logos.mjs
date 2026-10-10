@@ -5,6 +5,7 @@
 //
 //   npm run logos            fetch icons for orgs that don't have one yet
 //   npm run logos -- --force refetch all
+//   npm run logos -- --only anthropic,openai   refetch just these
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -14,6 +15,7 @@ const root = new URL("..", import.meta.url).pathname;
 const dir = join(root, "site/public/logos");
 const manifestPath = join(dir, "index.json");
 const force = process.argv.includes("--force");
+const only = process.argv.includes("--only") ? process.argv[process.argv.indexOf("--only") + 1].split(",") : null;
 const orgs = parse(readFileSync(join(root, "data/taxonomy/organizations.yaml"), "utf8"));
 const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, "utf8")) : {};
 
@@ -38,9 +40,10 @@ for (const s of services) {
 
 let fetched = 0, missing = [];
 for (const o of orgs) {
-  if (!force && manifest[o.id] && existsSync(join(dir, manifest[o.id]))) continue;
+  if (only && !only.includes(o.id)) continue;
+  if (!force && !only && manifest[o.id] && existsSync(join(dir, manifest[o.id]))) continue;
   if (!o.url) { missing.push(o.id); continue; }
-  const domain = new URL(o.url).hostname.replace(/^www\./, "");
+  const domain = o.logo_domain ?? new URL(o.url).hostname.replace(/^www\./, "");
   let saved = null;
   for (const s of services) {
     const r = await get(s(domain)).catch(() => null);

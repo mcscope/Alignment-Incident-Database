@@ -1,9 +1,11 @@
 # Controlled vocabulary for incident `organizations[].id`.
-# Fields: id, name, url, type (ai-lab | company | research-org | academic | government | individual)
+# Fields: id, name, url, type (ai-lab | company | research-org | academic | government | individual),
+#         logo_domain (optional: site whose icon to show, e.g. a flagship product)
 
 - id: anthropic
   name: Anthropic
   url: https://www.anthropic.com
+  logo_domain: claude.ai   # use the Claude icon, which readers recognize
   type: ai-lab
 
 - id: openai
