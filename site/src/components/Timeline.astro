@@ -15,16 +15,20 @@ interface Props { views?: View[]; incidents?: Incident[]; filterable?: boolean; 
 const { views = ["time"], incidents = allIncidents, filterable = false, id = "timeline" } = Astro.props;
 
 // ----- time axis: whole months, Jan of the first year through the current month -----
+// Position in months since year 0, at day precision when the date has a day.
+// Month-only dates sit mid-month; year-only dates sit mid-year.
 const monthIndex = (date: string) => {
-  const [y, m] = date.split("-").map(Number);
-  return y * 12 + (m ? m - 1 : 5.5); // year-only dates sit mid-year
+  const [y, m, d] = date.split("-").map(Number);
+  if (!m) return y * 12 + 6;
+  const days = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  return y * 12 + (m - 1) + (d ? (d - 0.5) / days : 0.5);
 };
 const now = new Date();
 const startYear = Math.min(...incidents.map((i) => +i.date.slice(0, 4)));
 const start = startYear * 12;
 const end = Math.max(now.getUTCFullYear() * 12 + now.getUTCMonth(), ...incidents.map((i) => Math.floor(monthIndex(i.date)))) + 1;
 const span = end - start;
-const xPct = (i: Incident) => ((monthIndex(i.date) - start + 0.5) / span) * 100;
+const xPct = (i: Incident) => ((monthIndex(i.date) - start) / span) * 100;
 const years = Array.from({ length: Math.ceil(span / 12) + 1 }, (_, k) => startYear + k).filter((y) => (y * 12 - start) / span < 1);
 
 // ----- colors -----
@@ -139,12 +143,14 @@ const tip = (i: Incident) =>
       <div class="tl-scroller" tabindex="0" aria-label="Timeline; scroll sideways for earlier incidents">
         <div class="tl-canvas">
           {laneSets[v].map((l) => (
-            <div class="tl-track" style={`height:${l.height + (l.label ? 18 : 0)}px`}>
+            <div class="tl-track" data-labelled={l.label ? "" : undefined} style={`height:${l.height + (l.label ? 18 : 0)}px`}>
               {months.map((mo) => <span class={mo.m === 0 ? "tl-grid" : "tl-mgrid"} style={`left:${mo.x}%`} />)}
               {l.label && <span class="tl-label">{l.href ? <a href={l.href}>{l.label}</a> : l.label}</span>}
               {l.dots.map((d) => (
                 <a
                   class={`tl-dot${d.hollow ? " hollow" : ""}`}
+                  data-x={d.x.toFixed(4)}
+                  data-r={d.r}
                   href={url(`/incidents/${d.i.id}/`)}
                   style={`left:${d.x}%; bottom:${d.bottom}px; width:${d.r * 2}px; height:${d.r * 2}px; background:${d.color}`}
                   data-tip={tip(d.i)}
@@ -196,8 +202,31 @@ const tip = (i: Incident) =>
       const width = (sc.clientWidth * span) / visible;
       for (const c of fig.querySelectorAll<HTMLElement>(".tl-canvas")) c.style.width = `${width}px`;
       fig.classList.toggle("tl-fine", width / span >= 34);
+      for (const t of fig.querySelectorAll<HTMLElement>(".tl-track")) layout(t, width);
       const target = center ?? (anchor === "right" ? span : anchor);
       sc.scrollLeft = anchor === "right" && center === undefined ? sc.scrollWidth : (target / span) * width - sc.clientWidth / 2;
+    }
+    // Stack dots only where they overlap at the current zoom: place each dot (left
+    // to right, larger first at equal x) at the lowest height that clears every
+    // already-placed dot it would touch.
+    function layout(track: HTMLElement, width: number) {
+      const dots = [...track.querySelectorAll<HTMLElement>(".tl-dot")]
+        .map((el) => ({ el, px: (Number(el.dataset.x) / 100) * width, r: Number(el.dataset.r), b: 0 }))
+        .sort((p, q) => p.px - q.px || q.r - p.r);
+      const placed: typeof dots = [];
+      let top = 0;
+      for (const d of dots) {
+        d.b = 4;
+        for (let guard = 0; guard < 50; guard++) {
+          const hit = placed.find((p) => Math.abs(p.px - d.px) < p.r + d.r + 2 && d.b < p.b + 2 * p.r + 3 && p.b < d.b + 2 * d.r + 3);
+          if (!hit) break;
+          d.b = hit.b + 2 * hit.r + 3;
+        }
+        d.el.style.bottom = `${d.b}px`;
+        placed.push(d);
+        top = Math.max(top, d.b + 2 * d.r);
+      }
+      track.style.height = `${Math.max(40, top + 8) + (track.hasAttribute("data-labelled") ? 18 : 0)}px`;
     }
     const centerMonth = () => { const sc = activeScroller(); return sc ? ((sc.scrollLeft + sc.clientWidth / 2) / sc.scrollWidth) * span : span; };
     const press = (key: string) => { for (const b of fig.querySelectorAll<HTMLElement>("[data-zoom]")) if (!["in", "out"].includes(b.dataset.zoom!)) b.setAttribute("aria-pressed", String(b.dataset.zoom === key)); };
