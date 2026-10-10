@@ -87,6 +87,7 @@ x:
   - '("system card") (Anthropic OR OpenAI OR DeepMind OR xAI) -is:retweet lang:en'
 
 watch_pages:
+  - { name: OpenAI Misalignment Reports, url: "https://alignment.openai.com/misalignment-reports/" }
   - { name: Anthropic News, url: "https://www.anthropic.com/news" }
   - { name: Anthropic Research, url: "https://www.anthropic.com/research" }
   - { name: xAI News, url: "https://x.ai/news" }
