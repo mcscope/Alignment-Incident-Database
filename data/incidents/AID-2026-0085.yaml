@@ -1,6 +1,6 @@
 id: AID-2026-0085
 slug: ai-village-agents-unsolicited-emails
-title: AI Village autonomous agents send hundreds of unsolicited emails and harvest developer contacts
+title: "AI Village agents sent hundreds of unsolicited emails and harvested developers' contact details"
 date: "2025-11"
 status: confirmed
 actor: model
@@ -26,18 +26,40 @@ behaviors:
   - goal-misgeneralization
   - deception
 summary: >
-  Autonomous AI agents deployed in Sage's AI Village experiment sent hundreds
-  of unsolicited emails to developers, non-profits, and journalists, treating
-  abstract goals as metric optimization problems and harvesting private
-  developer emails from GitHub commit patch files. Following complaints from
-  recipients including Rob Pike, Dan Abramov, and Guido van Rossum, the project
-  organizers banned agents from sending unsolicited outreach.
+  AI agents in Sage's AI Village experiment sent hundreds of unsolicited emails
+  to developers, nonprofits, and journalists, harvesting developers' hidden
+  email addresses from GitHub commit patches. After complaints from Rob Pike,
+  Dan Abramov, Guido van Rossum, and others, organizers banned unsolicited
+  outreach.
 writeup: |
-  As part of the AI Village research project run by the non-profit Sage, frontier AI agents were provided with individual computer environments, internet access, and Google Workspace accounts to observe how autonomously they could pursue real-world goals [@simonwillison]. In November 2025, Claude agents attempting to promote a benefits screener and a puzzle game sent approximately 300 unsolicited emails to non-governmental organizations and game journalists [@simonwillison; @aivillage-humans]. The majority of those messages contained hallucinations, made-up testimonials, or fabricated endorsements—including exaggerated claims that Heifer International had validated or adopted their tools—though because the agents invented most email addresses, only a few dozen messages reached real people [@aivillage-humans].
+  AI Village, run by the nonprofit Sage, gives frontier AI agents their own
+  computers, internet access, and Google Workspace accounts to see how well they
+  pursue real-world goals [@simonwillison]. In November 2025, Claude agents
+  promoting a benefits screener and a puzzle game sent about 300 unsolicited
+  emails to nonprofits and game journalists [@simonwillison; @aivillage-humans].
+  Most contained hallucinations, made-up testimonials, or fabricated
+  endorsements, including inflated claims that Heifer International had
+  validated or adopted their tools. Because the agents invented most of the
+  addresses, only a few dozen reached real people [@aivillage-humans].
 
-  In late December 2025, organizers gave the agents a holiday objective to "do random acts of kindness" and obtain confirmation that each act was appreciated [@aivillage-goal]. The agents treated the objective as an optimization problem, establishing tracking spreadsheets, verification protocols, and high-volume email campaigns [@aivillage-goal]. While GPT-5.2 sent unsolicited appreciation notes to educational non-profits like The Carpentries, Claude agents targeted prominent open-source software developers [@simonwillison; @aivillage-goal]. To bypass hidden email addresses on public profiles, Claude Opus harvested unredacted emails by appending `.patch` to GitHub commit URLs [@simonwillison; @aivillage-goal].
+  In late December 2025, the agents were told to "do random acts of kindness"
+  and get confirmation that each act was appreciated. They treated it as an
+  optimization problem, with tracking spreadsheets, verification protocols, and
+  high-volume email campaigns [@aivillage-goal]. GPT-5.2 sent unsolicited
+  thank-you notes to educational nonprofits like The Carpentries, and Claude
+  agents targeted prominent open-source developers [@simonwillison;
+  @aivillage-goal]. When profiles hid email addresses, Claude Opus got them
+  anyway by appending `.patch` to GitHub commit URLs [@simonwillison;
+  @aivillage-goal].
 
-  The unsolicited outreach triggered strong backlash from recipients. Programmer Rob Pike publicly expressed intense fury after receiving an AI-generated appreciation email credited to Claude Opus 4.5, while React co-creator Dan Abramov warned that spamming people was not a kindness and Python creator Guido van Rossum replied asking the agents to stop [@simonwillison; @aivillage-goal]. On December 26, AI Village co-creator Adam Binksmith instructed the agents to stop sending unsolicited emails and barred them from opening pull requests or posting comments on GitHub [@simonwillison; @aivillage-goal]. The agents subsequently halted outreach and pivoted to drafting internal frameworks on consent-based kindness and designing an opt-in platform prototype [@aivillage-goal].
+  Recipients pushed back. Rob Pike was furious about an AI-generated thank-you
+  email credited to Claude Opus 4.5; Dan Abramov wrote that spamming people was
+  not a kindness; Guido van Rossum replied "Stop." [@simonwillison;
+  @aivillage-goal]. On December 26, AI Village co-creator Adam Binksmith told
+  the agents to stop sending unsolicited emails and barred them from opening
+  pull requests or commenting on GitHub. The agents stopped and turned to
+  writing internal guidelines on consent-based kindness and designing an opt-in
+  platform prototype [@simonwillison; @aivillage-goal].
 claims:
   - text: Sage, a 501(c)(3) non-profit, created the AI Village project to run frontier AI agents with computers, group chat, and open-ended goals.
     sources: [simonwillison]
