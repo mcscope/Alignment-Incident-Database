@@ -42,19 +42,21 @@ const devColor = (i: Incident) => {
 const reachColor = (i: Incident) => ({ color: `var(--reach-${i.assessment.reach.level})`, hollow: false });
 const devLabel = (i: Incident) => developers(i).map((d) => orgById.get(d)?.name ?? d).join(", ") || "Undisclosed";
 
-type Dot = { i: Incident; x: number; r: number; bottom: number; color: string; hollow: boolean; logo?: string | null; more?: number };
+type Dot = { i: Incident; x: number; r: number; bottom: number; color: string; hollow: boolean; logo?: string | null };
 type Lane = { key: string; label?: string; href?: string; dots: Dot[]; height: number; logo?: string };
 
 // Logo mode (Timeline and By-behavior views): each dot is the developer's logo,
 // sized by harm (logos need a minimum size to be legible) with a harm-colored ring.
 const LOGO_RADIUS: Record<string, number> = { none: 12, minor: 14, moderate: 17, severe: 21 };
+// One logo per developer, so a multi-developer incident shows every developer.
 const logoOf = (i: Incident) => {
   const devs = developers(i);
-  const file = devs[0] ? (logoManifest as Record<string, string>)[devs[0]] : undefined;
-  return { color: "transparent", hollow: false, logo: file ? url(`/logos/${file}`) : null, more: Math.max(0, devs.length - 1) };
+  const file = (d: string) => (logoManifest as Record<string, string>)[d];
+  return (devs.length ? devs : [""]).map((d) => ({ color: "transparent", hollow: false, logo: d && file(d) ? url(`/logos/${file(d)}`) : null }));
 };
 
-function lane(key: string, list: Incident[], colorOf: (i: Incident) => { color: string; hollow: boolean; logo?: string | null; more?: number }, label?: string, href?: string): Lane {
+type DotStyle = { color: string; hollow: boolean; logo?: string | null };
+function lane(key: string, list: Incident[], colorOf: (i: Incident) => DotStyle | DotStyle[], label?: string, href?: string): Lane {
   // Stack dots that share a month; biggest at the bottom.
   const bins = new Map<number, Incident[]>();
   for (const i of list) {
@@ -66,10 +68,11 @@ function lane(key: string, list: Incident[], colorOf: (i: Incident) => { color: 
   for (const group of bins.values()) {
     let bottom = 4;
     for (const i of group.sort((a, b) => HARM_RADIUS[b.assessment.harm.severity] - HARM_RADIUS[a.assessment.harm.severity])) {
-      const c = colorOf(i);
-      const r = ("logo" in c ? LOGO_RADIUS : HARM_RADIUS)[i.assessment.harm.severity];
-      dots.push({ i, x: xPct(i), r, bottom, ...c });
-      bottom += 2 * r + 4;
+      for (const c of ([] as DotStyle[]).concat(colorOf(i))) {
+        const r = ("logo" in c ? LOGO_RADIUS : HARM_RADIUS)[i.assessment.harm.severity];
+        dots.push({ i, x: xPct(i), r, bottom, ...c });
+        bottom += 2 * r + 4;
+      }
     }
     height = Math.max(height, bottom);
   }
@@ -137,16 +140,13 @@ const tip = (i: Incident) =>
 
   {views.map((v, n) => (
     <div class="tl-view" data-view={v} hidden={n > 0} role={views.length > 1 ? "tabpanel" : undefined}>
-      <p class="chart-sub">{viewSubs[v]}</p>
       <div class="tl-legends">
         {v === "developer" ? (
           <div class="legend">
             {REACH.map((r) => <span><i class="tl-key" style={`background: var(--reach-${r})`} />{cap(r)}</span>)}
           </div>
         ) : (
-          <div class="legend">
-            <span>Icon = the model's developer · <span class="tl-more-demo">+N</span> more developers</span>
-          </div>
+          <div class="legend"></div>
         )}
         {v === "developer" ? (
           <div class="legend tl-sizes" aria-label="Dot size: harm">
@@ -177,7 +177,7 @@ const tip = (i: Incident) =>
                   data-tip={tip(d.i)}
                   aria-label={`${d.i.id}: ${d.i.title}`}
                   {...(filterable ? { "data-filterable": "", ...filterAttrs(d.i) } : {})}
-                >{"logo" in d && (d.logo ? <img src={d.logo} alt="" loading="lazy" decoding="async" /> : <span class="tl-unknown">?</span>)}{d.more ? <span class="tl-more">+{d.more}</span> : null}</a>
+                >{"logo" in d && (d.logo ? <img src={d.logo} alt="" loading="lazy" decoding="async" /> : <span class="tl-unknown">?</span>)}</a>
               ))}
             </div>
           ))}

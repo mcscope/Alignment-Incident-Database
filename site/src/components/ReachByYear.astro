@@ -17,7 +17,6 @@ const label = (r: string) => r[0].toUpperCase() + r.slice(1);
 <figure class="chart">
   <figcaption>
     <p class="chart-title">Incidents per year, by reach</p>
-    <p class="chart-sub">By incident date. Darker means the behavior got further toward the real world.</p>
   </figcaption>
   <div class="legend">{REACH.map((r) => <span><i style={`background: var(--reach-${r})`} />{label(r)}</span>)}</div>
   <div class="cols" style={`height:${PLOT + 20}px`}>

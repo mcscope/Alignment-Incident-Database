@@ -41,11 +41,7 @@ const topDevelopers = top(organizations, (id) => incidents.filter((i) => develop
   <!-- 1. Overview -->
   <section class="hero">
     <h1>A public record of AI systems misbehaving</h1>
-    <p class="lede">
-      {n} documented incidents of AI systems acting against the intent of their developers, deployers, or
-      users, from lab findings to real-world harm. Like a CVE list for alignment: every incident gets a permanent
-      id, and every claim links to its source.
-    </p>
+    <p class="lede">Documented cases of AI systems acting against the intent of their developers, deployers, or users. Every claim links to its source.</p>
     <form class="hero-search" action={url("/incidents/")} method="get" role="search">
       <input type="search" name="q" placeholder="Search incidents, models, behaviors…" aria-label="Search incidents" />
       <button class="btn" type="submit">Search</button>
@@ -71,7 +67,7 @@ const topDevelopers = top(organizations, (id) => incidents.filter((i) => develop
   <section class="chart-card">
     <div class="section-head" style="margin-top:0">
       <p class="chart-title">Every incident over time</p>
-      <a class="small" href={url("/timeline/")}>By developer and by behavior →</a>
+      <a class="small" href={url("/timeline/")}>More views →</a>
     </div>
     <Timeline id="home-timeline" />
   </section>
@@ -85,14 +81,14 @@ const topDevelopers = top(organizations, (id) => incidents.filter((i) => develop
   <div class="two-col">
     <section>
       <div class="section-head">
-        <div><span class="eyebrow">Latest</span><h2>Recently added</h2></div>
+        <h2>Recently added</h2>
         <a class="small" href={url("/incidents/")}>All incidents →</a>
       </div>
       <IncidentList incidents={latest} compact meta={(i) => `Added ${formatDate(i.record.created)}`} />
     </section>
     <section>
       <div class="section-head">
-        <div><span class="eyebrow">Start here</span><h2>Highest impact</h2></div>
+        <h2>Highest impact</h2>
         <a class="small" href={url("/incidents/?harm=moderate")}>Filter by harm →</a>
       </div>
       <IncidentList incidents={impact} compact />
@@ -100,16 +96,13 @@ const topDevelopers = top(organizations, (id) => incidents.filter((i) => develop
   </div>
 
   <!-- 3. Explore -->
-  <div class="section-head">
-    <div><span class="eyebrow">Explore</span><h2>Go deeper</h2></div>
-  </div>
   <div class="explore-grid">
-    <a class="card" href={url("/incidents/")}><strong>Search &amp; filter</strong><span>All {n} records by behavior, model, developer, reach, harm, criminality, year</span></a>
-    <a class="card" href={url("/timeline/")}><strong>Timeline</strong><span>Every incident over time, by developer or by behavior</span></a>
-    <a class="card" href={url("/data/")}><strong>Data &amp; charts</strong><span>Breakdowns, reach × harm, and reported misbehavior rates per model</span></a>
-    <a class="card" href={url("/behaviors/")}><strong>Behaviors</strong><span>{behaviors.length} kinds of misbehavior, from deception to sandbox escape</span></a>
-    <a class="card" href={url("/models/")}><strong>Models</strong><span>{models.length - 1} models with their incident records</span></a>
-    <a class="card" href={url("/api/incidents.json")}><strong>Download the data</strong><span>Full JSON export; YAML source on GitHub</span></a>
+    <a class="card" href={url("/incidents/")}><strong>Search &amp; filter</strong></a>
+    <a class="card" href={url("/timeline/")}><strong>Timeline</strong></a>
+    <a class="card" href={url("/data/")}><strong>Data &amp; charts</strong></a>
+    <a class="card" href={url("/behaviors/")}><strong>Behaviors</strong></a>
+    <a class="card" href={url("/models/")}><strong>Models</strong></a>
+    <a class="card" href={url("/api/incidents.json")}><strong>Download the data</strong></a>
   </div>
 
   {scanStats.sources > 0 && (

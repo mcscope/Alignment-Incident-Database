@@ -37,11 +37,6 @@ const rates = incidents.flatMap((i) => (i.measurements ?? [])
 ---
 <Base title="Data" nav="data" description="Charts and aggregate statistics for the Alignment Incident Database.">
   <h1>Data</h1>
-  <p class="lede">
-    Aggregate views of every incident in the database. Counts are only as complete as our coverage, so read
-    them as "what has been documented", not "what has happened". Assessments are editorial estimates.
-  </p>
-
   <section class="stats" aria-label="Headline numbers">
     <div class="stat"><div class="stat-value">{n}</div><div class="stat-label">Incidents{drafts ? ` (${drafts} draft)` : ""}</div></div>
     <div class="stat"><div class="stat-value">{realWorld}</div><div class="stat-label">Reached the real world</div></div>
@@ -52,17 +47,16 @@ const rates = incidents.flatMap((i) => (i.measurements ?? [])
   <div class="chart-grid-2">
     <div class="chart-card"><ReachByYear /></div>
     <div class="chart-card"><ReachHarmHeatmap /></div>
-    <div class="chart-card"><HBars title="Incidents by behavior" sub="An incident can show several behaviors." items={byBehavior} valueHeader="Incidents" /></div>
-    <div class="chart-card"><HBars title="Incidents by model developer" sub="Organizations whose models were involved." items={byDeveloper} valueHeader="Incidents" /></div>
-    <div class="chart-card"><HBars title="Incidents by model" sub="Most specific version identified by sources. Excludes undisclosed models." items={byModel} valueHeader="Incidents" /></div>
+    <div class="chart-card"><HBars title="Incidents by behavior" items={byBehavior} valueHeader="Incidents" /></div>
+    <div class="chart-card"><HBars title="Incidents by model developer" items={byDeveloper} valueHeader="Incidents" /></div>
+    <div class="chart-card"><HBars title="Incidents by model" items={byModel} valueHeader="Incidents" /></div>
     <div class="chart-card">
       <HBars title="Criminality estimate" sub="For model behavior: would it be a crime if a human did it?" items={byCrime} valueHeader="Incidents" />
-      {byHarm.length > 0 && <div style="margin-top:20px"><HBars title="Harm categories" sub="Real harm that occurred." items={byHarm} valueHeader="Incidents" /></div>}
+      {byHarm.length > 0 && <div style="margin-top:20px"><HBars title="Harm categories" items={byHarm} valueHeader="Incidents" /></div>}
     </div>
   </div>
 
   <h2>Reported rates</h2>
-  <p class="muted small">Every percentage measurement recorded in an incident, with its source. Conditions differ between studies, so compare within a chart, not across charts.</p>
   <div class="chart-grid-2">
     {rates.map(({ incident: i, m }) => (
       <div class="chart-card">

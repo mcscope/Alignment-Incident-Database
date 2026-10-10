@@ -24,10 +24,6 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 ---
 <Base title="Organizations" nav="organizations" description="Organizations in alignment incidents, by the role they played.">
   <h1>Organizations</h1>
-  <p class="lede">
-    Who built the models, who deployed them, who found the problems, and who was hurt. An organization can appear under
-    more than one role. Bars show incidents, shaded by the real-world harm each caused.
-  </p>
   <nav class="jump" aria-label="Roles">
     {sections.map((s) => <a href={`#role-${s.id}`}>{s.name} <span>{s.rows.length}</span></a>)}
   </nav>
@@ -39,7 +35,7 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
   {sections.map((s) => (
     <section class="role" id={`role-${s.id}`}>
       <div class="section-head">
-        <div><h2>{s.name}</h2><p class="muted small" style="margin:2px 0 0">{s.desc}</p></div>
+        <h2>{s.name}</h2>
         <span class="muted small">{s.rows.length} organization{s.rows.length === 1 ? "" : "s"} · {s.total} incident{s.total === 1 ? "" : "s"}</span>
       </div>
       <div class="chart-card">

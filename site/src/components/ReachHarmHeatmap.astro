@@ -10,7 +10,6 @@ const step = (n: number) => (n === 0 ? 0 : Math.max(1, Math.ceil((n / max) * 5))
 <figure class="chart">
   <figcaption>
     <p class="chart-title">Reach × harm</p>
-    <p class="chart-sub">Number of incidents. Rows run from lab-only to the real world, and columns are the harm that actually occurred.</p>
   </figcaption>
   <table class="heat">
     <thead><tr><th></th>{HARM.map((h) => <th scope="col">{h}</th>)}</tr></thead>

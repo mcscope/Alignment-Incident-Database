@@ -5,10 +5,6 @@ import { incidents } from "../lib/data";
 ---
 <Base title="Timeline" nav="timeline" description="Every recorded alignment incident over time, by developer, reach, behavior, and harm.">
   <h1>Timeline</h1>
-  <p class="lede">
-    {incidents.length} incidents over time. Each dot is an incident: hover or tap for details, click to open it.
-    Bigger dots caused more real-world harm. Switch views to see the same incidents by developer or by behavior.
-  </p>
   <div class="chart-card">
     <Timeline views={["time", "developer", "behavior"]} />
   </div>

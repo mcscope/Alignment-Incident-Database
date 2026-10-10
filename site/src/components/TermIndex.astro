@@ -15,7 +15,6 @@ const counted = terms
 ---
 <Base title={title} nav={nav}>
   <h1>{title}</h1>
-  <p class="lede">{intro}</p>
   <ul class="term-grid">
     {counted.map(({ t, n, list }) => (
       <li class={n === 0 ? "zero" : undefined}>
