@@ -19,7 +19,6 @@ jobs:
     timeout-minutes: 120
     permissions:
       contents: write
-      id-token: write # the action's default auth path uses OIDC
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,52 +45,36 @@ jobs:
         run: |
           git config user.name "incident-scout[bot]"
           git config user.email "incident-scout@users.noreply.github.com"
-      - id: agent
-        uses: anthropics/claude-code-action@v1
-        continue-on-error: true
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+      # The claude CLI directly, not claude-code-action: the action stops at the first
+      # "result" message, which ends the run while background subagents are still working.
+      - name: Run the scout agent (subscription first, OpenRouter only on a usage limit)
         env:
+          MODE: ${{ inputs.mode || 'daily' }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }} # from `claude setup-token` (Pro/Max subscription)
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        with:
-          # Use the workflow's own token for git/GitHub access, so the Claude GitHub App isn't required.
-          github_token: ${{ github.token }}
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }} # from `claude setup-token` (Pro/Max subscription)
-          prompt: |
-            ${{ inputs.mode == 'backfill' && 'Follow the instructions in scout/BACKFILL.md.' || 'Follow the instructions in scout/PROMPT.md.' }} Repository: ${{ github.repository }}. Today is the run date of this workflow (check with `date`).
-          claude_args: |
-            --model claude-opus-5-5
-            --max-turns 400
-            --allowedTools Agent,Task,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(npm run validate),Bash(git add:*),Bash(git commit:*),Bash(git pull:*),Bash(git push origin main),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(date:*),Bash(npm run next-id:*),Bash(npm run write-incident:*),Bash(mkdir:*)
-      - id: limit
-        name: Did the subscription hit its usage limit?
-        if: steps.agent.outcome == 'failure'
         run: |
-          f="${{ steps.agent.outputs.execution_file }}"
-          if [ -n "$f" ] && grep -qiE "usage limit|hit your limit|limit reached" "$f"; then echo "hit=true" >> "$GITHUB_OUTPUT"; else echo "hit=false" >> "$GITHUB_OUTPUT"; fi
-      - id: fallback
-        name: Fallback via OpenRouter (only if the subscription hit its usage limit)
-        if: steps.agent.outcome == 'failure' && steps.limit.outputs.hit == 'true'
-        uses: anthropics/claude-code-action@v1
-        env:
-          ANTHROPIC_BASE_URL: https://openrouter.ai/api
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        with:
-          # Use the workflow's own token for git/GitHub access, so the Claude GitHub App isn't required.
-          github_token: ${{ github.token }}
-          anthropic_api_key: ${{ secrets.OPENROUTER_API_KEY }}
-          prompt: |
-            ${{ inputs.mode == 'backfill' && 'Follow the instructions in scout/BACKFILL.md.' || 'Follow the instructions in scout/PROMPT.md.' }} Repository: ${{ github.repository }}. Today is the run date of this workflow (check with `date`).
-          claude_args: |
-            --model claude-opus-5-5
-            --max-turns 400
-            --allowedTools Agent,Task,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(npm run validate),Bash(git add:*),Bash(git commit:*),Bash(git pull:*),Bash(git push origin main),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(date:*),Bash(npm run next-id:*),Bash(npm run write-incident:*),Bash(mkdir:*)
-      - name: Fail if no agent run succeeded
-        if: steps.agent.outcome == 'failure' && steps.fallback.outcome != 'success'
-        run: |
-          echo "::error::Scout agent failed (usage limit hit: ${{ steps.limit.outputs.hit }})"
-          exit 1
+          [ "$MODE" = backfill ] && instructions=scout/BACKFILL.md || instructions=scout/PROMPT.md
+          prompt="Follow the instructions in $instructions. Repository: ${{ github.repository }}. Today is the run date of this workflow (check with \`date\`)."
+          tools="Agent,Task,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(npm run validate),Bash(git add:*),Bash(git commit:*),Bash(git pull:*),Bash(git push origin main),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(date:*),Bash(npm run next-id:*),Bash(npm run write-incident:*),Bash(mkdir:*)"
+          run_agent() { # $1 = prompt, $2 = log file
+            claude -p "$1" --model claude-opus-5-5 --max-turns 400 --output-format stream-json --verbose \
+              --allowedTools "$tools" > "$2" 2>&1
+          }
+          if run_agent "$prompt" scout/out/agent.log; then exit 0; fi
+          if ! grep -qiE "usage limit|hit your limit|limit reached" scout/out/agent.log; then
+            echo "::error::Scout agent failed (not a usage limit)"; tail -20 scout/out/agent.log; exit 1
+          fi
+          echo "Subscription usage limit hit; continuing via OpenRouter"
+          ANTHROPIC_BASE_URL=https://openrouter.ai/api ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY" ANTHROPIC_API_KEY="" CLAUDE_CODE_OAUTH_TOKEN="" \
+            run_agent "$prompt
+
+          Resume: a previous attempt stopped at a usage limit. Check git log and data/ for work already committed today and continue from there." scout/out/agent-fallback.log \
+            || { echo "::error::Scout agent fallback failed"; tail -20 scout/out/agent-fallback.log; exit 1; }
       - name: Spend this run
         if: always()
-        run: node scout/cost-report.mjs --claude "${{ steps.agent.outputs.execution_file }}" --fallback "${{ steps.fallback.outputs.execution_file }}" >> "$GITHUB_STEP_SUMMARY" || true
+        run: node scout/cost-report.mjs --claude scout/out/agent.log --fallback scout/out/agent-fallback.log >> "$GITHUB_STEP_SUMMARY" || true
       - name: Publish run report
         if: always()
         run: |
