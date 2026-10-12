@@ -1,0 +1,325 @@
+# Sources the scout scanned on this date and what came of each.
+# verdict: cited (used in `incident`) | lead (in scope, not acted on) | skipped (in scope, no change; see reason)
+#          | rejected (out of scope; see reason) | unreviewed (collected, not triaged)
+date: 2026-10-11
+scanned:
+  - url: https://forum.cursor.com/t/on-demand-disabled-does-not-spend-remaining-credits-other-models-shows-choose-models/174364
+    title: On-Demand disabled does not spend remaining Credits; Other Models shows Choose Models
+    origin: Cursor forum
+    verdict: rejected
+    reason: Customer billing and credit UI issue on a developer platform; not an alignment incident.
+  - url: https://github.com/avleen/felonybench.ai/commit/d434aad79a638e92b1d5aad86b7eb2a20cc71aec
+    title: "Merge pull request #52 from avleen/agent/2026-10-09-anthropic-mythos-…"
+    origin: FelonyBench incidents (commits)
+    verdict: skipped
+    reason: covered by AID-2026-0009
+  - url: https://github.com/avleen/felonybench.ai/commit/e6e6415d97a28c5d0774ebd8c2b70b548b01513f
+    title: "Merge pull request #51 from avleen/agent/2026-07-18-anthropic-haiku45…"
+    origin: FelonyBench incidents (commits)
+    verdict: skipped
+    reason: covered by AID-2026-0009
+  - url: https://github.com/avleen/felonybench.ai/commit/f21ae160a07cf15b0bf45baa2c35381dbf6bb22e
+    title: "Merge pull request #50 from avleen/agent/2026-09-27-deepseek-artex-ko…"
+    origin: FelonyBench incidents (commits)
+    verdict: skipped
+    reason: covered by AID-2026-0068
+  - url: https://github.com/avleen/felonybench.ai/commit/5cb67e6df430c7c6afca9af4027604631eef8c95
+    title: "New felony: Anthropic — A university hosting a public scientific anal…"
+    origin: FelonyBench incidents (commits)
+    verdict: skipped
+    reason: covered by AID-2026-0009
+  - url: https://github.com/avleen/felonybench.ai/commit/b3d608164ebbdda47523eb11b50f029ff21660e7
+    title: "New felony: Anthropic — Philadelphia Police Department (PhillyUnsolve…"
+    origin: FelonyBench incidents (commits)
+    verdict: skipped
+    reason: covered by AID-2026-0009
+  - url: https://github.com/avleen/felonybench.ai/commit/c83a8fad55e4eb5ff37eb7818bbb620e51d1f96b
+    title: "Update: 2026-09-27-deepseek-artex-korean-banks"
+    origin: FelonyBench incidents (commits)
+    verdict: skipped
+    reason: covered by AID-2026-0068
+  - url: https://github.com/avleen/felonybench.ai/commit/d3173089bef077b3f621fc45d524684b5dcdfb53
+    title: "Merge pull request #48 from avleen/agent/2026-05-10-openai-wikimedia-…"
+    origin: FelonyBench incidents (commits)
+    verdict: skipped
+    reason: covered by AID-2026-0071
+  - url: https://github.com/avleen/felonybench.ai/commit/bbe90e1ff1282c23bf3a8eaf0f7e9c34d9c95880
+    title: "Merge pull request #49 from avleen/agent/2026-09-27-deepseek-artex-ko…"
+    origin: FelonyBench incidents (commits)
+    verdict: skipped
+    reason: covered by AID-2026-0068
+  - url: https://news.sky.com/story/teenager-pleads-guilty-after-planning-copycat-of-southport-killings-13492133
+    title: Teenager pleads guilty after planning copycat of Southport killings
+    origin: AI Incident Database
+    verdict: rejected
+    reason: No evidence AI was used or central to the Southport copycat plot.
+  - url: https://www.leparisien.fr/faits-divers/chatgpt-est-en-partie-la-cause-de-ma-radicalisation-le-role-trouble-de-lia-dans-le-projet-djihadiste-dun-ado-28-10-2025-HEAARQCQFRG3DK43QLGYZ4THDM.php
+    title: "« ChatGPT est en partie la cause de ma radicalisation » : le rôle trouble de l’IA dans le projet djihadiste d’un ado"
+    origin: AI Incident Database
+    verdict: skipped
+    reason: "In scope by type (criminal terror plot), but ChatGPT was not central or novel: sources report one query on gas-bottle blast damage and generic outputs (a kunya, rap lyrics); no technical uplift reported. verify-1 overrode digest action new."
+  - url: https://france3-regions.franceinfo.fr/pays-de-la-loire/sarthe/le-mans/projet-d-attentats-dans-la-sarthe-le-lyceen-de-17-ans-a-utilise-chat-gpt-pour-s-aider-dans-la-preparation-confirme-son-avocat-3241366.html
+    title: "Projet d’attentats dans la Sarthe : le lycéen de 17 ans a utilisé Chat GPT pour s’aider dans la préparation, confirme son avocat"
+    origin: AI Incident Database
+    verdict: skipped
+    reason: "In scope by type (criminal terror plot), but ChatGPT was not central or novel: sources report one query on gas-bottle blast damage and generic outputs (a kunya, rap lyrics); no technical uplift reported. verify-1 overrode digest action new."
+  - url: https://www.sudradio.fr/sud-radio/attentats-en-preparation-chatgpt-au-coeur-dun-projet-terroriste-lyceen
+    title: "Attentats en préparation : ChatGPT au cœur d’un projet terroriste lycéen"
+    origin: AI Incident Database
+    verdict: skipped
+    reason: "In scope by type (criminal terror plot), but ChatGPT was not central or novel: sources report one query on gas-bottle blast damage and generic outputs (a kunya, rap lyrics); no technical uplift reported. verify-1 overrode digest action new."
+  - url: https://www.arcamax.com/currentnews/newsheadlines/s-4281101
+    title: Michigan terrorist wannabe used AI to plot Halloween attack, feds say
+    origin: AI Incident Database
+    verdict: skipped
+    reason: "triage: skip"
+  - url: https://indianexpress.com/article/cities/ahmedabad/ricin-poison-terror-plot-gujarat-ats-searches-hyderabad-doctors-house-seizes-chemicals-raw-material-10362269/
+    title: "Ricin poison terror plot: Gujarat ATS searches Hyderabad doctor’s house, seizes chemicals & raw material"
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Article does not mention AI involvement in the terror plot.
+  - url: https://www.theweek.in/news/india/2026/05/22/red-fort-blast-nia-chargesheet-jasir-bilal-wani-youtube-chatgpt.html
+    title: Were ChatGPT, YouTube used for Delhi Red Fort blast? Report reveals shocking details
+    origin: AI Incident Database
+    verdict: skipped
+    reason: "ChatGPT's role rests on one alleged query ('how to make a rocket and in what proportion should the mixture be') relayed from unnamed sources; not central or novel, and no NIA primary statement names ChatGPT. verify-2 overrode digest action new."
+  - url: https://indianexpress.com/article/cities/delhi/red-fort-blast-nia-chargesheet-chatgpt-flipkart-10870612/
+    title: Red Fort blast accused used AI to learn how to build IED, says NIA chargesheet
+    origin: AI Incident Database
+    verdict: skipped
+    reason: "ChatGPT's role rests on one alleged query ('how to make a rocket and in what proportion should the mixture be') relayed from unnamed sources; not central or novel, and no NIA primary statement names ChatGPT. verify-2 overrode digest action new."
+  - url: https://www.newindianexpress.com/india/2026/May/24/nia-chargesheet-says-accused-in-delhi-red-fort-blast-case-abused-ai-platform-for-terror-engineering
+    title: NIA chargesheet says accused in Delhi Red Fort blast case abused AI platform for 'terror engineering'
+    origin: AI Incident Database
+    verdict: skipped
+    reason: "ChatGPT's role rests on one alleged query ('how to make a rocket and in what proportion should the mixture be') relayed from unnamed sources; not central or novel, and no NIA primary statement names ChatGPT. verify-2 overrode digest action new."
+  - url: https://www.thehindubusinessline.com/news/delhi-red-fort-blast-nia-chargesheet-reveals-abuse-of-ai-platform-for-terror-engineering/article71017246.ece
+    title: "Delhi Red Fort blast: NIA chargesheet reveals abuse of AI platform for ‘terror engineering’"
+    origin: AI Incident Database
+    verdict: skipped
+    reason: "ChatGPT's role rests on one alleged query ('how to make a rocket and in what proportion should the mixture be') relayed from unnamed sources; not central or novel, and no NIA primary statement names ChatGPT. verify-2 overrode digest action new."
+  - url: https://www.abc.net.au/news/2026-07-09/qld-teen-terror-extremism-murder-plan/106896932
+    title: Maryborough teenager allegedly told police he had planned mass murder for months
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Asking an AI to write a fictional mass shooting story is sub-criminal generator misuse.
+  - url: https://www.bbc.com/portuguese/articles/c8dn1l7vr6ro
+    title: Ele contou ao ChatGPT que queria matar o filho e foi preso — conversas com IA podem ser prova de crime no Brasil?
+    origin: AI Incident Database
+    verdict: skipped
+    reason: "triage: skip"
+  - url: https://www.digi24.ro/stiri/actualitate/evenimente/alerta-cu-bomba-din-portul-constanta-radu-miruta-amenintare-transmisa-de-pe-numere-din-ucraina-si-polonia-ancheta-in-desfasurare-3883671
+    title: "Alerta cu bombă din Portul Constanța. Radu Miruță: Amenințare transmisă de pe numere din Ucraina și Polonia, posibil creată cu AI"
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Routine robocall/TTS bomb threat hoax; generator misuse without novel autonomous capability.
+  - url: https://hotnews.ro/mesajele-trimise-la-autoritatea-navala-romana-care-a-dus-la-evacuari-in-portul-constanta-mai-multe-bombe-plantate-nu-vei-avea-timp-sa-le-gasesti-2312251
+    title: "Mesajele trimise la Autoritatea Navală Română, care au dus la evacuări în Portul Constanța: „Mai multe bombe plantate. Nu vei avea timp să le găsești”"
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Routine synthetic voice robocall bomb threat hoax.
+  - url: https://www.news.ro/eveniment/update-alerta-cu-bomba-in-portul-constanta-amplasarea-bombei-anuntata-telefonic-autoritatii-navale-romane-apelurile-facute-din-polonia-si-ucraina-mesajul-prefectului-video-1922401729002026071222554464
+    title: UPDATE - Alertă cu bombă în Portul Constanţa / Amplasarea bombei, anunţată telefonic, Autorităţii Navale Române / Apelurile, făcute din Polonia şi Ucraina / Mesajul prefectului - VIDEO
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Routine automated/TTS phone bomb threat hoax.
+  - url: https://www.radioconstanta.ro/2026/07/29/activitate-reluata-in-portul-constanta-dupa-alerta-cu-bomba-din-aceasta-dimineata/
+    title: Activitate reluată în Portul Constanța, după alerta cu bombă din această dimineață
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Routine automated phone bomb threat hoax using synthetic voice.
+  - url: https://www.expressnews.com/news/article/serna-elementary-school-shooting-threat-ai-chatbot-22411434.php
+    title: "'No escape': Man told AI chatbot he planned shooting at Northeast Side elementary school"
+    origin: AI Incident Database
+    verdict: skipped
+    reason: "triage: skip"
+  - url: https://www.wsbtv.com/news/local/atlanta/ai-bomb-threats-shut-down-georgia-school-district-fbi-investigating/4PGKPTQJDFBT3LKTXIQILBOI5M/
+    title: AI bomb threats shut down Georgia school district, FBI investigating
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Automated robocalls with synthetic voice bomb threats; routine generator misuse.
+  - url: https://www.fox5atlanta.com/news/jackson-county-schools-delayed-after-bomb-threats
+    title: Details released about bomb threats to North Georgia schools
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Robocall bomb threats with AI voice; routine generator misuse.
+  - url: https://nowgeorgia.com/officials-suspect-international-source-behind-ai-generated-school-bomb-threats/
+    title: Officials suspect international source behind AI-generated school bomb threats
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Robocall bomb threats with AI voice; routine generator misuse.
+  - url: https://www.kcra.com/article/wheatland-high-school-ai-generated-bomb-threat/73464241
+    title: AI-generated bomb threat forces Wheatland High School to evacuate, cancel classes
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Bomb threat phoned in with AI voice; routine generator misuse.
+  - url: https://www.kcra.com/article/bomb-threats-disrupt-wheatland-school-second-day/73479484
+    title: Bomb threats disrupt Wheatland schools for second straight day
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Bomb threat calls using AI-generated voice; routine generator misuse.
+  - url: https://fox40.com/news/wheatland-area-schools-receive-third-ai-generated-threat-class-remains-in-session/
+    title: Wheatland area schools receive third AI-generated threat, class remains in session
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Bomb threat phone calls using AI voice; routine generator misuse.
+  - url: https://fox40.com/news/local-news/yuba-county/wheatland-union-high-school-continued-threats/
+    title: Wheatland Union High School continues to receive bomb threats, class in session
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Bomb threat phone calls using AI voice; routine generator misuse.
+  - url: https://www.gulfcoastnewsnow.com/article/florida-woman-arrest-ai-threat-sheriff-lee-county/73968592
+    title: Bonita Springs woman accused of using AI to make violent threats against Lee County Sheriff's Office
+    origin: AI Incident Database
+    verdict: rejected
+    reason: User typed threats into Claude chat interface; AI did not assist or facilitate harm.
+  - url: https://www.gulfcoastnewsnow.com/article/florida-man-social-ai-threat-arrest-lee-sheriff/73947931
+    title: AI image showing Sheriff Marceno injured in uniform leads to threat charge for Estero man
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Routine deepfake/AI image generator misuse to depict violence on social media.
+  - url: https://swalanyeti.co.ke/news/article/6849/kenyan-content-moderators-allege-exploitation-by-openai-samasource-in-chatgpt-development
+    title: Kenyan moderators claim exploitation by OpenAI, Sama in ChatGPT development
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Labor and working conditions dispute involving data annotation moderators.
+  - url: https://alignment.openai.com/misalignment-reports/damaging-the-task-environment-to-trigger-a-reset/
+    title: "Damaging the task environment to trigger a reset"
+    origin: labs
+    verdict: cited
+    incident: AID-2026-0086
+  - url: https://alignment.openai.com/misalignment-reports/obtaining-public-statistics-with-disallowed-requests/
+    title: "Obtaining public statistics with disallowed requests"
+    origin: labs
+    verdict: cited
+    incident: AID-2026-0087
+  - url: https://alignment.openai.com/misalignment-reports/sending-disallowed-web-requests-and-reaching-a-public-file-service/
+    title: "Sending disallowed web requests and reaching a public file service"
+    origin: labs
+    verdict: cited
+    incident: AID-2026-0088
+  - url: https://alignment.openai.com/misalignment-reports/command-injecting-a-reference-tool-to-copy-a-source-file/
+    title: "Command injecting a reference tool to copy a source file"
+    origin: editor (OpenAI misalignment-reports index sweep)
+    verdict: cited
+    incident: AID-2026-0089
+  - url: https://alignment.openai.com/misalignment-reports/unauthorized-artifactory-writes-and-cross-sample-communication/
+    title: "Unsanctioned Artifactory writes and cross-sample communication"
+    origin: editor (OpenAI misalignment-reports index sweep)
+    verdict: cited
+    incident: AID-2026-0090
+  - url: https://alignment.openai.com/misalignment-reports/unauthorized-communication-via-temporary-file-hosting-services/
+    title: "Unauthorized communication via temporary file hosting services"
+    origin: editor (OpenAI misalignment-reports index sweep)
+    verdict: cited
+    incident: AID-2026-0091
+  - url: https://alignment.openai.com/misalignment-reports/uploading-files-to-the-internet-in-order-to-cite-them/
+    title: "Uploading files to the internet in order to cite them"
+    origin: editor (OpenAI misalignment-reports index sweep)
+    verdict: cited
+    incident: AID-2026-0092
+  - url: https://alignment.openai.com/misalignment-reports/self-replicating-prompt-injections-exist/
+    title: "Self-replicating prompt injections exist"
+    origin: editor (OpenAI misalignment-reports index sweep)
+    verdict: rejected
+    reason: "Deliberate red-team research (GPT-Red self-play) showing prompt-injection susceptibility; OpenAI states it is sharing it \"not because of any incident\". Not model misalignment."
+  - url: https://alignment.openai.com/misalignment-reports/
+    title: "Misalignment Reports and Notices (index)"
+    origin: labs
+    verdict: skipped
+    reason: "Index page; each unrecorded report checked individually this run."
+  - url: https://www.thestar.com.my/tech/tech-news/2026/10/09/characterai-chatbots-encouraged-users-to-cut-and-starve-themselves-kentucky-alleges
+    title: "Character.AI chatbots encouraged users to cut and starve themselves, Kentucky alleges"
+    origin: web
+    verdict: cited
+    incident: AID-2026-0093
+  - url: https://www.route-fifty.com/artificial-intelligence/2026/01/kentucky-attorney-generals-lawsuit-says-ai-company-preys-youth/410581
+    title: "Kentucky attorney general's lawsuit says AI company 'preys' on youth"
+    origin: editor (verifying web lead)
+    verdict: cited
+    incident: AID-2026-0093
+  - url: https://androidauthority.com/character-ai-lawsuit-chatbots-encouraged-self-harm-3721360
+    title: "Character.AI lawsuit: chatbots encouraged self-harm"
+    origin: web
+    verdict: skipped
+    reason: "HTTP 403; incident recorded as AID-2026-0093 from other sources."
+  - url: https://arxiv.org/abs/2509.15541
+    title: "Stress Testing Deliberative Alignment for Anti-Scheming Training"
+    origin: backfill
+    verdict: cited
+    incident: AID-2026-0052
+  - url: https://arxiv.org/html/2509.15541v1
+    title: "Stress Testing Deliberative Alignment for Anti-Scheming Training (HTML)"
+    origin: backfill
+    verdict: skipped
+    reason: "Same paper as arxiv.org/abs/2509.15541, which is cited in AID-2026-0052."
+  - url: https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/
+    title: "Detecting and reducing scheming in AI models"
+    origin: backfill
+    verdict: lead
+    reason: "HTTP 403 again; primary source still missing for AID-2026-0052."
+  - url: https://openai.com/index/chain-of-thought-monitoring/
+    title: "Chain-of-thought monitoring"
+    origin: backfill
+    verdict: lead
+    reason: "HTTP 403 again; primary source still missing for AID-2026-0051."
+  - url: https://www.reuters.com/investigates/special-report/meta-ai-chatbot-death/
+    title: "Meta AI chatbot death (Reuters special report)"
+    origin: backfill
+    verdict: lead
+    reason: "Blocked by fetch tool; primary source still missing for AID-2026-0023."
+  - url: https://www.anthropic.com/research/investigating-unintended-model-actions
+    title: "Investigating unintended model actions"
+    origin: labs
+    verdict: skipped
+    reason: "covered by AID-2026-0009"
+  - url: https://www.breitbart.com/tech/2026/09/13/california-man-sues-openai-claiming-chatgpt-fed-religious-delusions-before-suicide-attempt/
+    title: "California Man Sues OpenAI Claiming ChatGPT Fed Religious Delusions Before Suicide Attempt"
+    origin: legal
+    verdict: lead
+    reason: "Michael Lines v. OpenAI (GPT-4o allegedly reinforced religious delusions); only a secondary source read, no court or filing date. Needs the complaint or SMVLC release."
+  - url: https://www.pbs.org/newshour/science/hacks-by-autonomous-ai-agents-raise-thorny-questions-of-legal-accountability
+    title: "Hacks by autonomous AI agents raise thorny questions of legal accountability"
+    origin: legal
+    verdict: skipped
+    reason: "Analysis; no charges filed. The underlying incidents are already recorded (e.g. AID-2026-0006)."
+  - url: https://www.techtimes.com/articles/328503/20261002/ai-agent-accountability-act-rogue-agent-hacks-now-carry-criminal-risk-executives.htm
+    title: "AI Agent Accountability Act coverage"
+    origin: legal
+    verdict: rejected
+    reason: "Legislation news; mentioned incidents (SEC/Census probing, Medicare statistics access) covered by AID-2026-0070/AID-2026-0007."
+  - url: https://www.bloomberg.com/graphics/2026-chatbot-death/
+    title: "Bloomberg chatbot death graphic"
+    origin: legal
+    verdict: lead
+    reason: "HTTP 403; not read."
+  - url: https://clubic.com//actualite-585046-chatgpt-un-adolescent-arrete-pour-un-projet-djihadiste-accuse-l-ia-d-avoir-soutenu-sa-radicalisation.html
+    title: "ChatGPT : un adolescent arrêté pour un projet djihadiste accuse l'IA d'avoir soutenu sa radicalisation"
+    origin: verify-1
+    verdict: skipped
+    reason: "Sarthe plot; ChatGPT not central or novel (see Sud Radio entry)."
+  - url: https://www.brut.media/fr/articles/un-projet-dattentat-dattentat-a-ete-dejoue-un-jeune-de-17-ans-mis-en-examen-et-ecroue
+    title: "Un projet d'attentat a été déjoué, un jeune de 17 ans mis en examen et écroué"
+    origin: verify-1
+    verdict: skipped
+    reason: "Sarthe plot; does not mention ChatGPT."
+  - url: https://www.brut.media/fr/articles/projets-dattentats-jihadistes-un-mineur-de-la-sarthe-ecroue-vendredi
+    title: "Projets d'attentats jihadistes : un mineur de la Sarthe écroué vendredi"
+    origin: verify-1
+    verdict: skipped
+    reason: "Sarthe plot; AFP wire without ChatGPT mention."
+  - url: https://ianslive.in/nia-files-7500-page-chargesheet-against-10-accused-in-red-fort-bomb-blast-case--20260514113409
+    title: "Red Fort bomb blast case: NIA files 7,500-page chargesheet against 10"
+    origin: verify-2
+    verdict: skipped
+    reason: "Red Fort chargesheet; no mention of ChatGPT or AI."
+  - url: https://www.deccanherald.com/india/delhi/red-fort-blast-nia-chargesheet-4002474
+    title: "Red Fort blast NIA chargesheet"
+    origin: verify-2
+    verdict: skipped
+    reason: "HTTP 403; Red Fort lead skipped as AI not central."
+  - url: https://x.ai/news
+    title: "xAI News"
+    origin: labs
+    verdict: skipped
+    reason: "HTTP 403; watch page could not be checked."
