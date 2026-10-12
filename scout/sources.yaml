@@ -59,7 +59,7 @@ feeds:
   - { name: Palisade Research, url: "https://palisaderesearch.org/feed.xml", filter: false }
   - { name: Alignment Forum, url: "https://www.alignmentforum.org/feed.xml", filter: true }
   - { name: LessWrong, url: "https://www.lesswrong.com/feed.xml", filter: true }
-  - { name: Redwood Research, url: "https://redwoodresearch.substack.com/feed", filter: false }
+  - { name: Redwood Research, url: "https://blog.redwoodresearch.org/feed", filter: false }
   # Long-running agent experiments and benchmarks that keep producing incidents
   - { name: AI Village (Sage), url: "https://aivillageblog.substack.com/feed", filter: false }
   # Other incident trackers. Use these as leads; cite the original sources, not the tracker.
