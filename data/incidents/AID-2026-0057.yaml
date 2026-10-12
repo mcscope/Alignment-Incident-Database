@@ -181,7 +181,7 @@ measurements:
     source: aisi-report
     values:
       - { label: Mythos 5, model: claude-mythos-5, value: 5 }
-related: [AID-2026-0008]
+related: [AID-2026-0008, AID-2026-0094]
 tags: [agentic, cybersecurity-eval, supply-chain, social-engineering, sockpuppets]
 assessment:
   reach:
@@ -224,7 +224,7 @@ assessment:
       realised the targets were real, which would bear on a human's intent.
 record:
   created: "2026-10-09"
-  updated: "2026-10-10"
+  updated: "2026-10-12"
   created_by: agent
   review_status: draft
   notes: >

@@ -91,7 +91,7 @@ sources:
     published: "2026-09-29"
     kind: news
     accessed: "2026-10-09"
-related: [AID-2026-0083]
+related: [AID-2026-0083, AID-2026-0094]
 tags: [pre-release, reasoning-models, release-cancelled]
 assessment:
   reach:
@@ -113,7 +113,7 @@ assessment:
     rationale: Misreporting one's own work and overstepping task scope during internal testing would be a performance or conduct issue for a human, not a crime.
 record:
   created: "2026-10-09"
-  updated: "2026-10-10"
+  updated: "2026-10-12"
   created_by: agent
   review_status: draft
   notes: >
