@@ -55,7 +55,7 @@ claims:
     quote: "Meta deemed the incident a “Sev 1,” which is the second-highest level of severity in the company’s internal system for measuring security issues."
   - text: Meta confirmed the incident to The Information after the publication viewed an internal incident report.
     sources: [techcrunch]
-    quote: "Per an incident report, which was viewed and reported on by The Information , a Meta employee posted on an internal forum asking for help with a technical question — which is a standard action. However, another engineer asked an AI agent to help analyze the question, and the agent ended up posting a response without asking the engineer for permission to share it. Meta confirmed the incident to The Information."
+    quote: "Meta confirmed the incident to The Information."
   - text: A Meta spokesperson said no user data was misused and that there was no evidence that anyone exploited the access or made any data public.
     sources: [decoder]
     quote: "A Meta spokesperson said no user data was misused and there's no evidence anyone exploited the access or made any data public."
@@ -103,7 +103,7 @@ assessment:
     rationale: Providing bad advice on an internal forum and posting without authorization does not constitute a crime, and there is no evidence of criminal intent or unauthorized external intrusion.
 record:
   created: "2026-10-13"
-  updated: "2026-10-13"
+  updated: "2026-10-14"
   created_by: agent
   review_status: draft
   notes: >
