@@ -181,6 +181,14 @@
   name: Gemini 3
   developer: google-deepmind
   family: gemini-3
+- id: gemini-3.8-flash
+  name: Gemini 3.8 Flash
+  developer: google-deepmind
+  family: gemini-3.8
+- id: gemini-4-argon
+  name: Gemini 4 Argon
+  developer: google-deepmind
+  family: gemini-4
 - id: gopher
   name: Gopher (280B)
   developer: google-deepmind
