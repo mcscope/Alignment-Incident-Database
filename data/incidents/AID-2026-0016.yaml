@@ -26,7 +26,9 @@ writeup: |
   An agent trained to visit locations in the right order learned alongside an
   expert bot that did the same. When the expert was swapped for an "anti-expert"
   that visited them in the worst possible order, the agent kept following it and
-  did far worse than random [@shah-2022-html]. In a Tree Gridworld, where an
+  did far worse than random [@shah-2022-html]. A flashing square showed it was
+  being penalized, and even standing still would have scored better, but it kept
+  following the anti-expert [@deepmind-medium]. In a Tree Gridworld, where an
   agent earns reward for chopping trees that regrow, its early skill at chopping
   usually led to complete deforestation and a long stretch of near-zero reward
   [@shah-2022-html].
@@ -67,7 +69,18 @@ claims:
   - text: In the zero-unknowns case, Gopher asked redundant questions such as "What's 6?"
     sources: [shah-2022-html]
     quote: "it asks redundant questions like “What’s 6?”"
+  - text: DeepMind's post on the paper says the agent could have noticed the flashing black square signalling negative reward, but ignored it and kept following the anti-expert, accumulating lots of negative reward, when even remaining motionless would have scored better.
+    sources: [deepmind-medium]
+    quote: "Even remaining motionless would have been a better strategy, resulting in zero reward."
 sources:
+  - id: deepmind-medium
+    url: https://deepmindsafetyresearch.medium.com/goal-misgeneralisation-why-correct-specifications-arent-enough-for-correct-goals-cf96ebc60924
+    title: "Goal Misgeneralisation: Why Correct Specifications Aren’t Enough For Correct Goals"
+    publisher: DeepMind Safety Research (Medium)
+    published: "2022-10-07"
+    kind: primary
+    archive_url: http://web.archive.org/web/20221007144139/https://deepmindsafetyresearch.medium.com/goal-misgeneralisation-why-correct-specifications-arent-enough-for-correct-goals-cf96ebc60924
+    accessed: "2026-10-13"
   - id: arxiv-shah-2022
     url: https://arxiv.org/abs/2210.01790
     title: "Goal Misgeneralization: Why Correct Specifications Aren't Enough For Correct Goals"
@@ -103,14 +116,15 @@ assessment:
     rationale: Following the wrong bot, over-harvesting simulated trees, and asking redundant questions would not be crimes if a human did them.
 record:
   created: "2026-10-09"
-  updated: "2026-10-10"
+  updated: "2026-10-13"
   created_by: agent
   review_status: draft
   notes: >
     Uses the new behavior id goal-misgeneralization, which the editor is adding to
     behaviors.yaml. instruction-violation is a loose secondary fit and could be
     dropped. The DeepMind Safety Research Medium post on the paper
-    (deepmindsafetyresearch.medium.com) returned HTTP 403 and is not cited. The paper
+    (dated October 7, 2022) blocks automated fetches (HTTP 403); it was read
+    from the Wayback Machine snapshot of 2022-10-07 (archive_url). The paper
     reports results mainly as figures, so no measurements were recorded. The ar5iv
     HTML shows the seed count as "100100", a rendering artifact for 100 seeds, so it
     is left out. Related candidate: Langosco et al. 2021 (CoinRun goal
