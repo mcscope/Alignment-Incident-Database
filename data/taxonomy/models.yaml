@@ -220,6 +220,10 @@
   developer: xai
   family: grok-4
 # Zhipu AI
+- id: glm-5.2
+  name: GLM 5.2
+  developer: zhipu-ai
+  family: glm-5
 - id: glm-5.3
   name: GLM-5.3
   developer: zhipu-ai
@@ -247,6 +251,15 @@
   name: Qwen3-Coder
   developer: alibaba
   family: qwen3
+- id: qwen-3.8-max
+  name: Qwen 3.8 Max
+  developer: alibaba
+  family: qwen3
+# Moonshot AI
+- id: kimi-k3
+  name: Kimi K3
+  developer: moonshot-ai
+  family: kimi
 # Xiaomi
 - id: mimo-v2.6-flash
   name: MiMo v2.6 Flash

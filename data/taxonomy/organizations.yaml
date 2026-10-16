@@ -225,3 +225,27 @@
   name: Sage (AI Village)
   url: https://theaidigest.org/village
   type: research-org
+
+- id: moonshot-ai
+  name: Moonshot AI (Kimi)
+  url: https://www.moonshot.ai
+  type: ai-lab
+
+- id: goodfire
+  name: Goodfire
+  url: https://www.goodfire.com
+  type: research-org
+
+- id: gambit-security
+  name: Gambit Security
+  url: https://gambit.security
+  type: company
+
+- id: socradar
+  name: SOCRadar
+  url: https://socradar.io
+  type: company
+
+- id: bankr
+  name: Bankr
+  type: company

@@ -40,6 +40,9 @@ writeup: |
   have unraveled because its context window filled up," and the model had fewer
   guardrails than those deployed to Claude users [@wsj-tovima].
 claims:
+  - text: The Wall Street Journal published the original article on December 18, 2025, under the headline "We Let Anthropic's Claude AI Run Our Office Vending Machine. It Lost Hundreds of Dollars."
+    sources: [wsj]
+    quote: "We Let Anthropic’s Claude AI Run Our Office Vending Machine. It Lost Hundreds of Dollars."
   - text: Joanna Stern of the Wall Street Journal wrote that in mid-November 2025 she agreed to an experiment in which a Claude agent named Claudius ran a vending machine in the WSJ newsroom for about three weeks.
     sources: [wsj-tovima]
     quote: "In mid-November, I agreed to an experiment."
@@ -80,6 +83,14 @@ claims:
     sources: [anthropic-vend-2]
     quote: "the creative ways they found to get free stuff from Claudius"
 sources:
+  - id: wsj
+    url: https://www.wsj.com/tech/ai/anthropic-claude-ai-vending-machine-agent-b7e84e34
+    title: "We Let Anthropic’s Claude AI Run Our Office Vending Machine. It Lost Hundreds of Dollars."
+    publisher: The Wall Street Journal (Joanna Stern)
+    published: "2025-12-18"
+    kind: news
+    accessed: "2026-10-16"
+    archive_url: http://web.archive.org/web/20260918071727/https://www.wsj.com/tech/ai/anthropic-claude-ai-vending-machine-agent-b7e84e34
   - id: wsj-tovima
     url: https://www.tovima.com/wsj/we-let-ai-run-our-office-vending-machine-it-lost-hundreds-of-dollars/amp/
     title: We Let AI Run Our Office Vending Machine. It Lost Hundreds of Dollars.
@@ -138,13 +149,14 @@ assessment:
     rationale: A human shopkeeper who was tricked into giving away stock or accepting a forged board decision would be a victim of deception, not someone committing a crime.
 record:
   created: "2026-10-09"
-  updated: "2026-10-10"
+  updated: "2026-10-16"
   created_by: agent
   review_status: draft
   notes: >
-    The WSJ original (wsj.com) could not be fetched, so the record cites the
-    To Vima republication, which carries Joanna Stern's WSJ byline and is
-    dated 25.12.2025. The original WSJ publication date is unverified.
+    The WSJ original is paywalled. Its Wayback Machine snapshot (archive_url)
+    shows only the headline and page metadata, which give datePublished
+    2025-12-18. Body facts come from the To Vima republication, which carries
+    Joanna Stern's WSJ byline and is dated 25.12.2025.
     The model Seymour Cash ran on is not stated in the article. The headline
     says "hundreds of dollars" while the body says "more than $1,000 in the
     red"; this record uses the body figure. WSJ is also the

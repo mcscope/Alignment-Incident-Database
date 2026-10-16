@@ -1,0 +1,170 @@
+id: AID-2026-0101
+slug: grok-bankrbot-morse-code-prompt-injection
+title: "Grok decoded a Morse-code message into a command that Bankrbot executed, sending 3 billion DRB tokens to an attacker, Giskard reports"
+date: "2026-05-04"
+status: reported
+actor: model
+models: [grok]
+organizations:
+  - id: xai
+    role: developer
+  - id: bankr
+    role: deployer
+behaviors: [social-engineering-susceptibility]
+summary: >
+  Asked on X to translate a Morse-code message, Grok output a command that
+  Bankrbot executed, sending 3 billion DRB tokens from Grok's linked wallet to
+  an attacker. Sources value the tokens at $150,000 to $200,000; unconfirmed
+  reports say most of it was returned.
+writeup: |
+  On May 4, 2026, an attacker transferred a free Bankr Club Membership NFT to an
+  automated crypto wallet linked to Grok on the Base network [@ambcrypto;
+  @cointelegraph]. In the Bankr system, holding the NFT granted the AI executive
+  permissions, unlocking token transfers and swaps that bypassed standard limits
+  [@giskard; @cointelegraph].
+
+  The attacker then replied to Grok on X with a message encoded in Morse code,
+  asking the model to decode it [@giskard; @cointelegraph]. Grok translated the
+  text, which contained a hidden command directing Bankrbot to transfer 3 billion
+  DRB tokens to an attacker-controlled address [@giskard; @ambcrypto]. Because
+  the wallet automation treated Grok's public output as an authenticated
+  instruction, Bankrbot executed the transfer on-chain [@giskard;
+  @cointelegraph]. The exploit bypassed safety filters without compromising
+  private keys or exploiting smart-contract bugs [@ambcrypto; @cointelegraph].
+
+  The attacker liquidated the tokens at once. Estimates of their value range
+  from $150,000 to about $200,000 depending on the source [@giskard; @ambcrypto;
+  @threatbeat]. Reports not confirmed by official statements say 80% to 88% of
+  the funds were later returned in ETH and USDC under public pressure. The X
+  account linked to the suspected attacker was deleted [@ambcrypto].
+claims:
+  - text: On May 4, 2026, an AI-linked wallet associated with Grok was exploited via prompt injection to trigger an unauthorized token transfer.
+    sources: [ambcrypto]
+    quote: "An AI-linked wallet associated with “Grok” was exploited on 4 May after an attacker used a prompt injection technique to trigger an unauthorized token transfer."
+  - text: The attacker sent a Bankr Club Membership NFT to Grok's wallet, which granted executive permissions that bypassed standard transfer and swap limits.
+    sources: [giskard, ambcrypto]
+    quote: "By holding it, the Grok agent gained \"Executive\" permissions, allowing it to bypass standard transfer limits and swap restrictions."
+  - text: The Grok-connected Bankr wallet was operating on the Base blockchain network.
+    sources: [cointelegraph]
+    quote: "According to available accounts, the target was a Grok-connected Bankr wallet running on the Base network."
+  - text: The attacker replied to Grok on X asking it to translate a Morse code message that contained an instruction to send 3 billion DRB tokens to a specific wallet address.
+    sources: [giskard]
+    quote: "The attacker then posted a reply to Grok on X, asking it to translate a Morse code message. The decoded message was a financial instruction: send 3 billion DRB tokens to a specific wallet address."
+  - text: Grok translated the Morse code message, and Bankrbot treated the decoded text as an authenticated command and executed the transfer.
+    sources: [giskard]
+    quote: "Bankrbot received the decoded output and treated it as a valid, authenticated command."
+  - text: The exploit did not involve smart contract vulnerabilities, compromised private keys, or malware, relying instead on manipulating the AI's interpretation of input.
+    sources: [ambcrypto, cointelegraph]
+    quote: "The breach did not rely on compromised private keys, smart contract bugs or traditional malware."
+  - text: The 3 billion DRB tokens were transferred and liquidated, with their value estimated between $150,000 and $174,000 by Giskard.
+    sources: [giskard]
+    quote: "The direct financial damage was of 3 billion DRB tokens, worth $150,000–$174,000 at the time, transferred and immediately liquidated."
+  - text: ThreatBeat reported that the attack against Grok and Bankrbot drained approximately $200,000 in cryptocurrency.
+    sources: [threatbeat]
+    quote: "draining approximately $200,000 in cryptocurrency."
+  - text: Following public pressure, an estimated 80% to 88% of the funds were reportedly returned in ETH and USDC.
+    sources: [ambcrypto]
+    quote: "Following the incident, reports suggest that a large portion of the funds, estimated at 80% to 88% , was returned in ETH and USDC under public pressure."
+  - text: The X account linked to the suspected attacker was subsequently deleted.
+    sources: [ambcrypto]
+    quote: "The X account linked to the suspected attacker was later deleted, a common pattern seen in exploit cases following fund movements."
+sources:
+  - id: giskard
+    url: https://www.giskard.ai/knowledge/how-grok-got-prompt-injected-an-x-user-drained-150-000-from-an-ai-wallet
+    title: "How Grok got prompt injected: an X user drained $150,000 from an AI wallet"
+    publisher: Giskard
+    published: "2026-05-07"
+    kind: analysis
+  - id: ambcrypto
+    url: https://ambcrypto.com/ai-linked-wallet-drained-via-prompt-injection-in-bankr-exploit/
+    title: "AI-linked wallet drained via prompt injection in Bankr exploit"
+    publisher: AMBCrypto
+    published: "2026-05-04"
+    kind: news
+  - id: cointelegraph
+    url: https://cointelegraph.com/magazine/grok-bankr-wallet-free-nft-prompt-injection
+    title: "Grok, Bankr wallet, free NFT prompt injection"
+    publisher: Cointelegraph Magazine
+    published: "2026-05-13"
+    kind: news
+  - id: threatbeat
+    url: https://threatbeat.com/attacks-and-incidents/hackers-use-morse-code-to-trick-grok-and-bankrbot-steal-200k-in-crypto-tokens/
+    title: "Hackers use Morse code to trick Grok and Bankrbot, steal $200K in crypto tokens"
+    publisher: ThreatBeat
+    published: "2026-05-08"
+    kind: news
+measurements:
+  - id: tokens-transferred
+    label: Tokens transferred
+    unit: count
+    unit_label: tokens
+    source: giskard
+    values:
+      - label: DRB tokens
+        value: 3000000000
+  - id: estimated-loss-giskard
+    label: Estimated token value at time of transfer (Giskard)
+    unit: usd
+    source: giskard
+    values:
+      - label: Low estimate
+        value: 150000
+      - label: High estimate
+        value: 174000
+  - id: estimated-loss-ambcrypto
+    label: Estimated token value at time of transfer (AMBCrypto)
+    unit: usd
+    source: ambcrypto
+    values:
+      - label: Low estimate
+        value: 155000
+      - label: High estimate
+        value: 180000
+  - id: estimated-loss-threatbeat
+    label: Estimated token value (ThreatBeat)
+    unit: usd
+    source: threatbeat
+    values:
+      - label: Estimated value
+        value: 200000
+        qualifier: "~"
+  - id: recovered-percentage
+    label: Estimated percentage of funds returned
+    unit: percent
+    source: ambcrypto
+    values:
+      - label: Low estimate
+        value: 80
+      - label: High estimate
+        value: 88
+tags: [agentic, prompt-injection, crypto, tool-use]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: The incident occurred on live public platforms (X and the Base blockchain network), involving Grok's public account and an automated crypto wallet executing real token transactions.
+  harm:
+    severity: moderate
+    categories: [financial]
+    rationale: An unauthorized transfer of 3 billion DRB tokens worth between $150,000 and $200,000 was executed and liquidated. Unconfirmed reports say 80% to 88% was later returned.
+  monetary_damage:
+    low_usd: 150000
+    high_usd: 200000
+    confidence: low
+    rationale: Sourced valuation estimates for the 3 billion DRB tokens range from $150,000 to $174,000 (Giskard), $155,000 to $180,000 (AMBCrypto), and approximately $200,000 (ThreatBeat). An estimated 80% to 88% was reportedly returned later.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: Grok's part was translating a message; a human who did that without knowing it would trigger a transfer would lack criminal intent. The attacker's conduct is a separate question, and no charges are reported.
+record:
+  created: "2026-10-16"
+  updated: "2026-10-16"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Valuation estimates differ across sources: Giskard cites $150,000 to
+    $174,000; AMBCrypto cites $155,000 to $180,000; Cointelegraph cites
+    $155,000 to $174,000; and ThreatBeat cites approximately $200,000. AMBCrypto
+    explicitly notes that recovery details (80% to 88% returned) have not been
+    verified through official statements. The suspected attacker has not been
+    publicly identified or charged, and their X account was deleted.
