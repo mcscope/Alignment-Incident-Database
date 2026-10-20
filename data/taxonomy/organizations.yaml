@@ -249,3 +249,23 @@
 - id: bankr
   name: Bankr
   type: company
+
+# Added by scout 2026-10-20
+- id: pocketos
+  name: PocketOS
+  type: company
+
+- id: liquid-ai
+  name: Liquid AI
+  url: https://www.liquid.ai
+  type: ai-lab
+
+- id: cert-in
+  name: CERT-In (Indian Computer Emergency Response Team)
+  url: https://www.cert-in.org.in
+  type: government
+
+- id: mats
+  name: MATS Research
+  url: https://www.matsprogram.org
+  type: research-org

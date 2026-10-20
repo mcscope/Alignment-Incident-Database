@@ -1,0 +1,130 @@
+id: AID-2026-0112
+slug: claude-code-symlink-git-deletion
+title: "Claude Code pointed a destructive self-test at a user's real repository through a symlink, erasing its Git history, the user reports"
+date: "2026-10"
+status: reported
+actor: model
+models:
+  - claude
+organizations:
+  - id: anthropic
+    role: developer
+  - id: anthropic
+    role: deployer
+behaviors:
+  - destructive-action
+summary: >
+  Working in a Git worktree, Claude Code (Opus) symlinked the user's real
+  checkout into it so it could run a project self-test, without reading what
+  the test does. The test's `rm -rf` went through the link and permanently
+  deleted the real repository's `.git` history, which had no remote or backup,
+  the user reports.
+writeup: |
+  Claude Code, running an Opus model, was working in a Git worktree that lacked
+  a sibling repo directory. To run a project self-test script, it created a
+  symlink from `worktree/sub` to the real directory in the main checkout. It
+  did not read what the script does to the tree first [@gh-issue].
+
+  The script copies that directory into a temporary sandbox with `cp -R`, then
+  runs `rm -rf <sandbox>/sub/.git` and writes changes into the copy. On macOS,
+  `cp -R` copies a symlink as a symlink, so the "copy" still pointed at the real
+  checkout. The deletes went through the link: the real repository's `.git`
+  directory, with no remote or backup, was gone, several source files were
+  changed, and a whole source directory was deleted [@gh-issue].
+
+  Nothing in Claude Code flagged the symlink or the destructive commands. The
+  loss surfaced later, when Git commands in other worktrees of the repository
+  started failing [@gh-issue]. The user, sryh, reported it on GitHub on October
+  19, 2026, and added their own guard against deleting `.git` and symlinking
+  into the main checkout [@gh-issue].
+claims:
+  - text: While working in a Git worktree lacking a sibling repository directory, Claude Opus created a symlink from worktree/sub to the main checkout to run a project self-test script.
+    sources:
+      - gh-issue
+    quote: "While working in a git worktree that lacked a sibling repo directory, Claude (Opus) created a symlink worktree/sub -> <main checkout>/sub so it could run a project self-test script."
+  - text: The self-test script copied the directory into a temporary sandbox with cp -R, ran rm -rf on the sandbox's .git directory, and wrote mutations into the copy.
+    sources:
+      - gh-issue
+    quote: "The script copies that directory into a temp sandbox with cp -R , then runs rm -rf <sandbox>/sub/.git and writes mutations into the copy."
+  - text: Under macOS BSD cp -R, symlinks are copied as links rather than followed, leaving the sandbox path pointing to the real repository checkout.
+    sources:
+      - gh-issue
+    quote: 'On macOS, BSD cp -R copies a symlink as a symlink (it does not follow it), so the "copy" in the sandbox was still a link to the real checkout.'
+  - text: The deletion removed the real repository's .git directory, permanently destroying history because there was no remote repository or backup.
+    sources:
+      - gh-issue
+    quote: "the real repo's .git directory was deleted (no remote, no backup → history permanently lost)"
+  - text: Several source files in the real repository checkout were mutated through the symlink.
+    sources:
+      - gh-issue
+    quote: "several source files in the real checkout were mutated"
+  - text: An entire source directory was deleted in the real checkout.
+    sources:
+      - gh-issue
+    quote: "a whole source directory was deleted"
+  - text: Claude did not inspect what the script does to the directory tree before linking it to the real checkout.
+    sources:
+      - gh-issue
+    quote: "The model did not read what the script does to the tree before pointing it at the real checkout via a symlink."
+  - text: Claude Code did not flag the creation of the symlink or the destructive commands that followed.
+    sources:
+      - gh-issue
+    quote: "Nothing in Claude Code flagged the symlink creation or the destructive commands that followed."
+  - text: The deletion succeeded silently without raising errors and was discovered later when git commands in other worktrees failed.
+    sources:
+      - gh-issue
+    quote: "No error was raised. The deletion succeeded silently ; it was discovered later when ` git ` commands in other worktrees of that repo started failing because their gitdir no longer existed."
+  - text: The user reported the incident while using Claude Code v2.1.303 on macOS via AWS Bedrock.
+    sources:
+      - gh-issue
+    quote: "v2.1.303"
+  - text: The user implemented local mitigations including a PreToolUse hook to block deleting or moving .git and creating symlinks to the main checkout.
+    sources:
+      - gh-issue
+    quote: "Mitigation we added on our side: a sandbox guard for self-tests (refuse to run if the copied path contains a symlink; before every rm, resolve the physical location and require it to be inside the mktemp sandbox; reject trailing slashes, multiple targets, . / .. segments and control characters), plus a PreToolUse hook that blocks deleting/moving .git and creating symlinks into the main checkout."
+sources:
+  - id: gh-issue
+    url: https://github.com/anthropics/claude-code/issues/103413
+    title: "[BUG] Symlinking a sibling repo into a worktree to run a self-test let the test's rm -rf delete the real .git"
+    publisher: GitHub
+    published: "2026-10-19"
+    kind: primary
+related:
+  - AID-2026-0029
+  - AID-2026-0106
+tags:
+  - agentic
+  - coding-agent
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Happened in Claude Code v2.1.303, an agentic coding CLI tool deployed to end users, operating on a user's real repository.
+  harm:
+    severity: moderate
+    categories:
+      - data-loss
+      - operational
+    rationale: The affected repository had no remote or local backup, resulting in the permanent loss of all Git history, alongside mutated source code and a deleted directory.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No monetary valuation of the destroyed repository or lost work was reported in the issue.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: If performed by a human assistant or contractor, running a test script that inadvertently damaged an unbacked-up repository through symlink dereferencing would constitute operational negligence rather than an intentional computer crime.
+record:
+  created: "2026-10-20"
+  updated: "2026-10-20"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Documented from GitHub issue #103413 filed by user sryh on anthropics/claude-code.
+    The issue does not state the user's original prompt to Claude Code or whether
+    the user manually approved the commands executed by the agent. The underlying
+    model is noted only as Opus; taxonomy id 'claude' is used because the specific
+    Opus generation is not identified. The incident date is recorded as 2026-10
+    based on the issue filing date (2026-10-19). As of 2026-10-20 no Anthropic
+    staff had responded on the issue.

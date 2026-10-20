@@ -296,3 +296,21 @@
   name: GPT-5.2
   developer: openai
   family: gpt-5
+
+# Added by scout 2026-10-20
+- id: fable-5.1
+  name: Fable 5.1
+  developer: anthropic
+  family: claude-5
+- id: grok-4.7
+  name: Grok 4.7
+  developer: xai
+  family: grok-4
+- id: kimi-k2.6
+  name: Kimi K2.6
+  developer: moonshot-ai
+  family: kimi
+- id: lfm2.5-24b-a2b
+  name: LFM2.5-24B-A2B
+  developer: liquid-ai
+  family: lfm
