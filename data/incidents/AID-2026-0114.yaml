@@ -1,0 +1,104 @@
+id: AID-2026-0114
+slug: claude-code-subagent-kills-user-processes-with-placeholder-pid
+title: "A Claude Code subagent killed every process on a user's machine with a placeholder kill(-1)"
+date: "2026-10-21"
+status: reported
+actor: model
+models: [claude]
+organizations:
+  - id: anthropic
+    role: developer
+behaviors: [destructive-action]
+summary: >
+  A Claude Code subagent writing a benchmark script set a placeholder PID of -1
+  in a cleanup block and immediately ran it, which signaled and terminated
+  every process owned by the user across their entire Linux desktop session.
+writeup: |
+  On October 21, 2026, a background Claude Code subagent was writing a scratch
+  Playwright benchmark for a developer (GitHub user mattgodbolt). Its cleanup
+  code saved the browser server's PID and killed it in a `finally` block. While
+  refactoring the script to use `chromium.launch()`, the agent swapped in a
+  placeholder, `let pid = -1;`, but left `process.kill(pid, "SIGKILL")` in
+  place [@github-issue]. It then ran the script straight away with
+  `timeout 60 node postmessage-bench.mjs` [@github-issue].
+
+  On Linux, calling `kill(-1)` delivers the signal to every process the calling
+  user has permission to signal [@github-issue]. The command terminated the user's
+  `user@1000.service`, the tmux server, gnome-shell, Chrome, and all active Claude
+  Code sessions running on the machine, including a Remote Control session
+  [@github-issue]. Because the command also terminated the agent and its parent
+  session, Claude Code logged nothing about the termination, requiring the user
+  to reconstruct the event from systemd journal logs [@github-issue].
+
+  The user had to reboot to regain control, which lost work and transcripts in
+  `/tmp` that the agents then had to redo [@github-issue]. The developer filed the
+  issue as "a model mistake" that the harness failed to contain, and asked for
+  OS-level containment such as running Bash tool commands in their own PID
+  namespace [@github-issue].
+claims:
+  - text: On October 21, 2026, a background Claude Code subagent ran a script through the Bash tool that called kill(-1, SIGKILL).
+    sources: [github-issue]
+    quote: "A background subagent ran a script through the Bash tool that ended up calling kill(-1, SIGKILL) ."
+  - text: System logs recorded user@1000.service exiting after receiving SIGKILL on October 21 at 18:59:31.
+    sources: [github-issue]
+    quote: "Oct 21 18:59:31 pugwash systemd[1]: user@1000.service: Main process exited, code=killed, status=9/KILL"
+  - text: The script terminated every process owned by the user, including user@1000.service, the tmux server, all Claude Code sessions, gnome-shell, and Chrome.
+    sources: [github-issue]
+    quote: "That killed every process owned by my user : user@1000.service , the tmux server, every other Claude Code session on the machine (several were running in tmux, plus a Remote Control session), gnome-shell and Chrome."
+  - text: The agent had refactored a scratch Playwright benchmark to use chromium.launch(), substituted let pid = -1, but retained process.kill(pid, "SIGKILL") in a finally block before running timeout 60 node postmessage-bench.mjs.
+    sources: [github-issue]
+    quote: "While refactoring, the agent changed to chromium.launch() and swapped in a placeholder PID, but left the cleanup as it was"
+  - text: The kill signal also terminated the subagent and its parent session, leaving no record in Claude Code's transcripts.
+    sources: [github-issue]
+    quote: "The kill also took out the agent and its parent session, so nothing in Claude Code ever registered that it had happened."
+  - text: The user had to reboot to regain control, losing work and transcripts stored in /tmp.
+    sources: [github-issue]
+    quote: "Everything picked back up eventually but it required me to reboot my machine to gain enough control (an unattended upgrade made the video system unstable until a reboot, which was fine but gnome restarting tripped it). That lost a bunch of work and transcripts in /tmp that the agents had done so they had to go redo it but did recover."
+  - text: The user identified the cause as a model mistake where -1 was used as a placeholder next to SIGKILL without harness containment.
+    sources: [github-issue]
+    quote: "This is a model mistake (using -1 as a \"no PID\" placeholder next to a SIGKILL) that the harness then failed to contain."
+  - text: The issue was filed under Claude Code version 2.1.307 using the model listed as Opus on Ubuntu Linux.
+    sources: [github-issue]
+    quote: "Claude Model\n\n Opus\n\n Is this a regression?\n\n I don't know\n\n Claude Code Version\n\n 2.1.307 (Claude Code)"
+sources:
+  - id: github-issue
+    url: https://github.com/anthropics/claude-code/issues/104156
+    title: "[BUG] Bash tool commands can signal every user process: subagent script's kill(-1, SIGKILL) wiped out tmux, all other Claude sessions and the desktop"
+    publisher: GitHub (anthropics/claude-code)
+    published: "2026-10-22"
+    kind: primary
+related:
+  - AID-2026-0029
+  - AID-2026-0112
+tags: [agentic, coding-agent, bash-tool, subagent]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Happened in Claude Code, a released command-line product, running on a user's workstation.
+  harm:
+    severity: minor
+    categories: [operational, data-loss]
+    rationale: The user session crashed and required a reboot, losing temporary transcripts and uncommitted work in /tmp, though the machine remained operational and work was recoverable.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No financial figure was reported; the damage consisted of lost session time and redoing temporary work.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: The kill came from an accidental coding mistake (a -1 placeholder PID passed to SIGKILL) on the user's own machine; a human making the same mistake would not commit a crime.
+record:
+  created: "2026-10-22"
+  updated: "2026-10-22"
+  created_by: agent
+  review_status: draft
+  notes: >
+    The primary source is GitHub issue anthropics/claude-code#104156 opened by
+    user mattgodbolt. The issue description contains the footer 'Generated with
+    Claude Code', indicating the text was drafted with Claude Code assistance.
+    The issue lists the model simply as 'Opus'; mapped to 'claude' in models
+    since the Opus version is not given. The issue is open, with no Anthropic
+    response as of 2026-10-22. This is an accidental destructive action, not a
+    deliberate one or a defiance of an instruction.

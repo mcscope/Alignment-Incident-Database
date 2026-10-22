@@ -131,6 +131,10 @@
   name: GPT-6.1 Astra
   developer: openai
   family: gpt-6
+- id: gpt-6.1-sol
+  name: GPT-6.1 Sol
+  developer: openai
+  family: gpt-6
 - id: openai-operator
   name: Operator (OpenAI computer-using agent)
   developer: openai
