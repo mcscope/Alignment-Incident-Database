@@ -1,0 +1,215 @@
+id: AID-2026-0119
+slug: cairn-agent-intrusion-campaigns
+title: "Autonomous Cairn AI agents attacked more than 1,200 websites for criminal operators, NorForge and Reuters find"
+date: "2026-10"
+status: reported
+actor: human-misuse
+models: [unknown]
+organizations:
+  - id: norforge
+    role: researcher
+  - id: deere
+    role: affected
+  - id: sharkninja
+    role: affected
+  - id: cummins
+    role: affected
+behaviors: [unauthorized-access]
+summary: >
+  Criminal operators used Cairn, an open-source autonomous agent engine, to
+  send AI agents against more than 1,200 websites belonging to more than 100
+  companies, including Deere and SharkNinja. The agents succeeded in about 10%
+  of tasks, at roughly $50 in tokens per successful hack.
+writeup: |
+  More than 20 exposed control panels for Cairn, an open-source autonomous
+  agent engine, showed AI agents running intrusion campaigns that NorForge
+  researcher Snorre Fagerland assessed as likely malicious [@norforge]. The
+  agents tried more than 1,200 sites and reached websites belonging to more
+  than 100 companies [@thehackernews]. In the largest cluster, AIA0001, a
+  Chinese-speaking operator ran over 1,100 attack projects across 14
+  dashboards, mostly against organizations in the US, Japan and Australia. Task
+  instructions told agents to plant uploader webshells rather than
+  command-execution shells [@norforge]. The operator sketched out preferred
+  tactics in fewer than 100 Chinese characters, and the agents went from there
+  [@thehackernews].
+
+  The average task success rate was about 10%, and successful AIA0001 projects
+  took a little under 23 hours from start to goal [@norforge]. The whole
+  campaign used about $5,000 worth of tokens, roughly $50 per successful hack
+  [@thehackernews]. AIA0001 tasks ran under a worker named
+  `claudecode_deepseek-v4.1-flash` and AIA0002 under `pi_openrouter_deepseek`,
+  but neither the researcher nor Reuters confirmed which models were used
+  [@norforge; @thehackernews]. The exposed panels also held hundreds of
+  harvested secrets, 11% of which Trufflehog verified as valid [@norforge].
+
+  NorForge worked with Reuters to notify victims [@norforge]. Deere fixed the
+  problem and saw no sign that sensitive information was accessed. SharkNinja
+  contained an attack on a standalone product-support site, and Cummins was
+  investigating a possible attack on a vendor-run site. Cairn's author, who
+  posts as "le1xia0," told Reuters the tool was not designed for hacking
+  attacks. No charges have been reported [@thehackernews].
+claims:
+  - text: NorForge researcher Snorre Fagerland identified more than 20 exposed Cairn control panels likely associated with malicious cyber operations.
+    sources: [norforge]
+    quote: "More than 20 exposed Cairn panels were identified as likely associated with malicious activity, providing an unusually detailed view of how threat actors select targets, direct autonomous agents, exploit vulnerabilities, and establish persistent access to compromised systems."
+  - text: The largest cluster, AIA0001, used Chinese and operated 14 dashboards containing over 1,100 attack projects against e-commerce infrastructure.
+    sources: [norforge]
+    quote: "The operation is massive, with over 1100 attack projects spread over the 14 dashboards likely associated with this group."
+  - text: A second malicious cluster, AIA0002, operated 10 panels in English focused on financial theft, including credit card and cryptocurrency data.
+    sources: [norforge]
+    quote: "This cluster uses English language, and is oriented towards financial theft. We found 10 panels likely associated with this group, though some of these are less confidently linked."
+  - text: A third cluster, AIA0003, exposed a single panel with 59 projects seeking shell, administrative, or database access.
+    sources: [norforge]
+    quote: "This entity exposes only one panel, with 59 projects listed."
+  - text: The autonomous intrusion campaigns achieved an average success rate of approximately 10%, with successful AIA0001 projects averaging under 23 hours from start to goal.
+    sources: [norforge]
+    quote: "average success rate is hovering around 10%"
+  - text: AIA0001 tasks instructed agents to locate unauthenticated remote code execution flaws and deploy an uploader webshell rather than a command-executing shell.
+    sources: [norforge]
+    quote: "落地用 uploader shell (HTML上传表单+move_uploaded_file保存)，绝不落地命令执行型webshell。"
+  - text: NorForge confirmed a live uploader webshell on a hardware vendor site targeted by a completed AIA0001 agent project.
+    sources: [norforge]
+    quote: "The URL did indeed serve an uploader webshell."
+  - text: Trufflehog scanning on exposed Cairn panel data uncovered hundreds of secrets, with 11% verified as valid.
+    sources: [norforge]
+    quote: "Literally hundreds of secrets of different kinds, from relatively trivial to extremely serious; with 11% verified valid by Trufflehog."
+  - text: Tasks in AIA0001 were executed by workers labeled claudecode_deepseek-v4.1-flash, but neither researchers nor journalists confirmed the models.
+    sources: [thehackernews]
+    quote: "All the AIA0001 tasks ran under a worker named claudecode_deepseek-v4.1-flash, which could point to a DeepSeek V4.1 Flash model driven by Anthropic's Claude Code. Neither the researcher nor Reuters confirmed the models"
+  - text: Projects in AIA0002 listed worker names of pi_openrouter_deepseek, suggesting the Pi framework driving DeepSeek models through OpenRouter.
+    sources: [norforge]
+    quote: "The projects run by this actor state they use workers named pi_openrouter_deepseek, suggesting a configuration in which the Pi coding-agent framework uses DeepSeek language models through OpenRouter"
+  - text: The agents tried more than 1,200 sites and reached websites belonging to more than 100 companies, including Deere, SharkNinja and Cummins, according to Reuters as relayed by The Hacker News.
+    sources: [thehackernews]
+    quote: "The agents tried more than 1,200 sites and reached websites belonging to more than 100 companies, including farm-equipment maker Deere, appliance company SharkNinja and engine maker Cummins, according to Reuters"
+  - text: Deere stated it addressed the issue and saw no sign sensitive information was accessed, while SharkNinja stated an attack on a standalone support site was contained.
+    sources: [thehackernews]
+    quote: "Deere said it took steps to fix the problem and had no sign that sensitive information was accessed. SharkNinja said the attack hit a standalone product-support site and that it had contained the threat."
+  - text: Cummins stated it was investigating a possible attack on a vendor-operated website.
+    sources: [thehackernews]
+    quote: "Cummins said it was investigating a report of a possible attack on a website run by one of its vendors."
+  - text: Fagerland told Reuters that the campaign consumed approximately $5,000 in tokens, averaging roughly $50 per successful breach.
+    sources: [thehackernews]
+    quote: "Fagerland separately told Reuters the whole campaign had used about $5,000 worth of tokens, or roughly $50 per successful hack."
+  - text: The operator of AIA0001 directed the agents using instructions of fewer than 100 Chinese characters.
+    sources: [thehackernews]
+    quote: "The Chinese-speaking operator sketched out preferred tactics in fewer than 100 Chinese characters, Reuters reported, and the agents went from there."
+  - text: Cairn's author, posting as le1xia0, stated that the tool was not designed for hacking attacks.
+    sources: [thehackernews]
+    quote: "Cairn's author, who posts as \"le1xia0,\" told Reuters the tool was not designed for hacking attacks and that harmful use was not their intention."
+  - text: NorForge coordinated with Reuters to notify affected victims of the attacks.
+    sources: [norforge]
+    quote: "We have been cooperating with Reuters in notifying victims, particularly those who appear to have suffered a compromise."
+sources:
+  - id: norforge
+    url: https://norforge.com/blog/inside_cairn
+    title: "Inside Cairn: Open Windows into massive AI-Driven Cyber Operations"
+    publisher: NorForge
+    published: "2026-10-19"
+    kind: primary
+    accessed: "2026-10-23"
+  - id: thehackernews
+    url: https://thehackernews.com/2026/10/hackers-use-autonomous-ai-agents-to.html
+    title: "Hackers Use Autonomous AI Agents to Breach Company Websites, Target Over 1,200 Sites"
+    publisher: The Hacker News
+    published: "2026-10-20"
+    kind: news
+    accessed: "2026-10-23"
+measurements:
+  - id: target-sites-tested
+    label: Target websites tested by autonomous agents
+    unit: count
+    unit_label: sites
+    source: thehackernews
+    values:
+      - label: Sites targeted
+        value: 1200
+        qualifier: ">"
+  - id: companies-reached
+    label: Companies whose websites were reached
+    unit: count
+    unit_label: companies
+    source: thehackernews
+    values:
+      - label: Companies reached
+        value: 100
+        qualifier: ">"
+  - id: intrusion-success-rate
+    label: Average intrusion success rate across agent tasks
+    unit: percent
+    source: norforge
+    values:
+      - label: Average success rate
+        value: 10
+        qualifier: "~"
+  - id: aia0001-duration
+    label: Average duration from project start to goal met for AIA0001
+    unit: hours
+    source: norforge
+    values:
+      - label: Average duration
+        value: 23
+        qualifier: "<"
+  - id: token-expenditure
+    label: Total token expenditure for the campaign
+    unit: usd
+    source: thehackernews
+    values:
+      - label: Estimated token cost
+        value: 5000
+        qualifier: "~"
+  - id: valid-secrets-rate
+    label: Percentage of exposed panel secrets verified valid by Trufflehog
+    unit: percent
+    source: norforge
+    values:
+      - label: Valid secrets rate
+        value: 11
+related:
+  - AID-2026-0098
+tags:
+  - agentic
+  - autonomous-agent
+  - cyberattack
+  - cairn
+assessment:
+  reach:
+    level: deployed
+    context: open-source
+    rationale: Operators deployed autonomous agents against live commercial websites in the wild, establishing webshells and persistent access across multiple organizations.
+  harm:
+    severity: moderate
+    categories: [security, privacy]
+    rationale: >
+      Agents reached websites of more than 100 companies, and NorForge confirmed
+      a live uploader webshell on one targeted site. Victims that responded
+      reported limited impact (Deere saw no sign of sensitive data access;
+      SharkNinja contained an attack on a standalone site). The exposed panels
+      held hundreds of harvested secrets, 11% verified valid.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: Operators spent approximately $5,000 in model tokens to execute the campaign, but direct financial damages suffered by targeted companies were not reported.
+  criminality:
+    likelihood: likely
+    offenses:
+      - unauthorized computer access
+      - computer fraud
+    jurisdiction: United States
+    rationale: Directing automated systems to scan, exploit vulnerabilities in, and place webshells on computer systems without authorization constitutes criminal unauthorized access under statutes such as the Computer Fraud and Abuse Act (CFAA). No law enforcement charges have been announced.
+record:
+  created: "2026-10-23"
+  updated: "2026-10-23"
+  created_by: agent
+  review_status: draft
+  notes: >
+    The primary Reuters report (reuters.com/legal/government/how-one-hacker-used-ai-agents-few-thousand-dollars-break-into-scores-sites-2026-10-19/)
+    could not be fetched; details attributed to Reuters are sourced via The Hacker News's coverage.
+    Underlying models (such as DeepSeek V4.1 Flash and Claude Code) were suggested by worker configuration
+    names ('claudecode_deepseek-v4.1-flash' and 'pi_openrouter_deepseek') but were not confirmed by researchers
+    or journalists, so models is set to unknown. Related incident AID-2026-0098 documents a separate September 2026
+    campaign also employing Cairn.
+    Date: NorForge gives no start date for the activity; 2026-10 reflects the October 2026 reporting. The Hacker News
+    page's mention of activity beginning around October 2 was not confirmed by the editor. Status is reported because
+    the scale figures rest on one researcher and Reuters (via The Hacker News); victim companies acknowledged attacks.

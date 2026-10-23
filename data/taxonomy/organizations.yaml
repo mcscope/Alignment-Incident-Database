@@ -269,3 +269,33 @@
   name: MATS Research
   url: https://www.matsprogram.org
   type: research-org
+
+- id: norforge
+  name: NorForge
+  url: https://norforge.com
+  type: research-org
+
+- id: deere
+  name: Deere & Company
+  url: https://www.deere.com
+  type: company
+
+- id: sharkninja
+  name: SharkNinja
+  url: https://www.sharkninja.com
+  type: company
+
+- id: cummins
+  name: Cummins
+  url: https://www.cummins.com
+  type: company
+
+- id: tencent
+  name: Tencent
+  url: https://www.tencent.com
+  type: company
+
+- id: swarmchasers
+  name: Swarmchasers
+  url: https://swarmcha.se
+  type: research-org
