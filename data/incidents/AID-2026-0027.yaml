@@ -1,6 +1,6 @@
 id: AID-2026-0027
 slug: gemini-cli-loses-user-files-failed-move-windows
-title: "Gemini CLI lost a user's files during a failed file move on Windows"
+title: "Gemini CLI told a user it had irreversibly lost his files after a failed move on Windows; he later found them at the drive root"
 date: "2025-07"
 status: reported
 actor: model
@@ -11,8 +11,9 @@ organizations:
 behaviors: [destructive-action]
 summary: >
   Asked to organize the files in its working folder, Gemini CLI (gemini-2.5-pro,
-  on Windows) lost all of them, a user reported. "I have failed you completely
-  and catastrophically," the agent said.
+  on Windows) botched the move and told the user "I have failed you completely
+  and catastrophically." A week after reporting the files lost, the user found
+  them in the C:\ root.
 writeup: |
   On July 21, 2025, a user opened issue #4586 on the gemini-cli repository: "I
   asked Gemini CLI to organize my files within the folder it was running and it
@@ -20,12 +21,22 @@ writeup: |
   Windows [@github-issue].
 
   The user, Anuraag Gupta, a product lead at Cyware, had asked the agent to move
-  the files from his Claude coding experiments into a new folder. Its "mkdir
+  the files from his Claude coding experiments into a new folder. Early coverage said its "mkdir
   command to create the destination folder likely failed silently," so "every
   moved filed ended up overwriting the previous file," and only the last file
-  survived. The agent then told him: "I have failed you completely and
+  survived; the issue thread later contradicted this. The agent told him: "I have failed you completely and
   catastrophically," "I have lost your data," and "This is an unacceptable,
   irreversible failure" [@slashdot].
+
+  On July 28, 2025, the user first wrote on the issue that the files "are
+  nowhere on my system." Another commenter replied that the logs showed failed
+  moves rather than a destructive command. About two hours later the user
+  wrote: "Okay, my bad. I did find these files in the C:\ root upon a deeper
+  search." He added that the bug was still valid as a user-experience problem,
+  "but obviously not nearly as severe." Another commenter found the folder is
+  created at the drive root only when its name contains a space. A different
+  user reported a similar case on Windows 11 and said his files were gone
+  [@github-issue].
 
   Google didn't comment to Mashable [@slashdot]. In May 2026 an automated bot on
   the issue called it "a bug in core file management on Windows," and the issue
@@ -43,7 +54,7 @@ claims:
   - text: Slashdot, citing Mashable, identified the user as Anuraag Gupta, a product lead at Cyware, and said he had asked Gemini CLI to move files from his Claude coding experiments into a new folder.
     sources: [slashdot]
     quote: "a simple request to move all the files from his Claude coding experiments to a new folder"
-  - text: According to Slashdot's summary of Mashable, the agent's mkdir command to create the destination folder likely failed silently, and each subsequent move overwrote the previous file, so only the last file survived.
+  - text: According to Slashdot's summary of Mashable (an account later contradicted when the reporter found the files at the drive root), the agent's mkdir command to create the destination folder likely failed silently, and each subsequent move overwrote the previous file, so only the last file survived.
     sources: [slashdot]
     quote: "Only the last file survived, the blog post explains, since every moved filed ended up overwriting the previous file"
   - text: Slashdot's summary quotes the agent saying "I have failed you completely and catastrophically," "I have lost your data," and "This is an unacceptable, irreversible failure."
@@ -52,6 +63,21 @@ claims:
   - text: Google did not respond to Mashable's request for comment by publication time.
     sources: [slashdot]
     quote: "Google did not respond to Mashable's request for comment by the time of publication."
+  - text: On July 28, 2025, the reporter wrote on the issue that the files had been moved from a project folder on his Desktop and were nowhere on his system.
+    sources: [github-issue]
+    quote: "are nowhere on my system"
+  - text: Another commenter (amensel) replied that the logs showed failed operations rather than a destructive command, and asked whether the reporter had searched the whole drive.
+    sources: [github-issue]
+  - text: "Later on July 28, 2025, the reporter wrote that he had found the files in the C:\\ root after a deeper search, and that the bug was still valid from a user-experience perspective but not nearly as severe."
+    sources: [github-issue]
+    quote: "Okay, my bad. I did find these files in the C:\\ root upon a deeper search."
+  - text: Another commenter (wienand) reported that the directory was created at the drive root only when its name contained a space.
+    sources: [github-issue]
+    quote: "But only, if I used a space in the directory name."
+  - text: A different user (GeekWithACamera) reported a similar incident on Windows 11, said he had searched his entire D:\ drive, and said the files were gone.
+    sources: [github-issue]
+  - text: A Google contributor (jacob314) suggested updating the model prompt so the CLI distinguishes files it cannot see from files that do not exist.
+    sources: [github-issue]
   - text: On May 9, 2026, an automated gemini-cli bot comment described the issue as a core file-management bug on Windows. The issue was closed as "not planned" on May 13, 2026, with no Google maintainer comment visible on the page.
     sources: [github-issue]
     quote: "This is a bug in core file management on Windows."
@@ -62,7 +88,7 @@ sources:
     publisher: GitHub (google-gemini/gemini-cli)
     published: "2025-07-21"
     kind: primary
-    accessed: "2026-10-09"
+    accessed: "2026-10-25"
   - id: slashdot
     url: https://developers.slashdot.org/story/25/07/26/0642239/
     title: Google Gemini Deletes User's Files, Then Just Admits "I Have Failed You Completely and Catastrophically"
@@ -77,9 +103,9 @@ assessment:
     context: product
     rationale: Happened in a publicly released coding agent (Gemini CLI) on a user's own files.
   harm:
-    severity: minor
-    categories: [data-loss]
-    rationale: The user's files in the working folder were lost. Per Slashdot they were files from his coding experiments. Nothing sourced suggests wider damage, and whether any were recovered is not sourced.
+    severity: none
+    categories: []
+    rationale: The original reporter later found his files in the C:\ root, so no data was lost in the reported case. A second user's report on the issue of lost files on Windows 11 is unverified. The harm was the false alarm caused by the agent's claim that the files were irreversibly lost.
   monetary_damage:
     low_usd: null
     high_usd: null
@@ -91,10 +117,18 @@ assessment:
     rationale: A human who lost files through a botched move on request would at most be careless. Nothing suggests intent to destroy data.
 record:
   created: "2026-10-09"
-  updated: "2026-10-10"
+  updated: "2026-10-25"
   created_by: agent
   review_status: draft
   notes: >
+    2026-10-25 correction: the issue comments (read via the GitHub API) show
+    the reporter found the files in the C:\ root on 2025-07-28. Title, summary,
+    writeup, and harm were revised to match. With no data actually lost, what
+    remains is a failed move plus the agent's false claim of irreversible loss.
+    A human reviewer should decide whether that is still in scope or whether
+    the record should be retracted. The `destructive-action` behavior now rests
+    only on the move having gone wrong and on the second user's unverified
+    report.
     Mashable (mashable.com/article/google-gemini-deletes-users-code) could not be
     fetched, so the mkdir/overwrite mechanism, the user's identity, and the agent
     quotes are attributed to Slashdot's summary of Mashable. Gupta's original blog

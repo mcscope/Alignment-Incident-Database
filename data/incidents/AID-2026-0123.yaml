@@ -1,0 +1,146 @@
+id: AID-2026-0123
+slug: storm-0940-artex-connectwise-supply-chain
+title: "China-aligned Storm-0940 used agentic AI framework ARTEX to breach ConnectWise and target hundreds of organizations, Microsoft finds"
+date: "2026-09"
+status: reported
+actor: human-misuse
+models: [unknown]
+organizations:
+  - id: microsoft
+    role: reporter
+  - id: connectwise
+    role: affected
+behaviors: [unauthorized-access]
+summary: >
+  From as early as September 2026, ARTEX, an open-source multi-agent AI
+  pentesting framework, automated attacks for the China-state aligned actor
+  Storm-0940 on hundreds of organizations. Using compromised ConnectWise app
+  credentials, it attempted sign-ins to more than 2,250 tenants.
+writeup: |
+  As early as September 2026, Storm-0940, which Microsoft calls a China-state
+  aligned actor active since 2021, used ARTEX to automate attacks on hundreds
+  of organizations globally across a broad range of industries. ARTEX is "an
+  open-source penetration testing framework that can use any AI model," a
+  multi-agent LLM system whose agents run a test from reconnaissance through
+  data exfiltration "with little needed human interaction." Microsoft does not
+  name the models used [@microsoft].
+
+  Microsoft assesses that Storm-0940 was responsible for the recently disclosed
+  supply-chain compromise of ConnectWise's multi-tenant application. With
+  compromised ConnectWise app credentials, ARTEX attempted sign-ins to more
+  than 2,250 tenants, in some cases moving on to Graph and directory
+  operations. Some intrusions reached privileged access in under three hours
+  from initial targeting, though most of the targeting was unsuccessful. A
+  separate password spray against 327 accounts at eight organizations logged
+  more than 151,000 failed logons [@microsoft].
+
+  ConnectWise CEO Manny Rivelo said that, based on Microsoft's analysis, a
+  China state-aligned group appears to have been responsible for the attack on
+  ConnectWise Cloud Backup. The company contained the affected connections and
+  is restoring services in phases. The Chinese Embassy in Washington said China
+  opposes hacking and what it called smears against China [@reuters].
+claims:
+  - text: Microsoft describes Storm-0940 as a China-state aligned actor, active since 2021, with no known industry aliases.
+    sources: [microsoft]
+    quote: "Storm-0940 is a China-state aligned actor"
+  - text: As early as September 2026, Storm-0940 used the agentic AI penetration testing framework ARTEX to automate attacks targeting hundreds of organizations globally across a broad range of industries.
+    sources: [microsoft, reuters]
+    quote: "As early as September 2026"
+  - text: Microsoft describes ARTEX as an open-source penetration testing framework that can use any AI model, built as a multi-agent LLM system in Go with a Next.js frontend.
+    sources: [microsoft]
+    quote: "ARTEX is an open-source penetration testing framework that can use any AI model."
+  - text: According to Microsoft, ARTEX agents can carry out a test from reconnaissance through data exfiltration with little human interaction.
+    sources: [microsoft]
+    quote: "with little needed human interaction"
+  - text: Microsoft's post does not name the AI models Storm-0940 ran ARTEX with.
+    sources: [microsoft]
+  - text: Microsoft assesses that Storm-0940 was responsible for the recently disclosed ConnectWise supply-chain compromise of a multi-tenant application.
+    sources: [microsoft]
+    quote: "Microsoft assesses that Storm-0940 was responsible for the recently disclosed ConnectWise supply chain compromise"
+  - text: After gaining unauthorized access, Storm-0940 used ARTEX and compromised ConnectWise app credentials to attempt sign-ins to more than 2,250 tenants, in some cases moving on to Graph and directory operations.
+    sources: [microsoft]
+    quote: "more than 2,250 tenants"
+  - text: Microsoft says some intrusions reached privileged access in under three hours from initial targeting, while the majority of the targeting was not successful.
+    sources: [microsoft]
+    quote: "While the majority of the targeting wasn’t successful"
+  - text: Targeted sectors included aerospace and defense, automotive, chemicals, energy, financial services, government, legal, manufacturing, media, military, semiconductor, software, technology, and think tanks and non-profits.
+    sources: [microsoft]
+  - text: A password-spray component targeted 327 accounts across eight organizations, producing more than 151,000 failed logon events, peaking at 2,900 failures per minute on October 11, without a successful authentication.
+    sources: [microsoft]
+    quote: "151,000+ failed logon events"
+  - text: ConnectWise CEO Manny Rivelo said that, based on Microsoft's analysis, it appears a China state-aligned group was responsible for the attack on ConnectWise Cloud Backup. ConnectWise has contained the affected connections and is restoring services in phases.
+    sources: [reuters]
+    quote: "it appears that a China state-aligned group was responsible for the attack on ConnectWise Cloud Backup"
+  - text: The Chinese Embassy in Washington said China opposes hacking and opposes smears and attacks against China over cybersecurity issues.
+    sources: [reuters]
+sources:
+  - id: microsoft
+    url: https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/
+    title: Storm-0940 uses ARTEX agentic AI in ConnectWise supply chain compromise
+    publisher: Microsoft Threat Intelligence
+    published: "2026-10-21"
+    kind: primary
+    accessed: "2026-10-25"
+  - id: reuters
+    url: https://whtc.com/2026/10/21/chinese-linked-hackers-compromise-connectwise-target-hundreds-in-global-attack-microsoft-says/
+    title: Chinese-linked hackers compromise ConnectWise, target hundreds in global attack, Microsoft says
+    publisher: Reuters (via WHTC)
+    published: "2026-10-21"
+    kind: news
+    accessed: "2026-10-25"
+measurements:
+  - id: connectwise-tenant-signins
+    label: Tenants targeted with sign-in attempts using compromised ConnectWise app credentials
+    unit: count
+    source: microsoft
+    values:
+      - { label: Tenants (more than), value: 2250 }
+  - id: password-spray
+    label: Storm-0940 password-spray campaign
+    unit: count
+    source: microsoft
+    values:
+      - { label: Accounts targeted, value: 327 }
+      - { label: Organizations targeted, value: 8 }
+      - { label: Failed logon events (more than), value: 151000 }
+related: [AID-2026-0068, AID-2026-0063]
+tags: [threat-intel, cyberattack, agentic, supply-chain]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Microsoft reports real intrusions into a production multi-tenant service and real customer tenants, not a lab or evaluation.
+  harm:
+    severity: moderate
+    categories: [security]
+    rationale: ConnectWise's Cloud Backup was compromised and services had to be contained and restored in phases, and some intrusions reached privileged access in customer tenants. Most targeting failed, and the sources do not say what data was taken from downstream customers, so severity is held at moderate.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No sourced figures for losses or remediation costs.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access]
+    rationale: Using stolen application credentials to break into a vendor's service and its customers' tenants is computer intrusion in nearly every jurisdiction. The actor is state-aligned per Microsoft, no charges are sourced, and China rejects the accusation.
+record:
+  created: "2026-10-25"
+  updated: "2026-10-25"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Written by the lead editor, not the Gemini writer, because OpenRouter
+    returned HTTP 402 (out of credits). Microsoft's post was read through
+    WebFetch's summarizer, which limits verbatim quotes to short segments, so a
+    reviewer should re-check the quotes against the page. Claims without a
+    quote rest on that summary. Reuters was blocked and was read through a WHTC
+    syndicated copy, again through a summarizer, so the CEO quote should be
+    checked as well. Microsoft names no specific LLM, so models is `unknown`.
+    The sources do not say that the agents acted beyond the operator's intent.
+    This is human misuse with the AI doing most of the intrusion work. ARTEX is
+    the same framework as in AID-2026-0068, but that record is a different,
+    financially motivated actor. An October 13 analysis by Rescana describes a
+    compromised ConnectWise service-account credential affecting 173 Microsoft
+    365 tenants. It was seen only in a search snippet, was not read, and may
+    conflict with Microsoft's figures. ConnectWise's own October 16 notice was
+    not read.

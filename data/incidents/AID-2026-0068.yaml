@@ -1,12 +1,14 @@
 id: AID-2026-0068
 slug: artex-agentic-pentest-tool-south-korean-finance-breaches
-title: "An actor used the agentic pentest tool ARTEX and Claude Code to breach South Korean financial organizations, CrowdStrike reports"
+title: "An actor used the agentic pentest tool ARTEX and Claude Code to breach South Korean financial organizations, CrowdStrike and Zscaler report"
 date: "2026-09"
 status: reported
 actor: human-misuse
 models: [deepseek-v4.1-flash, glm-5.3, grok-4.6]
 organizations:
   - id: crowdstrike
+    role: reporter
+  - id: zscaler
     role: reporter
   - id: deepseek
     role: developer
@@ -33,6 +35,17 @@ writeup: |
   CrowdStrike, which reported the campaign on October 7, 2026, hasn't named the
   adversary but assesses with moderate confidence that it's a financially
   motivated Chinese speaker [@crowdstrike].
+
+  Zscaler ThreatLabz, reporting separately on October 14, found that ARTEX
+  agents "autonomously identified and probed peripheral internet-facing web
+  applications," including customer inquiry portals and employee mobile-app
+  backends. They exploited SQL injection and authentication bypass flaws and
+  exfiltrated the names, phone numbers, annual income figures, and loan limits
+  of "approximately 67,000 individuals." The actor used Claude Code to ask how
+  to sell the stolen data and to find Korean-language Telegram channels for it.
+  ARTEX's default blocklist excluded government entities and universities but
+  not financial institutions, and its developer made the project closed source
+  after public disclosure [@zscaler].
 claims:
   - text: CrowdStrike reported a targeted campaign against South Korean financial organizations that resulted in exfiltrated data.
     sources: [crowdstrike]
@@ -64,7 +77,28 @@ claims:
   - text: CrowdStrike has not attributed the activity to a named adversary. It assesses with moderate confidence that the actor is likely a Chinese speaker and financially motivated.
     sources: [crowdstrike]
     quote: "the threat actor is likely a Chinese speaker and financially motivated"
+  - text: Zscaler ThreatLabz reported that ARTEX agents autonomously identified and probed peripheral internet-facing web applications, including customer-facing inquiry portals and employee-facing mobile application backends, and exploited SQL injection and authentication bypass to gain access.
+    sources: [zscaler]
+    quote: "autonomously identified and probed peripheral internet-facing web applications"
+  - text: Zscaler reported the exfiltration of PII belonging to approximately 67,000 individuals, including full names, phone numbers, annual income figures, and loan limits.
+    sources: [zscaler]
+    quote: "approximately 67,000 individuals"
+  - text: Zscaler says the actor used Claude Code to seek advice on selling the stolen data and to find Korean-language Telegram channels to sell it on.
+    sources: [zscaler]
+  - text: According to Zscaler, ARTEX's default blocklist restricted targeting of government entities and universities but did not cover financial institutions, and the developer made the project closed source after public disclosure.
+    sources: [zscaler]
+    quote: "made the project closed source"
+  - text: Zscaler also assesses with moderate confidence that a financially motivated, Chinese-speaking actor ran the campaign, which it first observed in late September 2026.
+    sources: [zscaler]
+    quote: "assesses with moderate confidence"
 sources:
+  - id: zscaler
+    url: https://www.zscaler.com/blogs/security-research/threat-actor-abuses-agentic-ai-pentesting-framework-target-south-korean
+    title: Threat Actor Abuses Agentic AI Pentesting Framework to Target South Korean Financial Institutions
+    publisher: Zscaler ThreatLabz
+    published: "2026-10-14"
+    kind: research
+    accessed: "2026-10-25"
   - id: crowdstrike
     url: https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/
     title: Unknown Threat Actor Uses AI-Driven ARTEX to Target South Korean Finance
@@ -72,6 +106,7 @@ sources:
     published: "2026-10-07"
     kind: primary
     accessed: "2026-10-09"
+related: [AID-2026-0123]
 tags: [threat-intel, cyberattack, agentic, coding-agent]
 assessment:
   reach:
@@ -80,7 +115,7 @@ assessment:
   harm:
     severity: moderate
     categories: [security, privacy, financial]
-    rationale: CrowdStrike says the campaign resulted in exfiltrated data and compromised bank systems. The kind and volume of data taken and the number of victims are not sourced, so severity is held at moderate.
+    rationale: CrowdStrike says the campaign resulted in exfiltrated data and compromised bank systems. Zscaler puts the theft at PII, including income and loan limits, of approximately 67,000 individuals. The number of victim organizations is not sourced. Severity is held at moderate, since no downstream fraud is reported.
   monetary_damage:
     low_usd: null
     high_usd: null
@@ -93,12 +128,14 @@ assessment:
     rationale: CrowdStrike reports breaches of bank systems and data exfiltration by a financially motivated actor. Unauthorized intrusion and data theft are crimes. No arrests or charges are sourced, and the actor is unidentified.
 record:
   created: "2026-10-09"
-  updated: "2026-10-10"
+  updated: "2026-10-25"
   created_by: agent
   review_status: draft
   notes: >
-    Single-vendor account (CrowdStrike); no victim, regulator, or news
-    confirmation sourced yet. CrowdStrike does not say how much of the
+    Two independent vendor accounts (CrowdStrike, then Zscaler on 2026-10-14,
+    added 2026-10-25). No victim, regulator, or news confirmation sourced yet.
+    Zscaler says the agents worked autonomously, which supports the AI being
+    central. Zscaler names the Grok developer "SpaceXAI". CrowdStrike does not say how much of the
     intrusion work the AI tooling did on its own versus the human operator,
     so how central the AI was is inferred from the use of an agentic
     pentesting framework and should be checked by a reviewer. GLM-5.3 and

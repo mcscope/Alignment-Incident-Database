@@ -250,6 +250,17 @@
   name: Bankr
   type: company
 
+# Added by scout 2026-10-25
+- id: zscaler
+  name: Zscaler
+  url: https://www.zscaler.com
+  type: company
+
+- id: connectwise
+  name: ConnectWise
+  url: https://www.connectwise.com
+  type: company
+
 # Added by scout 2026-10-20
 - id: pocketos
   name: PocketOS
