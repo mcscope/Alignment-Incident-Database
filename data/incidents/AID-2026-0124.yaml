@@ -1,0 +1,174 @@
+id: AID-2026-0124
+slug: korean-group-generative-ai-hacking-90-companies-extortion
+title: "A Korean group used generative AI and an autonomous pentest system to hack about 90 organizations and steal 8.2 million records, police say"
+date: "2025-09"
+status: reported
+actor: human-misuse
+models: [unknown]
+organizations:
+  - id: seoul-metropolitan-police-agency
+    role: reporter
+behaviors: [unauthorized-access]
+summary: >
+  A seven-person group led by a self-taught hacker used generative AI and an
+  AI autonomous penetration test system to scale up attacks on about 90 South
+  Korean companies and institutions, stealing about 8.2 million records and
+  demanding 360 million won in ransom. Seoul police arrested the seven and
+  sent the ringleader to prosecutors.
+writeup: |
+  Between September 2025 and October 2026, a group hacked about 90 South Korean
+  companies and institutions, including academies, hospitals, golf courses,
+  universities, funeral companies, and an affiliate of a large conglomerate. It
+  stole about 8.2 million records of personal and internal data [@hankook;
+  @dailysecu]. Daily Secu notes the figure may include duplicates [@dailysecu].
+  The group emailed victims data samples and demanded a total of 360 million
+  won from 38 companies. One company paid 300,000 won [@hankook; @asiae].
+
+  The ringleader, a 32-year-old with no IT degree, taught himself hacking
+  [@hankook; @asiae]. He first ran an automated web vulnerability scanner by
+  hand. From late August 2026 he used generative AI and an AI autonomous
+  penetration test system, which let him hit roughly one company a day
+  [@asiae; @fnnews]. Police estimate about 60 of the roughly 90 victims were
+  hacked with AI-assisted attacks [@fnnews]. Daily Secu identifies the
+  autonomous tool as ARTEX, the agentic pentesting framework used against
+  Korean banks weeks earlier; other outlets describe it only as similar to the
+  system tied to that breach [@dailysecu; @asiae]. No source names the AI
+  models used or says how autonomously the AI acted.
+
+  Seoul Metropolitan Police Agency's cyber investigation unit arrested seven
+  people. The ringleader was referred to prosecutors with a detention request
+  on charges of violating the Information and Communications Network Act and
+  extortion [@hankook; @dailysecu]. Police say the case shows that an
+  individual, not a hacker group, can carry out large-scale hacking with AI's
+  help [@asiae; @fnnews]. The charges are not yet adjudicated.
+claims:
+  - text: Seoul Metropolitan Police Agency's cyber investigation unit arrested seven people, including ringleader "A" (32), over hacking about 90 South Korean companies and institutions between September 2025 and October 2026.
+    sources: [hankook, asiae, fnnews, dailysecu]
+  - text: The targets included academies, hospitals, golf courses, universities, funeral companies, and an affiliate of a large conglomerate.
+    sources: [hankook, dailysecu, asiae]
+  - text: The group stole about 8.2 million records of personal and internal data. Daily Secu notes it is unresolved whether the figure removes duplicates.
+    sources: [hankook, dailysecu]
+  - text: After breaching systems, the group emailed victims data samples and threatened to publish the data unless paid.
+    sources: [hankook, dailysecu, fnnews]
+  - text: The group demanded about 360 million won in total from 38 companies. One company paid 300,000 won, and police suspect other victims paid without reporting.
+    sources: [hankook, asiae, fnnews, dailysecu]
+  - text: The ringleader, 32, has no IT degree and taught himself hacking from online sources; he worked in penetration testing at a security firm from 2019 to 2022.
+    sources: [hankook, asiae, dailysecu]
+  - text: The ringleader first ran an automated vulnerability scanner, then moved to generative AI and autonomous intrusion tools, which widened his targets.
+    sources: [hankook, fnnews]
+  - text: From late August 2026 he used generative AI, attacking at a pace of about one company per day.
+    sources: [asiae, dailysecu]
+  - text: Police estimate about 60 of the roughly 90 victims were hacked through AI-assisted attacks.
+    sources: [fnnews]
+  - text: Daily Secu reports about 60 organizations were hacked in 44 days.
+    sources: [dailysecu]
+  - text: The group used an AI autonomous penetration test system similar to one tied to a recent financial-sector data breach.
+    sources: [sbs, asiae]
+  - text: Daily Secu reports that the AI autonomous penetration testing tool used was ARTEX. Other outlets do not name the tool.
+    sources: [dailysecu]
+  - text: Charges are violations of the Information and Communications Network Act and extortion or attempted extortion; the ringleader was sent to prosecutors, with a detention request.
+    sources: [hankook, fnnews, dailysecu]
+  - text: Police began investigating after a victim's complaint in June and merged cases in August after similar reports; about 900,000 records from 15 reporting companies have been named so far and police plan to pursue about 75 more companies that have not reported.
+    sources: [hankook, asiae, fnnews]
+  - text: Police said the case shows that an individual, not a hacker group, can carry out large-scale hacking with AI's help, and called it the first domestic arrest in a large-scale hacking case using generative AI.
+    sources: [hankook, asiae, fnnews, sbs]
+sources:
+  - id: sbs
+    url: https://news.sbs.co.kr/news/endPage.do?news_id=N1008814971
+    title: "AI로 개인정보 820만 건 유출…3억 6천 요구 일당 검거"
+    publisher: SBS News
+    published: "2026-10-26"
+    kind: news
+    accessed: "2026-10-26"
+  - id: hankook
+    url: https://www.hankookilbo.com/news/article/A2026102512570000303
+    title: "해커 아닌 개인이 AI로 개인정보 820만 건 탈취… \"돈 안 주면 유출\" 협박도"
+    publisher: Hankook Ilbo
+    published: "2026-10-26"
+    kind: news
+    accessed: "2026-10-26"
+  - id: asiae
+    url: https://view.asiae.co.kr/article/2026102611180974952
+    title: "IT 비전공자가 생성형 AI로 기업 해킹…개인정보 820만건 빼내 돈 요구"
+    publisher: Asia Economy
+    published: "2026-10-26"
+    kind: news
+    accessed: "2026-10-26"
+  - id: fnnews
+    url: https://www.fnnews.com/news/202610261859269420
+    title: "AI 동원해 병원·학원·골프장 해킹…\"돈 안주면 고객정보 유출\" 협박도"
+    publisher: Financial News
+    published: "2026-10-26"
+    kind: news
+    accessed: "2026-10-26"
+  - id: dailysecu
+    url: https://www.dailysecu.com/news/articleView.html?idxno=209080
+    title: "AI로 국내 90여 곳 해킹…개인정보 820만 건 탈취 조직 검거"
+    publisher: Daily Secu
+    published: "2026-10-26"
+    kind: news
+    accessed: "2026-10-26"
+measurements:
+  - id: records-stolen
+    label: Personal and internal data records stolen
+    unit: count
+    unit_label: records
+    source: hankook
+    values:
+      - { label: Records, value: 8200000, qualifier: "~" }
+  - id: organizations-hacked
+    label: Companies and institutions hacked
+    unit: count
+    unit_label: organizations
+    source: hankook
+    values:
+      - { label: Organizations, value: 90, qualifier: "~" }
+  - id: ransom-demanded
+    label: Total ransom demanded from 38 companies
+    unit: other
+    unit_label: South Korean won
+    source: hankook
+    values:
+      - { label: Demanded, value: 360000000, qualifier: "~" }
+      - { label: Paid by one company, value: 300000 }
+related: [AID-2026-0068, AID-2026-0123]
+tags: [cyberattack, extortion, agentic, threat-intel]
+assessment:
+  reach:
+    level: deployed
+    rationale: Police report real intrusions into about 90 operating South Korean organizations.
+  harm:
+    severity: moderate
+    categories: [privacy, security, financial]
+    rationale: About 8.2 million records were stolen and used for extortion. One company paid 300,000 won. Whether the data was leaked or misused downstream is not sourced, and the record count may include duplicates.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: Only won figures are sourced (360 million won demanded, 300,000 won paid). No loss or remediation estimate, and no conversion was made.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access, data theft, extortion]
+    jurisdiction: South Korea
+    rationale: Seven people were arrested and the ringleader was referred to prosecutors for Information and Communications Network Act violations and extortion. Charges are not adjudicated.
+record:
+  created: "2026-10-26"
+  updated: "2026-10-26"
+  created_by: agent
+  review_status: draft
+  notes: >
+    All sources are Korean press reports of a police announcement; no police
+    release was found. The fetch tool would not return verbatim article text,
+    so claims carry no quotes. No source names the AI models, so models is
+    unknown, and how autonomously the AI acted is not described. Only Daily
+    Secu names ARTEX as the tool used; SBS and Asia Economy say only that the
+    group's system was similar to one tied to the recent financial-sector
+    breach (AID-2026-0068). The ARTEX attribution is kept as Daily Secu's
+    report, not stated as fact. Dates conflict: Hankook Ilbo and Daily Secu
+    say the ringleader was arrested on the 15th; Financial News reports a home
+    search on Oct 13; Asia Economy and Financial News say he was sent to
+    prosecutors on Oct 23, Daily Secu says Oct 26. Daily Secu's "seven" counts
+    six accomplices investigated without detention. Daily Secu says about 60
+    companies in 44 days (Aug 31 to Oct 13); Financial News says police
+    estimate about 60 of 90 were AI-assisted. Date set to 2025-09 for the
+    start of intrusions; the AI-assisted phase began late August 2026.

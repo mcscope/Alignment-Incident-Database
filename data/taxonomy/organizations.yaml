@@ -66,6 +66,14 @@
   name: Philadelphia Police Department
   url: https://www.phillypolice.com
   type: government
+- id: georgia-secretary-of-state
+  name: Georgia Secretary of State's office
+  url: https://sos.ga.gov
+  type: government
+- id: seoul-metropolitan-police-agency
+  name: Seoul Metropolitan Police Agency
+  url: https://www.smpa.go.kr
+  type: government
 - id: services-australia
   name: Services Australia
   url: https://www.servicesaustralia.gov.au

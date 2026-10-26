@@ -79,6 +79,18 @@
   name: Claude Mythos 5.1
   developer: anthropic
   family: claude-5
+- id: claude-opus-5.5
+  name: Claude Opus 5.5
+  developer: anthropic
+  family: claude-5
+- id: claude-opus-4.8
+  name: Claude Opus 4.8
+  developer: anthropic
+  family: claude-4
+- id: gpt-5.5
+  name: GPT-5.5
+  developer: openai
+  family: gpt-5
 - id: claude-haiku-4.5
   name: Claude Haiku 4.5
   developer: anthropic
