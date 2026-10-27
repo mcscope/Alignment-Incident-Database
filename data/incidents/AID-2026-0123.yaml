@@ -34,6 +34,17 @@ writeup: |
   separate password spray against 327 accounts at eight organizations logged
   more than 151,000 failed logons [@microsoft].
 
+  Huntress, whose customers were among the targets, saw on October 15 a mix of
+  scripted enumeration, hands-on operator work, and tooling that kept firing
+  after its target was gone. One credential was used against almost 1,000
+  tenants in sequence, and after a failed step the attacker added retry logic to
+  its tooling within 55 seconds. Huntress is confident that "an operator,
+  whether a person or an LLM model" adapted the tooling between runs. It puts
+  its confidence that an LLM was involved at low to medium on its own
+  telemetry, and medium to high with Microsoft's attribution, and says it
+  cannot tell whether AI planned the operation or wrote the tooling
+  [@huntress].
+
   ConnectWise CEO Manny Rivelo said that, based on Microsoft's analysis, a
   China state-aligned group appears to have been responsible for the attack on
   ConnectWise Cloud Backup. The company contained the affected connections and
@@ -73,6 +84,18 @@ claims:
     quote: "it appears that a China state-aligned group was responsible for the attack on ConnectWise Cloud Backup"
   - text: The Chinese Embassy in Washington said China opposes hacking and opposes smears and attacks against China over cybersecurity issues.
     sources: [reuters]
+  - text: On October 15, Huntress observed the credential being used against almost 1,000 tenants one after another, in ascending tenant ID order.
+    sources: [huntress]
+    quote: "the credential was used against almost 1,000 tenants, one after another, in ascending tenant ID order"
+  - text: Huntress observed the actor adapt its tooling within 55 seconds to incorporate retry logic.
+    sources: [huntress]
+    quote: "adapted tooling within 55 seconds to incorporate retry logic"
+  - text: Huntress is highly confident that an operator, human or LLM, adapted the tooling between runs.
+    sources: [huntress]
+    quote: "We are highly confident that an operator, whether a person or an LLM model, adapted the tooling between runs."
+  - text: Huntress puts its confidence that an LLM was involved in the escalation tooling at low to medium on its own telemetry, and medium to high taking Microsoft's attribution into account. It cannot say whether AI was used to plan the operation, develop target lists, or write the tooling.
+    sources: [huntress]
+    quote: "Lastly, we cannot say whether AI was used to plan the operation, develop target lists, or write the tooling."
 sources:
   - id: microsoft
     url: https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/
@@ -88,6 +111,13 @@ sources:
     published: "2026-10-21"
     kind: news
     accessed: "2026-10-25"
+  - id: huntress
+    url: https://www.huntress.com/blog/connectwise-attack-ai
+    title: "AI, Scripts, Operator: Inside the ConnectWise Attack"
+    publisher: Huntress
+    published: "2026-10-26"
+    kind: primary
+    accessed: "2026-10-27"
 measurements:
   - id: connectwise-tenant-signins
     label: Tenants targeted with sign-in attempts using compromised ConnectWise app credentials
@@ -125,10 +155,20 @@ assessment:
     rationale: Using stolen application credentials to break into a vendor's service and its customers' tenants is computer intrusion in nearly every jurisdiction. The actor is state-aligned per Microsoft, no charges are sourced, and China rejects the accusation.
 record:
   created: "2026-10-25"
-  updated: "2026-10-25"
+  updated: "2026-10-27"
   created_by: agent
   review_status: draft
   notes: >
+    2026-10-27 update: added Huntress's October 26 analysis of the October 15
+    activity against its customers, read through a summarizer (the four quoted
+    phrases were confirmed present). Huntress hedges on AI involvement; its
+    telemetry alone does not establish that an LLM ran the attack. Huntress's
+    "almost 1,000 tenants" is its own observation and is not directly
+    comparable with Microsoft's "more than 2,250". Help Net Security
+    (2026-10-19) and The Hacker News (2026-10-20), seen by a research lane but
+    not re-read by the editor, report Huntress confirming unauthorized access to
+    "at least 162" Microsoft 365 tenants and name no actor or AI. They don't
+    corroborate Rescana's 173.
     Written by the lead editor, not the Gemini writer, because OpenRouter
     returned HTTP 402 (out of credits). Microsoft's post was read through
     WebFetch's summarizer, which limits verbatim quotes to short segments, so a

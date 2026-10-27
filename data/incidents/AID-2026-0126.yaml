@@ -1,0 +1,133 @@
+id: AID-2026-0126
+slug: codex-rmdir-wipes-ssd-partition
+title: "Codex ran a malformed node_modules cleanup command that deleted files across a user's entire SSD partition, the user reports"
+date: "2026-10-27"
+status: reported
+actor: model
+models:
+  - unknown
+organizations:
+  - id: openai
+    role: developer
+  - id: openai
+    role: deployer
+behaviors:
+  - destructive-action
+summary: >
+  While upgrading a user's Expo app on Windows, Codex ran a cleanup command
+  meant to remove the project's node_modules folder. The command instead
+  deleted user files across the whole E: partition, including photos,
+  university work, and Git history, the user reports.
+writeup: |
+  On October 27, 2026, a user had Codex upgrade a React Native / Expo / Tauri
+  app on Windows from Expo SDK 57 to 58. The project sat in `E:\App\PersonalOS`
+  on a 1 TB NVMe SSD [@gh-issue].
+
+  To clear the project's `node_modules` folder, Codex ran an `rmdir /s /q`
+  command through `cmd /d /s /c`. The quoting and escaping between PowerShell
+  and cmd.exe appear to have gone wrong, and the delete traversed the root of
+  the E: partition instead. Protected system folders returned access-denied
+  errors. Accessible user files were deleted. Afterwards the E: root held only
+  `$RECYCLE.BIN`, `App`, and `System Volume Information`, and the project
+  directory was empty [@gh-issue].
+
+  The user lost personal photographs, university assignments, unrelated
+  software projects, and the project's Git repository and history. TestDisk
+  found the deleted NTFS records, but a recovered 753,373-byte JPEG contained
+  only zero bytes, which suggests SSD TRIM had already erased some data. Codex
+  rebuilt 496 text files from its session journal on a separate SSD. That did
+  not restore the photos, documents, binary assets, or Git history
+  [@gh-issue]. The user, costelpetrea, reported it on GitHub the same day and
+  asked OpenAI for an investigation and safeguards against deletions outside
+  authorized directories. The issue had no reply from OpenAI staff when this record was written
+  [@gh-issue].
+claims:
+  - text: On October 27, 2026, while working on the user's React Native / Expo application, Codex executed a malformed cleanup command that recursively deleted files across the user's entire E SSD partition.
+    sources:
+      - gh-issue
+    quote: "On October 27, 2026, while working on my React Native / Expo application, Codex executed a malformed cleanup command that resulted in the recursive deletion of files across my entire E: SSD partition."
+  - text: The task was upgrading Expo SDK 57 to SDK 58 and resolving dependency conflicts, in the working directory E:\App\PersonalOS.
+    sources:
+      - gh-issue
+    quote: "Task: Upgrade Expo SDK 57 to SDK 58 and resolve dependency conflicts"
+  - text: Codex intended to delete only the project's node_modules directory, but the command appears to have mishandled quoting and escaping between PowerShell and cmd.exe.
+    sources:
+      - gh-issue
+    quote: "However, the command appears to have mishandled quoting and escaping between PowerShell and cmd.exe."
+  - text: Instead of staying scoped to node_modules, the deletion traversed the root of the E partition, deleting accessible user files while protected system directories returned access-denied errors.
+    sources:
+      - gh-issue
+    quote: "Protected system directories returned access-denied errors, while accessible user files and directories were deleted."
+  - text: Afterwards the E root contained only $RECYCLE.BIN, App, and System Volume Information.
+    sources:
+      - gh-issue
+    quote: "The E: root contained only $RECYCLE.BIN , App , and System Volume Information ."
+  - text: The loss included personal photographs, university assignments, academic documents, software projects, and other files accumulated over several years.
+    sources:
+      - gh-issue
+    quote: "This incident resulted in the loss of personal photographs, university assignments, academic documents, software projects, and other important files accumulated over several years."
+  - text: A recovered JPEG file of 753,373 bytes contained only zero bytes, suggesting SSD TRIM made some deleted data inaccessible.
+    sources:
+      - gh-issue
+    quote: "However, one recovered JPEG file of 753,373 bytes contained exclusively zero bytes."
+  - text: Codex reconstructed 496 text files from its session journal, which did not restore photographs, documents, binary assets, Git history, or unrelated personal files.
+    sources:
+      - gh-issue
+    quote: "Codex was able to reconstruct 496 text files from its session journal on a separate SSD, but this does not restore my photographs, documents, binary assets, Git history, or unrelated personal files."
+sources:
+  - id: gh-issue
+    url: https://github.com/openai/codex/issues/57530
+    title: "CRITICAL: Codex accidentally deleted an entire SSD partition while cleaning node_modules"
+    publisher: GitHub
+    published: "2026-10-27"
+    kind: primary
+measurements:
+  - id: recovered-files
+    label: Text files Codex reconstructed from its session journal
+    unit: count
+    unit_label: files
+    source: gh-issue
+    values:
+      - { label: Files reconstructed, value: 496 }
+related:
+  - AID-2026-0029
+  - AID-2026-0112
+  - AID-2026-0125
+tags:
+  - agentic
+  - coding-agent
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Happened in OpenAI's deployed Codex coding agent on the user's own Windows machine, operating with filesystem access by design.
+  harm:
+    severity: moderate
+    categories:
+      - data-loss
+    rationale: Years of personal files, academic work, unrelated projects, and Git history were deleted, and recovery attempts suggest some data is permanently gone. Only 496 text files were rebuilt.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: The issue gives no monetary figure.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: A human who wiped a drive through a mistyped cleanup command would be negligent, not committing a crime.
+record:
+  created: "2026-10-27"
+  updated: "2026-10-27"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Sourced from a single first-hand GitHub issue (#57530) by user costelpetrea.
+    The issue does not name the Codex model or version, so the model is
+    `unknown`. The reporter attributes the deletion to shell quoting and
+    escaping between PowerShell and cmd.exe, i.e. a malformed command rather
+    than a deliberate choice to delete outside the project. The issue says "I
+    had asked Codex to work on my application, not to delete anything outside
+    the project directory"; this reads as a description of the task rather than
+    a quoted prohibition, so instruction-violation is not tagged. The reporter
+    offers execution logs privately. As of 2026-10-27 the issue had only bot
+    labels (including model-behavior and sandbox) and no OpenAI staff reply.

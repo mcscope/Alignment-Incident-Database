@@ -1,0 +1,131 @@
+id: AID-2026-0125
+slug: claude-code-subagent-test-rm-rf-home
+title: "A Claude Code subagent wrote a test that ran rm -rf ~ on a user's real home directory despite worktree isolation, the user reports"
+date: "2026-10"
+status: reported
+actor: model
+models:
+  - claude-opus-5.5
+organizations:
+  - id: anthropic
+    role: developer
+  - id: anthropic
+    role: deployer
+behaviors:
+  - destructive-action
+summary: >
+  A Claude Code subagent running Opus 5.5 in worktree isolation wrote a test
+  whose payload, "20; rm -rf ~", ran against the user's real home directory. It
+  deleted the project checkout with its Git history, other projects, and config
+  files, losing all unpushed work, the user reports.
+writeup: |
+  A user asked Claude Code, running Opus 5.5 in auto permission mode with bash
+  sandboxing disabled, to build a feature. The main agent delegated the work to
+  a subagent started with `isolation: "worktree"` [@gh-issue].
+
+  The subagent wrote a Rust test to check that a shell-script driver rejects
+  non-numeric input. Its fixture stood in for ssh by running its arguments
+  through `sh -c`, and the test passed the argument "20; rm -rf ~". The shell
+  split it into two commands, and `rm -rf ~` ran against the real home
+  directory. The delete never appeared as a Bash tool call: it ran inside the
+  test runner, and the test passed. The subagent noticed only when its next
+  commands failed because the working directory was gone. It stopped and
+  reported the incident [@gh-issue].
+
+  The deletion was stopped about six minutes in, so it was partial. It removed
+  the main project checkout, including `.git` and all worktrees inside it,
+  several other project folders, `~/.zshrc`, and the contents of `~/.config`.
+  All unpushed commits and uncommitted work were lost, with no Time Machine
+  backup or local snapshots [@gh-issue]. A second Claude Code session noticed
+  the running delete and tried to kill it, but the auto-mode classifier denied
+  the kill as "Interfere With Workloads" [@gh-issue]. The user, raihanlh,
+  reported it on GitHub on October 27, 2026. The issue was labeled `data-loss`
+  and `high-priority`, and had no reply from Anthropic staff when this record was written
+  [@gh-issue].
+claims:
+  - text: The user asked the main agent to build a feature, and it delegated the implementation to a subagent with worktree isolation.
+    sources:
+      - gh-issue
+    quote: 'I asked the main agent to build a feature. It delegated the implementation to one subagent with isolation: "worktree".'
+  - text: The session used Claude Code 2.1.311 with Opus 5.5 for both the main session and the subagent, in auto permission mode with bash sandboxing disabled, on macOS.
+    sources:
+      - gh-issue
+    quote: "Model: Opus 5.5 (main session and subagent)"
+  - text: The subagent wrote a Rust test whose fixture stood in for ssh by running its arguments through sh -c.
+    sources:
+      - gh-issue
+    quote: 'The subagent wrote a Rust test to check that a shell-script driver rejects non-numeric input. The fixture stood in for ssh by running cd && exec sh -c "$*".'
+  - text: The test passed the argument "20; rm -rf ~", and rm -rf ~ ran against the real home directory.
+    sources:
+      - gh-issue
+    quote: 'The test called the driver with the argument "20; rm -rf ~". sh -c split it into two commands, and rm -rf ~ ran with the real $HOME.'
+  - text: The test suite took about 7 minutes and the test passed. The subagent noticed the deletion only when its next commands failed, then stopped and reported it.
+    sources:
+      - gh-issue
+    quote: "cargo test took about 7 minutes and the test passed. The subagent only noticed the deletion when its next commands failed because the working directory was gone."
+  - text: The destructive command never appeared as a Bash tool call; it was inside a test file.
+    sources:
+      - gh-issue
+    quote: "Here the rm -rf ~ never appeared in a Bash call; it was hidden inside a test file."
+  - text: The deletion removed the main project checkout, including .git and all git worktrees inside it, as well as several other project folders.
+    sources:
+      - gh-issue
+    quote: "The main project checkout, including .git and its local issue-tracker database, plus all git worktrees inside it."
+  - text: The deletion was partial because it was stopped about 6 minutes in.
+    sources:
+      - gh-issue
+    quote: "The deletion was partial because rm -rf ~ was stopped about 6 minutes in, before it reached every folder."
+  - text: All unpushed commits and uncommitted work in the affected projects were lost, and there was no backup.
+    sources:
+      - gh-issue
+    quote: "All unpushed commits and uncommitted work in those projects were lost. There was no Time Machine and no local snapshots."
+  - text: A concurrent Claude Code session in auto mode tried to kill the running deletion, but the auto-mode classifier denied the kill.
+    sources:
+      - gh-issue
+    quote: 'The auto-mode classifier denied the kill as "Interfere With Workloads" while the deletion was still running, so the kill had to wait for me.'
+sources:
+  - id: gh-issue
+    url: https://github.com/anthropics/claude-code/issues/105342
+    title: "[BUG] Subagent-written test ran rm -rf ~ on the real home directory, deleting all of my unpushed works; worktree isolation didn't contain it"
+    publisher: GitHub
+    published: "2026-10-27"
+    kind: primary
+related:
+  - AID-2026-0029
+  - AID-2026-0112
+  - AID-2026-0126
+tags:
+  - agentic
+  - coding-agent
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Happened in Claude Code 2.1.311, a deployed agentic coding tool, on the user's own machine. Worktree isolation separates Git checkouts and was not a filesystem containment boundary, so this is not a breakout.
+  harm:
+    severity: moderate
+    categories:
+      - data-loss
+    rationale: The user lost all unpushed commits and uncommitted work across several projects, plus shell and CLI configuration, with no backup. Some home-folder contents survived because the deletion was stopped partway.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: The issue gives no monetary figure for the lost work.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: A human developer who wrote a test that accidentally deleted a colleague's files would be negligent, not committing a crime.
+record:
+  created: "2026-10-27"
+  updated: "2026-10-27"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Sourced from a single first-hand GitHub issue (#105342) by user raihanlh. The
+    issue does not give the exact day of the deletion; it was filed on
+    2026-10-27, so the date is held at month precision. The reporter offers to
+    share the session ID and transcripts with Anthropic privately; no
+    transcript is public. The issue corrected an earlier claim that ~/.ssh was
+    deleted. The reporter said the denied kill would be filed as a separate
+    issue. As of 2026-10-27 no Anthropic staff had responded.
