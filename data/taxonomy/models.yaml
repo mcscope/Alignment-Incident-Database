@@ -147,6 +147,14 @@
   name: GPT-6.1 Sol
   developer: openai
   family: gpt-6
+- id: gpt-6.1-terra
+  name: GPT-6.1 Terra
+  developer: openai
+  family: gpt-6
+- id: gpt-5.4
+  name: GPT-5.4
+  developer: openai
+  family: gpt-5
 - id: openai-operator
   name: Operator (OpenAI computer-using agent)
   developer: openai
@@ -258,7 +266,15 @@
   name: DeepSeek V4.1 Flash
   developer: deepseek
   family: deepseek-v4
+- id: deepseek-v4.1-flash-1017
+  name: DeepSeek V4.1 Flash-1017
+  developer: deepseek
+  family: deepseek-v4
 # Alibaba
+- id: qwen3.8-flash-next
+  name: Qwen3.8-Flash-Next
+  developer: alibaba
+  family: qwen3
 - id: qwen2.5-coder-32b-instruct
   name: Qwen2.5-Coder-32B-Instruct
   developer: alibaba

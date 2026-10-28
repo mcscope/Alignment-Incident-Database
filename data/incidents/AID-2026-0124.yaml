@@ -72,7 +72,20 @@ claims:
     sources: [hankook, asiae, fnnews]
   - text: Police said the case shows that an individual, not a hacker group, can carry out large-scale hacking with AI's help, and called it the first domestic arrest in a large-scale hacking case using generative AI.
     sources: [hankook, asiae, fnnews, sbs]
+  - text: Decrypt reported that emails to 38 victims demanded a combined 360 million won, that the only confirmed payment was 300,000 won, and that 15 organizations had reported damage so far.
+    sources: [decrypt]
+    quote: the only confirmed payment was 300,000 won
+  - text: Decrypt reported that police say the ringleader breached 60 companies in 44 days, from August 31 to October 13, and that the case opened in June after one victim filed a complaint.
+    sources: [decrypt]
+    quote: Police say he then breached 60 companies in 44 days, from August 31 to October 13.
 sources:
+  - id: decrypt
+    url: https://decrypt.co/381862/south-korea-arrests-seven-first-big-ai-hacking-case
+    title: South Korea Arrests Seven in First Big AI-Assisted Hacking Case
+    publisher: Decrypt
+    published: "2026-10-26"
+    kind: news
+    accessed: "2026-10-28"
   - id: sbs
     url: https://news.sbs.co.kr/news/endPage.do?news_id=N1008814971
     title: "AI로 개인정보 820만 건 유출…3억 6천 요구 일당 검거"
@@ -153,7 +166,7 @@ assessment:
     rationale: Seven people were arrested and the ringleader was referred to prosecutors for Information and Communications Network Act violations and extortion. Charges are not adjudicated.
 record:
   created: "2026-10-26"
-  updated: "2026-10-26"
+  updated: "2026-10-28"
   created_by: agent
   review_status: draft
   notes: >
@@ -172,3 +185,7 @@ record:
     companies in 44 days (Aug 31 to Oct 13); Financial News says police
     estimate about 60 of 90 were AI-assisted. Date set to 2025-09 for the
     start of intrusions; the AI-assisted phase began late August 2026.
+    Decrypt (English, 2026-10-26) agrees with the Korean reports on 360
+    million won from 38 victims, one confirmed payment of 300,000 won, and 60
+    companies in 44 days (Aug 31 to Oct 13); it adds that 15 organizations
+    reported damage and that the case opened in June. No conflicts found.

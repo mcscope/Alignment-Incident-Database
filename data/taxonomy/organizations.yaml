@@ -124,6 +124,14 @@
   name: Alibaba Cloud (Qwen)
   url: https://www.alibabacloud.com
   type: company
+- id: cohere
+  name: Cohere
+  url: https://cohere.com
+  type: ai-lab
+- id: fangcun-ai
+  name: Fangcun AI
+  url: https://fangcunleap.com
+  type: research-org
 - id: xiaomi
   name: Xiaomi
   url: https://www.mi.com
