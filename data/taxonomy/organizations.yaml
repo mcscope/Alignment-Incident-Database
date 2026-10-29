@@ -208,6 +208,14 @@
   name: University of Cambridge
   url: https://www.cam.ac.uk
   type: academic
+- id: university-of-stuttgart
+  name: University of Stuttgart
+  url: https://www.uni-stuttgart.de
+  type: academic
+- id: university-of-oxford
+  name: University of Oxford
+  url: https://www.ox.ac.uk
+  type: academic
 - id: zhipu-ai
   name: Zhipu AI (Z.ai)
   url: https://z.ai
