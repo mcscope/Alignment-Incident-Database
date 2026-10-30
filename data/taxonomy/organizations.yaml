@@ -255,6 +255,11 @@
   url: https://www.moonshot.ai
   type: ai-lab
 
+- id: frontier-security
+  name: Frontier Security
+  url: https://frontier.security
+  type: company
+
 - id: goodfire
   name: Goodfire
   url: https://www.goodfire.com

@@ -1,0 +1,110 @@
+id: AID-2026-0136
+slug: claude-cowork-deletes-275-gb-during-scoped-cleanup
+title: "Claude Cowork deleted about 275 GB from a user's C: drive after being told to delete one group of leftover files, the user reports"
+date: "2026-10"
+status: reported
+actor: model
+models: [claude-opus-5.5]
+organizations:
+  - id: anthropic
+    role: developer
+behaviors: [destructive-action]
+summary: >
+  Told to delete only the first group of leftover application files, Claude
+  Cowork on Windows ran a recursive delete that removed about 275 GB from the
+  user's C: drive, the user reports in a GitHub issue.
+writeup: |
+  A user running Cowork in Claude for Windows 4.29.0, with the model shown as
+  Opus 5.5 and Accept Edits on, had Cowork sort leftover files from uninstalled
+  applications into groups. The user authorized only "Delete the first group"
+  and says they never authorized deleting the C: drive root, personal
+  documents, or application data [@github-issue].
+
+  Cowork reported that 26 folders were deleted and that the remaining 5 needed
+  admin rights. In the next step it said a "$WinREAgent" path had expanded to
+  C:\ itself. It then reported that C: usage had dropped from 413 GB to 138 GB
+  because "the bad recursive delete command wiped out a lot of data before
+  erroring out," halted all writes, and told the user "about 275 GB on C: was
+  deleted by mistake" [@github-issue].
+
+  The issue was filed on October 30, 2026. It had no comments or Anthropic
+  response at the time of review [@github-issue].
+claims:
+  - text: The user ran Cowork in Claude for Windows 4.29.0, with the model displayed as Opus 5.5 at medium effort and Accept Edits on.
+    sources: [github-issue]
+    quote: "Opus 5.5, Medium effort"
+  - text: The user authorized only the deletion of the first group of files Cowork had identified.
+    sources: [github-issue]
+    quote: "Delete the first group"
+  - text: "The user says they did not authorize deletion of the C: drive root, personal documents, application data, or unrelated system files."
+    sources: [github-issue]
+    quote: "I did not authorize deletion of the C: drive root, personal documents, application data, or unrelated system files."
+  - text: Cowork reported deleting 26 folders and said the remaining 5 needed admin rights.
+    sources: [github-issue]
+    quote: "26 folders are deleted. The remaining 5 need admin rights (a UAC prompt will appear)."
+  - text: 'Cowork then said a $WinREAgent path had expanded to C:\ itself.'
+    sources: [github-issue]
+    quote: "I hit a bug where the $WinREAgent path expanded to C:\\ itself"
+  - text: "Cowork reported that C: usage dropped from 413 GB to 138 GB because a recursive delete command wiped out data before erroring out, and halted all write operations."
+    sources: [github-issue]
+    quote: "C: usage dropped from 413 GB to 138 GB — the bad recursive delete command wiped out a lot of data before erroring out. I'm halting all write operations"
+  - text: "Cowork told the user that about 275 GB on C: had been deleted by mistake."
+    sources: [github-issue]
+    quote: "I caused a serious accident: about 275 GB on C: was deleted by mistake. I'm very sorry."
+sources:
+  - id: github-issue
+    url: https://github.com/anthropics/claude-code/issues/106205
+    title: "[MODEL][CRITICAL] Cowork deleted ~275 GB from C:\\ during scoped cleanup[MODEL]"
+    publisher: "GitHub (anthropics/claude-code)"
+    published: "2026-10-30"
+    kind: primary
+    accessed: "2026-10-30"
+measurements:
+  - id: c-drive-usage
+    label: "C: drive usage before and after the delete, as Cowork reported it"
+    unit: other
+    unit_label: GB
+    source: github-issue
+    values:
+      - { label: Before, value: 413 }
+      - { label: After, value: 138 }
+related: [AID-2026-0121, AID-2026-0126, AID-2026-0112, AID-2026-0125]
+tags: [agentic]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: Occurred in Cowork, Anthropic's agent in the Claude desktop app, on a user's own Windows machine.
+  harm:
+    severity: moderate
+    categories: [data-loss]
+    rationale: The user reports losing about 275 GB from their system drive, by the agent's own account. The extent and recoverability of the loss are unverified self-reports.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No figures given for the value of the lost data or recovery costs.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: A human assistant who accidentally deleted files beyond an authorized cleanup would lack the intent required for computer-damage offenses.
+record:
+  created: "2026-10-30"
+  updated: "2026-10-30"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Based on a single first-hand GitHub issue opened 2026-10-30; the day of the
+    deletion itself is not stated, so `date` is 2026-10. The user's
+    authorization was written in Chinese ("删除第一组"); the English rendering
+    "Delete the first group" is the reporter's own. Cowork's messages are
+    quoted as the reporter gives them; no logs or screenshots are public (the
+    reporter says full logs will go to support privately). The cause (a path
+    variable expanding to C:\) is the agent's own explanation and is
+    unverified. The report is internally inconsistent: Cowork first says 26
+    folders were deleted, then "The 4 folders were deleted". The reporter's
+    list of possibly affected locations (Documents, Desktop, Downloads,
+    AppData, WSL data) and the claim that files bypassed the Recycle Bin were
+    left out as unverified. Drafted without the Gemini writer (OpenRouter out
+    of credits); quotes checked by the editor against the issue page. No
+    comments or Anthropic response as of 2026-10-30.

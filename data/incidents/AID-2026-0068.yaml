@@ -46,6 +46,11 @@ writeup: |
   ARTEX's default blocklist excluded government entities and universities but
   not financial institutions, and its developer made the project closed source
   after public disclosure [@zscaler].
+
+  South Korea's National Police Agency is investigating ARTEX traces on IP
+  addresses linked to attacks on seven financial firms, where data tied to
+  about 68,000 people was exposed. Investigators have not established whether
+  ARTEX was used [@runtimewire].
 claims:
   - text: CrowdStrike reported a targeted campaign against South Korean financial organizations that resulted in exfiltrated data.
     sources: [crowdstrike]
@@ -91,7 +96,17 @@ claims:
   - text: Zscaler also assesses with moderate confidence that a financially motivated, Chinese-speaking actor ran the campaign, which it first observed in late September 2026.
     sources: [zscaler]
     quote: "assesses with moderate confidence"
+  - text: RunTimeWire reported that South Korea's National Police Agency is investigating ARTEX traces on IP addresses linked to attacks on seven financial firms, where data tied to about 68,000 people was exposed, and that investigators have not established whether ARTEX was used. This count differs from Zscaler's approximately 67,000.
+    sources: [runtimewire]
+    quote: "investigators have not established whether ARTEX was used"
 sources:
+  - id: runtimewire
+    url: https://runtimewire.com/article/south-korea-bank-breaches-artex-ai-probe
+    title: AhnLab finds ARTEX on 600 IPs as police probe South Korean bank breaches
+    publisher: RunTimeWire
+    published: "2026-10-06"
+    kind: news
+    accessed: "2026-10-30"
   - id: zscaler
     url: https://www.zscaler.com/blogs/security-research/threat-actor-abuses-agentic-ai-pentesting-framework-target-south-korean
     title: Threat Actor Abuses Agentic AI Pentesting Framework to Target South Korean Financial Institutions
@@ -128,12 +143,12 @@ assessment:
     rationale: CrowdStrike reports breaches of bank systems and data exfiltration by a financially motivated actor. Unauthorized intrusion and data theft are crimes. No arrests or charges are sourced, and the actor is unidentified.
 record:
   created: "2026-10-09"
-  updated: "2026-10-25"
+  updated: "2026-10-30"
   created_by: agent
   review_status: draft
   notes: >
     Two independent vendor accounts (CrowdStrike, then Zscaler on 2026-10-14,
-    added 2026-10-25). No victim, regulator, or news confirmation sourced yet.
+    added 2026-10-25). No victim or regulator confirmation sourced yet (news of a police probe added 2026-10-30, below).
     Zscaler says the agents worked autonomously, which supports the AI being
     central. Zscaler names the Grok developer "SpaceXAI". CrowdStrike does not say how much of the
     intrusion work the AI tooling did on its own versus the human operator,
@@ -144,3 +159,4 @@ record:
     listed as developer. The page notes the bank breach "reportedly"; types of
     data taken are not stated. Look for Korean news coverage (e.g. bank
     breach disclosures from late Sept/early Oct 2026) to corroborate.
+    2026-10-30 update added RunTimeWire (2026-10-06, relaying Yonhap of the same day), the first news confirmation of police involvement. It gives seven financial firms and about 68,000 people, against Zscaler's approximately 67,000; the conflict is left unresolved. It says investigators have not established that ARTEX was used, so it does not settle how central the AI was. The Yonhap original was not read. The article's phrasing came through a summarizing fetch tool; only the short quote was confirmed verbatim.
