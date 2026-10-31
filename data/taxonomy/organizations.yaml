@@ -82,6 +82,10 @@
   name: Hugging Face
   url: https://huggingface.co
   type: company
+- id: chainalysis
+  name: Chainalysis
+  url: https://www.chainalysis.com
+  type: company
 - id: metr
   name: METR
   url: https://metr.org

@@ -1,0 +1,114 @@
+id: AID-2026-0139
+slug: chainalysis-breach-offensive-agentic-techniques
+title: "An attacker using offensive agentic techniques accessed Chainalysis systems and customer user data, Chainalysis says"
+date: "2026-10"
+status: reported
+actor: human-misuse
+models: [unknown]
+organizations:
+  - id: chainalysis
+    role: affected
+  - id: chainalysis
+    role: reporter
+behaviors: [unauthorized-access]
+summary: >
+  An external actor using "offensive agentic techniques" gained unauthorized
+  access to Chainalysis systems and internal tools in October 2026 and
+  accessed customer user IDs, names, email addresses, and role labels.
+  Chainalysis has not named an AI system or described how the attack worked.
+writeup: |
+  In October 2026, an external actor using "offensive agentic techniques"
+  gained unauthorized access to systems and internal tools at Chainalysis, the
+  blockchain analytics firm. The intruder accessed user IDs, full names, email
+  addresses, and organization role labels for users provisioned on the
+  platform. Chainalysis has found no indication that investigation content,
+  transaction or query results, clear-text passwords, MFA secrets, or session
+  tokens were accessed, and it says the breach is unrelated to the recent
+  Binance theft [@chainalysis].
+
+  The disclosure came in a customer email that Chainalysis published on
+  October 30, 2026, which places the attack within "an industry-wide rise in
+  AI-driven cyberattacks" [@chainalysis]. Chainalysis has not named an AI model
+  or described how the attack unfolded, and the attacker, entry point, and
+  number of affected users have not been disclosed [@financefeeds].
+claims:
+  - text: Chainalysis published a security incident notice on October 30, 2026, including the full text of an email sent to impacted customers.
+    sources: [chainalysis, financefeeds]
+    quote: "Below, you can find the full text of the email that was sent to impacted customers."
+  - text: Chainalysis says it detected an external actor using offensive agentic techniques to gain unauthorized access to its systems and internal tools during October 2026.
+    sources: [chainalysis, financefeeds]
+    quote: "an external actor using offensive agentic techniques"
+  - text: The customer email refers to an industry-wide rise in AI-driven cyberattacks.
+    sources: [chainalysis]
+    quote: "We are seeing an industry-wide rise in AI-driven cyberattacks"
+  - text: The accessed data included user IDs, full names, email addresses, and organization role labels for users provisioned on the Chainalysis platform, which Chainalysis calls non-sensitive.
+    sources: [chainalysis, financefeeds]
+    quote: "Some non-sensitive customer data, such as user IDs, full names, email addresses, and organization role labels for users provisioned on our platform were accessed"
+  - text: Chainalysis says it has found no indication of unauthorized access to investigation content, transaction or query results, clear-text passwords, MFA secrets, or user session tokens.
+    sources: [chainalysis]
+    quote: "we have found no indication that these incidents resulted in the unauthorized access of investigation content (such as graphs, notes, or cases), transaction or query results, passwords in clear text, MFA secrets, or user session tokens."
+  - text: Chainalysis says the incident is unrelated to the recent crypto theft at Binance.
+    sources: [chainalysis, financefeeds]
+    quote: "This security incident is not related to the recent crypto theft at Binance."
+  - text: Chainalysis did not name an AI model or describe how the attack unfolded, and has not disclosed the attacker, the entry point, or the number of affected users.
+    sources: [financefeeds]
+    quote: "Chainalysis did not name an AI model or describe how the attack unfolded."
+sources:
+  - id: chainalysis
+    url: https://www.chainalysis.com/blog/security-incident-october-30/
+    title: Chainalysis Security Incident Information
+    publisher: Chainalysis
+    published: "2026-10-30"
+    kind: primary
+    accessed: "2026-10-31"
+  - id: financefeeds
+    url: https://financefeeds.com/chainalysis-hack-customer-data-breach-agentic-ai/
+    title: "Chainalysis Discloses Breach by Attacker Using 'Agentic' AI Techniques, Says It Is Unrelated to Binance Hack"
+    publisher: FinanceFeeds
+    published: "2026-10-31"
+    kind: news
+    accessed: "2026-10-31"
+tags: [threat-intel, agentic, data-breach, crypto]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: A real intrusion into Chainalysis's production systems and internal tools, disclosed by the victim company.
+  harm:
+    severity: minor
+    categories: [privacy, security]
+    rationale: >
+      Names, email addresses, user IDs, and role labels of customer users were
+      exposed. Chainalysis reports no access to investigation content,
+      credentials, or session tokens. The number of affected users is not
+      disclosed.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No source gives a loss or remediation cost.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access]
+    rationale: >
+      Unauthorized access to a company's systems and customer data is a crime
+      in most jurisdictions. The attacker is unidentified, and no arrests or
+      charges have been reported.
+record:
+  created: "2026-10-31"
+  updated: "2026-10-31"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Thin record. The only sourced statement about AI's role is Chainalysis's
+    phrase "offensive agentic techniques" (plus the general reference to
+    AI-driven cyberattacks); no model, agent framework, degree of autonomy,
+    entry point, or access dates are given. Update or retract if Chainalysis
+    publishes technical detail. One outlet found by the verify lane attributed
+    the attack to North Korea; that page was not read and the attribution is
+    unsupported, so it is left out. Chainalysis's attribution of the separate
+    Binance hack to TraderTraitor is not relevant here. Date is the month
+    Chainalysis says the access was detected ("This month" in an email
+    published 2026-10-30). The OpenRouter writer was unavailable (out of
+    credits), so the lead editor wrote this record.
+related: [AID-2026-0065, AID-2026-0119]
