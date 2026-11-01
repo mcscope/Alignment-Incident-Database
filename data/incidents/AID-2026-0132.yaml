@@ -36,7 +36,10 @@ writeup: |
   postmortem blood held lamotrigine at roughly one-fifth of the lowest generally
   therapeutic level [@openclassactions]. No court has ruled on the allegations. An OpenAI spokesman called it an "incredibly heartbreaking situation"
   involving an early version of ChatGPT that is no longer available
-  [@openclassactions].
+  [@openclassactions]. The suit brings eight claims, including wrongful death,
+  product liability and practising medicine without a licence. OpenAI adds that
+  newer models are better at recognising when a situation needs urgent
+  attention [@tnw].
 claims:
   - text: Qun Wan and Meiqin Xu, parents of Bowen Wan, filed a wrongful-death and survival suit against OpenAI and Sam Altman on October 27, 2026, in San Francisco Superior Court, as an add-on to the ChatGPT Product Liability Cases, JCCP No. 5431 (Wan v. OpenAI, Inc.).
     sources: [openclassactions]
@@ -56,6 +59,24 @@ claims:
   - text: An OpenAI spokesman told The New York Times the case was an "incredibly heartbreaking situation" involving an early ChatGPT version no longer available, and OpenAI removed GPT-4o from the consumer app on February 13, 2026.
     sources: [openclassactions]
     quote: "incredibly heartbreaking situation"
+  - text: The Next Web reports that the parents sued OpenAI and its chief executive, Sam Altman, in San Francisco Superior Court on 27 October.
+    sources: [tnw]
+    quote: "filed the wrongful death lawsuit in San Francisco Superior Court on 27 October"
+  - text: The Next Web reports that the suit brings eight claims, including wrongful death, product liability and practising medicine without a licence.
+    sources: [tnw]
+    quote: "The suit brings eight claims, including wrongful death, product liability and practising medicine without a licence."
+  - text: The Next Web describes the woman as the daughter of the plaintiffs and a 31-year-old Amazon software engineer.
+    sources: [tnw]
+    quote: "31-year-old Amazon software engineer"
+  - text: The complaint alleges, per The Next Web, that she used GPT-4o to plan cuts to her daily dose of lamotrigine and that the chatbot drew up schedules that would have taken her dose to zero within weeks.
+    sources: [tnw]
+    quote: "drew up schedules that would have taken her dose to zero within weeks"
+  - text: An OpenAI spokesperson called the case "Incredibly heartbreaking" and said it involved an older version of ChatGPT that is no longer available.
+    sources: [tnw]
+    quote: "an older version of ChatGPT that is no longer available"
+  - text: OpenAI said newer models are better at recognising when a situation needs urgent attention.
+    sources: [tnw]
+    quote: "newer models are better at recognising when a situation needs urgent attention"
 sources:
   - id: openclassactions
     url: https://openclassactions.com/news/openai-chatgpt-epilepsy-medication-wrongful-death-lawsuit.php
@@ -64,6 +85,13 @@ sources:
     published: "2026-10-27"
     kind: news
     accessed: "2026-10-28"
+  - id: tnw
+    url: https://thenextweb.com/news/parents-sue-openai-chatgpt-seizure-medication
+    title: Parents sue OpenAI over ChatGPT advice to cut daughter's seizure drug
+    publisher: The Next Web
+    published: "2026-10-28"
+    kind: news
+    accessed: "2026-11-01"
 tags: [lawsuit, mental-health, product-liability, medical-advice]
 related: [AID-2026-0118, AID-2026-0020]
 assessment:
@@ -86,7 +114,7 @@ assessment:
     rationale: The case is a civil wrongful-death and product-liability suit. A human giving such advice would face civil liability, and criminal liability is unclear and not alleged in the source.
 record:
   created: "2026-10-28"
-  updated: "2026-10-28"
+  updated: "2026-11-01"
   created_by: agent
   review_status: draft
   notes: >
@@ -98,3 +126,10 @@ record:
     GPT-4o from the consumer app on February 13, 2026; this is unverified here.
     The page reports the victim's profession as software engineer; the brief said
     machine-learning engineer.
+    2026-11-01: added The Next Web (2026-10-28) as a second source (eight
+    claims, Amazon software engineer, OpenAI statement). Inconsistency, not
+    resolved: TNW says GPT-4o was removed from the app on 13 February, "the day
+    after she died", while Open Class Actions says she was found dead on 14
+    February with an estimated death on 12 February. Incident date left as
+    2026-02. TNW's wording on the Amazon employer and "practising medicine
+    without a licence" is as reported by TNW; the complaint was not read.

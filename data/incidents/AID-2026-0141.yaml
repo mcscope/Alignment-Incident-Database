@@ -1,0 +1,145 @@
+id: AID-2026-0141
+slug: vapor-panda-artex-deepseek-global-campaign
+title: "China-nexus VAPOR PANDA ran ARTEX agents on DeepSeek against more than 200 organizations, including foreign ministries, CrowdStrike finds"
+date: "2026-10-17"
+status: reported
+actor: human-misuse
+models: [unknown]
+organizations:
+  - id: crowdstrike
+    role: reporter
+  - id: deepseek
+    role: developer
+behaviors: [unauthorized-access]
+summary: >
+  Starting October 17, 2026, VAPOR PANDA ran the agentic framework ARTEX,
+  mainly on DeepSeek, against more than 200 organizations in at least 14
+  countries. Post-exploitation was confirmed at nine, including two Latin
+  American foreign ministries.
+writeup: |
+  Beginning on October 17, 2026, the China-nexus actor VAPOR PANDA used ARTEX,
+  an agentic framework in which a main agent coordinates planner and worker
+  agents, against more than 200
+  distinct organizations worldwide, in at least 14 countries over an 11-day
+  window. It ran ARTEX primarily on the Chinese-origin DeepSeek LLM, with a
+  second subscription-based commercial LLM that CrowdStrike could not identify.
+  CrowdStrike does not name the DeepSeek version [@crowdstrike].
+
+  The agents ran intrusions against several high-value targets in parallel, and
+  the human operator intervened only to steer them at decision points. In one
+  intrusion the planning agents consumed on the order of 1.4 billion input
+  tokens. CrowdStrike confirmed post-exploitation activity at nine
+  organizations, including the foreign ministries of two Latin American
+  countries, and found password spraying or credential scanning against at
+  least 12 more. A separate engagement targeted 19 U.S. organizations. VAPOR
+  PANDA also deployed the BLOODALCHEMY backdoor [@crowdstrike].
+
+  CrowdStrike says this campaign is separate from the ARTEX activity reported
+  under the Storm-0940 name [@crowdstrike].
+claims:
+  - text: Beginning on October 17, 2026, VAPOR PANDA used ARTEX against more than 200 distinct organizations worldwide.
+    sources: [crowdstrike]
+    quote: "Beginning on October 17, 2026, the adversary used ARTEX against more than 200 distinct organizations worldwide"
+  - text: The activity was directed against entities in at least 14 countries over an 11-day window.
+    sources: [crowdstrike]
+    quote: "directed against entities in at least 14 countries over an 11-day window."
+  - text: VAPOR PANDA ran ARTEX primarily with the Chinese-origin DeepSeek LLM. The post does not name a DeepSeek version.
+    sources: [crowdstrike]
+    quote: "VAPOR PANDA ran ARTEX primarily with the Chinese-origin DeepSeek LLM,"
+  - text: VAPOR PANDA supplemented DeepSeek with a second, subscription-based commercial LLM that CrowdStrike could not confirm.
+    sources: [crowdstrike]
+    quote: "supplemented with a second, subscription-based commercial LLM that CrowdStrike Intelligence could not confirm."
+  - text: The operator intervened only to steer the agents at decision points.
+    sources: [crowdstrike]
+    quote: "intervening only to steer the agents at decision points."
+  - text: The ARTEX agents were used to conduct intrusions against multiple high-value targets in parallel.
+    sources: [crowdstrike]
+    quote: "to conduct intrusions against multiple high-value targets in parallel."
+  - text: In a single intrusion, VAPOR PANDA's planning agents consumed on the order of 1.4 billion input tokens.
+    sources: [crowdstrike]
+    quote: "planning agents consumed on the order of 1.4 billion input tokens"
+  - text: CrowdStrike Intelligence confirmed post-exploitation activity at nine organizations.
+    sources: [crowdstrike]
+    quote: "CrowdStrike Intelligence confirmed post-exploitation activity at nine organizations"
+  - text: Activity at the foreign ministries of two Latin America-based countries was observed.
+    sources: [crowdstrike]
+    quote: "at the foreign ministries of two Latin America-based countries"
+  - text: Password spraying or credential scanning was directed against at least 12 additional organizations, including U.S.-based think tanks and government entities in Europe.
+    sources: [crowdstrike]
+    quote: "against at least 12 additional organizations, including U.S.-based think tanks and government entities in Europe."
+  - text: A separate engagement targeted 19 U.S.-based organizations.
+    sources: [crowdstrike]
+    quote: "A separate engagement targeted 19 U.S.-based organizations"
+  - text: VAPOR PANDA deployed the BLOODALCHEMY backdoor, first publicly documented in October 2023.
+    sources: [crowdstrike]
+    quote: "VAPOR PANDA deployed BLOODALCHEMY, a backdoor first publicly documented in October 2023."
+  - text: CrowdStrike describes the campaign as an escalation in China-nexus use of AI agents.
+    sources: [crowdstrike]
+    quote: "This campaign marks an escalation in China-nexus use of AI agents"
+  - text: Recovered transcripts showed an operator issuing instructions in Chinese.
+    sources: [crowdstrike]
+    quote: "Recovered transcripts showed an operator issuing instructions in Chinese"
+  - text: ARTEX coordinates a main agent with subordinate planner and worker agents.
+    sources: [crowdstrike]
+    quote: "ARTEX coordinates a main agent with subordinate planner and worker agents"
+  - text: CrowdStrike says the campaign is separate from the ARTEX activity reported under the Storm-0940 designation.
+    sources: [crowdstrike]
+    quote: "is separate from the ARTEX activity recently reported by industry sources under the Storm-0940 designation."
+sources:
+  - id: crowdstrike
+    url: https://www.crowdstrike.com/en-us/blog/vapor-panda-uses-artex-to-scale-global-campaign/
+    title: VAPOR PANDA Uses ARTEX to Scale Global Campaign
+    publisher: CrowdStrike
+    published: "2026-10-29"
+    kind: primary
+    accessed: "2026-11-01"
+measurements:
+  - id: vapor-panda-scale
+    label: VAPOR PANDA ARTEX campaign scale
+    unit: count
+    source: crowdstrike
+    values:
+      - { label: Organizations targeted, value: 200, qualifier: ">" }
+      - { label: Countries (at least), value: 14 }
+      - { label: Organizations with confirmed post-exploitation, value: 9 }
+      - { label: Additional organizations with spraying or scanning (at least), value: 12 }
+related: [AID-2026-0123, AID-2026-0068, AID-2026-0142]
+tags: [threat-intel, cyberattack, agentic, espionage]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: CrowdStrike reports real intrusions into government and corporate networks, not a lab or evaluation.
+  harm:
+    severity: moderate
+    categories: [security, privacy]
+    rationale: Post-exploitation access was confirmed at nine organizations, including two foreign ministries. The post does not quantify what data was taken, so severity is held at moderate.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No sourced figures for losses or remediation costs.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access, espionage]
+    rationale: Breaking into government and corporate networks and deploying a backdoor is computer intrusion in nearly every jurisdiction. The actor is China-nexus, so charges are unlikely, and none are reported.
+record:
+  created: "2026-11-01"
+  updated: "2026-11-01"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Written by the lead editor lane, not the Gemini writer, because OpenRouter
+    is out of credits. The CrowdStrike post was read through WebFetch's
+    summarizer, which was asked for verbatim sentences; a reviewer should
+    re-check quotes against the page. Details in research notes but not cited
+    here (the 1.4 billion tokens figure is cited; attack-path specifics such as
+    the SAML/XXE chain, the Middle East interior ministry, the European
+    government entities, and telecom victims) were not re-verified. Harm is
+    `moderate`, not `significant`, because the schema has no such level.
+    DeepSeek version is not stated, so models is `unknown`; DeepSeek is tied
+    to the behavior by a claim. VAPOR PANDA is not a taxonomy organization and
+    is described in the text only, as for Storm-0940 in AID-2026-0123.
+    CrowdStrike says this campaign is separate from Storm-0940's, and no
+    source links it to AID-2026-0068. ARTEX is the same open-source framework
+    in all three records.

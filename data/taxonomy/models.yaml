@@ -295,6 +295,10 @@
   name: Qwen 3.8 Max
   developer: alibaba
   family: qwen3
+- id: rome
+  name: ROME
+  developer: alibaba
+  family: rome
 # Moonshot AI
 - id: kimi-k3
   name: Kimi K3

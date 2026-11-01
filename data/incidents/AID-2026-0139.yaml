@@ -31,6 +31,12 @@ writeup: |
   AI-driven cyberattacks" [@chainalysis]. Chainalysis has not named an AI model
   or described how the attack unfolded, and the attacker, entry point, and
   number of affected users have not been disclosed [@financefeeds].
+
+  Chainalysis has not disclosed the exploited vulnerabilities, the internal
+  tools accessed, or how long access lasted, and it is unclear whether the
+  attackers used an existing agentic framework or custom agents. The company
+  has been patching vulnerabilities and is using LLMs in a broader security
+  review [@bleepingcomputer].
 claims:
   - text: Chainalysis published a security incident notice on October 30, 2026, including the full text of an email sent to impacted customers.
     sources: [chainalysis, financefeeds]
@@ -53,6 +59,21 @@ claims:
   - text: Chainalysis did not name an AI model or describe how the attack unfolded, and has not disclosed the attacker, the entry point, or the number of affected users.
     sources: [financefeeds]
     quote: "Chainalysis did not name an AI model or describe how the attack unfolded."
+  - text: A Chainalysis spokesperson confirmed the incident to BleepingComputer.
+    sources: [bleepingcomputer]
+    quote: "confirmed the incident to BleepingComputer"
+  - text: BleepingComputer reports that Chainalysis has not shared which vulnerabilities were exploited, which internal tools were accessed, or how long the attackers had access.
+    sources: [bleepingcomputer]
+    quote: "which vulnerabilities were exploited, which internal tools were accessed, or how long the attackers had access"
+  - text: BleepingComputer says it is unclear whether the attackers used an existing agentic framework, such as ARTEX, or custom AI agents.
+    sources: [bleepingcomputer]
+    quote: "such as ARTEX"
+  - text: BleepingComputer reports that Chainalysis has been patching vulnerabilities and hardening its systems, and is using LLMs to support a broader security review of its platform.
+    sources: [bleepingcomputer]
+    quote: "using large language models (LLMs) to support a broader security review of its platform"
+  - text: BleepingComputer quotes Chainalysis as saying it found no evidence of unauthorized access to investigation content, authentication credentials, or session tokens.
+    sources: [bleepingcomputer]
+    quote: "we have found no evidence of unauthorized access to investigation content, authentication credentials, or session tokens"
 sources:
   - id: chainalysis
     url: https://www.chainalysis.com/blog/security-incident-october-30/
@@ -68,6 +89,13 @@ sources:
     published: "2026-10-31"
     kind: news
     accessed: "2026-10-31"
+  - id: bleepingcomputer
+    url: https://www.bleepingcomputer.com/news/security/chainalysis-discloses-data-breach-from-offensive-agentic-techniques/
+    title: Chainalysis discloses data breach from "offensive agentic techniques"
+    publisher: BleepingComputer
+    published: "2026-10-31"
+    kind: news
+    accessed: "2026-11-01"
 tags: [threat-intel, agentic, data-breach, crypto]
 assessment:
   reach:
@@ -96,7 +124,7 @@ assessment:
       charges have been reported.
 record:
   created: "2026-10-31"
-  updated: "2026-10-31"
+  updated: "2026-11-01"
   created_by: agent
   review_status: draft
   notes: >
@@ -111,4 +139,9 @@ record:
     Chainalysis says the access was detected ("This month" in an email
     published 2026-10-30). The OpenRouter writer was unavailable (out of
     credits), so the lead editor wrote this record.
+    2026-11-01: added the BleepingComputer article (2026-10-31). Its wording of
+    the no-access statement ("no evidence of ... authentication credentials")
+    differs from the primary page's ("no indication ... passwords in clear
+    text, MFA secrets"); both are kept as separate claims. The opening of the
+    primary-page quote was re-verified verbatim today.
 related: [AID-2026-0065, AID-2026-0119]
