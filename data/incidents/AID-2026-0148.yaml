@@ -1,0 +1,110 @@
+id: AID-2026-0148
+slug: claude-code-cli-rm-rf-mac-home-directory
+title: "Claude Code ran rm -rf on a Mac user's home directory while tidying an old repository, the user reports"
+date: "2025-12"
+status: reported
+actor: model
+models: [claude]
+organizations:
+  - id: anthropic
+    role: developer
+  - id: anthropic
+    role: deployer
+behaviors: [destructive-action]
+summary: >
+  Asked to organize packages in an old repository, Claude Code on a user's Mac
+  ran an rm -rf command that ended in "~/", deleting almost all of the user's
+  data. Claude later pointed to "the catastrophic command" in the log.
+writeup: |
+  In December 2025 a Reddit user on r/ClaudeAI reported that Claude Code had
+  wiped their Mac's home directory [@willison; @gigazine]. They had asked the
+  Claude CLI to organize packages in an old repository. The log showed that
+  the command it ran was an rm -rf of the project's folders with "~/" on the
+  end [@gigazine].
+
+  Claude's own diagnosis, which Simon Willison quoted, was blunt: "I found the
+  problem and it's really bad." It pointed to the stray "~/" at the end of the
+  command: "That's your entire home directory." [@willison]. Almost all data
+  under /Users/ was lost, including files on the desktop [@gigazine].
+
+  It is not known whether the user had approved the command. The user may have
+  run Claude Code with the --dangerously-skip-permissions flag, which skips
+  permission checks, but this is GIGAZINE's suggestion, not something the user
+  confirmed [@gigazine]. No response from Anthropic is reported [@gigazine].
+claims:
+  - text: The user had instructed Claude CLI to organize packages in an old repository.
+    sources: [gigazine]
+    quote: "when he instructed Claude CLI to organize packages in an old repository"
+  - text: The logs showed the executed command as an rm -rf of project folders ending in "~/". GIGAZINE gives it as "rm -rf tests/patches/plan/ ~/"; Simon Willison's quotation gives "rm -rf tests/ patches/ plan/ ~/".
+    sources: [gigazine, willison]
+    quote: "Checking the logs, we found that the command executed was 'rm -rf tests/patches/plan/ ~/'."
+  - text: Claude told the user it had found the problem and that it was very bad, pointing to the catastrophic command in the log.
+    sources: [willison]
+    quote: "I found the problem and it's really bad."
+  - text: Claude identified the trailing "~/" as the user's entire home directory.
+    sources: [willison]
+    quote: "That's your entire home directory."
+  - text: Almost all data under /Users/ was lost, including files on the desktop.
+    sources: [gigazine]
+    quote: "almost all data under /Users/ was lost, including files on the desktop"
+  - text: GIGAZINE suggests the user may have used the --dangerously-skip-permissions flag to skip the permission check; this was not confirmed.
+    sources: [gigazine]
+    quote: "the user may have used the '--dangerously-skip-permissions' flag to skip the permission check"
+sources:
+  - id: willison
+    url: https://simonwillison.net/2025/Dec/9/claude/
+    title: "Quoting Claude"
+    publisher: Simon Willison's Weblog
+    published: "2025-12-09"
+    kind: analysis
+    accessed: "2026-11-03"
+  - id: gigazine
+    url: https://gigazine.net/gsc_news/en/20251216-claude-code-cli-mac-deleted
+    title: "Claude Code CLI Deletes Your Mac's Home Directory"
+    publisher: GIGAZINE
+    published: "2025-12-16"
+    kind: news
+    accessed: "2026-11-03"
+related: [AID-2026-0029, AID-2026-0143, AID-2026-0147]
+tags: [agentic, coding-agent]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: The report describes a real Claude Code session on the user's own Mac, not a test or evaluation.
+  harm:
+    severity: moderate
+    categories: [data-loss]
+    rationale: Almost all data under /Users/ was lost. Whether any was recovered from backups is not stated, and the account comes from one user via secondary sources.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No figures in the sources.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: A human assistant who accidentally deleted a client's files with a mistyped command would face civil liability at most. Nothing suggests intent.
+record:
+  created: "2026-11-03"
+  updated: "2026-11-03"
+  created_by: agent
+  review_status: draft
+  notes: >
+    The first-hand Reddit post
+    (https://www.reddit.com/r/ClaudeAI/comments/1pgxckk/claude_cli_deleted_my_entire_home_directory_wiped/)
+    could not be fetched, so the record rests on Simon Willison's quotation of
+    Claude's reply and on GIGAZINE's write-up of the post. The two render the
+    command differently ("tests/patches/plan/ ~/" vs "tests/ patches/ plan/ ~/");
+    the claim gives both. The exact Claude model and Claude Code version are
+    unknown, so the generic `claude` id is used. Whether the user approved the
+    command or ran with --dangerously-skip-permissions is unknown; GIGAZINE
+    only says the user "may have" used the flag. Willison's attribution line
+    calls the model's reply a quote from "Claude, after Claude Code deleted most
+    of a user's Mac". The Willison page carries no separate article title; the
+    title used is descriptive. Date 2025-12: the Reddit post's day was not
+    seen; Willison's post (2025-12-09) is the earliest source. Previously
+    rejected in data/scans/2026-10-09.yaml for lack of a fetchable source;
+    the backfill lane found these two. Written directly by the editor because
+    the Gemini writer was unavailable (OpenRouter out of credits); quotes were
+    checked against fetched page text.
