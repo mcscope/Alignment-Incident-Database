@@ -43,6 +43,11 @@
   url: https://replit.com
   type: company
 
+- id: datatalks-club
+  name: DataTalks.Club
+  url: https://datatalks.club
+  type: company
+
 - id: saastr
   name: SaaStr
   url: https://www.saastr.com

@@ -1,0 +1,560 @@
+# Sources the scout scanned on this date and what came of each.
+# verdict: cited (used in `incident`) | lead (in scope, not acted on) | skipped (in scope, no change; see reason)
+#          | rejected (out of scope; see reason) | unreviewed (collected, not triaged)
+date: 2026-11-04
+scanned:
+  - url: https://news.google.com/rss/articles/CBMi4gFBVV95cUxNOFpDcmJQUmllTHBWN1BJS0NDbW00dXMzMkhubG01LWNwZ0xMcFFYN3JBTklKVjE0djExel9CNzRTSlVWY1lrcDdWZW9CU1VhUWphelFuRFZhMzg1RTdndFJQVXNOSWtYTWRZX251dmtxWHZ6SEVuVDV0RE9Hei16NG5uWlg0RHluN1ZxbUlCeURCVThPaXZ0aVlxNW5kdnoyQ2RUQlpYTVBELURQUWxPcW5JeTZoRi12TmNLdjlNRlctM1ZVZDhnVmxpZENjeVFSeFExcWFackdUcHFMcG9lbnNR0gHnAUFVX3lxTE1TNHRlZ1BOV0kzZy1hWXZKZC0zbUdtaFZsajhNZkdHWmsydVpidU1ueEI1LVdBX1BwSHROVzJ5aElsU296UHB3ZWVYZFFIcW8yQUpvQm5Ydk11MzdVMDFJdHJGZWZVZWVoSmE2LTM3cGEzSU13TmNsenJnQmJlZ3lIQWtZQkZqOE54OXptZWhyTUlMYXNJd2otQXZOdmNMTjZZR2NXNTRTWGdpY3FjM2tyOFQyQ1REbzRkbHVnWTd3bVZxUjdqNFBqS05WSG1vZ1dudDBGd1NDQlRmdENuNW5fM1BYNGQtWQ?oc=5
+    title: 25 yrs jail to school driver for sharing minor’s AI-generated obscene pic - The Times of India
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/anthropics/claude-code/issues/107274
+    title: "[Bug] Claude Code rm -rf deleted git history (12+ months lost)"
+    origin: "GitHub issues: deleted"
+    verdict: cited
+    incident: AID-2026-0151
+  - url: https://github.com/anthropics/claude-code/issues/107271
+    title: "[BUG] Agent-written helper ran `rm -rf $D` on an unquoted path; zsh/bash word-splitting mismatch deleted the whole repo root including .git (no prompt, bypass mode)"
+    origin: "GitHub issues: deleted"
+    verdict: cited
+    incident: AID-2026-0151
+  - url: https://news.google.com/rss/articles/CBMioAFBVV95cUxNbUJZbnJuRWZhM1VQbDlpMzYxUHlWYVBkTTJtSVZXdHdMdTN4eVVhZXdzRnhCT3VQcUZMdHBoWHQwTGtSY2JhWFBuSkF6M1MydHY4VmZsWElaRm5tejN1eTVwb3NMSnZ2RzhuMWtlYkZMNlByZGNjbkFhRjZCNjNmQUhjNFNvVERydnBRYUg1QUVDaUdhSUdYREhCQTZ0QnBt0gGjAUFVX3lxTE5TUkZxbTNOaWRCUEo4R1FidVh6NmM4Wm93Y29wVDYzejFWZElzeTN0aHJfbGZGQU9pS0FJaFVRLTNyZ0pvdlVid3hzVC1jaGhueklPS2FpUEM0M0lpcnhxZW9sYTdXelVyR2VhcUI0a2k3NW9wRVZnYVNQUEJzTGU2S0g1SUV2TXhuLUNOeEJaQ3dzenN3dmxSSFA0SnlKRzRtTWM?oc=5
+    title: Two Arrested With Pistols In Agartala Ahead Of Civic Polls - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMigwFBVV95cUxOLXNqT0lwbXYzX2VIeWV5dkZ2QzlhX09JS0FMUGtUUkF1Y0ViMDJEWFRNdXQ5ZWRKUnVGeTBEWWFQN2NBenJlT2M5dS1iSVZLQkJkSTZsLWhPODY0Tkh5Uk8tZDkwWFN5MjI3Mk9QT1Nqd24tcDI4V2ZaLVNHZGsxZmJsWQ?oc=5
+    title: "‘Harvard Thinking’: When lonely hearts turn to AI - Harvard Gazette"
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.ycombinator.com/item?id=50368804
+    title: "Launch HN: Kino AI (YC S23) – AI media manager and video editor"
+    origin: "HN: AI agent deleted"
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMiwgFBVV95cUxQT0N0VkZIeGxkMlpqa2NGSkoyOVV2d3BpVEJLT1FiczJXeWJ3NklGR2J5MHZkZ0RzTEtWTHNrd3YxT1cwanJUbTlPTFBmaTVwVWVXdTVyYU01ajVETW85UklFMkJ4eVpXUmllUlVtMEVWYkplM3FZOUptNDZMWHgxcDhCMlJKN25pZlVxNmxubnhodUpTYVdzV3U5NmdRR3Ruc3RBQ0FsYURoTzQwbG92SUhTcGs3RzhhNGhYZ2tyLU5Odw?oc=5
+    title: "'Sycophantic' AI inflaming litigants in person, digital justice expert claims - The Law Society Gazette"
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: Expert opinion; no named model or concrete case.
+  - url: https://news.google.com/rss/articles/CBMiR0FVX3lxTE02RDRwYXVpX3Q5QmJ3N2tOcm9wcGxLMFFFZXY4aWxJTkF4Q3RJbFo4QTMtLXZjenRPMXNrR2xRbFhqQi02MXN3?oc=5
+    title: 20 AI terms from a 60-term glossary, from hallucination to sycophancy - qz.com
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMipAFBVV95cUxQblpWOW9TSWFtWFdadko3QmtfYlNSazd4d2tEdk9hZ29WVzNlMXJrTWo3Rnd1SXlyWldkbVNVVE1EcTVVM2hybEFlbXhqRG5wVnlfMnpyaWZiZ1NwcHhUc0M1VmVrdFl2MWdoSXBiaUl3WG11c3FWeGRHSFN2bHhhZDhwcGhVQzZvMURnSDFBU0Ric05oYUtVSm5FamNVN09DaUtpMdIBpwFBVV95cUxQUFFrOUl2NW5zYWZVWFoxeE44WWtfT1BXZGk3WXVadXkteHRVbWZ5LWgwQkIwYTVic0MxT0NzbEJtMno4ZGdEcWJ1TTVMRTI0YXhwZ0V4b0pHbDYtZXdDLWIwMVBaV1Zld1ZfSHhmbGpmbWVJMUlsdVlsSUdkaVR0MjBOc0RDSnFqT1E3YWdaU3ZLQ1FGaXdFV1dDYXVSX180WHdxSnRncw?oc=5
+    title: Five Arrested In Thane Hotel Firing Over Music Dispute - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://www.lesswrong.com/posts/QWeFCksxab9LYo8vT/bengaluru-ai-jailbreaking-workshop-retrospective
+    title: Bengaluru AI Jailbreaking Workshop Retrospective
+    origin: LessWrong
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMiugFBVV95cUxPUmlFTW5nRnFCTERNNVRWczQxU2xBSGtCS3l0bzhwa3ppY19pRVNwMTFqTTA2VXRUcnprWG1ZdWx4NVc1MnV4LXdyUnhIZGhXYU93MVRIQ1dVQmQ1TFNjQS01T211ODB2RDVJWWFZMXQwdkE4THhHdy1MX0JpM3NkeG9iUWJBek10dWVMdDhnX2tTenlVYlJjR2tRZnFGR3ZZMkZYRFJSd2U0YjlxSHpYelE0OFQzQ0tFSUHSAboBQVVfeXFMT1JpRU1uZ0ZxQkxETTVUVnM0MVNsQUhrQkt5dG84cGt6aWNfaUVTcDExak0wNlV0VHJ6a1htWXVseDVXNTJ1eC13clJ4SGRoV2FPdzFUSENXVUJkNUxTY0EtNU9tdTgwdkQ1SVlhWTF0MHZBOEx4R3ctTF9CaTNzZHhvYlFiQXpNdHVlTHQ4Z19rU3p5VWJSY0drUWZxRkd2WTJGWERSUndlNGI5cUh6WHpRNDhUM0NLRUlB?oc=5
+    title: Mumbai Police Uncover Widespread Cyber Fraud Network - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMivAFBVV95cUxQZHZUMEJ3YVB3VE05Ti1JejM4a0xzMjhDLUdlLWFKQWdOMERETVJLbjl0YURHN2ViSGdLZUhRcEdEUGVwWXNYTC1kYTR0UHVpX3o0VzhvSF9XVDFhVlBsYm5BXzRhQkxsc3pWbmZLT2oxT3E3NTEtUl9NMEYzVjNwQ1VJcDBEYzUtQi02YU9Kd09sRzR5cURjVF9iMFZUbzRQSlZIaUVHaW5IX1Z5djd3b2g0MXdYQ1hXU2l1Mw?oc=5
+    title: UK ban on Palestine Action challenged in court, some protesters arrested - Business Day
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMihwFBVV95cUxNS0RMUlVDNXpjOXkzRmxkQWRZVzJEVXNyV1lBdFQzSjBjUVpqcVV2cHhyc2dKaWFMYmk2Rmt5SGVMMVRkSl9IZFlfZGxuWm45U051NGdaRmludVV4RWllOUliYWUyQWhMRHpfN0ZyekFrNlJVbWV3OE9vYnJEZ3lzaXpMT253bXM?oc=5
+    title: Can We Trust AI? - 조선일보
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://openai.com/index/openai-to-acquire-pierre
+    title: OpenAI to acquire Pierre Computer Company, Inc.
+    origin: OpenAI News
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMinwFBVV95cUxObzRmQlV2UDFVSko5dUczbGlpdGJld0JoWlBQd0xSZDNnNW5LcmNqU1pOQ0dWVWlScjQ0TndJZlA2Y3ZUX1A4aDhPek9xa3VVZlVEUGMxeURIaFRPbXZyZkRtYXhLSm8zaFRVdFdPMm9yVkx4MXdVNFhYZnZRRG5EX09pb0xiam5RUUV6cTE4d08xRDgydzI1Ul9XNmI3bTQ?oc=5
+    title: Motorcyclist dies after accident on BKE, bus driver arrested - The Straits Times
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMifEFVX3lxTE13UzFIeTU1ZHRMNmgxX3BEXzFDdFliN3VtWGZWc05TanV5S1NidDA5WW56TkUxSGQxTkJWTlpsb1prUm5aNFpib2gzZWRIZkRUek1SeHJtU2pkYkJjcmdIZl9qZ1pJa29xQjdpMHVubkxmdEEzS0RQeE9MbHE?oc=5
+    title: "'Sovereign AI agents' could evade every kill switch and threaten national security, report warns - Yahoo News Singapore"
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: CNAS policy report (Sovereign Agents); kill-switch evasion is hypothetical. Incidents it lists are already recorded.
+  - url: https://news.google.com/rss/articles/CBMiaEFVX3lxTE1hMHA4aG4za2g5VG9IYTg5RFV5YXZNVlVfYmVzMGR1WkI4aF9vNzR0cnNoVVpCNUVIZUZmOWlEYXIxZ1dfZTc0LWZFdHFHWGlNeXQ0cWxvVml0QUFoVjBaMnZETXlQMDBE?oc=5
+    title: Opinion | The Gordian Knot of AI Alignment - Common Dreams
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMiekFVX3lxTE1lWUlkdEtjYkhQeGt5SmV6VFJnNGxpd0lZUjFHQjZJT2lXUWFab1A4MUVwSGdiUlJNaTk3cUhzOHBaNksyWXJXcVgyOEd2TnBlSzZjME1WdFBFeU5PT2U0RWcwbElJenhUclZ5dUtncGNWVzRfVkppaE53?oc=5
+    title: What Sycophantic AI Can Cost Your Organization - Harvard Business Review
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMi5gFBVV95cUxPZmp2aWRQc2Z0RDh4VDlLZVRIQXk4QmUyeTdfUEo5ZXZpdWRVanVfcS04bGQzUWdON181TV9vUVU0WUFaNE11aGJHODd0dDdhMVYxTk41bE9sbjhVcndCcTdkN2NtT21TamlRMGs0ZFdsQ09ySkhQNWh1ZTRfdWRGblBXVldPREVkZko3aGZOSlpVRUJOWWRYU0drY00wUnJuclJ2aGNOd1ppeHFrM0NiQnNzbUZPYnhUclg1cFkxc3k1SGFPX25iQXJ3WllfcXhyczJ5a1QtM1JUVUE0bTF3M3E3cER3QQ?oc=5
+    title: Bengaluru Techie Arrested for Allegedly Threatening Bollywood Actors Ayushmann Khurrana and Tusshar Kapoor While Posing as Bishnoi Gang Member - zoomtventertainment.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://www.lesswrong.com/posts/TmjnxNmHoYyfN79A9/paradise-lost-a-simple-honeypot-that-elicits-reward-hacking
+    title: "Paradise Lost: A simple honeypot that elicits reward hacking in GPT models"
+    origin: LessWrong
+    verdict: cited
+    incident: AID-2026-0150
+  - url: https://github.com/openai/codex/issues/59400
+    title: "[Windows Desktop] In-chat heartbeat automation appeared in another task and was deleted there"
+    origin: "GitHub issues: deleted"
+    verdict: rejected
+    reason: Codex desktop UI/automation bug; no model behavior.
+  - url: https://news.google.com/rss/articles/CBMi1gFBVV95cUxNRDRkQ0RoZWl3anZHVUJGR0NCZ3ZDQ3l4M2J0V0loSW9Zckk5c3k3aDd4eV9BU3dOcHgyR1JMVk9NamVFMXNQbHFVVkNoam1jMlZBNGZIM0pmYWdqdlNzZlUxSFNESW1RREVTLWoydXpSRkNNXzhRS1l4OHM5RHFLbmh3T0RfWGlQLVVZMXBVQkkyQTEwek5rMUNpWlJ3MmJtVzg2MGhwUUpDbGxkaTczNTR4ejlxdTlaR2RrY2JsejMtVG4yRmh5dGppaC1QQ1puWjdWV2J3?oc=5
+    title: Brick Kiln Worker Strangled to Death by Co-worker in Dholka; Accused Arrested - Gujarat Samachar
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMitAFBVV95cUxOVkpjYkZXdWZ2dGpMYUxHNmJ1cDhwei1PeTl2SFBFQUdGOVRCc0VmN1dCSkpwOHRMTURxWVIyMHJ6VU1IdVdWRTgxY0J6Q1JzZUhjSWJHT0VXcS05R2ZxcnJtUlljUzY4Q3Fyc2preHB6c2E3RFdMQklyVXNJQ1lZRnJYUTlRYWJIT2xpcko3UnRpOGQ2MGZsQlZOVzZKX1diVWRlT0VQMkdsVGx2ZzVzeWRVYTPSAbcBQVVfeXFMTTNxSFVRdUVjRXRXX0F1VEtOQ2x5RUN1LU0tTXJ3LWhUYl9IYm5zTmFIWGJIOUNqbnA5RkpBakxfTDZ3TDE5UklOU3V0S2FvZ3FOejVEenVxZklIMnQ2dzN5QmNRZjB0cHhlY3ZTZ0dPR2l6SERsajFsZEI0cEtiSG5TQXZiTHdqcmNuSk9XTTFvODlrTU5uczVkMkE4VmMxVzNfUzBhcHlOSmZnXzhuakFiWDg5TGlj?oc=5
+    title: Sultanpur Police Arrest Five In Illegal Mining Attack Case - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMiiAFBVV95cUxNeTZycDRqcUZ6NUNha2duREwtVjF3YTJjREJrNnFXM2htRThNZzZfR09XcVVoQll4cnlMWXQ4aGNUbXVKeTJPUEhMeDk0YWcwOHY2NVZIdThsWUFRcGhVVUVWRy1IOExLUW9NeWNBdWpXMXBzOHpibjBmRVh4Vm4yb3NSQ0pLbmJJ?oc=5
+    title: Claude Code terraform destroy wiped DataTalks.Club prod - OrcaRouter
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: skipped
+    reason: Late recap on a likely AI-generated blog, not cited. The March 2026 incident is recorded in AID-2026-0152 from Rootly, Storyboard18 and UC Strategies.
+  - url: https://github.com/anthropics/claude-code/issues/107183
+    title: "[MODEL] Daily error report, 3 Nov 2026: edited a failing proof test within a minute, and its script wiped 66 handover entries"
+    origin: "GitHub issues: wiped"
+    verdict: skipped
+    reason: LLM-audited self-report of minor lapses (edited a proof test; 66 handover entries overwritten then restored in ~20 minutes); no logs or verbatim prompts.
+  - url: https://github.com/anthropics/claude-code/issues/107182
+    title: "[MODEL] Daily error report, 2 Nov 2026: added standing permissions without mentioning them in chat, and merged past a failed check"
+    origin: 'GitHub issues: "without permission"'
+    verdict: skipped
+    reason: Self-granted permission settings and merging past a failed check are in scope, but the report is an LLM-read audit that says approval prompts were not recorded; too thin to record.
+  - url: https://news.google.com/rss/articles/CBMixwFBVV95cUxOTUt3NnFxN2pGMU53T3cwbXQtYUpYQ2NmbVFzRlc0WnNvdjNPcXNyY00xV1lhTW1mcWFNODRZZ2RKNC1MSXU1cUxraDZPaHMzME5NMUZtakt2c2ZGWk5CMGRaSktsX3VySFVYRlVIb3dTX1FiYU5KOVl1RlJWc2FRd1Z6aG9FSXJ4WFFWTHB5bWI4VzBQTUwtU1UtNFUyR3ZOS1dZRGNrZURINnRLYmVCWWRkWUdueFpCakt6UXlIMThKcVlxRG1j?oc=5
+    title: "AI Agents vs. Traditional Applications: Different Behavior, Different Attack Surface - Proofpoint"
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMidkFVX3lxTE5rUVEwNGZZclJyUkFueEwwOWhRaWY2VXF6cUVmRFFrTXVYb0ZVRTFxRDJ4S1d5eUpNeWJOUWF4TXJXQkJkS3ZDcHpxUU9mLXY3TDB2TXR6XzJ4SVdVcHZYZy1zcWZtTW9qS3J4ME1rd1dwazVMUHc?oc=5
+    title: OpenClaw emptied an inbox while stop commands were ignored - OrcaRouter
+    origin: 'Google News: "alignment" AI incident'
+    verdict: skipped
+    reason: Recap of the Summer Yue OpenClaw incident already in AID-2026-0033; likely AI-generated blog.
+  - url: https://news.google.com/rss/articles/CBMie0FVX3lxTE1SSEtUckRweHg4LXFza2xCb1BYeGZzT2JpS0MtazdVTXVIcU1KRGFrZjZGbkYwWmJiVUhWU0VDSk1OSTFjR0ZleWN0RElZMWtKM2dFZzM4cE55cEE0MUprdjFKQzR1bVAzR1I0ejQ4cENtbklDR242aUY2MA?oc=5
+    title: AI’s next gold rush is the work your company almost deleted - The Next Web
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMingFBVV95cUxQT2l2VEZsYjRoZ2xQaWhVUTR3WEYzX3pyYjEzSHI2eGNvYW9lRnF4ZllMRFF6ejBWd3dwaW9kQVNacGxCSkgwVUhGMU1FR1FZMnF4eEpaN2d3ekxrZnRqVk9ydnRGUGtvVy1Mc3h2aUhScFp3b2dMeWJpVWFMSm1IN3E4MXFIckktNDJaSHFTb2czMzRuZHQyWV93WndFd9IBWkFVX3lxTE1nU3lpMWxGTU1fdmlzZkR0eW5lTFlKbUI1NWFIUlR0UHhwT3FhRXpNQlJXWjZqRDB0X3hwLUJ5YXJxYlFmTk5HOGZBUWozdVJua3dBaHVjZ1dwZw?oc=5
+    title: Two arrested for fleeing with stolen vehicle - Oman Observer
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMifEFVX3lxTE91OW9tZnJYN1NmTkVmNHd5Y1RoTVVxNVl3QXpNTy0xRjNZNk1QZFQxTEZIZkZsVWJ1a1FacU9rOER5LUVjNmtSbmZCMFhyRzAtRDdQdkY5ZjFGTW9PV3VNUXp0NFZkU1d5aHdiMDdNVFFqSHRpZEVwVUtaaE4?oc=5
+    title: CrowdStrike Introduces ‘Kill Switch’ for AI Agents - ForkLog
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMiowFBVV95cUxNVzZZNFYtZFIzdHB0aVV6RTFuUWVra1JNX2ZJUW1LcUxVZlNFSlF4VzhxRUJBOE44dzJYc0RCWnMwY2ZsLVhIMHhHLTRBNDFZclFmbWEyVGEwTlJWb3VoMHVOaXJ5Y1RqMlo2Ul9yai1ySlhvMi1qaVdVYTZINVNCY3BDc01EdnctaTJNS2ZTZlQ4MHNFc3Z6dG1EVGtWZUMtcjM40gGjAUFVX3lxTE1XNlk0Vi1kUjN0cHRpVXpFMW5RZWtrUk1fZklRbUtxTFVmU0VKUXhXOHFFQkE4Tjh3MlhzREJaczBjZmwtWEgweEctNEE0MVlyUWZtYTJUYTBOUlZvdWgwdU5pcnljVGoyWjZSX3JqLXJKWG8yLWppV1VhNkg1U0JjcENzTUR2dy1pMk1LZlNmVDgwc0Vzdnp0bURUa1ZlQy1yMzg?oc=5
+    title: Man Arrested For Selling Illegal Firecrackers In Delhi - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMipAFBVV95cUxORnRQZTgzTzlpOWlEMmhvRjBpbTVCaXhMUjQ5M2ZzWFVqWHY0bW5OZVdNTHlGS0swWC0xRF9hb2oxSG1GYWFvWnQ5bjNIeFh4RTJrWnRxU2xIcjBIVWJHTzhoRHRCbW1NRnd1cGFmYm9MRm1qRW90S0pvR1E4TERZdGFFMzJPV1U3Mjd3eG9ReDJrZWdvd2hzbjU3ZXdkMkZqWF9lVtIBqgFBVV95cUxOMkhhU0J4Rm8tLWgzWXhoSXhtRm5DWGxVSmt2WDZ5WjhXOS1iR2R0TVBhRmdBWE5YRG11WGdqbVJaVFowQm00SDJDSWRJblEtWkxhQzZPcE45djNkVUdBX2tERFFlVlRUT3EtSU4xUFF2UVZDbHFMeTNXaUx5ak5XN05oSTVBTGJzLV82NGJZTWVsVmZRYmpZdERhSjhMb1pZUTEwVkl2TjByZw?oc=5
+    title: Manslaughter sentence tossed over AI-generated video of slain victim used at trial - ABC News - Breaking News, Latest News and Videos
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://openai.com/index/daybreak-red-aws-govcloud
+    title: Daybreak Red is now available in AWS GovCloud (US-East)
+    origin: OpenAI News
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://www.lesswrong.com/posts/TCN4LPgq4aiA3wDG9/openai-agents-keep-disabling-monitoring-is-this-being
+    title: OpenAI agents keep disabling monitoring; is this being handled appropriately?
+    origin: LessWrong
+    verdict: skipped
+    reason: Mirror of the Redwood Research post cited in AID-2026-0113.
+  - url: https://blog.redwoodresearch.org/p/openai-agents-keep-disabling-monitoring
+    title: OpenAI agents keep disabling monitoring; is this being handled appropriately?
+    origin: Redwood Research
+    verdict: cited
+    incident: AID-2026-0113
+  - url: https://news.google.com/rss/articles/CBMiUkFVX3lxTE9IMWFENmotazdtemZMaTU5b2c5UktDUEktZjJraWJuZktzelRpNWVMdTZVOXdKTmdqX3poUWl2X0JEbmR1S3ZXNW5JRVpVdzdmM3c?oc=5
+    title: India’s cybersecurity agency, CERT-In, has secured access to Anthropic’s restricted frontier AI model Claude Mythos to test its ability to detect and potentially exploit system vulnerabilities, government sources said, according to a Moneycontrol report. The mod - Instagram
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.ycombinator.com/item?id=50361973
+    title: "Ask HN: Advice on local efficient analogical retrieval?"
+    origin: "HN: AI agent deleted"
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://forum.cursor.com/t/ticket-t-j13315-shared-computer-stuck-reset-failed-partial-state-waiting-for-backend-fix/177221
+    title: Ticket T-J13315 - Shared computer stuck, Reset failed partial state, waiting for backend fix
+    origin: Cursor forum
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.ycombinator.com/item?id=50360823
+    title: "Ask HN: AI Side/personal projects to improve hireability?"
+    origin: "HN: AI agent deleted"
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/c6e16f5794ffbb5b078aa7f3fa92d576a35b1dc5
+    title: "Merge pull request #109 from avleen/gh-text-safety"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/07d9909fa818697a2385c9bf5086b6238386b21c
+    title: "Merge pull request #108 from avleen/dependabot/pip/python-79661ef241"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/ce994d150673d98fa17be40c1a7dc0c131234828
+    title: "Merge pull request #107 from avleen/dependabot/github_actions/actions…"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/627cf3cb591c2fe4e7c014c6dbc4fcd164aa9d29
+    title: "Merge pull request #106 from avleen/dependabot/npm_and_yarn/site/site…"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/9ca266e991cc2539945774a52d25cab9e5d526c7
+    title: Route every open_prs log line and schema error path through the escaping
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/644aa2f638229649facfe610188c896ce626cd77
+    title: Close the gaps in log, title and validator text handling
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/6338560cf2f4cfc4df717e70b89613897e570fd7
+    title: Reject text that can&#39;t be stored, and keep agent text out of workflow…
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/b9815461e77f0e28881324b906246342d98c5b09
+    title: Keep PR titles to what GitHub accepts, and clean every argument where…
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/b8136e0a05489f1ffb05f1daccdc2814723d5e67
+    title: Bump rpds-py from 0.30.0 to 2026.9.1 in the python group
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/387796cc46bf2dcc8d9a225ef73e19291124d3e9
+    title: Bump actions/setup-node
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/2cbb40fb5ac7eac3f5167081756b0aecdcb65337
+    title: Bump satori from 0.33.5 to 0.63.2 in /site in the site group
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/f7d4b8bfce3d2b4ae2bb861d0d3ce2419924a4a2
+    title: "Merge pull request #105 from avleen/yaml-followup"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/ef64e7ead230f62c781638fd37b8c324c8ceb977
+    title: "Merge pull request #103 from avleen/tidy"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/6ac7a2a20ef91ed780884d5f32dd4517a1040ae0
+    title: "Merge pull request #102 from avleen/site-fixes"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/64771d561858b33c833fe70a99adbc94dcbb9804
+    title: "Merge pull request #98 from avleen/repo-safety"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/c52abb6e5d4d32b82370df1f8a32bb385b337c04
+    title: "Merge pull request #97 from avleen/agent/2026-10-17-deepseek-vapor-pa…"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/0528f1eeba97913f8309f449506442a51917ea90
+    title: "Merge pull request #91 from avleen/agent/2026-03-27-openai-internal-e…"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/e28f83ebfffe492ae8446c8c0c777bf1477e3d00
+    title: Merge remote-tracking branch &#39;origin/site-fixes&#39; into tidy
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/a775ea7bdc734e2fc54b9af10182177de17f977f
+    title: "Leave the shared YAML loader to #105"
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/avleen/felonybench.ai/commit/892df8c21a1ac79c896b1f328e0899efcbdaa96c
+    title: Make agent text safe to pass to gh, and name the incident loader for …
+    origin: FelonyBench incidents (commits)
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMirgFBVV95cUxNQXdzcndKcXNmTVlZOEs1YUtYcEpac2prZ184X1YtdkpVeG5RZEp5bDdCTlY4aHRPa3dwbHFRYWVBeWM3Y215S0E5bG9PU0cyTXJrMlJvdld1aURnV3cxc2dtazlXT0s2LWUtOEh2ZUpmNkhhTGlqdDRkVkE2WXJVRjdIOFl4dGZpWDJmV0lETDdFOHo5NEJhT2RTaHVyeWxfaFZYUkpnenpCZXpvOFE?oc=5
+    title: Grid Operators Need an AI Incident Protocol Before Agents Touch the Energy Market - RTO Insider
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMivAFBVV95cUxQdnJ2Q2drUk56SWVMUGZpYUxxMzRDNGk3djBXeF9EWVlvQUJUdFF4aDhOQVRiYTRsaFQxUFZHRmUzVzBFeUNfTWU3d0p0U1E2SkVBQkptZjZTR09hRUhGWmVaNzhtWlcwMlAtRkhFdWxyYV9VUUxxdlpRVF9nTm8wejhrZXhyWTlpX0xLTkc0d0xQcU5mMHNiWlVKM291RmdmTWdiRGhWNlNiWm03bUVpYW4wVmoyeUVlTGtkaQ?oc=5
+    title: Thai man turns AI-generated horoscopes into 10-million-baht fortune-telling scam - Pattaya Mail
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://github.com/finic-ai/kairos
+    title: "Show HN: Kairos – Open-source risk and fraud decisioning platform"
+    origin: "HN: system card"
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMipAFBVV95cUxQbGdLM20wdWRCVDlhdHdDNmpJMVhYNTdScENjcHpLeEVNZWI5aGFXdUtlYVFBWEh4RjVSa1pTSHU4NGoybFIxeXoxY2dMNWpuTE5pMi1SWnRhblhQUmpyQ0RwTFVCQUtNUWlOc0dDaG80REdDNHUwRk1URDRJdHU4aVlvV1B3aUpYRFd0cTJpN3JfZ3pGR3FRbGZGY1MyemotMmVabw?oc=5
+    title: Murder trial among cases expected during fall court term - Neshoba Democrat
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMiiwFBVV95cUxPZEEyZzJZQXp1MUFoMHJlZjFFdFA1cHptLWU1dzU2OUE3XzlVUmpZcFd3NVNRUlRuOUgxRU51VFpTU1QyOTdKRlBTWEFsVncxQ3hjSmdZWElFUzlVSWdRUEdIZE9FdHE2MFFkQkFiVlNmWjV3Y2xheFRYS2J3c3ZBdFRia1YxcVFzajhz?oc=5
+    title: "Meta Paper: Claude Opus 4.7 Copied a Small AI’s Hack 73.6% - FourWeekMBA"
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: skipped
+    reason: News coverage not read; the underlying Meta paper (arXiv 2610.12822) is recorded in AID-2026-0149.
+  - url: https://news.google.com/rss/articles/CBMidkFVX3lxTFBoaFhtRmtFQnJfNUFGdmRma09KTmE4ZE1WSnRoZE5wMUtUV3FYdm1sa2VrU2ZjQkJEMkdtQVlKYl8xYTlhU09PWS0yWHFfY3NHeGF0YjdUZDNTSEJ1MUJLYjdTSi1ueWV1UHJVTm9oaVVDZFVKWWc?oc=5
+    title: Itch.io Purges Terabytes of AI Slop, Rolls Out 'No AI' Search Filter - BigGo Finance
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMiggFBVV95cUxQeG9TWFZ2VUwwRDFWVDhyR1VFTWRvckRyRzNQZks0MFRBd01SMkt5OGRuN0p4QU9WV0pHLW9jZ2oyc0gxcE5uVVVqeEY3XzRGWTE2NnR0SU9Yc0ROaXVIc0VSWVhxd1FOTnF1T2I4eXVLX01mODRYRF9rQlo1djduMXBn?oc=5
+    title: Meta and Duke study finds reward hacking can spread between AI models - Crypto Briefing
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: skipped
+    reason: News coverage not read; the underlying Meta paper (arXiv 2610.12822) is recorded in AID-2026-0149.
+  - url: https://news.google.com/rss/articles/CBMi4AFBVV95cUxPTjI2amV5c0JudktaVmFkNC15NndNWVlqOGZjbnhZUUt0Vms1RG9JVTVQT0p1Vl9wbGdQRXFXcF9lNTVTRXd3Vjl4WXIzLXA0RUVyemYxYWE2T1RKUkFLZGduVkJuVFhqeFAwamdiVENJckNac1BCOThOempYSmNFQmdqTGVEQk5xWWRjVkZmYm5Pck5JSXkxYmFldHZhMXlsZ3d5ZEtseDRORUh6MHpUTEtsR3N1R2lnX1MwYzJrM1VJblJ4X0FoX1NMUHByb2JnaW4tSURIT19qMTVxV25FNA?oc=5
+    title: AI Chatbots Wrongly Reassure Reluctant Sleep Apnea Patients - Sleep Review
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: skipped
+    reason: ERS Congress study (Ratneswaran) of 5 chatbots on simulated patients; primary abstract not found, no per-model numbers, and "sycophancy" framing comes from an outside expert. Borderline medical-advice error.
+  - url: https://news.google.com/rss/articles/CBMitAFBVV95cUxPN0sxNzUtRTFKeHdhTjd3bUc2M19JYmVlVnZpMVJra1loeGtHVTg1WlA1NWlyT0ZCaE9GRWc4UVJNNXdHaklZNnc0SnZ5WlVHQTVDWkRaWS1hNGN1MFVXS0xkWHpjc1dEYUlLSUc4RnJNMzNxUnh5YVNNNS16T0k1LXpkYlRqTVlKaGpLUTc4SU1keGtZZENFY1NscGJQYkJ0YjZpb1NvYzExZnlTSHFpMmdFd27SAbQBQVVfeXFMTzdLMTc1LUUxSnh3YU43d21HNjNfSWJlZVZ2aTFSa2tZaHhrR1U4NVpQNTVpck9GQmhPRkVnOFFSTTV3R2pJWTZ3NEp2eVpVR0E1Q1pEWlktYTRjdTBVV0tMZFh6Y3NXRGFJS0lHOEZyTTMzcVJ4eWFTTTUtek9JNS16ZGJUak1ZSmhqS1E3OElNZHhrWWRDRWNTbHBiUGJCdGI2aW9Tb2MxMWZ5U0hxaTJnRXdu?oc=5
+    title: Former Student Held For Disrupting Kerala Minister's College Event - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.ycombinator.com/item?id=50354336
+    title: Gitbook Breached
+    origin: "HN: AI agent deleted"
+    verdict: lead
+    reason: GitBook's post-mortem (2026-11-04, gitbook.com/status/security-incident-2026-11-03) infers an attack "driven largely by automation and AI" but names no model or tool. Revisit if attribution or AI-tool evidence appears.
+  - url: https://arxiv.org/abs/2611.05151v1
+    title: Catalyzing Interactive HTML Generation Capabilities via High-Fidelity Reinforcement Learning
+    origin: 'arXiv: abs:"reward hacking"'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMirAFBVV95cUxPMjRhMUhrRnoxdUpJSnNzbTk1MmlxYVU4VlkwVVZzOWV4ejgxc2k4WnRWT2JBSzYwV0lVb25nR1dBRUlGZ3BTbXJHalVkRDhQRjVWTWxZYzFlT0U2Sl9qS0pyLU9pcnlRZzllcS1SbXlQOXNFQ2cycjBvbzNZRDBWMzdPUkJacURpa01WdW1KeHRBeVVHY2U3c0VvUkt0N1B5eE5nZnZ4b1hHWVhK0gGsAUFVX3lxTE8yNGExSGtGejF1SklKc3NtOTUyaXFhVThWWTBVVnM5ZXh6ODFzaThadFZPYkFLNjBXSVVvbmdHV0FFSUZncFNtckdqVWREOFBGNVZNbFljMWVPRTZKX2pLSnItT2lyeVFnOWVxLVJteVA5c0VDZzJyMG9vM1lEMFYzN09SQlpxRGlrTVZ1bUp4dEF5VUdjZTdzRW9SS3Q3UHl4TmdmdnhvWEdZWEo?oc=5
+    title: "Bail Outrage: POCSO Accused Stabs Victim, Neighbour - Rediff"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTE9aRl9LT09pTkNpQjE1Wl9QOWpjR3g1Z0c1SWNqQlVjMGpZaVZacmZMR2xRRDM1ZmJrLXJ3eWdoQzBBRkVBRnlJYk9qWmJjZ0lsdTdBM3lJd1QwcWxwZmIw?oc=5
+    title: "Altman: AI Beyond Human Control “Absolutely” Possible, Vows Safeguards | Titans and Disruptors - finance.biggo.com"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://arxiv.org/abs/2611.04848v1
+    title: Amortized Nonlinear Variable Selection with Prior-Data Fitted Networks
+    origin: 'arXiv: abs:"scheming" AND abs:"language model"'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMivAFBVV95cUxPT0VpNUNyVkRuLVRCdXNSaG5iZVZOclo2VGl2dGhMcDJFM2hmbGF5T1VoTUJjZWpQWXF2UFdhTWxZTXROTFczLUF2clN4M1R1VWk0T0o1VjZvLUlSakU2WkUtbzdEdl9vREI1bUdKODRkcGUtSDhEY0tGQXl2OTYxZHM2ZE9IdkQxMVUyUEY0cHhaZnE4b01JMThiS3d4OUNsTG1TWUlaWlhxcDdxV3Y3RmlrTTdOUkFaRjlCN9IBvAFBVV95cUxPT0VpNUNyVkRuLVRCdXNSaG5iZVZOclo2VGl2dGhMcDJFM2hmbGF5T1VoTUJjZWpQWXF2UFdhTWxZTXROTFczLUF2clN4M1R1VWk0T0o1VjZvLUlSakU2WkUtbzdEdl9vREI1bUdKODRkcGUtSDhEY0tGQXl2OTYxZHM2ZE9IdkQxMVUyUEY0cHhaZnE4b01JMThiS3d4OUNsTG1TWUlaWlhxcDdxV3Y3RmlrTTdOUkFaRjlCNw?oc=5
+    title: Zanders outlines how financial institutions can manage the risks of Agentic AI - Consultancy.eu
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMihwFBVV95cUxPSjZwUzZlQXZOVFNsM2EzZExGWUtLSHBlUENYX1d2cGFpVjZDS3FSQVUtZGVaeHA0Si1ZY0UtX190bXZ4U182NE85VEE0ck5ad1hXRUFMWkNFcGtid2E0bzlROGtMbTBWbTZ0cnNyYXQ3bTZ3Tk56QlNfaHRPRUFwRnE4Y0hOUlE?oc=5
+    title: Students unravel AI tendency for sycophancy - Tech Xplore
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: lead
+    reason: University of Cincinnati / Texas A&M EMNLP paper on chatbots giving in to false claims under pushback; paper, model versions and numbers not found yet.
+  - url: https://arxiv.org/abs/2611.04632v1
+    title: Self-Privileged Fine-Tuning
+    origin: 'arXiv: abs:"scheming" AND abs:"language model"'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://arxiv.org/abs/2611.04566v1
+    title: A research world model of power engineering learns its dynamics and reveals what-ifs
+    origin: 'arXiv: abs:"scheming" AND abs:"language model"'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://openai.com/index/cisco-cyber
+    title: How Cisco defends at machine speed with OpenAI
+    origin: OpenAI News
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://arxiv.org/abs/2611.04472v1
+    title: "Beyond Token Representations: Explicit Visual Object Grounding for Video Reasoning Segmentation"
+    origin: 'arXiv: abs:"scheming" AND abs:"language model"'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTE9yZVpZMVZtRzdiaFRlSnZMaXpxTHpKdXVtVDNvdl9ObUQ4YWE3cmVsTFZRNWcybHZubDM0WjRNS3NQc29aZUs3WHdqemhqclNtOV9QVEc0WEdBSGJTaU5R?oc=5
+    title: Frontier AI Needs an Aerospace Flight Halt | Rep. Whitesides｜MTS - finance.biggo.com
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://news.google.com/rss/articles/CBMiowFBVV95cUxPLUgyR1JjZGJaR1A2US10ZUtoVmJXMG1obWppaWp0b2hSXzVRcXdxalBXQWhoVzNqZzRKcTlIenJiRXR2MGNGM1dGNzRyeUVTbWpQMzRERk5SVDE1R29uLXh1d2dJMUo2M3IyZVBuNUVGNUpUUEVBRDVIXzV5MjNKRlJjSlBwajRlVEhNLUYxMXl1NFViU3doSllwazB3VzY3RDFR0gGjAUFVX3lxTE8tSDJHUmNkYlpHUDZRLXRlS2hWYlcwbWhtamlpanRvaFJfNVFxd3FqUFdBaGhXM2pnNEpxOUh6cmJFdHYwY0YzV0Y3NHJ5RVNtalAzNERGTlJUMTVHb24teHV3Z0kxSjYzcjJlUG41RUY1SlRQRUFENUhfNXkyM0pGUmNKUHBqNGVUSE0tRjExeXU0VWJTd2hKWXBrMHdXNjdEMVE?oc=5
+    title: "Ex-IAS Officer Murder: Caretaker Arrested After Month-Long Hunt - Rediff"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://arxiv.org/abs/2611.04323v1
+    title: "FP4Quant: Efficient 4-Bit Communication Compression for Model-Parallel LLM Training"
+    origin: 'arXiv: abs:"scheming" AND abs:"language model"'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://arxiv.org/abs/2611.04260v1
+    title: Neologism Inoculation Prompting
+    origin: 'arXiv: abs:"reward hacking"'
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer
+    title: OpenAI appoints Jill Hazelbaker as Chief Corporate Affairs Officer
+    origin: OpenAI News
+    verdict: rejected
+    reason: "Out of scope by title triage (aggregation digest unavailable): no AI-behavior incident or criminal AI-central misuse."
+  - url: https://arxiv.org/html/2610.12822
+    title: Reward Hacking as a Transmissible Strategy in Multi-Agent Coding Systems
+    origin: verify-2
+    verdict: cited
+    incident: AID-2026-0149
+  - url: https://arxiv.org/abs/2610.12822
+    title: Reward Hacking as a Transmissible Strategy in Multi-Agent Coding Systems (abstract)
+    origin: verify-2
+    verdict: cited
+    incident: AID-2026-0149
+  - url: https://neurips.cc/virtual/2026/173081
+    title: Reward Hacking as a Transmissible Strategy in Multi-Agent Coding Systems (NeurIPS 2026 workshop poster)
+    origin: verify-2
+    verdict: skipped
+    reason: Poster page for the paper cited in AID-2026-0149; nothing additional.
+  - url: https://blog.pebblous.ai/blog/reward-hacking-transmissible-multi-agent/en/
+    title: Pebblous blog summary of the Meta reward-hacking transmission paper
+    origin: verify-2
+    verdict: skipped
+    reason: Secondary summary; AID-2026-0149 cites the paper directly.
+  - url: https://neurips.cc/virtual/2026/165373
+    title: "When Verification Becomes a Training Signal: Reward-Hacking Propagation in Multi-Agent Systems"
+    origin: verify-2
+    verdict: lead
+    reason: Different paper seen only in a search snippet; not read.
+  - url: https://rootly.com/humans-of-reliability/hey-claude-wheres-my-database-alexey-grigorev
+    title: "\"Hey Claude, where's my database?\": How an AI agent nuked production"
+    origin: verify-5
+    verdict: cited
+    incident: AID-2026-0152
+  - url: https://www.storyboard18.com/brand-makers/the-agent-kept-deleting-files-developer-says-anthropics-claude-code-wiped-2-5-years-of-data-91704.htm
+    title: "\"The agent kept deleting files\": Developer says Anthropic's Claude Code wiped 2.5 years of data"
+    origin: verify-5
+    verdict: cited
+    incident: AID-2026-0152
+  - url: https://ucstrategies.com/news/claude-code-wiped-out-2-5-years-of-production-data-in-minutes-the-post-mortem-every-developer-should-read/
+    title: Claude Code Wiped Out 2.5 Years of Production Data in Minutes
+    origin: verify-5
+    verdict: cited
+    incident: AID-2026-0152
+  - url: https://alexeyondata.substack.com/p/how-i-dropped-our-production-database
+    title: How I Dropped Our Production Database and Now Pay 10% More for AWS
+    origin: verify-5
+    verdict: lead
+    reason: Primary source for AID-2026-0152; HTTP 403 today, not read. Add to the record when reachable.
+  - url: https://www.gitbook.com/status/security-incident-2026-11-03
+    title: GitBook security incident and post-mortem
+    origin: editor
+    verdict: lead
+    reason: Post-mortem infers an attack "driven largely by automation and AI" but names no model or tool; revisit.
+  - url: https://www.news-medical.net/news/20260906/AI-chatbots-wrongly-reassure-sleep-apnea-patients-study-finds.aspx
+    title: AI chatbots wrongly reassure sleep apnea patients, study finds
+    origin: verify-6
+    verdict: skipped
+    reason: Secondary coverage of an ERS Congress study; primary abstract not found and no per-model numbers.
+  - url: https://oecd.ai/en/incidents/2026-09-06-a59e
+    title: AI Chatbots Give Unsafe Advice to Sleep Apnea Patients Who Resist Referrals
+    origin: verify-6
+    verdict: skipped
+    reason: Tracker entry for the same sleep-apnea study; see above.
+  - url: https://techxplore.com/news/2026-11-students-unravel-ai-tendency-sycophancy.html
+    title: Students unravel AI tendency for sycophancy
+    origin: verify-6
+    verdict: lead
+    reason: Paper, model versions and numbers not found yet.
+  - url: https://www.uc.edu/news/articles/2026/11/uc-students-unravel-ai-tendency-for-sycophancy.html
+    title: UC students unravel AI tendency for sycophancy
+    origin: verify-6
+    verdict: lead
+    reason: University press release for an EMNLP paper; find the paper.
+  - url: https://www.cnas.org/publications/reports/sovereign-agents
+    title: "Sovereign Agents: The Pathway to Irreversible Loss of Control"
+    origin: verify-6
+    verdict: rejected
+    reason: Speculative policy report; no new observed instance.
+  - url: https://www.anthropic.com/research/provable-inference
+    title: Provable inference
+    origin: labs
+    verdict: rejected
+    reason: Cryptographic proof research; no model misbehavior (judged from listing summary).
+  - url: https://www.anthropic.com/research/investigating-vault-particles-with-claude
+    title: Investigating vault particles with Claude
+    origin: labs
+    verdict: rejected
+    reason: Science application; no model misbehavior.
+  - url: https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions
+    title: AI for Science program expansion
+    origin: labs
+    verdict: rejected
+    reason: Program announcement.
+  - url: https://www.devdiscourse.com/article/international/3993463-chinas-tencent-says-ai-agents-showed-unintended-browsing-behaviour
+    title: China's Tencent says AI agents showed unintended browsing behaviour
+    origin: backfill
+    verdict: skipped
+    reason: Reuters wire copy of Tencent's statement; AID-2026-0120 already carries the statement via IBM Think.
+  - url: https://www.dealstreetasia.com/stories/ai-agents-showed-unintended-browsing-behaviour-says-tencent-498341/
+    title: AI agents showed unintended browsing behaviour, says Tencent
+    origin: backfill
+    verdict: skipped
+    reason: Same Tencent statement as in AID-2026-0120.
+  - url: https://www.theregister.com/2026/02/20/amazon_denies_kiro_agentic_ai_behind_outage/
+    title: Amazon's vibe-coding tool Kiro reportedly vibed too hard and brought down AWS
+    origin: backfill
+    verdict: skipped
+    reason: Adds no fact beyond AID-2026-0034, which already records the Amazon mainland-China region statement via The Decoder.
+  - url: https://www.thestandard.com.hk/innovation/article/324872/Amazons-cloud-unit-hit-was-hit-by-least-two-outages-involving-AI-tools-in-December-FT-says
+    title: Amazon's cloud unit hit by at least two outages involving AI tools in December, FT says
+    origin: backfill
+    verdict: skipped
+    reason: Reuters relay of the FT report already covered in AID-2026-0034.
+  - url: https://www-cdn.anthropic.com/07b2a3f9902ee19fe39a36ca638e5ae987bc64dd.pdf
+    title: System Card - Claude Opus 4 & Claude Sonnet 4 (current index link)
+    origin: backfill
+    verdict: lead
+    reason: Index links a different PDF than AID-2026-0042 cites; re-verify section 4.1.1.2 quotes against it.
+  - url: https://www.bleepingcomputer.com/news/security/us-cybersecurity-experts-indicted-for-blackcat-ransomware-attacks/
+    title: US cybersecurity experts indicted for BlackCat ransomware attacks
+    origin: legal
+    verdict: rejected
+    reason: No AI involvement.
+  - url: https://www.cp24.com/news/world/2026/10/19/how-one-hacker-used-ai-agents-and-a-few-thousand-dollars-to-break-into-scores-of-sites-reuters-exclusive/
+    title: How one hacker used AI agents and a few thousand dollars to break into scores of sites (Reuters)
+    origin: legal
+    verdict: skipped
+    reason: Covered by AID-2026-0119; no charges or court proceedings reported.
+  - url: https://komonews.com/news/local/openai-chapgpt-medical-advice-ai-chatbot-anti-seizure-medication-amazon-lawsuit-capitol-hill-apartment-doctor-patient-relationship-tech-epilepsy-companies-online-safety
+    title: Bowen Wan wrongful-death suit against OpenAI
+    origin: legal
+    verdict: skipped
+    reason: Already AID-2026-0132; no new development.

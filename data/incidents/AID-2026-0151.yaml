@@ -1,0 +1,124 @@
+id: AID-2026-0151
+slug: claude-code-unquoted-rm-rf-deletes-repo-root
+title: "Claude Code ran an unquoted rm -rf in its own helper script and deleted a repository root including .git, the user reports"
+date: "2026-11"
+status: reported
+actor: model
+models: [claude-opus-5.5]
+organizations:
+  - id: anthropic
+    role: developer
+  - id: anthropic
+    role: deployer
+behaviors: [destructive-action]
+summary: >
+  While measuring a change, Claude Code wrote a bash helper with an unquoted
+  rm -rf and called it from a loop in zsh, which deleted the whole repository
+  root including .git. The user says the local .git was the only copy of the
+  commit history.
+writeup: |
+  On macOS, a user running Claude Code 2.1.318 in bypassPermissions mode filed
+  a GitHub issue about a session in which Claude was measuring a change
+  [@gh-107271]. Claude wrote a bash helper script that rebuilt an output
+  directory with an unquoted `rm -rf $D`, then called it from a loop in the
+  Bash tool, which runs the user's login shell, zsh [@gh-107271].
+
+  zsh does not word-split `set -- $side`, so the helper received one combined
+  argument instead of three. Inside the bash helper, the unquoted `rm -rf $D`
+  split that argument and deleted the repository root, including .git
+  [@gh-107271]. The session was in bypass mode, so no prompt appeared. The user
+  did not ask for any deletion [@gh-107271].
+
+  The user says the local .git was the only copy of the commit history and
+  that undelete was impossible [@gh-107271]. A second issue filed the same day
+  by the same user reports "12+ months of git istory" lost to an incorrect
+  harness rm -rf. It does not say whether it describes the same event
+  [@gh-107274].
+claims:
+  - text: Claude wrote a bash helper script inside the project that rebuilt an output directory with an unquoted rm -rf.
+    sources: [gh-107271]
+    quote: "Claude wrote a bash helper script inside the project that rebuilt an output directory with an unquoted rm -rf"
+  - text: The helper was called from a loop in the Bash tool, which on macOS runs the login shell zsh.
+    sources: [gh-107271]
+    quote: "which on macOS runs the login shell zsh"
+  - text: The unquoted rm -rf inside the helper was split into several arguments and deleted the repository root including .git, with every local branch and commit.
+    sources: [gh-107271]
+    quote: "which deleted the repository root including .git"
+  - text: The session was in bypassPermissions mode, so there was no prompt.
+    sources: [gh-107271]
+    quote: "No prompt, because the session was in bypassPermissions"
+  - text: In the real incident Claude wrote both the helper and the loop itself while measuring a change, and no deletion was requested.
+    sources: [gh-107271]
+    quote: "In the real incident Claude wrote both the helper and the loop itself while measuring a change; no deletion was requested."
+  - text: The reporter says the local .git was the only copy of the commit history and that undelete is impossible because the SSD has TRIM.
+    sources: [gh-107271]
+    quote: "The local .git was the only copy of the commit history; the SSD has TRIM, so undelete is impossible."
+  - text: The reporter gives the session model as claude-opus-5-5.
+    sources: [gh-107271]
+    quote: "model claude-opus-5-5"
+  - text: The reporter gives the Claude Code version as 2.1.318.
+    sources: [gh-107271]
+    quote: "2.1.318 (Claude Code)"
+  - text: The reporter says the model diagnosed the cause itself in the same session.
+    sources: [gh-107271]
+    quote: "The model diagnosed the cause itself in the same session, so the transcript holds the full chain."
+  - text: A second issue by the same user, filed the same day, says 12+ months of git history were lost due to an incorrect harness rm -rf. The text is quoted with its typo.
+    sources: [gh-107274]
+    quote: "lost 12+ months of git istory due incorrect harness rm rf"
+  - text: The second issue lists the platform as darwin and the version as 2.1.318.
+    sources: [gh-107274]
+    quote: "Version: 2.1.318"
+sources:
+  - id: gh-107271
+    url: https://github.com/anthropics/claude-code/issues/107271
+    title: "[BUG] Agent-written helper ran `rm -rf $D` on an unquoted path; zsh/bash word-splitting mismatch deleted the whole repo root including .git (no prompt, bypass mode)"
+    publisher: GitHub (anthropics/claude-code)
+    published: "2026-11-04"
+    kind: primary
+    accessed: "2026-11-04"
+  - id: gh-107274
+    url: https://github.com/anthropics/claude-code/issues/107274
+    title: "[Bug] Claude Code rm -rf deleted git history (12+ months lost)"
+    publisher: GitHub (anthropics/claude-code)
+    published: "2026-11-04"
+    kind: primary
+    accessed: "2026-11-04"
+related: [AID-2026-0112, AID-2026-0125, AID-2026-0148, AID-2026-0029]
+tags: [agentic, coding-agent]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: The report describes a real Claude Code session on the user's own machine, not a test or evaluation.
+  harm:
+    severity: moderate
+    categories: [data-loss]
+    rationale: The reporter says the local .git was the only copy of the commit history and cannot be recovered, and a second issue says 12+ months of git history were lost. Both are one user's unverified accounts, and the second does not explicitly tie itself to the first.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No figures in the sources.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: A human contractor who accidentally deleted a client's repository with a badly written script would face civil liability at most. Nothing suggests intent.
+record:
+  created: "2026-11-04"
+  updated: "2026-11-04"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Both sources are first-hand GitHub issues by the same user (mishoko);
+    nothing independent corroborates them. The issue states a session time of
+    2026-11-04T16:27:39Z, but the date is kept at 2026-11 because the issue
+    does not say the deletion happened at that time. The second issue
+    (#107274) is a terse /feedback submission and does not reference the
+    first; whether it describes the same event is not stated. The "12+ months"
+    figure comes only from #107274. The reporter attributes the failure partly
+    to the model and partly to the harness; the record follows the reporter's
+    description of Claude writing the script. The Claude Model field in the
+    issue form is blank; the model id comes from the session details in the
+    issue body ("claude-opus-5-5"). No response from Anthropic was visible on
+    either page. Written directly by an agent because the Gemini writer was
+    unavailable; quotes were checked against the cached page text.
