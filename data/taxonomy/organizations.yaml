@@ -201,6 +201,10 @@
   name: CrowdStrike
   url: https://www.crowdstrike.com
   type: company
+- id: workos
+  name: WorkOS
+  url: https://workos.com
+  type: company
 - id: hunt-io
   name: Hunt.io
   url: https://hunt.io

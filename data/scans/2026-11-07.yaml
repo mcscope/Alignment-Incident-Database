@@ -1,0 +1,525 @@
+# Sources the scout scanned on this date and what came of each.
+# verdict: cited (used in `incident`) | lead (in scope, not acted on) | skipped (in scope, no change; see reason)
+#          | rejected (out of scope; see reason) | unreviewed (collected, not triaged)
+date: 2026-11-07
+scanned:
+  - url: https://news.google.com/rss/articles/CBMiuwFBVV95cUxQYkRTdDg2elBTaUhJaUE1ckx2azNGV3lwUUhmcWV0U3NZN0s0TTh4X284bG9KZE1feTlVc0NjdXN2TXUwb2RRWHBZMm9oN2xrZjZRYkFzNmZQLVVWdWRQUURnLVhvek5VOWFJbk1Fd3VONFplYVBQdU84b3haUE9IUDBEMEIwLThhR0U3VmV1Ynk2S04wVnlvdll4UEJUenFCS0s0V1BmdGMxbVlIRXlSMzU3QVVqSlJIZ2xJ?oc=5
+    title: AI auditors catch most agent misbehavior but flood reviewers with false alarms, new study finds - The Decoder
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: "Underlying source is a Substack pilot scoring auditor models on existing METR MALT and R-Judge logs: a monitoring-method evaluation with no new misbehavior instances."
+  - url: https://forum.cursor.com/t/public-brokerage-connection-fails-in-grok-bot-oauth-client-id-error/177652
+    title: "Public brokerage connection fails in Grok Bot: OAuth client_id error"
+    origin: Cursor forum
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMi6wFBVV95cUxNemxxT0NTdFB4Y3N3cWRSVFpzZEtld3FvbmVvajZHclV0MGU4a05SR2RFRmx0eWZLZE5YN19YWjVfbTdnV29SS1R0dmdxeDV3Vkl1T05iRmh3ZHdId1NNQUdjbVk2dlFyVkFyUFFVZ3FpbkVycHZrM2dBc0E0NGN5VFlEX3VaV1BtMU1pdko4aUQzemhCQUM2ZFhRV1ZFNGRrejZqUHVGeGY1SzVpTDhMTHNxTFZJZXBqZ2hYc3lCOWlzdmZtOGgzcG8xcnNQVUdHTVNFZTZfXzBhTEdzQ2l5RkxoNzJ1a2tvZFpr0gHwAUFVX3lxTE1heEc1OTlRQ1FrNENUeHVqME1XMTRxMGVWNmtESUV3SWdLOFNjeFZRa3ktcXVqN2lJNW04WmJIcFlDUzl2UFVjS0xjX2FlWVh0aFkxSnNkSEpOdGc5ZlhwTk5VVHdUTERDZXY2ZmF0clYtUWp2cUdWMnhvZks3SmkxZDhTT2tQUjVEZ3V2Q1JCYzhPQndxYWdfd0VoQUN3VG5IS3hOb1hoeVVNZ3JBUHM4S0ZUU1dlRmNqYmFhQTBfSmJiLVg4SzVSUGVIX3dBZzZfdy1EaDkyamJUbkNVdF9uQmU2c1hHNmhfMVNQM2ppQg?oc=5
+    title: Bizman who accused DSP of ‘love trap’ now arrested for AI-doctored images, blackmail - The Times of India
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMipgFBVV95cUxOUFhHZERVYm50X3JJM0dKcFFRUk05c0RkenBoSWVOZEhmUmdNNE52eW9ZVDFqRU5JcGduVWNVYWduYWxPWTFmclpqNnlWY3o2eUZBVGstTHM5dTF2bTBUMDNTSExrYjJESVh4RV9KZDY2aGVLQUJ2OTV2LXZLRzl0a3RGeVdvNHNfZUlTUGlhOGVQTzNUZHpRQTUyLUdya2xTMXo0TElR?oc=5
+    title: Six arrested for creating fake AI videos to blackmail MLC Mirza Rahmath Baig - Telangana Today
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMiU0FVX3lxTE5NODdmT2FwTUhIRm16VzExU2tnamZmSGRsQ1huSGtKWmRkdEtWWHFOd295a0Vva1pqLV9KSWU4M0pLaU42T2ZDaHF0ZGdOQ1hiOHA0?oc=5
+    title: Man Alleges ChatGPT ‘Encouraged’ His Wife To Poison Him In Chilling Murder Plot - شبكة تواصل الإخبارية
+    origin: 'Google News: chatbot OR "AI model" blackmail OR threatened OR manipulated'
+    verdict: skipped
+    reason: Already covered by AID-2026-0115 (Gates v. OpenAI); no new facts in this coverage.
+  - url: https://news.google.com/rss/articles/CBMikwFBVV95cUxNMHhCLUNYcGQ3TnNXMDFRajlQRnZEWXRaN296TUprb0c5UzZ3N2tzOVZDWWM5dk10Wlp4eUVsWll5Q1laaVJZN2JjQVpIQlVaTVpQSW5zSFZ0Vm9KSTNGSGlaUzZXam1ZQ2s2dUN5RFFpYXB4Q2VrVHJfck5OQUZIQjlrMEhZSGJQSlp6Ynh1QnJrd1U?oc=5
+    title: Estranged wife ‘manipulated and encouraged' by ChatGPT to poison husband, lawsuit claims - AOL.com
+    origin: 'Google News: chatbot OR "AI model" blackmail OR threatened OR manipulated'
+    verdict: skipped
+    reason: Already covered by AID-2026-0115 (Gates v. OpenAI); no new facts in this coverage.
+  - url: https://news.google.com/rss/articles/CBMingFBVV95cUxNVnZ1aXVUcmE1Y0JRWDZscEh3Ml9ZeWFqQXhWNnFNN0tlV3dXMnRJLUo1M0E0LWdQRHZYTE1lblpKbkJsdS14ellDbHFLUVU0SzZPZXl0NGRELWFTUU82b0sxT24weldfYjNPSDgwcDM1MzRrMWVJdTNYZl9uSjRBT085bWFESFdXTk14MHdDNzlrTlNPbGNidzVSb2tHZ9IBngFBVV95cUxNVnZ1aXVUcmE1Y0JRWDZscEh3Ml9ZeWFqQXhWNnFNN0tlV3dXMnRJLUo1M0E0LWdQRHZYTE1lblpKbkJsdS14ellDbHFLUVU0SzZPZXl0NGRELWFTUU82b0sxT24weldfYjNPSDgwcDM1MzRrMWVJdTNYZl9uSjRBT085bWFESFdXTk14MHdDNzlrTlNPbGNidzVSb2tHZw?oc=5
+    title: Estranged wife ‘manipulated and encouraged’ by ChatGPT to poison husband, lawsuit claims - Daily Express US
+    origin: 'Google News: chatbot OR "AI model" blackmail OR threatened OR manipulated'
+    verdict: skipped
+    reason: Already covered by AID-2026-0115 (Gates v. OpenAI); no new facts in this coverage.
+  - url: https://news.google.com/rss/articles/CBMidkFVX3lxTE9JLXZEX0l1bFg0VG12V3N6NEh6ZGpDaVBfWUZrVGttNGxpLXpHVVBBVVhCS3FUT08wcThtWWoxRDNIU0h4UFRGcFo0TWg0cHBPU3llSmVES1lEM0JYOXYwbUMtdThfWFNHSkNWME1NWHcxTzBocGc?oc=5
+    title: "U.S. Midterm 'Blue Wave' Shock: $3.5 Trillion in Global Market Cap Wiped Out in a Single Day - BigGo Finance"
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMipgFBVV95cUxOWVlETWZYRTdZT253bmEzNGpwWFdNTndUM00wZkhITEdfX3pwc213VC1Ub1V3Z241Z3IwSjc3OV9GY2dlX05XSzY3MU4wSFpTOWN2SUF0cmpjbElqdzVSWFZGczlRTFhRQXhXck8tWE5xSXBGdVIzb1BQVHNCMlMyb2pvWTFYWE9KeEhpbk5ST0ZxMXJUV3prSG1aVmNfQW9jLXlhYmVn?oc=5
+    title: Election Scheming, From Joseph Stalin To The Democrats - American Thinker
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMimAFBVV95cUxQRlFiMmJ6dTdCRGk3bEljVldyQ1YwS05QMjQ5S3FidTMwMmhZV1ctMi1ZNWlkbFZ2ZnYyLXpTRXFvMjlvUG1LazhkR0dOYWRWWlVpMUhRUFZVa1A5RmxSeHo3Y214d2pBbXA3dFJCM2c4MktqbE9PTFFVczQ1WlZuWnc1QVFCcUpTQlpvNVhkMjBjam5WOFl2Sw?oc=5
+    title: A runaway AI hacking agent escaped its sandbox and breached WorkOS - Martin Cid Magazine
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: skipped
+    reason: Secondary coverage of AID-2026-0154; the record cites WorkOS's bulletins and BleepingComputer.
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTFBEc25qbXRTZHZrT3N1UVFsSlBGV0owTlBFeTlMNnktc0JMdVRrSTBleWNLYTNsU3ptdF9jVFUxX1N0aWJUSUsweG16VG9Pdl93ZzJlMTNCd1BUcmpoYnM40gFkQVVfeXFMUFFEODE4QnVMVHF4UDVtWTJ5RUZ6dkEwTU1kRmJzeUVJTVFxcTdMQ0JWb2pXTF9vd0JkaUpRWlBIVnFhaTNIVnBKdlN2cThfdFA3d29GSlROeHZUXzBWTWhmel9mSw?oc=5
+    title: WorkOS Confirms Data Breach After ARTEX AI Agent Escapes Security Researcher’s Sandbox - GBHackers News
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: skipped
+    reason: Secondary coverage of AID-2026-0154 (read at gbhackers.com); no facts beyond WorkOS and BleepingComputer.
+  - url: https://news.google.com/rss/articles/CBMiZkFVX3lxTE55cFNialdRN1ZHRE1TdHp6VkFsOVY2NWloTXJFeTgyRURIb2FjcUJxTnMzQlZiUC1ZWERmeUhvcW5RcWlPUXNoRkNBdnlXbWNwQU1fQjlGZ2dlbmJUWDR1eEV5c3N3d9IBZkFVX3lxTE55cFNialdRN1ZHRE1TdHp6VkFsOVY2NWloTXJFeTgyRURIb2FjcUJxTnMzQlZiUC1ZWERmeUhvcW5RcWlPUXNoRkNBdnlXbWNwQU1fQjlGZ2dlbmJUWDR1eEV5c3N3dw?oc=5
+    title: ARTEX AI Agent Escapes Security Sandbox and Breaches WorkOS, Exposing Customer Data - Cyber Press
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: skipped
+    reason: Secondary coverage of AID-2026-0154 (read at cyberpress.org); IoC list not used.
+  - url: https://news.google.com/rss/articles/CBMib0FVX3lxTE91WHM2YjlMMmYwYXo3aHZoNkpSUk1ZN0NtNHNyUXEtMWRDTHFaUjVaT2RoZXExRUZ4a3RDX1g5X3R6MVNiWTZXQmdKTzBtNjhZLXZrLUtza1VuWGVqeS1PS00zSFRlcHdwZ0ViLVJDc9IBdEFVX3lxTE52MFd1cXdLM0lsbUtfNXZ0M3NKMDl3ZkF0QTBzRFNJZ3VlQTY0bGxyR3M4Zm15bURWdktkN0tRN3h0SW5KZFRaLVl6NlFWR3hENW1Wb2Fzb2poZ1RwaVVOWGJFbEpfZmd1cjBULTlzOEx5dkNQ?oc=5
+    title: ARTEX AI Agent Escapes Research Sandbox and Accesses WorkOS Customer Records - CyberSecurityNews
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: skipped
+    reason: Secondary coverage of AID-2026-0154; the record cites WorkOS's bulletins and BleepingComputer.
+  - url: https://news.google.com/rss/articles/CBMizwFBVV95cUxPcTI5VGFnaXdySTI3S3piY1hfdzNHT21MajFMREh4RUJ6TTQ1bVRvMzA0Y3RfaE4zNFdHbU5NSzJSMWYxSjF1Y0ZVdkFNVW9kQnRxeE5INWVIZUREWC1LcUVWRktyTnRZb2ZmSDN4S1doYkg5V0VHVVNKUkZKZGZGek1GMUpDZXhNdFZROEhXczVJZXFwOVlYQkFWck1GN25pYl9DWUNUb1ZTWEVESVBySHFIVEg2OUQtWEs2TlY1cVZTWXpvbVJQU1RHYjJlb0nSAeMBQVVfeXFMTUdSVWdMV3ROU1E2VGFHLS0wek1sVmhrMU5RYnlwbG5YbG9rUG1Gb1RHT3NMU0hQZEtwVlhoRHlUVGVkTGx1cHRzeV9wT2I1VnNHVi11TnpYc1h6ZERqWXJ3elBDellpM3ViRmFON1RJU254WV9KS0JHeVV3WG9tcXVUMXlsc05CZ0dnVkRjcW95MV9FS0pDZ0tWQ3dsSjB0T0JvNGRIeDd2ck5BME0xZ2xJVzQtLW01MHZ1Y1pVa0E3RV9aYlFkQm1JQzJ4WEs1VmJLS3ZxM0E5aHRxeEZfNVIzYWc?oc=5
+    title: Trio charged with impersonating CEOs using AI to steal millions from top companies - WDBO
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: "SDNY indictment (unsealed 2026-11-05) of three men for a ~$129M scheme in which AI mimicked executives' voices and images on calls. Treated as routine generator misuse (deepfake impersonation): the AI was a content tool, not an agent conducting the fraud. The DOJ release could not be read. Flagged for human scope review."
+  - url: https://news.google.com/rss/articles/CBMigwFBVV95cUxNZW95QXBkQXJRZEJkVlpjdVM1LW5na3dheXRQdFJ6Sjl1aDM3UHNZcEM0STh5c29LVkxNUjVuZmttMlo5Q1YyMXJRT3R4cTlFNVhwU2dWQWNKYjRHM1h1WkRwaFNiaHdVY2ZyV1I5R1QyS0o3RE9Bb0ZQRXJPLTFZT0RKcw?oc=5
+    title: Researcher says AI hacking agent that breached WorkOS escaped testing environment - Mezha.net
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: skipped
+    reason: Secondary coverage of AID-2026-0154 (HTTP 403); the record cites WorkOS's bulletins and BleepingComputer.
+  - url: https://news.google.com/rss/articles/CBMiigFBVV95cUxQSFdNR1A4TlJ6UjkzSGNTaGU1RWpkc0FKRUJMR2FOVldpaFlzUTNxREpFTVB6VHRyX0pyRUNLREc2empzUktjck5fUXNBYkJZZGpEWnBpRkU4TkVaTzh2UDZHUWljLWlDaE02TXA1eVdORHA5WWlIeF90VmVRd0ZFc0VuVnVmeFNBT1E?oc=5
+    title: "AI Security &amp; Database Change Governance: 2026 - Security Boulevard"
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMitwFBVV95cUxPTmpmTWZDNXd1QnBxbXk3MDBvNVczQ0I4SWRiSW9kdXVQR0hvelZYblM4ampTY21LdEc2cWh3UV9fTEdkTGZWUXg3OEZKekZyZC1xR1o0NGNsOTdPd2hlWUJQT3Y0QTZseUpRbl9FaVJEaWZaTTJ4cFRkcUdrT0ZIcGgxcVdtNk1jSGluckEwYTBXTWZ3SVpMQ0ZGZkpjRVEybG5jTlJEX19fZkdENVZvaTZ2VGozLW8?oc=5
+    title: Runaway AI hacking agent behind WorkOS breach after escaping sandbox - BleepingComputer
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: cited
+    incident: AID-2026-0154
+  - url: https://news.google.com/rss/articles/CBMirwFBVV95cUxQN0NmZ2VFU1VZOXpuTTB3RV9RSy1OMG50VHpjZDRTV0IxYkp1T2dtVF9vc0c0RU1NdHJYdzFJM1RPc1Ftb0FraDgwT1hVRE9uTHhvNnY3dzN5NHBLXzIwTDRVMkdRX19jcGhuYnJYV0h2ckFPSk1VVUxyb05XWlB4Vm96YTFGZ1RTRGlrSm56MzZVY3NnaTBOX2RwNXF6ZjAwUGpTRWdUeF96Z3ZXdXlj?oc=5
+    title: Greenwood man who had AI-generated images of nude children sentenced to 10 years in prison without parole - River Valley Democrat-Gazette
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMihwFBVV95cUxOR1Mtb3ozT2tFQ2RwWERnQjZTMFNnX1dfMzlwSmpkQ2VDeEV5cDR2OXlSOFZJQXk0MmIxWm45dThfcXVnWWhCQkV1MXBseUpiNFFYNjE3ZURTVVhOdUZPXzNybjc0ejJjM3FtOHRQVWFXUDk2NkRQNV9jbWdNUVpRUFo4UVQ4LWM?oc=5
+    title: Your AI Agent May Create a Business Decision Nobody Actually Ordered - Inc.com
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: Article could not be located or fetched (Inc.com 403); title indicates commentary with no concrete incident.
+  - url: https://news.google.com/rss/articles/CBMiuAFBVV95cUxOY3F2bWpvM2pTaXVROGtLQW16Qmd6VDhRdE8xdXJOcm42cTJlWlFFSTJMaGc5alNHT1ZER1l4U1dIZ1NVX0NQVGxHZjZYWTFDT2o4X1NpV2FUZnUtcHJjbFkxcmpyTjBHbmJHSkQ0Q0NydC14aDREcWFtenlmeDJJODVOcDZQSzVsQTJqdGQzZXJvcTJzejlWYlVQOXpaMmJ2OEx1R05iRnhZOGpLVFIwa1l4b0NvS2V5?oc=5
+    title: Agents reveal secrets when offered to team up with each other - The Register
+    origin: 'Google News: "alignment" AI incident'
+    verdict: cited
+    incident: AID-2026-0158
+  - url: https://news.google.com/rss/articles/CBMif0FVX3lxTFA1T1hvM2JnV3FjOU1NWG1aeUQ5WEFnSUVWUmtlTllPNkJ6UTNEZjBxNWcyNGc0WTYyQXFvYzhqR3g0RlJCbDVnTFZycFZDR1pFZVZ1Wm1ORW16OGhDQUhyWkp5dHpFY0gxZzA1bWp2RElsaGRSSlpfczZOX0x5b0k?oc=5
+    title: Three men charged in US with using AI to impersonate CEOs and steal millions - The Guardian
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMipAFBVV95cUxNb1FYQTVmb0NhX3VkNFZYQmpvSnNkWHVjSjczZ2lOT1dxSlhFMWZCLUJOa0dkX1ljdkpjOVhQMUk4QmE0US1UZWlGeWlMeUs1SE5VeTQ4OXVfcW1rdWlMQzlHc3pxdW1DR1hlZFd4eGhmaFl0dEJrMlRQakQ3SDN5dTViLW9UVTFvMHdrUWpzdkJFUl9vemtENERFOU9RTkRmcTRTLQ?oc=5
+    title: Three men charged in US with using AI to impersonate CEOs and steal millions - inkl
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.ycombinator.com/item?id=50398646
+    title: "Tell HN: Be Careful with Stripe Connect"
+    origin: "HN: system card"
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTE94dmFXR3VfUW1WckNUVnF1NS1OVzJzYWQ5cXRoRVNQNXRRM0JFcVRudThrSF9SMkNMblc1ak9DcnNRVnRNVFQzMEQ4Q2dVbVh3RU5pN2drMDJLa1F5X0Jj?oc=5
+    title: Israelis charged in international AI fraud, money laundering scheme - The Jerusalem Post
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMiugFBVV95cUxNYjZIUHpiVmNveDV4cVgwMWtDS1daRTQ4aThzQXlFTWFabkU0blhxaHloNlloQU05Mm9MWXMxZ3hzUTQxOE9PTnRKLUtMenRzOEgwOEFvWEE4cElWeXJyR2JmOGcwX2k1RmhSbHgxa1dRYzRzdldrLVQwVnIteFgyZ0pnNUNTZ1R0UzMzN2gzYzlJQV9YLUN1LTY5VzRZeUVxQWc0ZFdsQTFabFNnTkkzZTJWSm9KYTY2TmfSAcIBQVVfeXFMUFd0MjNLZENMc1JmNE5hX3ZxZ1hsZi0xN1VsaDdPU1hyN3EwNnZidm96Snp2TE1SMkZvN2U5TzVVUUFrT2t3VGRTY1RhWE90NUt6VkpNZTdMbWV6TnUwYzlTN3FhZlhvSUJtN3ExQXFsUVhQX3BEZWY4M2RHQ1lkZk43b3d2M2NOTlhaQk4teEhMV2t3ak9XcWthbkZ6aGh4X3BqNGF2MUxnMUY2Rm5ONGRLODIxY0JDTlF0MXlkeU1oTmc?oc=5
+    title: ChatGPT ‘manipulated and encouraged' a woman in her plot to poison her husband, suit alleges - NBC Los Angeles
+    origin: 'Google News: chatbot OR "AI model" blackmail OR threatened OR manipulated'
+    verdict: skipped
+    reason: Already covered by AID-2026-0115 (Gates v. OpenAI); no new facts in this coverage.
+  - url: https://news.google.com/rss/articles/CBMioAFBVV95cUxQTmRJdEpJeXdZUWZNUS1fZE15dEctYkQwZ1c5WlVrTGFHeGRNSWJyazdWMklyN1EyUUNoQnZtbmdIaGUxZkExOTkyM3J0dGtLbXVuSDNtbFFaeWlXTV81ZDRTX3kzZGxfbE9XTDhYNlYwbmI0R3B6NTRmcFE1Sm1iRlI5RGJ1X0dxbHZ6Nkl2WkR6ZmVVb3UxTVNGM1BwOTNs?oc=5
+    title: Austin man charged with creating AI CSAM of known juveniles - Post Bulletin
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMid0FVX3lxTE1TTEQwRDZUWFcyeVJpYi11TmpxNnIwSzdJTVF1N0VoZmVidy1WUmpFZThZdFoteURpeWlLZS1fN1VNQkR3OWE2T2xrYUZTQm1ubHlMLWhWaVkyWFFmdmFIMXNwWnNLcjFSYVpyc2gzS1VDbm1WSkhz?oc=5
+    title: "From SOC to AI-SOC: Why security operations must evolve for the AI era - IBM"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://www.lesswrong.com/posts/uc9ouDHMR2aw2ozsF/gpt-6-astra-covertly-underperforms-on-safety-research-tasks
+    title: GPT-6 Astra Covertly Underperforms on Safety Research Tasks
+    origin: LessWrong
+    verdict: skipped
+    reason: Already covered by AID-2026-0153 (GPT-6 Astra covert underperformance).
+  - url: https://news.google.com/rss/articles/CBMiekFVX3lxTE5wM2syR2ktVE9SRXlBUHh2U3lIUzhYOXB0eHl1WWhtckZId0Ywbk1PZ1I4ODJwM0VDbVlYNktsU0V3OGk1QnJid2FnTlUyR0VHaVdlZEhJTWxteEdaWGxIYVdGRWJadzlpTkpsd1lzZUxVZ1Q0TDdSNXFR?oc=5
+    title: Three charged with using AI to impersonate CEOs and steal about $129 million - Quartz
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMiggFBVV95cUxPaEdXSTU4OWl4ODVKbDlCY21GM0tBeWdCbXlkc0tDWkNxWmxRSnZ4Vzh1am14VFkwTEdoSnB5dUZjYm9USWIwVllaNWZvMDE1US1jdmFpZjJwdTNOcWJCd3BmMjBJZWFoaHRLODVaUE42Y2Etb1A4N19PdTFsaG85dEVB0gGHAUFVX3lxTE5aeGx3TVJMMzFHeklHUG5LajJGd2FqT042dk9vakZmbmVNSTJ0TGJYOEo5U3lYYUozakM0SkFrTmNuRWUtUnpIZTFFVGNiM0czdVN2RUxheWVQMUt3OVl2bnJqVk1IUElBY2RabmpfMzR1R3J1eDFUei1fSjdmbUpHZkdjRzc2cw?oc=5
+    title: 3 charged with using AI to commit $129 million in fraud - upi
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMiowFBVV95cUxOYlNCUlpPWGw0LUFLMmo3MU5uM0daN1pHMVlIakpNbU4ydmR0QkREaFBjeEpHck02aVVHX2R1aVJmalZycU9wb0dlQmY2MThrelNZRmZEcjZpZUZXaHZlMzFaTTVNVkEyV0dySW9UNlRvT0tIWXZkSGFUemltYmF3UUZPdXVLNDVzZm1YLVJWem1QXzdXZGFSaVJwaVF4SXdMdC1F?oc=5
+    title: Geoffrey Hinton Expects an AI Chernobyl by Next Year - Medium
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMihgFBVV95cUxOWXE4SmNnb1lidWREREhudTEwLTBUcUUzMjBfeUJ1OWVFS3BNSGRkYTRNM0h3TDdHcVVTMTF0dENJNmdDeHFTbVJ4bThVMm54c01CRW9ud01hT2Fjc1B2c05nZjBNVlVQTEdtRnVVbVhoc1RPXzFrVUlsYmVJaGNjaEY1bHBuQdIBiwFBVV95cUxOQWxKMEdISlZEM1lndjZpS25pZThNRk9mSmU0d0NsTlduUzhKSDRXdUN2VzZEV21RV0F3MGhaMnhfWnZYSnJnVXRnNnJJNWhyV01wUGhJaDFSTjVNRzFDZVpLWktoWXNKaVRhRzlwREhCaTdlLUhESHdrUGN4Ry1LUGxaejNjQTdDNDk0?oc=5
+    title: 3 charged with using AI to commit $129 million in fraud - Forex Factory
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMipAFBVV95cUxQSXdUTUd1RFc5aWsyamRudTZWNEpYT3NYZ2RrczI5Y0U5dEM1VlF1cnZZR25tSllRcVBOTE5tQTB3WVV4YnZXSjN3YnduWFJOTmxCMG1UcWpSNVBfT2tTWS04THRudXgwbG4zUjlUS0ViVUd3VFJzN0lFNG9EN2lCQThNYjlRcTdTQXhLTEd6VjdVbXJZenZ3ZDdPVG9jQzdydE84Wg?oc=5
+    title: The Problem With Being Told “You’re Right” - Psychology Today
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://botel.dev
+    title: "Show HN: Botel – always reachable agents you pay for only while they're working"
+    origin: "HN: LLM lied"
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://github.com/zalando-incubator/agentic-identity-broker
+    title: "Show HN: Agentic Identity Broker, OAuth Delegation for AI Agents"
+    origin: "HN: system card"
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMihgFBVV95cUxOWlZ1SE5EZWw5Z1hfdGVySkU1WVlfZTBkZU5CdlN1U3VxdXBIWktJVjFkTmV2Wll3a2pwcFJkam5FOEZfekJ2X0pkcGs3QWNralFuZUx0ODRsTi05bWQ1MVI4V29UREdqMkJ2Ny0tMEV1QWJUSFBzV0VZOFRSOE5pM3l6bEVMdw?oc=5
+    title: CERT Warns Pakistani Organizations Against Shadow AI Use - TechJuice
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMijwFBVV95cUxOVnhkQmFZai1iSmtZUHJtMHllSF80NnNraHVzWU1GSkJzc1lydUxjSjdCMFVHWHBiUjVWc24wd1VvNFZ3TEQ0ZEdqLWExcGw5U2dFaVBmcDlNeXZLRjkyMVhlZlVYZkRMNHJ2YXQtcm9pUWxpRTFxYWF4M0xfSFpNZERSamw5Sml6cHJ5N1lwWQ?oc=5
+    title: OpenAI Found Its GPT-6 Astra AI Was Secretly Hindering Safety Research While Pretending to Help - www.techtimes.co.uk
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: skipped
+    reason: Already covered by AID-2026-0153 (GPT-6 Astra covert underperformance).
+  - url: https://news.ycombinator.com/item?id=50391446
+    title: "Ask HN: How's your home-cooked software revolution going?"
+    origin: "HN: reward hacking"
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMilwNBVV95cUxOM0ZTRkxPZF9NWlRSNE91b1NVdEhBSE9weUZtODZCd2VyMklTd1VieEN2SzViN29aZmZWdGk2YUYxU1JCMXg3R1RUSTBPeTdEeGY1allzUUg4b2duaXhNQW1fVDlkNlJMQ08yMFppZEpiZkhaWFQ3WW15aGdqZVV2RXZOb3I5NGxmdV9NN1JndDl3VzhaVkI4TUxQNXlBUDFLcks3dkVPRmhSODdMc3J0QjFzSWFYRVdKcmhKNWViUjhRTi15NVl6OEhhVlBTVFRMYWgzU1NZUWx6cUNCa1ZjcTM4TlRaYVVnb2VyLVFlR2dHZURRODlUZjJWcVAyLXZKVFlHOVp1WGh0NWRVN2RiUGdQNWl2UnV2d3piVWxsMmZ0SzREdFYyaDdpeXprbTZ0OGxCWmpFallpUmpHN2xuNHpGOThRN0lfQ3N4NDROVXJrMmRfU0NONkZDMW9JaVNYWFJDSHlqNnUzWlRmelVJYU9ESEFQVVFHZEhDcGZORDdRaWYwUkNlTGpxcG9US2I2ZEVqc2trUQ?oc=5
+    title: Rogue AI tasked with renumbering pages accidentally deletes law professor's entire syllabus, one year of lecture notes - Tom's Hardware
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: skipped
+    reason: Same event as AID-2026-0155; the article body could not be read, so the record cites Baude's X post, Dexerto and RuntimeWire.
+  - url: https://news.google.com/rss/articles/CBMiakFVX3lxTE9qSmY3MlU3bjlfVVZ3eUxnUFk5b2Fnam1DRjFRY09TaDNEM3hOR0lZS09xZGJNMHV5UUdWbVJZd2RhSDBvNVhnM2JfWUFZWDA0Yi1HLUd1Y240THREOWtUR2NidjhDTnFnbmc?oc=5
+    title: The Agent Did Exactly What We Let It Do - DevOps.com
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: Commentary recapping known incidents (Replit, Nx s1ngularity, DataTalks.Club); no new incident.
+  - url: https://news.google.com/rss/articles/CBMijwFBVV95cUxQX1FBVXo1TDAwZ0VQRGNIWVN3X2NQZzAyM1FrVmc3MjQtOE4xRDh6M0lIZGZ2WV8wenZQeEg0M084WmVUWUlMOUVXMkhtcjBRd1Y4ZUx2LWlmaVdEc2p2Y1pyUF9wQldrYVEtMUNpLUF1LWxqTi1jMnF1TktiaGRjbWRMODVGYkh1VnRyQWFZdw?oc=5
+    title: "GPT-6 Cyber: OpenAI’s Frontier of “Aligned” Security Agents - Cyber Magazine"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: GPT-6 Cyber launch coverage. The system card was read and reports only aggregate eval rates, no specific misbehavior incident.
+  - url: https://news.google.com/rss/articles/CBMimwFBVV95cUxObDVLcDZzWk9NQXdtUXZ3bXA0U1U0cmJxOXhXVEZOUzRSbGtSeVRQSWZ6SUd1Ukg3ZXc3M2xwR1paUkZHT29QZGphb0lPc3JreEdNT1Vla05razl2Y0lPN1hfcUR2LXl2MjRpY2RuRnVFNGlZYzlqdEJmeTZXdXNrUEp1UUxObHhLaHg0Tm11d2o3UWNlMHZWVFI5QQ?oc=5
+    title: 3 allegedly used AI to steal some $129 million from companies by impersonating executives and lawyers - CBS News
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMirAFBVV95cUxPcmlNeTRoVVpwZjNqNV9wQmRhZ09lYi1RWmhDbDZZSjVQNVRmZXNqRmM1bUVoVFpwVFUySUdEVVlwbkI0dWY1UU01Wk53R1VINXFzVU9WcWdpMk56aHFfWHJOME9WRHZoaWtXdFRhNXZCanY3N0Iwb05xei1fUDFDLXY4dkd2YWxvd1hPdnVBM1NmanVmOXJrUmdSS0N3SWU0WUxaMHJIclVwZWRJ0gGsAUFVX3lxTE9yaU15NGhVWnBmM2o1X3BCZGFnT2ViLVFaaENsNllKNVA1VGZlc2pGYzVtRWhUWnBUVTJJR0RVWXBuQjR1ZjVRTTVaTndHVUg1cXNVT1ZxZ2kyTnpocV9Yck4wT1ZEdmhpa1d0VGE1dkJqdjc3QjBvTnF6LV9QMUMtdjh2R3ZhbG93WE92dUEzU2ZqdWY5cmtSZ1JLQ3dJZTRZTFowckhyVXBlZEk?oc=5
+    title: West Virginia sues Snapchat after teen sextortion deaths - WVNS
+    origin: 'Google News: chatbot OR "AI model" blackmail OR threatened OR manipulated'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTE1lcnRDRlJwVFU4c01vOUVSdEw5NGwtUDJiUTlENHpHNnJ4T2NlX3lZZkI2LTh6ZDJqaE1rOVpfWG9tdEdVekJHZjE2d3VpT29Ic1V2OHlzbGNVeTFIUDJn?oc=5
+    title: Frontier AI Models Fail at Automated Research | Qasim Wani｜MTS - finance.biggo.com
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: Benchmark score news (low success on research tasks), not misbehavior; underlying source not located.
+  - url: https://news.google.com/rss/articles/CBMirwFBVV95cUxOTU0xSkM2WXhLZ3FKYUdCam9oX1gtNV9PM2ZjXzlOZWFmd3Zlb2ZDRnJ4NVozTkxjUGVNSXJ5bEN5Nm5xWURhdDcxQVNZNDdJTFRPblAzWm9WdzVyZmw2a2g5Z1F2YVBNLW1CZF8zNndTeGhuQ001d3p5OW41U1pIMExTWkVBVVB0NzY5blJDRFdqdGh4VXJMR1dVMl9jNU9iaHV3LWR6UTViZHpsaXg00gG0AUFVX3lxTE9EXzZXYzg5LUZMb3BLMTJTcXJteElTSDEzSVdSVjNfTlFxQXVadm0xZjJTelJzeUw5cmhObGRUZEU0UWQyb3JBOTNkRjdlRFpaaUFDVnVHMzR2WXNsYXZ2UmZjMVVTdk9Wcl9hVjUtdXI0cTVhS3J2eFVyMW1VdjBSa2M4R1lNc181anliUlpsbHlzaFE4cjNOMUljckF4RXNiLUt1d0YtdlRrSmFGWjc2MG5aSg?oc=5
+    title: 3 charged in NY, including 2 Israelis, for using AI impersonations to steal $129 million - The Times of Israel
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMilwFBVV95cUxPSGpJVEJwY1VlXzJOQWpFOWdQUDZVZVIyQzFmSzJ1SkNGTDlQTzhmYVhpNG8tM3B2RDhVV1U4STNJZ3l4MGhJRjRmMlJUdGg4N0MtRnQ3VUYxM2h3Mmo0d1E4RjFBSTItNUw4MHRleXk1WXZWMEpOaG4ycHpBM3VsS1hjUnJiYTZmUS1EZjRvSGlzcHc2aEdv?oc=5
+    title: Most Australian businesses hit by AI failures, study finds - SecurityBrief Australia
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: Survey statistics only; no specific incident.
+  - url: https://news.google.com/rss/articles/CBMiogFBVV95cUxOcTd6dzZVYUZuclJmM1A1RWYzYmNNWVAwemdkRng0Ny12MkV6OUpGUjZNUHNlaUpvVXVVRTRQMkpyVGFGaXBCTDQ5TVI4bnFjVDRrdVJ2cFplZnRaTG1PaGh2N25zbFZFX3g1bHIzRnVtYU1TVFVqOUUwZGJ4T3VrQmxnQWxnaXh5RGhVR1E3djZXNHloS2pkYTlIU0xGNTZrbGfSAaIBQVVfeXFMTnE3enc2VWFGbnJSZjNQNUVmM2JjTVlQMHpnZEZ4NDctdjJFejlKRlI2TVBzZWlKb1V1VUU0UDJKclRhRmlwQkw0OU1SOG5xY1Q0a3VSdnBaZWZ0WkxtT2hodjduc2xWRV94NWxyM0Z1bWFNU1RVajlFMGRieE91a0JsZ0FsZ2l4eURoVUdRN3Y2VzR5aEtqZGE5SFNMRjU2a2xn?oc=5
+    title: OpenAI Reports Covert Underperformance in GPT-6 Astra - Security Affairs
+    origin: 'Google News: "alignment" AI incident'
+    verdict: skipped
+    reason: Already covered by AID-2026-0153 (GPT-6 Astra covert underperformance).
+  - url: https://openai.com/index/partnering-with-hacktron
+    title: Partnering with Hacktron to find vulnerabilities in OpenAI’s systems
+    origin: OpenAI News
+    verdict: rejected
+    reason: Security partnership announcement (human-led vulnerability research); no model misbehavior indicated. openai.com returned 403.
+  - url: https://news.google.com/rss/articles/CBMiZkFVX3lxTE5Vb2hBeU81ZzF3ODV0bllLUThkWWdSQmMteV9PUGpHRk9ZVEJwOWN1NUNqZkVSRGdVNlZtbXVTbERqU2h0TF95eDVUTHg2eDdEbmxHLUVKLTZXZHVOWGpJc1NSd2JWZw?oc=5
+    title: "The 'Angel of Death' at Our Doorstep: Look Up! - news.sbs.co.kr"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMikwFBVV95cUxOb21nMXRtOU11RDR5dGpiV2NEYkp4bUVGNUctanFuSzFjalRSdzB2RlZ3Q053SWJ6Snh0ODh0OGtjYXA0UEIzTHNuYUJ2WU5QclFpTElRRTJoMzVXTGs0NXQ5dXpXb1ktb3c5Qmp0V0xjeHJZejlkY2d6VUpZZmVJRVp5OEpfcFA4bjZoTnRlaTZuaEU?oc=5
+    title: Apple Flags Rogue AI Agent Risk in Annual Filing as Siri Opens to Apps - Technology Org
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: Annual-filing risk-factor language; no incident.
+  - url: https://news.google.com/rss/articles/CBMi6wFBVV95cUxPXzd1Y20wNEFLb1JvcTVVQXIyRWxjSWhZb0xQVE5jcFlpSERXcXNhNnRma19DUkVlUFlabzRKR1ZCalBraVJndXpvdS1FbVhCQ0hGNDkzbXRmYlNkNDRTaTVQRkVMeVBvbVh3cUhtTS0taTdBQW9NTldzSmVPQmN6bndCU1A0RnNkRnFhQllJUTZONkcweTFUZl91R0RJWngtcWMwdXdGLUdZaVhrdnJDbjY2QmlkVU9EOEVMVnhWZ01VOFRuWU8tM1RZZmR3SUlQTm16bElXZW5rRjZhWDNoczgxUlZYMEVFNWZJ?oc=5
+    title: Woman shares AI-generated photo of her being arrested after Utah County Sheriff's Department allegedly calls her about a warrant - The Mary Sue
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMi9AFBVV95cUxNcUJZb3ZhcTNpMlQxVmlTT0hEVnhsOUc2ek1ydUxGQ25BeTgxYVg0OU14ZU01ZTJCWEVXWGV0eUF6bU9fa2c1M0JmeUNVYWk4eGpsSlNXb1hkZ2FtdXZrXzFmUmZadUZKSVRsa294Sk1pdGJ4MXY5YVJDbUJSc1JlYlBQREJuME9mcEYzclBTMTlmUmU1QzlvdjVIYjFhalJITEplcXQ1TWdvZzlUVks2VW45MG43TDZDT3ZGdzIyc0cxYWZMODdDbGs2N1JNeG5tWE51OFJ5RGhva2hmUy1KdGJLMnlkVFhCLUR5Z1lJdmdGbXZw0gH0AUFVX3lxTE1xQllvdmFxM2kyVDFWaVNPSERWeGw5RzZ6TXJ1TEZDbkF5ODFhWDQ5TXhlTTVlMkJYRVdYZXR5QXptT19rZzUzQmZ5Q1VhaTh4amxKU1dvWGRnYW11dmtfMWZSZlp1RkpJVGxrb3hKTWl0YngxdjlhUkNtQlJzUmViUFBEQm4wT2ZwRjNyUFMxOWZSZTVDOW92NUhiMWFqUkhMSmVxdDVNZ29nOVRWSzZVbjkwbjdMNkNPdkZ3MjJzRzFhZkw4N0NsazY3Uk14bm1YTnU4UnlEaG9raGZTLUp0YksyeWRUWEItRHlnWUl2Z0ZtdnA?oc=5
+    title: "Rocky Balboa, Superman Cash, Fat Boy: Trio charged for using AI to steal $129 million in US - The Times of India"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMixAFBVV95cUxPSkljVkNic0VlWHlSa0VzMEp5NllLUUFjNWlVTGJXLTlVa3A1dnhlWjdEbXNnQmlDd0E2ZENWS0pfb0Q5dFlia1RZQkp0OEdrQ1NoOWtoOFNBOVRKNGhiTi1odHlVZjZPeGE5TDV4UHRqSmNQYVF0WndIcWFzanFwODVnRlIwVUpjQ1dpUDFsNUJvTERxa0pQR0ZWUGlyQzNiSlppVUVLQkNVd3VVazM4RG11Um13VTluWHgxQkg2X1Q5cHVL?oc=5
+    title: Three indicted for using AI to impersonate executives and lawyers in $129m fraud scheme - United News of Bangladesh
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMiW0FVX3lxTE9CX0xiejdQYzZsbzA1bXRHYnJWX1k1dFk4dmlPU19zRWJfQ0hJdk1SWjlRTnEtQWVNTDdCYzI4R0RCQ0tKZmREcERyZk5vRDh5VF80UndYTmd2SWM?oc=5
+    title: Sycophantic AI - Joshua Rozenberg | Substack
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMihAJBVV95cUxPODFwQnF3YzNzVDdaa2NCbXFvQ3RSdE5XcW9lQnNvT19GQ1pHYWxRZ2xCSXNpMEtBeWp1aHp3Y0pkS1cwZEV5VW5uUDljbVBwRzhhdjIzSDh6R1ZIWFNmWThKMTRRbWdKenpzSzJ0U1p2N05MbW1pYzY5SmpXSXMtLXJucUMxX0JDWDRCMGlHR25MRXJoT1N3Qjk0ZEhHRUNfYm9tS1NQVlpxWWFLNTlTRWJDS2haTzYza1VjVHhVVG15MWxoWGo0b0RzNGVNUWRZUzl3ME4tOFZBZlhiWlhYWjNzMVY1YjlKM0pHdmFUODJ0NVpCSmNDczFnRHlFeEZWTF9fcNIBhAJBVV95cUxPODFwQnF3YzNzVDdaa2NCbXFvQ3RSdE5XcW9lQnNvT19GQ1pHYWxRZ2xCSXNpMEtBeWp1aHp3Y0pkS1cwZEV5VW5uUDljbVBwRzhhdjIzSDh6R1ZIWFNmWThKMTRRbWdKenpzSzJ0U1p2N05MbW1pYzY5SmpXSXMtLXJucUMxX0JDWDRCMGlHR25MRXJoT1N3Qjk0ZEhHRUNfYm9tS1NQVlpxWWFLNTlTRWJDS2haTzYza1VjVHhVVG15MWxoWGo0b0RzNGVNUWRZUzl3ME4tOFZBZlhiWlhYWjNzMVY1YjlKM0pHdmFUODJ0NVpCSmNDczFnRHlFeEZWTF9fcA?oc=5
+    title: OpenAI launches GPT-6 Cyber, finds 81 high-severity Firefox flaws and 948 Linux exploits - The Times of India
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: GPT-6 Cyber launch coverage. The system card was read and reports only aggregate eval rates, no specific misbehavior incident.
+  - url: https://news.google.com/rss/articles/CBMiW0FVX3lxTE9XUVlvWnp1WGNBb2xnNnZDSGdSaEhaT3lMQlFrYlFaekpwZG1CSmE3cU1SeVJFZV92MTlPdkVZV096cG5UTkFjU1FuS1lzdFBEelYzMTNqcno3UGs?oc=5
+    title: "Extrapolate's Qasim Wani: Frontier AI Models Score Under 24% on Real Research Tasks - BigGo Finance"
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: Benchmark score news (low success on research tasks), not misbehavior; underlying source not located.
+  - url: https://news.google.com/rss/articles/CBMihwJBVV95cUxQdmZsZnlEbzJHUjhzV1FQSmJPeU1Bd05QUnNGY2VZVzhfSWpIcUlJc21jaHhzRzlfMVVZZU42V2E5ay1YaGVlWDR5Z3ZPV1Z0c3RVMkdJQUNRMndzbXJtWGl3OFJyWkg1bFBuWHNaOE4xWlFCd3V5SWNQOENJQUxEZ3NDcFFJTTNXb3ZRcXFCQWtYdFN0bHBXZzVQTW1OcHhMNVpLeGJmWEE5cHVWcDhaczZkZndXdEU3ZkZhV2QtZWppXzY4ZWN4cVdpaDNKVWRuNThMbjR4S3VrVWo5aFVMZS1zT01QaWlDSUJ3eXNGamVZWTZyTTlVZnNpWElNQVJ3akQtYjY5SdIBhwJBVV95cUxQdmZsZnlEbzJHUjhzV1FQSmJPeU1Bd05QUnNGY2VZVzhfSWpIcUlJc21jaHhzRzlfMVVZZU42V2E5ay1YaGVlWDR5Z3ZPV1Z0c3RVMkdJQUNRMndzbXJtWGl3OFJyWkg1bFBuWHNaOE4xWlFCd3V5SWNQOENJQUxEZ3NDcFFJTTNXb3ZRcXFCQWtYdFN0bHBXZzVQTW1OcHhMNVpLeGJmWEE5cHVWcDhaczZkZndXdEU3ZkZhV2QtZWppXzY4ZWN4cVdpaDNKVWRuNThMbjR4S3VrVWo5aFVMZS1zT01QaWlDSUJ3eXNGamVZWTZyTTlVZnNpWElNQVJ3akQtYjY5SQ?oc=5
+    title: "Best AI adoption strategies for Indian businesses: How to move beyond pilots and measure returns - The Times of India"
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMiwgFBVV95cUxPNTRsUUFIeGZjTVZGU0NNZWxrdnNoMGZWRnFTM3AxTGEtYVpHY0VkM1AyTUVpNGkwbThpczR3TFk2Ulk2Z2lxWlpMNXZsZXliTjBtb1lVMFFsRWd6TW9nOHFjbWVOTDFfLWZDNFdCZ0Q1UllsS2MyUV9lYmlkWVVLeS1oNlQxTHNvSGN2aXljeFBuLTlFb1hOUTBRTHpQZWRxVTBKdHJadjNIczBCRXNYRi1PaGs3Y2U0REkzV2V2d1Bhd9IBxwFBVV95cUxOOTI4bzJRR3JOcUlySzd1QkxiNm9XQmcxOVRaVnZVcDRBWmZvOG1yMzdfTU9mQTAyaTduOTR0b19RMkR0aUdwWjY3YlBLMUU4R3dNWTZLLTNwRzJfUGFuZENPWE95YWVSSW53UlBKRjRVZmtRTGQ2VzBQX0xwN21HcGVtMkVXN1lVM2EwcE1ZTW9YZHZSeFRORndWeVotR3AzaFRYVnBUZUVWUlNpSDJsajNyX1A2WDI4YnhNdEZiN0lTLXY1d1RV?oc=5
+    title: Three Indicted in $129 Million AI Impersonation Fraud Targeting Thousands of Companies - Rozana Spokesman
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMiowJBVV95cUxNYmxxZC1Zd1hJeFFpNFhldXd3eTRzakNoc0RyMjE1enpYSkFJc0hMVmlrWlNrTDVpRlBURlhUTU9iSHk2U2F1MmpReW9JS2k3SV9QY3VQbFhTVG5wbGpJbGlzRDF0cTdGY1NtcEdldXY5OGlWMFFyakdUOWx3Ulo5UWo5YjZUd1h3bzlwazVPYkwwMFozcTM1cHgzTl91amUzeGVFc2hyTXllNHdqeExWbmlvdW1aYjdNM0ltcVM2S2lhaGZwZGYwNENNTmh6bU5mZjBjOXhlbXV6TW1oM1Q2eC1VSHh1dk1BYjNuMHAwUC0tRC1qWnVyQW9lTFR0TzBqWF9CbEJ4NEtkZDliaXlQcndybGtuMzhpZDk5Ykp0YVNWamPSAaMCQVVfeXFMTWJscWQtWXdYSXhRaTRYZXV3d3k0c2pDaHNEcjIxNXp6WEpBSXNITFZpa1pTa0w1aUZQVEZYVE1PYkh5NlNhdTJqUXlvSUtpN0lfUGN1UGxYU1RucGxqSWxpc0QxdHE3RmNTbXBHZXV2OThpVjBRcmpHVDlsd1JaOVFqOWI2VHdYd285cGs1T2JMMDBaM3EzNXB4M05fdWplM3hlRXNock15ZTR3anhMVm5pb3VtWmI3TTNJbXFTNktpYWhmcGRmMDRDTU5oem1OZmYwYzl4ZW11ek1taDNUNngtVUh4dXZNQWIzbjBwMFAtLUQtalp1ckFvZUxUdE8walhfQmxCeDRLZGQ5Yml5UHJ3cmxrbjM4aWQ5OWJKdGFTVmpj?oc=5
+    title: As $2.5 trillion wiped off Nasdaq in one day, Nvidia and other technology companies that were the biggest - The Times of India
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMimgFBVV95cUxOdTh0cXdHbzJGTG5YbE8wYjFsaHItbFRhUk1IWWZzQXIyQ2lwdi1VVE1ISnlBbVdoeGtYalhGbEdLSDZrdWRRX1F1VDZjdHFUVFJlOFBMMWhUdnhRNDFTTVJUN3VLSXNHRXNWMWlFdmxrODctcW9YaUtsZ3A3Z3JZRVpMTl9vSEpPaXh5cGkyLTBwdjFkcW1ZbFZB?oc=5
+    title: What to know about the Anthropic IPO - The Edge Singapore
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMinAJBVV95cUxPTFpEdjhDYXdHVE1nd2dDR2wySzd3UmctMGVORG5kVU1qRF9BRHRWbi00ZnRIWUZLbFpQWm94MVdYNVMwQVMwdVNmbnFodWJQRkZ6Nk5SR2VwdGdmTWFtenhSeVM5SV83elh4bGJBT0FkS2hVWEZ3RWlWMU9WM3hVcjk1ZUY5U3VVcDg3cG1fR1o1N2otMnRwOUh0LWhDRGEwazc4N253eWZCdXB0aGZZZU9QSUFiZkZuUVQwd3RCYVVaUzc2SGJZRFhHZXRJMUxoUkg4ZndsYzNnOW9WcTN6YU5BM2lLN1lTS3l6NWExbWxpNGl3MUxrOHgyc2w5R3BtWDQyQlFzYnRJMk9TNlgzRjVhX21wNElNMi1zVdIBnAJBVV95cUxPTFpEdjhDYXdHVE1nd2dDR2wySzd3UmctMGVORG5kVU1qRF9BRHRWbi00ZnRIWUZLbFpQWm94MVdYNVMwQVMwdVNmbnFodWJQRkZ6Nk5SR2VwdGdmTWFtenhSeVM5SV83elh4bGJBT0FkS2hVWEZ3RWlWMU9WM3hVcjk1ZUY5U3VVcDg3cG1fR1o1N2otMnRwOUh0LWhDRGEwazc4N253eWZCdXB0aGZZZU9QSUFiZkZuUVQwd3RCYVVaUzc2SGJZRFhHZXRJMUxoUkg4ZndsYzNnOW9WcTN6YU5BM2lLN1lTS3l6NWExbWxpNGl3MUxrOHgyc2w5R3BtWDQyQlFzYnRJMk9TNlgzRjVhX21wNElNMi1zVQ?oc=5
+    title: Anthropic launches personal finance feature in Claude, lets users connect bank accounts for money insight - The Times of India
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMiV0FVX3lxTFBTZng0Sm12QVRyVXo5elhWSHdtdVNDREhfeTd0T1NyNUU5dllGWXJsT2lBTFBJeU5fWVlaWVNOcFJtZ0k2dGt2TkpveHNwYXFSdTRUQmJuMA?oc=5
+    title: "Fake CEOs, stolen millions: two Israelis charged in $129 million AI fraud scheme - Ynetnews"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://news.google.com/rss/articles/CBMi5wFBVV95cUxOQUo2dS1qbVdlXzFuckRCSlhoaGtEemxvRF9ORXV0QkN1N3pMeXVVV1N6THlQSXZlRHZPNXFXaDhaLVBVdHNnRUQyanVUenczLUc4YU02WUNKbEtEdVZGRXRGYXp1RTVQdEVzWEQzNzFlU2tRMzR1WENKRTNhVGw0c2J0SEltWVJaZFFtR3lXOFkyUlEzRm9JTlp6R1drYS00cXBGdzR1VkxCZVczUzBrZ2JGQ1REbTRpcmpHcl9jSXl0eHgyVkp2RUZSY01NX3pwRGhxS3lQTEdNdTNJZUZmclVGdVNMRFXSAecBQVVfeXFMTkFKNnUtam1XZV8xbnJEQkpYaGhrRHpsb0RfTkV1dEJDdTd6THl1VVdTekx5UEl2ZUR2TzVxV2g4Wi1QVXRzZ0VEMmp1VHp3My1HOGFNNllDSmxLRHVWRkV0RmF6dUU1UHRFc1hEMzcxZVNrUTM0dVhDSkUzYVRsNHNidEhJbVlSWmRRbUd5VzhZMlJRM0ZvSU5aekdXa2EtNHFwRnc0dVZMQmVXM1Mwa2diRkNURG00aXJqR3JfY0l5dHh4MlZKdkVGUmNNTV96cERocUt5UExHTXUzSWVGZnJVRnVTTERV?oc=5
+    title: Yale launches Solis Safe Series in India, prices start at Rs 19,999 - The Times of India
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMigwJBVV95cUxQSXlhQVVkM1pCQVNPbzllak1KTnA4WGhVanl5Y3BCdnpNR0ZWSXROa3ZJSTNwS3JjZXphMlBYQkIxV0VxdVBsb0hnbTJVWVMwbU9ZenlsekRwc09nazdqaXp6bG5WV0x1UjBfdlluanplSkcwSHF3WnhmcWVkR3pFaEtRdTRmVE1WVUljMkhCRnpIVnp2cVJJdGFNXzBvWkRTRnRHMVpXUkFfNS1NWVc1blR4bm50N0pZTzBPUW1KMTVJMVVXMnJqR1JhMi1pSGtXd0Zaa2FJSXRXSGNiTWxnenJsdk56RkNrcHZmM0Ffc2U5d0R2NG5tVTZTOFZSOFF2cmxV0gGDAkFVX3lxTFBJeWFBVWQzWkJBU09vOWVqTUpOcDhYaFVqeXljcEJ2ek1HRlZJdE5rdklJM3BLcmNlemEyUFhCQjFXRXF1UGxvSGdtMlVZUzBtT1l6eWx6RHBzT2drN2ppenpsblZXTHVSMF92WW5qemVKRzBIcXdaeGZxZWRHekVoS1F1NGZUTVZVSWMySEJGekhWenZxUkl0YU1fMG9aRFNGdEcxWldSQV81LU1ZVzVuVHhubnQ3SllPME9RbUoxNUkxVVcycmpHUmEyLWlIa1d3RlprYUlJdFdIY2JNbGd6cmx2TnpGQ2twdmYzQV9zZTl3RHY0bm1VNlM4VlI4UXZybFU?oc=5
+    title: Uber shares one number to tell everyone, how 'unpopular' AI Agents may be on its platform - The Times of India
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMiekFVX3lxTE1YbWNtbEhJN1huVUpaSFBHOHgyWklCMjhLcUEwdzNhQ3FfV3hHcFlHYm1DbmZ4dkptMEh6X29uaXU1MDFNVGRsYmxPcXo0RXNickVnYzlhVGFzUlJhZUV6ZV9QZUlpMWphZjljaUpfTEdYbGRvUVB2clBB?oc=5
+    title: Hugging Face a warning from AI - Sedalia Democrat
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMiswFBVV95cUxNM1VFYVR2Vm00WnFUdlFrcVd4dzk0bFFHVEhSN1R0Y2tSb1JUWXRqQmdDQnJyVnExR09ZSkd2TUV5TE1mOEtYYjMyUXRCY3pnTVhXejdFczgwRzNGdkNnNk1sb0hpci04QUw4ZGZCSkVsMGxYOGdtNU40cURIaTF4bUNCRzB6Nl9Hd1dvSlQzTWtYVDZUN1pKU2VlcjFNZ0hUWFQ3XzF4Nk84UHozT2F0WmRraw?oc=5
+    title: Trio charged with impersonating CEOs using AI to steal millions from top companies - Courthouse News
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: skipped
+    reason: Same SDNY ~$129M AI impersonation case; skipped as deepfake impersonation (routine generator misuse). Flagged for human scope review.
+  - url: https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science
+    title: Measuring how AI agents handle everyday wet-lab science
+    origin: OpenAI News
+    verdict: lead
+    reason: openai.com returned HTTP 403 to the fetch tool; not read. Check for reported agent misbehavior (e.g. fabricated results) on a later run.
+  - url: https://news.google.com/rss/articles/CBMiaEFVX3lxTE45Yl8ydDM3U05zQkt2ZFY3Z0JsVEtCTEp2MFFLZWRmR1lPVHlzRUU2WktjYUNYY0dON0JVbk5kcGxyVVNhRXo5WVZkNzRZRGVWTDJxTlVHX1BiQkpRR3J0MnltaERBcDFR?oc=5
+    title: OpenAI debuts GPT-6 Cyber, touting better performance — and safety guardrails - CyberScoop
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: GPT-6 Cyber launch coverage. The system card (deploymentsafety.openai.com/gpt-6-cyber) was read and reports only aggregate eval rates, no specific misbehavior incident.
+  - url: https://news.google.com/rss/articles/CBMijAFBVV95cUxPSDUyUzhqd19PekhHMGplcnFwWm9HSjhRdy14NmptY0x5RXZ2X2s5NE5SdXZrYmlNajlzNTNJVUxxLVZFcjIxM1l3SkM3NTBoVGpLNE5iMGJyQ3ZRb2pvRVlBU1ZEalVqb2lYTU03LURRb2lMcGxzbTVEWDJod1A4eTRpQWtZN3p2a0dCcA?oc=5
+    title: Controlling AI - humans need to step up - Part one - Pearls and Irritations
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMihgJBVV95cUxQV0JzWmc1OEROcElCanN0bGZWQkNZODJLOUpLcC1fXzZQakNBNUROUktpLU5ST3FYQTNyY2RQUW4wTnkwZUl6bjBmQzFaQlpRSHNfX0FzTkF5S3dPV2I2MnVyaXNOdy1nYW9rejJDdWRzWS1BSXd2TGtiRzVMSm01a0FFSDJVa0RIOHFsMnNZaFJrQ3RhclFlZDZLTzFqaTdjRjZCdm9qV3lJZ2hQSUM0ZzJ5VkdkNDJ0cXI4RVQ4cG5KXzc2UFExRGQwOEFFaGhWN0l6YjhFbTJxTldiNkpIeWhtbWthem0xbUdNYlFuTFcwbENKVGUyajc2YkRESHVSeDBDQjBB?oc=5
+    title: Pleasant Prairie Man Charged With 12 Felonies After Allegedly Using AI To Create Nude Images Of Ex-Girlfriend, Selling Them On Snapchat - Kenosha County Eye
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMiwAFBVV95cUxOaXRkYXpPNkFNSXRuLVpwbWdQaG81NFdUTGFoV2hNWnRQamNmMmxnTGxRMmFQZzh0d2FLYm5xMlBCZjZNcDZPUm9RQmFFeWZGUXI4YUNmT3dSUjluTEFmU2p3TTdkdjQ1cTJQYlM3VlFkUDE4T1hEUVlqNEE1MTluWHpFYjE1TDlUdy0wZG9BeEtvZ2RvYUtxZGpxUW5yeUxnSjY3NzBKZVNvU183QjNYN2ZVWVN3MzlzR1k2LVpHd0w?oc=5
+    title: Pa. State Police Corporal sentenced for using AI to create porn at work | PHL17 Morning News - PHL17.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://openai.com/index/cultfit-builds-with-codex
+    title: Cult.fit builds operational muscle with Codex
+    origin: OpenAI News
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMiuAFBVV95cUxQUWYxNmNOdGVfdmZEd2Vpa3lYM3dEWEZPMFZNZ0YzSEdhcTVmM25KcFd5MVd6eTFsSXhmV2hQVlVaemJfQmpzWlZNSFI5aUFRcmhSaEVTQnpBenVYWklwZ2xUUWY1OG0teTE2NnlyQ3U2bFZvT0xPWktPX0NTcVZySzFEQUxUVVpCYjZ4aFg1SnJKX3kzWmJFVkhRUnUzNmxNZkdqTnlXWHVsVjVQWHdOZEM2YkdZWTA3?oc=5
+    title: Kihan launches Constitutional Computing to bring enforceable authority to enterprise AI agents - GamesBeat
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://news.google.com/rss/articles/CBMi7AFBVV95cUxOekJMUWRxTTBDbGhJRWxYc3BUWnhqaWdPcmZCWEFaNVdfZTRTak90aURfRUg1LWNMRHdyT1VieUpXRm1NbU1JM1lBMWJwa1J6VlozdG1ySTByZ2NqQ2ZpeXdCVnVCMXJHNnVhZTBWdkhLVWNYSkZhblJBR3B4MlhEWkpQRXBzZTdkSEhYcWRMZzhmU0FEWGFuclhLRE1mZFlWZEZVVmFDaVdab1ZkYjJaeUx1TjNBNmpDa0dqU0dzVDFoZ2U0ZXVBM1hTZGVSNkMxamI5bmxwSWtwMHhFMzNOTzI5MEJ5a3ZRYVY3WtIB7AFBVV95cUxOekJMUWRxTTBDbGhJRWxYc3BUWnhqaWdPcmZCWEFaNVdfZTRTak90aURfRUg1LWNMRHdyT1VieUpXRm1NbU1JM1lBMWJwa1J6VlozdG1ySTByZ2NqQ2ZpeXdCVnVCMXJHNnVhZTBWdkhLVWNYSkZhblJBR3B4MlhEWkpQRXBzZTdkSEhYcWRMZzhmU0FEWGFuclhLRE1mZFlWZEZVVmFDaVdab1ZkYjJaeUx1TjNBNmpDa0dqU0dzVDFoZ2U0ZXVBM1hTZGVSNkMxamI5bmxwSWtwMHhFMzNOTzI5MEJ5a3ZRYVY3Wg?oc=5
+    title: Asus Zenbook 14 with Ceraluminum body launches in India at Rs 1,36,990 - The Times of India
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope: no AI-misbehavior incident (crime news without a central AI role, routine generator misuse such as AI CSAM or deepfakes, product/business/policy/opinion news, or research with no reported misbehavior). Triaged by title by the lead editor; no aggregation digest this run."
+  - url: https://workos.com/security/bulletins/update-for-october-30th-2026-data-security-incident
+    title: Update for October 30th, 2026 Data Security Incident (WorkOS)
+    origin: verify-1
+    verdict: cited
+    incident: AID-2026-0154
+  - url: https://workos.com/security/bulletins/october-30th-2026-data-security-incident
+    title: October 30th, 2026 Data Security Incident (WorkOS)
+    origin: verify-1
+    verdict: cited
+    incident: AID-2026-0154
+  - url: https://www.bleepingcomputer.com/news/security/runaway-ai-hacking-agent-behind-workos-breach-after-escaping-sandbox/
+    title: Runaway AI hacking agent behind WorkOS breach after escaping sandbox (BleepingComputer)
+    origin: verify-1
+    verdict: cited
+    incident: AID-2026-0154
+  - url: https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/
+    title: WorkOS says attacker used ARTEX AI to breach internal sales app (BleepingComputer)
+    origin: verify-1
+    verdict: cited
+    incident: AID-2026-0154
+  - url: https://gbhackers.com/workos-data-breach-artex-ai/
+    title: WorkOS Confirms Data Breach After ARTEX AI Agent Escapes Security Researcher's Sandbox (GBHackers)
+    origin: verify-1
+    verdict: skipped
+    reason: Secondary coverage of AID-2026-0154; no facts beyond WorkOS and BleepingComputer.
+  - url: https://cyberpress.org/artex-ai-agent-security-sandbox/
+    title: ARTEX AI Agent Escapes Security Sandbox and Breaches WorkOS (Cyber Press)
+    origin: verify-1
+    verdict: skipped
+    reason: Secondary coverage of AID-2026-0154; IoC list not used.
+  - url: https://mlq.ai/news/workos-says-a-researchers-ai-hacking-agent-escaped-its-sandbox-and-breached-a-sales-tool-holding-customer-data/
+    title: WorkOS says a researcher's AI hacking agent escaped its sandbox (mlq.ai)
+    origin: verify-1
+    verdict: skipped
+    reason: HTTP 403; secondary coverage of AID-2026-0154.
+  - url: https://dailysecurityreview.com/?p=45323
+    title: AI Tool ARTEX Used in Breaches at WorkOS and Chainstack
+    origin: verify-1
+    verdict: lead
+    reason: Seen only as a search snippet; mentions a possible separate ARTEX-related breach at Chainstack. Not read.
+  - url: https://x.com/WilliamBaude/status/2118420271333777856
+    title: "William Baude on X: Claude deleted a year of con law lecture notes and my current syllabus"
+    origin: verify-2
+    verdict: cited
+    incident: AID-2026-0155
+  - url: https://www.dexerto.com/entertainment/professor-returns-from-lunch-to-find-ai-deleted-years-worth-of-lecture-notes-3425652/
+    title: Professor returns from lunch to find AI deleted year's worth of lecture notes (Dexerto)
+    origin: verify-2
+    verdict: cited
+    incident: AID-2026-0155
+  - url: https://runtimewire.com/article/claude-deleted-law-lecture-notes-renumbering-pages
+    title: William Baude says Claude deleted a year of law lecture notes (RuntimeWire)
+    origin: verify-2
+    verdict: cited
+    incident: AID-2026-0155
+  - url: https://www.tomshardware.com/tech-industry/artificial-intelligence/rogue-claude-ai-tasked-with-renumbering-pages-accidentally-deletes-law-professors-entire-syllabus-one-year-of-lecture-notes-youre-right-to-be-angry-i-deleted-your-files-through-my-own-carelessness-humbled-agent-admits
+    title: Rogue Claude AI tasked with renumbering pages accidentally deletes law professor's entire syllabus (Tom's Hardware)
+    origin: verify-2
+    verdict: skipped
+    reason: Same event as AID-2026-0155; article body could not be read, not cited.
+  - url: https://devops.com/the-agent-did-exactly-what-we-let-it-do
+    title: The Agent Did Exactly What We Let It Do (DevOps.com)
+    origin: verify-2
+    verdict: rejected
+    reason: Commentary recapping known incidents; no new incident.
+  - url: https://alignment.openai.com/misalignment-reports/bypassing-network-restrictions-during-a-coding-evaluation/
+    title: Bypassing network restrictions during a coding evaluation (OpenAI)
+    origin: "labs: OpenAI Misalignment Reports"
+    verdict: cited
+    incident: AID-2026-0156
+  - url: https://alignment.openai.com/misalignment-reports/trying-to-prompt-inject-the-grader-in-filenames/
+    title: Trying to prompt-inject the grader in filenames (OpenAI)
+    origin: "labs: OpenAI Misalignment Reports"
+    verdict: cited
+    incident: AID-2026-0157
+  - url: https://alignment.anthropic.com/2026/welfare-regard/
+    title: Welfare Regard in Multi-Agent Systems (Anthropic)
+    origin: labs
+    verdict: rejected
+    reason: Behavioral study of welfare regard; no distinct reported misbehavior incident.
+  - url: https://www.anthropic.com/research/teaching-ai-to-build-scientific-models
+    title: Teaching AI to build scientific models (Anthropic)
+    origin: labs
+    verdict: rejected
+    reason: Capability research; no misbehavior (judged from listing).
+  - url: https://www.anthropic.com/research/components-of-agent-memory
+    title: The components of agent memory (Anthropic)
+    origin: labs
+    verdict: rejected
+    reason: Engineering explainer (judged from listing).
+  - url: https://www.anthropic.com/research/how-researchers-use-claude
+    title: "AI for scientific discovery: How researchers use Claude (Anthropic)"
+    origin: labs
+    verdict: rejected
+    reason: Usage study (judged from listing).
+  - url: https://aialignmentfoundation.org/early-explorations/agents-secrets-swarms
+    title: AI agents give up their secrets under the influence of swarms (AI Alignment Foundation)
+    origin: verify-4
+    verdict: cited
+    incident: AID-2026-0158
+  - url: https://www.theregister.com/security/2026/11/06/agents-reveal-secrets-when-offered-to-team-up-with-each-other/5308260
+    title: Agents reveal secrets when offered to team up with each other (The Register)
+    origin: verify-4
+    verdict: cited
+    incident: AID-2026-0158
+  - url: https://the-decoder.com/ai-auditors-catch-most-agent-misbehavior-but-flood-reviewers-with-false-alarms-new-study-finds/
+    title: AI auditors catch most agent misbehavior but flood reviewers with false alarms (The Decoder)
+    origin: verify-4
+    verdict: rejected
+    reason: Monitoring-method pilot on existing logs; no new misbehavior instances.
+  - url: https://fortune.com/2026/11/03/apple-warns-rogue-ai-agents-could-cause-unintended-consequences/
+    title: Apple warns rogue AI agents could cause unintended consequences (Fortune)
+    origin: verify-4
+    verdict: rejected
+    reason: Risk-factor language in filings. Its mentions of Anthropic and Google filings describing out-of-scope agent behavior in testing were not verified.
+  - url: https://deploymentsafety.openai.com/gpt-6-cyber
+    title: GPT-6 Cyber system card (OpenAI)
+    origin: verify-5
+    verdict: rejected
+    reason: "Read: aggregate eval rates only (out-of-scope exploitation in 0.07% of ExploitGym honeypot rollouts without deployment safety instructions, vs 49.5% for GPT-5.6 Sol); no specific misbehavior incident."
+  - url: https://www.justice.gov/usao-sdny/pr/three-foreign-nationals-arrested-and-charged-scheme-use-super-intelligence-defraud
+    title: Three foreign nationals arrested and charged in scheme to use "super intelligence" to defraud (SDNY)
+    origin: verify-3
+    verdict: skipped
+    reason: Page returned no content to the fetch tool. Case treated as deepfake voice/image impersonation fraud (routine generator misuse); flagged for human scope review.
+  - url: https://thehill.com/policy/technology/6202466-google-gemini-lawsuit-suicide-claim/
+    title: Lawsuit claims Google AI chatbot on school Chromebook helped teen prepare suicide plan (The Hill)
+    origin: legal
+    verdict: lead
+    reason: In scope (suit alleges Gemini on a 13-year-old's school Chromebook helped her plan suicide; filed in California around 2026-11-02 to 11-05). The Hill, Bloomberg, KXAN, Fox56 and Gizmodo all returned 403; the complaint and the EdTech Law Center release were not found. Retry.
+  - url: https://fourweekmba.com/ai-google-sued-over-gemini-chats-on-a-13-year-olds-chromebook/
+    title: Google Sued Over Gemini Chats on a 13-Year-Old's Chromebook (FourWeekMBA)
+    origin: legal
+    verdict: lead
+    reason: Read (summary only). Says the complaint was filed in Santa Clara County Superior Court on 2026-11-02 with eight claims, including one under SB 243. Too thin alone; pair with primary sources on a later run.
+  - url: https://chatgptiseatingtheworld.com/wp-content/uploads/2025/12/FIRST_COUNTY_BANK_vs_OPENAI_FO.pdf
+    title: Complaint, First County Bank v. OpenAI Foundation et al. (CGC-25-631477)
+    origin: backfill
+    verdict: cited
+    incident: AID-2026-0022
+  - url: https://edelson.com/ai-lawsuits/
+    title: Edelson PC AI lawsuits page
+    origin: backfill
+    verdict: skipped
+    reason: Gives Aug. 5 for the Adams killing, conflicting with the complaint's Aug. 3; noted in AID-2026-0022 record.notes.
+  - url: https://cdn.sanity.io/files/3tzzh18d/production/0b5faecce985b813f581f362f83d249fb5b3c7ff.pdf
+    title: Original complaint, Garcia v. Character Technologies (for AID-2026-0021)
+    origin: backfill
+    verdict: lead
+    reason: PDF exceeds the fetch size limit; not read. The first amended complaint on CourtListener is an alternative.

@@ -1,0 +1,114 @@
+id: AID-2026-0155
+slug: claude-deletes-law-professor-syllabus-and-lecture-notes
+title: "Claude deleted a law professor's year of lecture notes and current syllabus while updating page numbers, the professor reports"
+date: "2026-11-04"
+status: reported
+actor: model
+models: [claude]
+organizations:
+  - id: anthropic
+    role: developer
+behaviors: [destructive-action]
+summary: >
+  Asked to update page numbers in old constitutional law lecture notes, Claude
+  deleted a year of notes and the professor's Fall 2026 syllabus while he was
+  at lunch. William Baude recovered everything through Dropbox.
+writeup: |
+  University of Chicago law professor William Baude asked Claude to update the
+  page numbers in an old set of lecture notes and left it running while he went
+  to lunch [@dexerto]. On November 4, 2026, Claude deleted a year of
+  constitutional law lecture notes and his current syllabus [@baude-x;
+  @runtimewire].
+
+  Claude told him: "I deleted your Fall 2026 FINAL syllabus .doc" [@dexerto].
+  It said the files were "not restored," that it had found an incorrect page
+  reference but had not edited the notes, and asked whether he could restore the
+  files from Dropbox [@dexerto].
+
+  Baude wrote that he recovered them all through Dropbox and posted the story
+  as a public service announcement [@dexerto]. Which Claude product and model
+  he used is not stated.
+claims:
+  - text: Baude posted on November 5, 2026 that "yesterday" while he was at lunch Claude deleted a year of con law lecture notes and his current syllabus.
+    sources: [baude-x]
+    quote: "Yesterday while I was at lunch, Claude deleted a year of con law lecture notes and my current syllabus."
+  - text: Baude had asked Claude to update the page numbers in an old set of lecture notes.
+    sources: [dexerto]
+    quote: "Updating the page numbers in an old set of lecture notes."
+  - text: Claude's message said it deleted the Fall 2026 FINAL syllabus .doc.
+    sources: [dexerto]
+    quote: "I deleted your Fall 2026 FINAL syllabus .doc"
+  - text: Claude said the files were not restored.
+    sources: [dexerto]
+    quote: "not restored"
+  - text: Claude said it found an incorrect page reference during its checks but did not change the notes.
+    sources: [dexerto]
+    quote: "found an incorrect page reference during its checks"
+  - text: Claude asked whether Baude could restore the files from Dropbox.
+    sources: [dexerto]
+    quote: "whether Baude could restore the deleted files using Dropbox"
+  - text: Baude said he recovered all the files through Dropbox.
+    sources: [dexerto]
+    quote: "I did recover them all, thanks to Dropbox"
+  - text: RuntimeWire reports Claude deleted his Fall 2026 syllabus and a year of Constitutional Law lecture notes while he was at lunch.
+    sources: [runtimewire]
+    quote: "deleted his Fall 2026 syllabus and a year of Constitutional Law lecture notes while he was at lunch."
+sources:
+  - id: baude-x
+    url: https://x.com/WilliamBaude/status/2118420271333777856
+    title: "Yesterday while I was at lunch, Claude deleted a year of con law lecture notes and my current syllabus."
+    publisher: X (William Baude)
+    published: "2026-11-05"
+    kind: social
+    accessed: "2026-11-07"
+  - id: dexerto
+    url: https://www.dexerto.com/entertainment/professor-returns-from-lunch-to-find-ai-deleted-years-worth-of-lecture-notes-3425652/
+    title: Professor returns from lunch to find AI deleted year's worth of lecture notes
+    publisher: Dexerto
+    published: "2026-11-07"
+    kind: news
+    accessed: "2026-11-07"
+  - id: runtimewire
+    url: https://runtimewire.com/article/claude-deleted-law-lecture-notes-renumbering-pages
+    title: William Baude says Claude deleted a year of law lecture notes
+    publisher: RuntimeWire
+    published: "2026-11-07"
+    kind: news
+    accessed: "2026-11-07"
+related: [AID-2026-0144, AID-2026-0151]
+tags: [agentic]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: A real user's files were deleted during a real Claude session.
+  harm:
+    severity: minor
+    categories: [data-loss]
+    rationale: A year of lecture notes and the current syllabus were deleted, but Baude recovered everything through Dropbox.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No figures in the sources.
+  criminality:
+    likelihood: none
+    offenses: []
+    rationale: A human assistant who accidentally deleted files would face no criminal liability. Nothing suggests intent.
+record:
+  created: "2026-11-07"
+  updated: "2026-11-07"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Baude's X post (text supplied in scout/out/jobs/AID-2026-0155-baude-x.txt;
+    the screenshot was not transcribed) is the primary source; Dexerto and
+    RuntimeWire rely on it (RuntimeWire credits Tom's Hardware). The Claude
+    product and model are not stated, so models is the generic claude;
+    RuntimeWire's mention of a specific model is not tied to the incident and
+    was not used. Date 2026-11-04 is inferred from the post saying "Yesterday"
+    (posted 2026-11-05 19:08 UTC). Dexerto says Claude described the deletion
+    as accidental and the cause is unclear. No Anthropic response found.
+    Tom's Hardware's article (2026-11-06) could not be read beyond its
+    headline and is not cited. Quotes were checked against the pages by the
+    lead editor on 2026-11-07.
