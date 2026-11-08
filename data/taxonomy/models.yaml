@@ -213,6 +213,10 @@
   name: Gemini 3
   developer: google-deepmind
   family: gemini-3
+- id: gemini-3-flash
+  name: Gemini 3 Flash
+  developer: google-deepmind
+  family: gemini-3
 - id: gemini-3.1-pro
   name: Gemini 3.1 Pro
   developer: google-deepmind

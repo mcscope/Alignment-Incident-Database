@@ -45,7 +45,10 @@ writeup: |
   cannot tell whether AI planned the operation or wrote the tooling
   [@huntress].
 
-  ConnectWise CEO Manny Rivelo said that, based on Microsoft's analysis, a
+  ConnectWise's advisory, first published October 16, reports unauthorized
+  access to application credentials associated with Cloud Backup, formerly
+  SkyKick, and does not mention AI [@connectwise-advisory]. ConnectWise CEO
+  Manny Rivelo said that, based on Microsoft's analysis, a
   China state-aligned group appears to have been responsible for the attack on
   ConnectWise Cloud Backup. The company contained the affected connections and
   is restoring services in phases. The Chinese Embassy in Washington said China
@@ -82,6 +85,9 @@ claims:
   - text: ConnectWise CEO Manny Rivelo said that, based on Microsoft's analysis, it appears a China state-aligned group was responsible for the attack on ConnectWise Cloud Backup. ConnectWise has contained the affected connections and is restoring services in phases.
     sources: [reuters]
     quote: "it appears that a China state-aligned group was responsible for the attack on ConnectWise Cloud Backup"
+  - text: ConnectWise's own advisory, originally published on October 16 and last updated on November 4, 2026, says the company identified unauthorized access to application credentials associated with Cloud Backup, formerly SkyKick. The portion of the advisory read does not mention AI or name a threat actor.
+    sources: [connectwise-advisory]
+    quote: "we identified unauthorized access to application credentials associated with Cloud Backup, formerly SkyKick"
   - text: The Chinese Embassy in Washington said China opposes hacking and opposes smears and attacks against China over cybersecurity issues.
     sources: [reuters]
   - text: On October 15, Huntress observed the credential being used against almost 1,000 tenants one after another, in ascending tenant ID order.
@@ -118,6 +124,13 @@ sources:
     published: "2026-10-26"
     kind: primary
     accessed: "2026-10-27"
+  - id: connectwise-advisory
+    url: https://www.connectwise.com/company/trust/advisories
+    title: "ConnectWise Trust Center advisory: Cloud Backup"
+    publisher: ConnectWise
+    published: "2026-10-16"
+    kind: primary
+    accessed: "2026-11-08"
 measurements:
   - id: connectwise-tenant-signins
     label: Tenants targeted with sign-in attempts using compromised ConnectWise app credentials
@@ -155,10 +168,16 @@ assessment:
     rationale: Using stolen application credentials to break into a vendor's service and its customers' tenants is computer intrusion in nearly every jurisdiction. The actor is state-aligned per Microsoft, no charges are sourced, and China rejects the accusation.
 record:
   created: "2026-10-25"
-  updated: "2026-10-27"
+  updated: "2026-11-08"
   created_by: agent
   review_status: draft
   notes: >
+    2026-11-08 update: added ConnectWise's own Trust Center advisory
+    (connectwise-advisory). The quoted sentence appears in its October 28
+    update and was confirmed as an exact match; only the first 100,000 of
+    about 259,000 characters of the page were read, so the original October 16
+    text was not seen. The advisory part that was read gives no tenant counts
+    and no AI or actor attribution. Rescana's 173 figure is still unverified.
     2026-10-27 update: added Huntress's October 26 analysis of the October 15
     activity against its customers, read through a summarizer (the four quoted
     phrases were confirmed present). Huntress hedges on AI involvement; its
