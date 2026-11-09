@@ -79,6 +79,10 @@
   name: Claude Mythos 5.1
   developer: anthropic
   family: claude-5
+- id: claude-mythos-5.2
+  name: Claude Mythos 5.2
+  developer: anthropic
+  family: claude-5
 - id: claude-opus-5.5
   name: Claude Opus 5.5
   developer: anthropic
