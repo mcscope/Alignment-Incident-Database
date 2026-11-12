@@ -319,6 +319,10 @@
   name: Qwen 3.8 Max
   developer: alibaba
   family: qwen3
+- id: qwen3-4b
+  name: Qwen3-4B
+  developer: alibaba
+  family: qwen3
 - id: rome
   name: ROME
   developer: alibaba
