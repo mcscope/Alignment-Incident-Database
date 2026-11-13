@@ -352,3 +352,8 @@
   name: Swarmchasers
   url: https://swarmcha.se
   type: research-org
+
+- id: acronis
+  name: Acronis
+  url: https://www.acronis.com
+  type: company
