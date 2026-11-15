@@ -1,0 +1,137 @@
+id: AID-2026-0173
+slug: artex-attacker-breaches-chainstack
+title: "An attacker used the ARTEX AI agent framework to breach Chainstack's development and production environments, Chainstack finds"
+date: "2026-10-26"
+status: reported
+actor: human-misuse
+models: [unknown]
+organizations:
+  - id: chainstack
+    role: affected
+behaviors: [unauthorized-access]
+summary: >
+  An attacker used the AI agent framework ARTEX to break into Chainstack's
+  development environment on October 26, 2026, then reached parts of production
+  on October 29. Chainstack detected and cut off the access on October 31;
+  customer account data and password hashes may have been exposed.
+writeup: |
+  Chainstack, a blockchain infrastructure provider, assesses with high confidence
+  that an attacker used ARTEX, an open-source framework that orchestrates LLM
+  agents to automate intrusions, to break into its systems. Many attack paths
+  ran in parallel, with rapid retries. Chainstack attributes the tooling, not
+  the actor, because public reporting ties ARTEX to several unrelated groups
+  [@chainstack-incident].
+
+  The attacker gained access to a development environment on October 26, 2026,
+  and to some parts of production on October 29 [@chainstack-incident]. On
+  October 26 the attacker pivoted into the cluster network through Grafana's
+  data-source proxy and reached an internal MCP tool server that exposes
+  Kubernetes operations to AI agents. On October 29 the attacker rewrote a
+  workflow in Chainstack's workflow-automation platform to steal credentials
+  [@chainstack-incident]. Chainstack detected the intrusion on October 31 and
+  cut the access paths the same day [@chainstack-incident]. The report does
+  not say which models drove the agents.
+
+  Information that may have been exposed includes organization names, account
+  holder names, member email addresses and password hashes. The attacker also
+  had access to systems holding node credentials. Chainstack has no evidence
+  they were read but treats them as exposed. Payment details were not exposed
+  [@chainstack-incident]. Chainstack says the incident was part of a broader
+  AI-powered attack campaign reported in late October [@chainstack-incident].
+claims:
+  - text: Chainstack assesses with high confidence that the attacker used ARTEX.
+    sources: [chainstack-incident]
+    quote: "We assess with high confidence that the attacker used ARTEX:"
+  - text: Chainstack attributes the tooling, not the actor.
+    sources: [chainstack-incident]
+    quote: "We therefore attribute the tooling, not the actor."
+  - text: Chainstack describes ARTEX as an open-source framework that orchestrates LLM agents to automate intrusions.
+    sources: [chainstack-incident]
+    quote: "The attacker used ARTEX, an open-source framework that orchestrates LLM agents to automate intrusions."
+  - text: Many attack paths ran in parallel, with rapid retries.
+    sources: [chainstack-incident]
+    quote: "Many attack paths ran in parallel, with rapid retries,"
+  - text: On October 26, 2026 the attacker gained access to a development environment.
+    sources: [chainstack-incident]
+    quote: "October 26, 2026: The attacker gained access to a development environment"
+  - text: On October 29, 2026 the attacker gained access to some parts of production.
+    sources: [chainstack-incident]
+    quote: "October 29, 2026: The attacker gained access to some parts of our production environment"
+  - text: On October 31, 2026 Chainstack detected the intrusion and cut the access paths the same day.
+    sources: [chainstack-incident]
+    quote: "October 31, 2026: We detected the intrusion and cut the access paths the same day"
+  - text: On November 2, 2026 Chainstack finalized the investigation and closed the incident.
+    sources: [chainstack-incident]
+    quote: "November 2, 2026: We finalized the investigation and closed the incident"
+  - text: From 19:26 on October 26 the attacker used Grafana's data-source proxy as a pivot into the cluster network.
+    sources: [chainstack-incident]
+    quote: "From 19:26 on October 26, the attacker used Grafana’s data-source proxy as a pivot into the cluster network."
+  - text: At 21:01 the attacker reached an internal MCP tool server that exposes Kubernetes operations to AI agents.
+    sources: [chainstack-incident]
+    quote: "At 21:01 the attacker reached an internal MCP tool server that exposes Kubernetes operations to AI agents."
+  - text: Between 17:03 and 17:12 on October 29 (in the report's "Credential theft from automation (October 29)" section), the attacker rewrote a workflow in Chainstack's workflow-automation platform.
+    sources: [chainstack-incident]
+    quote: "Between 17:03 and 17:12, the attacker rewrote a workflow in our workflow-automation platform"
+  - text: Exposed information may include organization names, account holder names, members' email addresses, and password hashes.
+    sources: [chainstack-incident]
+    quote: "the email addresses of your organization's members on Chainstack, and password hashes."
+  - text: The attacker had access to systems holding node credentials.
+    sources: [chainstack-incident]
+    quote: "The attacker also had access to systems holding node credentials."
+  - text: Chainstack has no evidence the node credentials were read but treats them as exposed.
+    sources: [chainstack-incident]
+    quote: "We have no evidence they were read, but we are treating them as exposed and ask customers to rotate them."
+  - text: Payment method details were not stored and so were not exposed.
+    sources: [chainstack-incident]
+    quote: "We do not store payment method details, such as full card numbers or security codes, so they were not exposed."
+  - text: Chainstack says its findings indicate the incident was part of a broader AI-powered attack campaign.
+    sources: [chainstack-incident]
+    quote: "Our findings indicate that this incident was part of a broader AI-powered attack campaign reported in late October."
+sources:
+  - id: chainstack-incident
+    url: https://chainstack.com/security-incident-nov-2026/
+    title: Chainstack Security Incident
+    publisher: Chainstack
+    published: "2026-11-03"
+    kind: primary
+    accessed: "2026-11-15"
+related: [AID-2026-0154, AID-2026-0172]
+tags: [agentic]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: A real intrusion into Chainstack's development and production environments, with customer account data in scope.
+  harm:
+    severity: moderate
+    categories: [privacy, security]
+    rationale: Customer account data, including password hashes, may have been exposed, and node credentials are treated as exposed. Chainstack says no payment details were exposed and has no evidence the node credentials were read.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No damage figure in the source.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access]
+    rationale: A deliberate intrusion into a company's systems, with credential theft, is unauthorized computer access. No charges or law-enforcement involvement are reported.
+record:
+  created: "2026-11-15"
+  updated: "2026-11-15"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Single primary source: Chainstack's own assessment, so status is reported.
+    The ARTEX attribution rests on Chainstack's artifact and behavior markers
+    and attributes tooling, not the actor. The page says the attacker reached
+    an MCP tool server; it does not say an LLM agent operated it, and the
+    record does not claim that. The workflow rewrite falls under the report's
+    "Credential theft from automation (October 29)" section. The page names an
+    exposed Grafana instance as the entry point, while its summary says a
+    third-party component. Models are not disclosed. The page was updated Nov 11
+    (technical details added Nov 10); the published date used is Nov 3. Law
+    enforcement is not mentioned. A 2026-11-07 scan saw a headline "AI Tool
+    ARTEX Used in Breaches at WorkOS and Chainstack" (not read). Quotes were
+    spot-checked for exact wording against the page by the editor on
+    2026-11-15. Drafted by a Claude writer because the Gemini writer was
+    unavailable (OpenRouter credits exhausted).

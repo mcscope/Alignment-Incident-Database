@@ -357,3 +357,28 @@
   name: Acronis
   url: https://www.acronis.com
   type: company
+
+- id: trajectory-labs
+  name: Trajectory Labs
+  url: https://www.trajectorylabs.com
+  type: research-org
+
+- id: epoch-ai
+  name: Epoch AI
+  url: https://epoch.ai
+  type: research-org
+
+- id: railway
+  name: Railway
+  url: https://railway.com
+  type: company
+
+- id: chainstack
+  name: Chainstack
+  url: https://chainstack.com
+  type: company
+
+- id: bytedance
+  name: ByteDance
+  url: https://www.bytedance.com
+  type: company

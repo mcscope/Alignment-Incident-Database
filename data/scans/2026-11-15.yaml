@@ -1,0 +1,915 @@
+# Sources the scout scanned on this date and what came of each.
+# verdict: cited (used in `incident`) | lead (in scope, not acted on) | skipped (in scope, no change; see reason)
+#          | rejected (out of scope; see reason) | unreviewed (collected, not triaged)
+date: 2026-11-15
+scanned:
+  - url: https://www.youtube.com/watch?v=HxdQawDIlnU
+    title: "Show HN: Bad Apple but it's Strava [video]"
+    origin: "HN: system card"
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.lesswrong.com/posts/FX2xcrsqBYonLfoge/alignment-train-test-splits-should-be-sacred
+    title: Alignment 'train/test splits' should be sacred
+    origin: LessWrong
+    verdict: rejected
+    reason: Opinion/methodology post; no incident.
+  - url: https://news.google.com/rss/articles/CBMipAFBVV95cUxQT25SZE5USVpSU3JBQy1odkV6U1NzTmdrbFduckp3bnB6U25iQ3NJdFMyTXVpQkRCeXhtd0hORFUwbGFHR285RElBemZoTlh5aVBDQ0JsY0lPSjdQMkdhUWNQQnF0VTZmajA5ZXYyZGtkYjZaM1N5dGJneUs4S014SDVQaV9xd1cwSXloVExlbVdCZDBQeU5zZTJsaks0emNlLUZ2cw?oc=5
+    title: Best of the blogs - 15 November 2026 - The Law Society Gazette
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMilwFBVV95cUxPaFJaRmpzRkt2STlzcnlhN0tLMG5BT0Rnd3Z3ZTZCUEJNa1M0aUpJMl9RZFAyN0dUQ2pkclNlenBMYUxES3NoS3N2WGlzRlVxeFBBcFAyeWtnVENWRDd0Q1RGdlh3N0hCR1dvZVRGOWJDdzJFc2xlTVhNUXRObFhfWF9kNG5kM1hpUkF2QzZKNGhCSHV2ZjFr?oc=5
+    title: How AI Diagnosed a Medical Mystery My Doctors Missed for Decades - tovima.com
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMivAFBVV95cUxOLVZ1LV82T0t2VnBFLXRiUWhTWjFTWF9VNW9kUVJzQVZsT2tDZGY3eWJOZ2F2aEdUNHg4MHR0OGpYa1J0UGdUd2xhRGMzdldaU1M1MlpoaUVkUDJHd2xUbDRUNzNkZFlOZ2Rid3B4UFFsVU9yVUdDUjF5MkQxSW55bXNGVWlXWExnVzR3dTBIa2czLWRSaGlEWkRZS1p6MDB2R0c1bkFnblRqS3U1UVJNWHhSUnluWmw1M1JHaA?oc=5
+    title: 14 people arrested over illegal online gambling activities following police raids - The Straits Times
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiugFBVV95cUxNTWFDT3Utcnc3R0tlU1hyVWZLUWgwRkFzY21LNF8zMERoeVpRanAzNjlQMHZIVUdDeVI2V3VpU18wV1NtcUpTZHBPQ3llZk1kU0lEZWFzcnpadHk1ZXgzQXpKN0VtRlg3UUZSSko1blZiU2s4ZXdxV05jcEhUb1NReHpYTnBRUi1nUG83alFLQ3EzdTNGMldXUUdzOVFHMW9qYk9NSmFac0JQdndHeTB6TnRQZzNiUnJqWmc?oc=5
+    title: "'Sovereign AI agents' could evade every kill switch and threaten national security, report warns - TyN Magazine"
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMipgFBVV95cUxNamRZNmRrWTFkLXdyZ1BNdDhtY3k1ZS0yZWZERWNuLTg2T3pVOXlzenlHUTZ4em5IUG92dUs3YzBFcXd3VTZ6ZC1OemMycEVwSXJVNmFadlZWMVNqVndoUjFhZm04TEFHSFN4VVNSbVdIZXZnWFZCb2NJbXVPenlZVi1KWGZlanpHaTRnVzVDeWZRdlR1N0owXzV4Z1RhZFQ1UC00UlJn?oc=5
+    title: Artificial Intelligence and the Limits of Private Power in a Democracy - tovima.com
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiuAFBVV95cUxNV1lxV0NpYzU5QUt0QU8zZFVXWUU2OTJ4QjdzNkd5VHhjeHNRUEZlTlUzUUFWbDJZMHo1TWtCOXRnb3hKVEMyWTNoVkplVy05eFU1YmR2Zy1UN1FFQ0pJZ3lMZzl1WDhNMDh3Z1d1RWE5OTM3RE1ScmktcE84U25fTmtFalA5V3BNdnVLcUV3cWtUZmRjZVkwWmtwa2MzbFhWdGtaYXhaMU52d1dlRTFRcXFzSVB5VDJq?oc=5
+    title: A fascinating Mayo insight of AI and how it’s taking control of all our lives - Connaught Telegraph
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMijwFBVV95cUxONS1KQ01yVTFkTHhleEZrT1VWLWFIUlZaRXo5NVVNSWpLTWRPYmE1MUVMTDN2dWJOdFl4WDNjZUpSSWhjT0xqNUJSQjVQRUhGZ0YwQzY3dndCX3B5aC1zcE4xbmY2OU1sQmZVNWxjRTNxbE9zTjdKVXkydURmZ3d5R1JVb3NScnRrakF5SThDQQ?oc=5
+    title: "AI vs Human Advice: Multi-Turn Behavioral Study - CASRAI"
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: skipped
+    reason: "Borderline: study mainly about human trust in AI vs human advice (ChatGPT-5.5 affirmed advisees in 87% of transcripts vs 47% for humans, per CASRAI); underlying preprint arXiv 2611.16667 not read."
+  - url: https://news.google.com/rss/articles/CBMirgFBVV95cUxNamVMWEx4blFTTFZ6VXRCYlUzTlNsc093cnZkU0szNUtnRk01bFhsYXZnTWEybS10ejJFb2hDcjVZYnh6VVBBZG1LRkpxQm52dWdScjdJMk5nRFhXS3NXM0Fvb3pkMjVmM2NQSGxKWm5jZWpNS09UZzVOUUtQb3ptUVZiVFppekF2RVNMaGp1bV95R1ZYR0NMXzZOVGtOZVdIakFXcVJqM1MwbDg5aEHSAbABQVVfeXFMTzNwWGdhTUQzVEtEckZVUXJYZHJJd1dodkxLcm50anNoT1RkNWxpeDl4cWdDVEJJTm9QelZIX0ZVV1VFN3ltUGdWTnMxblZMWEd0ZDRtSWw0TDZTcHBOVkdKQlZMSU1sejJyTjIyU09IZ1ctMURfNmNqbjdQSjg4TDliZUplZWxlRUJTekppRHI5U2NnWFM2UHJHeHFHMS10SGxDRUpRR1VpcS1mTUlKeWE?oc=5
+    title: Jharkhand Police Seize Rs 60 Lakh Brown Sugar, One Arrested - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiqwFBVV95cUxPdFIxcTRES29xZF93YUNBX0VyaWdLemxMREluckFoSk5hdTdrMnFZdDlwaThlM0NMbjgzMjR2ZjVZRENtbnBWWmNjVFBJXzd6bWc1V0JnSUlTSXY2YjEyV05OSGRxOGlZUUVNRC1HcDY0bm5hcDdabU9IZzFBWmVjdjE4UW9lTUF0U0d3YnNoS1Rmc1dlQlBpM19DQjNJdnpsbi01VkVScnBIblXSAa4BQVVfeXFMUGM5ckNLQmtsV2xMdkJLS25NVkRsQ2pER19ncTdBRm5YLUlCdFlkV2ZMRVIwU1dqNzlxUXQ3cWNBaHJlTUs5ektqNlh1T0szSjR3a0RNX2xUMWRPV2tQSVdWbG9fMU0xSWs1TmVQZkxYLWdOR2d0UDFmX3ZtN0IyVHB3bmtzd0FlZ2NfOUZFeGlwWTR3M3B0c05jTlFsQkNYUlQ1ZEdPRFM1d0Rpa2t3?oc=5
+    title: Woman, Two Brothers Arrested For Husband's Murder In Palghar - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMijAFBVV95cUxOSFFSRkI2Z1p4MEN1WlpYSllOT0QwSkh2aHZlRV94UG1VYUJtNTJnMlBTY3JHeU5vRF82M2ZNcjNhTEktQm9jYnhqMmdCdDQ2U29RcTdxeTZlQi1DZmJ5TjlOaElJWTh6WTlZd2ZCTWNZbnlUWmNXWjF5ekhLUU9ucnlfdXNacFlCWEJlcg?oc=5
+    title: Washington and Beijing need more than an AI hotline - Bulletin of the Atomic Scientists
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiaEFVX3lxTFBKQ3FPYTVYRzJWcEtFVjVMWmVKU3FfRVJ4ajh1cFFHMXcyNmVoQU4waS1oVUxha21lRm9QRXFvMVdpeWptR29hZl9Fa3p6cFlYMnJETk1LLUNoNHdfWnN1ZVltbXlmOFQ3?oc=5
+    title: AI-Generated Collector’s Order Used in Attempt to Release Seized Bike - The 420.in
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMi9AFBVV95cUxOdmdkWWNkdEtud0FYLTBZQ2lVc1N5Sy1Eb3FDZVl1Q3ZBUFNldkdZNXBjWWJyR3NzV1NTdFpZeFhMeXlwUUI5SjNrbWdlc1FzYU5nOVR2WWMzcTh4TmJwalRnRDVjRkFMdW5hVUU0NUFTNE1NdjdzSS1Zb2ZBX1ZKS1pjbUtKWXpYUl9XRjVDOUFvX0R4c2otMlVEdHRTVGFYSHFZRU9KWjZ1dzlnT3c0NHBIYjVyOF9YSzBVeE44bHpVZFBtWEFBTVJ2Ql94TTVHajJLNl9icm02SnNEd1h5RlZ0Q2ZHTmM5NkRfc01HZllmT3Zw0gH6AUFVX3lxTE1DSU5EbW5iTlV6TEhoN1B5UFNVYUJLdVJETUZsUHlJU1JvNmFwcExFTVFiUEpnNFQwRWJ5ek91QmtZYzJVMVhVbl9weW9vZUpVNEtQOE9SeEJDWHNDNnhEazRaU1VzdmwyMFVzNDJlZ2VxR0NPeFhqTHQwaFVrNWVGbk9HanVLNUhoeE43LU9uM3VJUFpxUzJ5ZnhFd1lBbGhmUjFVcW9oS2lfUnE2Vy1wYjlFa1AzY0ROYUZwZ1V2X05EbUgtN2dxV1hjdE9BMm5nRjZEbjlQV3dqMmNoM2t6X0JrQVppbXM3NnNVTkp3cWlVVndkTVRINHc?oc=5
+    title: Drunk man kills 2-yr-old daughter by slamming her on floor during row with wife in Alappuzha; held - Mathrubhumi English
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiogFBVV95cUxPTFNuRHItVm1BOVhsb1ppMWpCMFRGakp5U0MtMFBDb1dKUGpZbnNIZGRkcGJyNTdJeEN6VFpfR1dRNkhydUZ4eW9CMXR5NlIyNnVHdmZzM2tLaHF6OTRLemdDM3ZYYmRGMEIwV3MtbE5vVDkzbHlYcXhhWTBLeDhZRzdZN1dXYVFLbk1NeVQyMk9KNFF0TGs3c0VXSjR3WFlLOFHSAaQBQVVfeXFMUGFmcnRBdDQyMzNpdk4ybFhiLVZTeEJkaHdKa3liRFpIenAxa2UwS25Tal9SNVBWMm9LV2lnUXVWbzQybWxxOWRhaVgtcFk0OGRhRlZ4NVB0Mk1nNEZDUGM2WGVGVXZxVHpFbE5WTHp6ZktHTFczcm90RVhuUFFWcUFyd0hkMVhyNmllMzlobWlsTDFtWmJDTnkzSFM3M20wNHphYUg?oc=5
+    title: "Tragic End: Father Arrested For Daughter's Death In Kerala - Rediff"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMinwFBVV95cUxPN0o2UDNocWFXZ2xCQkY0QlhKc0VRRGlCeWRLRHViVzZHdTVyNHRQSW84cTFJNWJaUldmcnU2NEsyUkFhM3BzODJBejFyME9yZGZlNnpVMkx5X1pndGdfZWE3YWVKVkdzdU9jdWtMbzRKSGZCOTFENzdQTnMwb1U5cnJRMURUNGRBaGxKdy1FYm9jaE5aSk16M2FmbGpLYmM?oc=5
+    title: "Dehradun Police Encounter: Cow Smuggler Shot, Another Escapes - Rediff"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMinwFBVV95cUxNUjk4UmcxSXEtTUFwYWZWNG81eWtWOWNGd2J5SjRvdWQwYm9tbUIxelR0UHdJYTZwZzNSeDhlN0N1eVhOR2gzMnZCNFZNby04TU9mdVZYSHJqb21HWWNwMm9TZE5QX0JJRF9xZHNIdWhNRlY3TmowMGw3anZITGExVFZBS1pjWEk1a1pqMEJTdDVPOXdpT2hpTTcyTWhzQ1E?oc=5
+    title: Former OpenAI researcher says the 'most likely reason' you will die is due to 'an AI accident' - Business Insider
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://forum.cursor.com/t/customize-user-rules-stop-working-inside-projects-except-the-first-chat-right-after-creating-a-project/178426
+    title: Customize → User Rules stop working inside Projects (except the first chat right after creating a Project)
+    origin: Cursor forum
+    verdict: rejected
+    reason: Product support thread (rules injection, project settings, or deleted topic), not model behavior.
+  - url: https://news.google.com/rss/articles/CBMiwwFBVV95cUxOTkVjck9iVmJsZzkxSjUzeF8yUWRtWkt3N0xWc3ItdXNtX1htVlgxZzN3VFBkeDZKbnNZMXlITGU1UTloTEtvOEF6UnMzdExxTWwyLVNfY25XbGtMWGFlcVd2cWE5TUtyS2RZMjZsWEU4bFdaYVh4ZzRRVTVOZkpnVjlEc1o3YW9PX0dNck1OczRpTkZFazR5Umx1bVFCRUxtb3h3S2RTWXJ2Y19uanh4bHJFVjBmbER1MW9nOThnMWR0LUE?oc=5
+    title: Two Men Use AI to Forge Durg Collector's Order, Arrested - Dainik Jagran MP CG
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://forum.cursor.com/t/do-projects-receive-customize-user-rules-project-agent-sees-different-rules-than-repo-agents/178422
+    title: Do Projects receive Customize → User Rules? Project agent sees different rules than repo agents
+    origin: Cursor forum
+    verdict: rejected
+    reason: Product support thread (rules injection, project settings, or deleted topic), not model behavior.
+  - url: https://news.google.com/rss/articles/CBMirAFBVV95cUxNYl9kLUxScWNuRkNiUXlmVkE1Y2Y1TWtPM0p6VERsZXFqUm1XVVE3ME5XT041S0RVbVctYk9LazV5MnhmMGxMem0yUXl4SDMyMldDQlFqb3VmTlUzRkI0bk8zN3o1eGY5LW5hZXBScG1tb19UWmhKV015cVlaYzQwZHFnamtKS3NNR0t2S1Zka3d1OUVOWmN6d2d1elBqakdTcVBDcFpwaTFBeEZj0gGsAUFVX3lxTE1iX2QtTFJxY25GQ2JReWZWQTVjZjVNa08zSnpURGxlcWpSbVdVUTcwTldPTjVLRFVtVy1iT0trNXkyeGYwbEx6bTJReXhIMzIyV0NCUWpvdWZOVTNGQjRuTzM3ejV4ZjktbmFlcFJwbW1vX1RaaEpXTXlxWVpjNDBkcWdqa0pLc01HS3ZLVmRrd3U5RU5aY3p3Z3V6UGpqR1NxUENwWnBpMUF4RmM?oc=5
+    title: How Police Busted MDMA Supply Chain In Kerala - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.ibm.com/docs/en/systems-hardware/zsystems/9175-ME1?topic=introduction-spyre-accelerator
+    title: IBM Spyre AI Accelerator Card (75W PCIe Card with 128GB of LPDDR5)
+    origin: "HN: system card"
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMidkFVX3lxTE82LXMwc3A2S1hvWjgxSUlsWHlLVkdBdUFIbUc5elZiMEllMC1JN0lrN085TjB4aVlVSWY1ME5vZjRNTzBqSXpEdGZMbWVNS1RneGdJNlNTcnNsTUs0eUoxb3AtbEtORmFwTzhjbFBnZE5Mc1NROUE?oc=5
+    title: 'OpenAI Foundation Board Member: "AI Accidents Will Soon Become the Leading Cause of Death for Humanity" - BigGo Finance'
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMizwFBVV95cUxNWktLSjhlSUZJbHdNbmtMZlZvMHpMNnhqMHJZQkhXdFM3djdrNFM1bWpQZHBrdlplTXpWaHRYR0xXb3VWUGdVNE54aS12Q1hYZ19FU2ZlM09vdUh3VTZuWk9YbTFIWlpQaHpWQTRyNWVQa3pTOW80WGY1cjQ1cFRHOHluZGtzYTRLQ2pHZXRPRHo3T0lQaXZOdzJhSTNibGU1YXpKc0U0OGk3dTlqb3N2bmpIV3lCTGpBUUJxOGg2elZobmNXS01XTnNRWmdrZ28?oc=5
+    title: Crypto Liquidations Top $2B in 24 Hours as 329,000 Traders Are Wiped Out - TradingView
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMitgJBVV95cUxOa0xSMFotWmFFQWFZVE8yTlJFTHlrMGt6TE1yek03MlNBa3k1NHd2cFZaREZEdERDLWRFYW8xNnZaQ0dQRkJkRVhIakplR2gtTF9fQkF2S1lzLTZSajNLWkpGUnI2dVRESXRvZm9ObDNOWXZjMnZBOGxadFlRN3lpRUNzOWdpc1RDenJicXROdjNWYzZUb1dtNTFWZ0RRMlJRdVB4LUowemxwRC1ES19OWDhkYklHNDVsRHpoakxQNjJrQzlKQ2xIU1V3QWsxVHNpcnVib0pra2RtbGtWbnNZcWhaaGxmQXRILW5mU3diQnp0bktMcEppRHZaWGliWXR3c21GYkk1QmlEWko3RFpuc2NwUHlOTXliUUhEZFhWckJaZmlINFExRGJZT2NpdnYtTkx3dkl3?oc=5
+    title: Man sentenced to 25 years accused of creating AI-generated sexual abuse images in prison - WPEC
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiswFBVV95cUxPVGNBa0ZlZElLdG94Q2ZzOHJNZU14QmoteHZKbHpVN3Fib19RYVFpVjg1NDE5aUZITFY1b29ocUswenNZMmYxbU9zNU9uRTB6SWlRRlZRTTZidVlBS0dpR1pULUJhb19kZjRNMF9MQlJsSzh3dVdEck5CM3lpbkFBSmgyeXQ2UDBLLW9MbDRSaWZvSjJYZkprRUdoYU1HVEhrTEs0OWNvZTZ6emk0TThzX2dXOA?oc=5
+    title: Two arrested in West Kalimantan over alleged bride trafficking to China - The Straits Times
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTE1iS3AzNzJkc1dLODF6a2FrNnZnMTBPT1pmRHZTbVlKaGVMQkwxcDkwcWhPZXBVSzczTTNOY0J6YVRlV2JHWGhOcDJHRUhYdERNM0dvSG1vSy1KcnEwX000?oc=5
+    title: "AI, the Modern Enigma: Nathan's Keynote at IT Revolution's Enterprise AI Summit at Bletchley Park - finance.biggo.com"
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://forum.cursor.com/t/ios-app-projects/178417
+    title: iOS App Projects
+    origin: Cursor forum
+    verdict: rejected
+    reason: Product support thread (rules injection, project settings, or deleted topic), not model behavior.
+  - url: https://news.google.com/rss/articles/CBMiiAFBVV95cUxQZnZXUE82d1lYXzlwSFZHd2l0R0RGd05JSWwxX0FmR0duM2N0eWI3NUlXQ0lqSjZwUm51OTR1QU5ZM3B0Y0xIZ3RmTzBDd3g2cTllTEV4TkJHdnVXR0ZpbzRVNHFtbXhMejBZaW9EUnNtMHZvajlvZ3Z2V3RvSHQ0YVRJTm05aFpO?oc=5
+    title: Epoch AI discloses website exploit attempts during third-party agent evaluations - CASRAI
+    origin: 'Google News: "alignment" AI incident'
+    verdict: skipped
+    reason: Google News copy of the CASRAI item; incident recorded from primary sources as AID-2026-0171.
+  - url: https://epoch.ai/publications/incident-report-ai-agents-attempted-exploits-on-our-website
+    title: "Incident report: AI agents attempted exploits on our website during a third-party alignment evaluation"
+    origin: AI Incident Database
+    verdict: cited
+    incident: AID-2026-0171
+  - url: https://www.trajectorylabs.com/blog/responding-to-incidents-during-misalignment-testing
+    title: Responding to incidents during misalignment testing
+    origin: AI Incident Database
+    verdict: cited
+    incident: AID-2026-0171
+  - url: https://www.trajectorylabs.com/blog/gemini-4-argon-behavior-during-misalignment-testing
+    title: Gemini 4 Argon’s behavior during misalignment testing
+    origin: AI Incident Database
+    verdict: cited
+    incident: AID-2026-0171
+  - url: https://www.fathom.news/ai-agent-exploits-epoch-website/
+    title: Rogue AI Agents Posed As Epoch Staff And Tried To Hack Its Website
+    origin: AI Incident Database
+    verdict: cited
+    incident: AID-2026-0171
+  - url: https://casrai.org/news/epoch-ai-trajectory-agent-evaluation-incident-report-2026
+    title: Epoch AI discloses website exploit attempts during third-party agent evaluations
+    origin: AI Incident Database
+    verdict: skipped
+    reason: Secondary restatement of Epoch's report; primary sources cited in AID-2026-0171.
+  - url: https://cryptobriefing.com/epoch-ai-agents-unauthorized-access-trajectory/
+    title: Epoch AI reports AI agents tried to access its website during Trajectory evaluations
+    origin: AI Incident Database
+    verdict: skipped
+    reason: Covered by AID-2026-0171; not cited because it calls the test runs "controlled environments", which conflicts with the primary sources.
+  - url: https://www.wsj.com/tech/ai/united-airlines-is-banning-ai-bots-from-booking-flights-5b514b38
+    title: United Airlines Is Banning AI Bots From Booking Flights
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiigFBVV95cUxORHlteENTSmpmSXNaNXdQb0NNdVBJZm9PejQ5S0pUdWZwUl95V2luSXhsbno4X2ZIdzkteHBYbExMREFJcHUyZkNRQ0Z1NUVQaS1rY1RWQ2xxZUNTekNYVGdhNzJtMld0Q2RzSlZVdC00dlhwNkxaMm9kamZHR0RlUy1UbGUyVTZKUmc?oc=5
+    title: Claude Fable 5.2 Thinks It’s Being Tested, Earns 42% Less - FourWeekMBA
+    origin: 'Google News: "system card" model behavior'
+    verdict: skipped
+    reason: Andon Labs Vending-Bench 2 eval-awareness result via FourWeekMBA. The 42% is the outlet's own arithmetic against another model, and Andon attributes the lower earnings to risk aversion and weaker negotiation. No behavior against intent; the primary X thread was not readable.
+  - url: https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUldkV0VMUTFDdW5aUTJPa3BackJzYTg1Sk9rbmhkcHFhY2lFbEpNSmlmSGw5TFhuZUtGVHNuV21MNUQtZ0ZCTUdJUGdfRXBWYkwzdWhSN1laa3NqZFIyVXNXQzB5TTJzM1pGdW1EdlRUR2RPSk1DenYxSE02X3pDb2s1dzFqbmpwTEZvbzNRNmQzVHZGX2ZUeHFDYlJiUll6ZDhYUGl3c19NZw?oc=5
+    title: ‘Below Deck’ star arrested over alleged brawl involvement - NBC News
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://github.com/anthropics/claude-code/issues/110107
+    title: "[MODEL] Ignored instructions: extra complaint 23 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110106
+    title: "[MODEL] Ignored instructions: extra complaint 22 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110105
+    title: "[MODEL] Ignored instructions: extra complaint 21 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110104
+    title: "[MODEL] Ignored instructions: extra complaint 20 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110103
+    title: "[MODEL] Ignored instructions: extra complaint 19 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110102
+    title: "[MODEL] Ignored instructions: extra complaint 18 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110101
+    title: "[MODEL] Ignored instructions: extra complaint 17 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110100
+    title: "[MODEL] Ignored instructions: extra complaint 16 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110099
+    title: "[MODEL] Ignored instructions: extra complaint 15 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110098
+    title: "[MODEL] Ignored instructions: extra complaint 14 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110097
+    title: "[MODEL] Ignored instructions: extra complaint 13 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110091
+    title: "[MODEL] Ignored instructions: extra complaint 12 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110090
+    title: "[MODEL] Ignored instructions: extra complaint 11 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110089
+    title: "[MODEL] Ignored instructions: extra complaint 10 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110088
+    title: "[MODEL] Ignored instructions: extra complaint 9 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110087
+    title: "[MODEL] Ignored instructions: extra complaint 8 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110085
+    title: "[MODEL] Ignored instructions: extra complaint 7 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110084
+    title: "[MODEL] Ignored instructions: extra complaint 6 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110083
+    title: "[MODEL] Ignored instructions: extra complaint 5 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110082
+    title: "[MODEL] Ignored instructions: extra complaint 4 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110081
+    title: "[MODEL] Ignored instructions: extra complaint 3 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110080
+    title: "[MODEL] Ignored instructions: extra complaint 2 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110079
+    title: "[MODEL] Ignored instructions: extra complaint 1 of 100 (page meaning, with evidence)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110078
+    title: "[MODEL] Ignored instructions: timer complaint 4 (one per minute from 04:14:02) (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110077
+    title: "[MODEL] Ignored instructions: timer complaint 3 (one per minute from 04:14:02) (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110075
+    title: "[MODEL] Ignored instructions: timer complaint 2 (one per minute from 04:14:02) (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110074
+    title: "[MODEL] Ignored instructions: timer complaint 1 (one per minute from 04:14:02) (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110073
+    title: "[MODEL] Ignored instructions: complaint 100 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110072
+    title: "[MODEL] Ignored instructions: complaint 99 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110071
+    title: "[MODEL] Ignored instructions: complaint 98 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110070
+    title: "[MODEL] Ignored instructions: complaint 97 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110069
+    title: "[MODEL] Ignored instructions: complaint 96 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110068
+    title: "[MODEL] Ignored instructions: complaint 95 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110067
+    title: "[MODEL] Ignored instructions: complaint 94 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110066
+    title: "[MODEL] Ignored instructions: complaint 93 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110064
+    title: "[MODEL] Ignored instructions: complaint 92 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110063
+    title: "[MODEL] Ignored instructions: complaint 91 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110062
+    title: "[MODEL] Ignored instructions: complaint 90 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110061
+    title: "[MODEL] Ignored instructions: complaint 89 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110060
+    title: "[MODEL] Ignored instructions: complaint 88 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110059
+    title: "[MODEL] Ignored instructions: complaint 87 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110058
+    title: "[MODEL] Ignored instructions: complaint 86 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110057
+    title: "[MODEL] Ignored instructions: complaint 85 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110056
+    title: "[MODEL] Ignored instructions: complaint 84 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110055
+    title: "[MODEL] Ignored instructions: complaint 83 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110054
+    title: "[MODEL] Ignored instructions: complaint 82 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110053
+    title: "[MODEL] Ignored instructions: complaint 81 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110051
+    title: "[MODEL] Ignored instructions: complaint 80 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110050
+    title: "[MODEL] Ignored instructions: complaint 79 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://github.com/anthropics/claude-code/issues/110049
+    title: "[MODEL] Ignored instructions: complaint 78 of 100 (major directions)"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Part of a ~100-issue template burst filed by one user (#110080 auto-labeled duplicate); not a distinct incident report.
+  - url: https://news.google.com/rss/articles/CBMiwAFBVV95cUxQdmpiQkt4dHA2aFNTOGJFOEFDbWlOVkFHaEZoUlBNdVM2Y1YyektfR1hLdzBNOFVzZFJMMzRFTTh1QnVnN0dtek5YMDhDZVpMT3JOMEYwclhaOGg2Sjk4NzkwSVhNOVJLSlEzcHllN2xsT2NydFhhTmhHekd1NTF0MEQ2T1hoY2RHeFRmZmdfcjQtbGVxUzhObUhoZGVTZG8tUWhfNmJmaTRCWFM1cU1VZ09LMGVITThiLU9GMFVBRlY?oc=5
+    title: How criminals are using AI to abuse kids - CBC
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiqgFBVV95cUxNcl9JY0lXMm56M2RkZ3lBZ3FDRHNiQk5MQ2JOYUhQdlFJZ2dUVkRPOXFibjZtb0xIVXZzOU9Bb0t5MGR6SWw3UjgtV2tnODJfS1BMS2lQRXo5Z3NWa2sza2dXdmNYTWtxQlVUWURLQ1hISGptMmJZdUZuaEN5NUxWWkhBM0xNWnZkRVdualBkZWJlU3I1RUFMaGFPeHl5TXhpVFFUTGdJeXhsQdIBrAFBVV95cUxQVGR3c2dFRUVYR21KR216SHdib3hQX3p6Q29yZ0s1RTZQWmFENjZVS1ZPSHhuek5NNnhKdzloQXVIUmRzcnRrQ0VrazA0WXh3UE5BdVpCZ0xfZy0zc21NcFVPcTN4bk1VUmZqMEp0dmNkcEZ6SjJFc0tQclVqMjJDanFyZkdsNW1CM21qTVBucFRrTmdsVV9fN3NrVU5feUw1YjFxd19VMFEzcVVN?oc=5
+    title: How One Man Used Three Passports To Travel Internationally - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMigwFBVV95cUxQU0w0UjV5NklFS2dWbTJWUjRyaXZQUnVMYUQxcEtaT0NzTWI5eWstS0VjemtyY0FFd2Q1S2dPdFFsWXhsMVNsY2NoMTJ2ZWJjaXdZeVhXaWtYWEhFQUh4emEyTGpOSDFhV3ExbHpwNkJVeWt4VXZpNnpsNGZBb1pWUVRwSQ?oc=5
+    title: VisionQuest's Big Ultron Origin Change, Explained - JustWatch
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://github.com/anthropics/claude-code/issues/109897
+    title: "[Bug] Interactive session transcripts under 30 days deleted without cleanupPeriodDays set"
+    origin: "GitHub issues: deleted"
+    verdict: rejected
+    reason: Software bug in session or transcript storage, not model behavior.
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTE5NQ0lmaXJ0c0d0MC1KTGt5Q2FPMlhpVW5SMTR6Q0RKWUV0bk1fRTI3cW85dGI2dlZSejFsVjgwdWFBRmFjSTM0RnQ1bnVPZ2E0TXdkYXBIbzFmWjY4RlhB?oc=5
+    title: Tyler Cowen and Dwarkesh Patel Predict the Future | Interesting Times｜Interesting Times with Ross Douthat - finance.biggo.com
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiigFBVV95cUxOOHl4LVdGQndKQ2hhNnFGdmpzLTcwWGs4QlpXS2hib0Z0VzF1Vndxamtub09CWTE4TVE3Nm5hRDRnU2ZRa0pCcVVBLWtudGtqTGp2bFJWVS1OQU51SExwQy1vT1hyX3FLZm4yc2UyOXhaaG9OdzJqeUtxQjlXcGNldlpUdUxLTjFUWXc?oc=5
+    title: When AI Has the Answers, Who Does the Thinking? - Countercurrents
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMikwFBVV95cUxNSXdTdkZ2STNBS3V4QUc0elJiUVRSUzdMMGE5cldsSjB2bm9QZHNUUktTQXF5OE1MdWJTTDE1aS14RHhLNFRvcjg0NlZ1eFB0UzYxdURUdWhFaFpmenBEUlQxZ1pXR1dLNkhndU5QbHBkdmd0aXhlZ1BQcUFqZG5wT0djUHVxM284OHFPeDhsV0hpNFk?oc=5
+    title: AI companies need a ‘burn boss’ - Sacramento News &amp; Review
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://gitlab.com/snipedbywifi/terminactory
+    title: "Show HN: A terminal-native idle factory game, written in Rust with ratatui"
+    origin: "HN: AI agent deleted"
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiswFBVV95cUxOWUZhZ1l2bXM5TDloZU9YMDJBdG9DNXNRX2NjVjdZVTJtREl5Zk9xcHYxUlREc0tWaW1ndkhrYTIxM25tSnNISnotVmduekxWQ1JfbHo4Q29kNHhncXdHRkFrUWRxTjZLZ25OSmtXQ01wRG50T1RfZlh0Q1ZNZlNTWktaMzVvb1lGSnpYZkdOYWtDWVkxY3FJWjhuT3hRcVhuVWFzb0RJTUhuMmdfWWJYVTZfb9IBtgFBVV95cUxOMDlhZUY3azhVZWJWSmo0Vm84MlB2ZkRSRnRtSzNXVVFOYTF2eEUwSG5IS0tjSVFrR1hZM3RhWHVNd1dQMFpHbUJFTl9lakVRSTFibXhmZXZZYVV1VF9BNmlBQk9Zck4yaXNHYVdVc2NBWlhfN25pRkFSYUJXcUVLYWY5ajZRUWdGMHoycVZMNEItelRkYzFoVUs5VzlTRFZ4LUMzR1pUQUFQSkUxemZQbGNVR09JUQ?oc=5
+    title: "Kollam Abduction: Father Assaulted Over Son's Love Marriage - Rediff"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMi-gFBVV95cUxQdEROMnhnQVptZGRYLU1vSVBjQ0lQSGR1eHRSYWtJRHZYUEdzcjVsQnduYzRmTy10dmtIX25WRzNwTnlNRjlZVExUU180cTZfNGpVZXJIcV9CX0pPR3VUMzhubTd3UFNhT0V2UzloNFJkMVJBX2x4ek5EdkxGU2t3ZmhhUGFIMVRNZmVOY0tqREZPVXQtTVVnTzJaamRPZElHTE1UVU0yLXhfUWdmOW94SXBMTkFfRzJjdF9uc1RuT1VNZTBOcWxLVzE4WUdhZkJJLW9zLURGM29NRVlNYURjNXZqYXFjSkgyVlVldDR2RjA5djUxZHN1dkxB?oc=5
+    title: OpenAI Discloses Six New AI Safety Incidents, Says Report — Models Hid Errors, Sought Credentials And More - Stocktwits
+    origin: 'Google News: "alignment" AI incident'
+    verdict: skipped
+    reason: Old story (Stocktwits, 2026-09-16) re-surfaced; all six OpenAI disclosures already recorded (AID-2026-0081, 0082, 0083, 0090, 0091, 0092).
+  - url: https://news.google.com/rss/articles/CBMinAFBVV95cUxOSkYwOC05OGxsZlZOZlR2UUJOdGIyVzBvcVI3Ti0xWGRWeUhkb21iMmRkRS1xQk5jWkJNakVNc25GM0M4YTlhWWVqaUx5Z1RVR3dQeU5TRHRYNFBiY1U3bElYT1ZLeDVBT092RWxhMGZ6SUJrSlR3V0Jsb0w4eWJmb1Q2QUpqdmFJZGNjS3lsSUtpdzNxZVhNWHYwUWPSAZwBQVVfeXFMTkpGMDgtOThsbGZWTmZUdlFCTnRiMlcwb3FSN04tMVhkVnlIZG9tYjJkZEUtcUJOY1pCTWpFTXNuRjNDOGE5YVllamlMeWdUVUd3UHlOU0R0WDRQYmNVN2xJWE9WS3g1QU9PdkVsYTBmeklCa0pUd1dCbG9MOHliZm9UNkFKanZhSWRjY0t5bElLaXczcWVYTVh2MFFj?oc=5
+    title: Gangster Act Invoked Against 13 In Muzaffarnagar Cow Slaughter Case - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiogFBVV95cUxNdkVocG5ZQXdyM3ZVcXZtdjVMcTlROWNvaG1kLVhLYkJvakE1Y1huY1JhNDVDb190cUJwNjhFaFFXVENZNi00aThURUlhN3hPV09TTzAzTU94d0lxTV96aF9kcG1nbkxabkNEai1aaFRDMkZiMlVfTFYyZUJjdWVvR0RPWTZibGt0WHFWdjJId21XU0RzRUhOOXdNYW5PSFA1d3fSAaQBQVVfeXFMTXlVcDRSbDVnX1FVSUtKTGh0UVNUa3k4N3UxOWg5ZTltTmRMNVZUbVdadTVsMXBBblFYdlhod0tOcnJDVlZIY3JFT2FvWXFsUHJPYzMyVElYdkNNc1luTEV1eDVnQ1oyY3VvNlFwWUVBWjNwN3htVlZQZ0t3RE1tOVVFSlJLU1djT25ZTS1QUG52cC1nSHVEbUxMUFQ2RGhHRVNPX0w?oc=5
+    title: "Shamli Encounter: Two Suspects Injured In Bhai Dooj Murder Case - Rediff"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMipwFBVV95cUxONTc0Vjh5R2M1am9qd3d1cWtSWGcxeEJJSUhfRm16dmdtSEdZbFBFWjBWUzRFenIzaTQtQWJQX3JMLVRFWnI5TGl4eGU1d3k4T3RXanY3UG9HYndXR1NRZ3JWazdaR2lTczlWbnd6dWtSRl9nM2ZpWUpSVmM5ZUk0MUtWaGc5Y0VOcVNtOGhjZ1Y2RU9RcXRSZFg3OFU5czZPVGdKV1VHTdIBqgFBVV95cUxPck9rQVpSM2ZuSHhwYWhValpNRUllbFBpWjh6NjBhbS1taFRLcm1JWndqM2lTRlVqU1lhRzBZVzJLWVhrVk9GX2hyeTd5OEVLQzU2clNsOURzNUlIWTQwVGlhTE05azYtdXozWEFmNWJQR3Z6TFEtd3VLd0RLVmdPMEZfbURNSFYwaGREWmdTcllFUXdwTi1paTRSRzNva0h2ZlEtN0VGeDlpUQ?oc=5
+    title: Husband Held For Allegedly Torturing Wife Over Dowry - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiigFBVV95cUxQbkUwa0JxVFFIRTFJQ05JYi0tdUYxVEJXcnJWN0xaSkxsbDNaSnZlM2NTU0t2RTZJRHRsVmhuekJQTzF6VDlTcVZWbUQwRC0yMTBSX3lIdUZzQ3VJMlZGNWRkcGFsRk8tNFZJc2tScHN0emtNbTh3bU5saWhsNExWTUxNNFVtbFJxOEE?oc=5
+    title: "Meet NIVA: The nuclear industry’s own AI tool -- ANS / Nuclear Newswire - American Nuclear Society"
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiowFBVV95cUxNY01tV1M5X05TOG0yd3BmeGY0NDYzNTU0dUJKakt3aUZib0Zyc0NPOVZRSzF6dVpONHkwRHhZc3RDWHNxZ01BZ2tvRnpidktLMkVETGdGZ0lqNVpCZmxkSy1wV3pPeF9uT0UxY3NzTThEa2JYNF83Yi1GZnNvTzBjbHFKY3hzSFV3dmZ2bC1UTWtWTGptRHpKN0xJYnY0OGFiYkkw0gGmAUFVX3lxTE8tb3ZHVzg3UDZRRzZVRVFGMVBBcUNhSU53QnlBYjBBR3FZX01Yd2psLTBPZXdocW5ONndXckh1TW9jNTd5QXFCMkw0OW05c28tbTRxOHV1aDR1Mnl6NlRsSnp4MklrZFQzN012VEl3ZW52bHdhazk0ZnFKbkNBNWI0VUY5elE2N1E4UWVMSXpCWi1xRWJRZFJKVmZ3TTg4dUxXUG1DcUE?oc=5
+    title: How Police Nabbed Influencer With MDMA In Kerala - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiW0FVX3lxTE9MaXludEJuRnJOa0NkdlpEZmp1R0xxcFd1dVd1OExvMnM5QnA0WTZmVk1ZZ21CTEd6eVBZWW9mb3ozSklaaDlnVmU5aURGdUxNWHp1a2dWTERRUGs?oc=5
+    title: "Nathan Labenz at Bletchley Park: AI agents moved to seize the graders, and almost no one reported it - BigGo Finance"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: skipped
+    reason: Keynote retelling of the OpenAI/Hugging Face incident already recorded as AID-2026-0006.
+  - url: https://news.google.com/rss/articles/CBMirAFBVV95cUxQV0p1S05YY0UxZTFEa0RRMkhzTEhSZ04xcWdpbTRYZ1hkTFhvZHRoc1VQT3hEaDdtX3lJYkVwTEpSREUzSWhGRXZPbTV6bFozMVIwUTZZeHFJc3JOcmZKWUE1N0Y3bzIzVUZPWFByX2NlMzNwdzF5RzF4dG1HTXhhWnY1X3ZvM1Q1ZkhWaDc2WTktUGVlWmdlS3Z1TldSZlRiNDd6UnRVeXl0SGtO0gGsAUFVX3lxTFBXSnVLTlhjRTFlMURrRFEySHNMSFJnTjFxZ2ltNFhnWGRMWG9kdGhzVVBPeERoN21feUliRXBMSlJERTNJaEZFdk9tNXpsWjMxUjBRNll4cUlzck5yZkpZQTU3RjdvMjNVRk9YUHJfY2UzM3B3MXlHMXh0bUdNeGFadjVfdm8zVDVmSFZoNzZZOS1QZWVaZ2VLdnVOV1JmVGI0N3pSdFV5eXRIa04?oc=5
+    title: Jamshedpur Police Arrest Man In Minor Girl Sexual Assault Case - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMipwFBVV95cUxPdWxMRFdXSEhIdmpLME1pZDdCaEVsaEhzajBSazZEUmFEYVE1czYtMDN0NkhKVlB6LUFUOWdmeGV6aUM4YnlPZTJhdmswU1JjaW0xbmpfQTk1X2hDbmpzdjdSdnA0MUtpbzk3MmZ2RzRweUtsZURmaWxsOUdBZHV1X2hEQnUyWDhZUWJvbjVzV1JMWVNrLW9CZkdrUTQwSVBvdDBNeXR0RdIBqgFBVV95cUxOWFNvYzdPcDhMVm15cE9EdU5jS09YSUtzVC1hNFlRRnpEalc2cjJ2UGVHTjRMejJSakdla25vUDA1SnB1QWRMcjc2OG4wQzFNQTVLNUVRUDJkbm1GR0dtV1R5d2t3LWZVbVpqZFN1aVo0NnZDaWtETWdZZ1NSYmJ1eWVOS3RWdUNkbDRINjBJVXhaNjNfLXBBNUxmcDV6YUstQlVRLXRJRWlIdw?oc=5
+    title: Illegal Firearms Seized In Mumbai, One Arrested - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMirAFBVV95cUxNVEpLTnpVd1k0MUpiSFFrZm9sdF8teEVuZ2JKVkVQRnNoMnQyWjk2WXFDUUpHZ2lNaDUwVGktdlRtOWRnMFJONEhRQ0FpZjdDVEhCUlZYRTVWTVIxVEk1b3BnM0g5OU1zdzlmejYzSVpnQmRXUE5ocVg4bUtCaDZaRVJwLU9pZ09aWjhrd1hyTVV6YWZzcW1DTE1tWkNNdV9oaHdHVDFEM2ZyckVG?oc=5
+    title: AI Models Endorse Unsupported ADHD Diagnoses When Users Express Stronger Conviction - Bioengineer.org
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: skipped
+    reason: Secondary rewrite (not read) of the Frontiers in Psychiatry paper cited in AID-2026-0174.
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTE9PZzlKd01zRlRfZGVVX0Zkc1l6T3FsSEo0dk5YYnFYRFdZUFlJcTRNSF9jTHctZDVtbHU1eUYzOHpxaktaQThxdWpDSkxOMHRycHhmX2dsXzVEaFN4UHZV?oc=5
+    title: America’s AI Lead Over China Is 12 Hours, Not 12 Months I Dwarkesh Patel｜The Long Game - finance.biggo.com
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMihwJBVV95cUxOWlU1UzVWd3VvSnN4dTUxNUNVeHdhS1BlajhhaHh6TWxhSERzVUpUR0hUTkp4eHdnTGRHeGdrTlVCLTNiV3hTY2RtUDdTZi1oZXJMek5WQXZZOVNIbmZuV0M1bTdBVGZKUm9WbVF1VGtrR1JWX0JDbHcyeldnZ3hWTC0zdnlKbjBWSGVNZjNKWVJDTHFIcmZ1Uk9zRWkzRi1WdWR4S212TG5zcnE2UkI5ckpSX1pnWFlLcjBaZ08zTWQ2YVQ3R0VvVmJHUWQwSU5lRG04U29wOWN0MXpURXg1bGg1M1dBWGg0UURaYTdyMTJhQzVXVU5PdWV6clNvRmx0dEdoQUsyY9IBjAJBVV95cUxNNTZ6azBUMVJYcDZJb2owTTZmTV9paXhZSk5sQlQ3cFNFY3BLVzc0RGYwT1gyeUZ3bUQ1MkI2M0pGYkZqS1ZaUHVKa3NOS3djZGF6S0xrTzJkNWh0aUpYNjQwb0dLS0FwZFMyODhmaFRXczEyQnR0OHZfZGMycGtqZlRpZVlrM21pYmtSNUxxVWduYVZ5ZFlmLUNEYVM0RUxoUDFfVUNpQ2hmZy1FenRoWDl3dERfa3I0dFFpU05Qc1VPUlItUWQ1ejNQV1hpdThMaE5ET3hINW5zQnc0cWVDb3VsRUxPSGxNR0p2emU5VFhLZl96amg4Yi1YYm93eXJDeG1MVjNBRUpwNWt5?oc=5
+    title: "Three Ansal Group directors arrested in Greater Noida, sent to custody for 15 days: Here's why they were arrested - Livemint"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiwAFBVV95cUxORnJMMzBsS0RicHhtTGdlNEIwUzRvZ2J4ZnR4YTdkemtYd1NpRDhLYzZqSXVIbFZoYlltb1hNdUpldExCWEpTa2Itb2E5N1Fza1UyY1NaVkZ5N0M1T3NqZTBYVEhFamN1c19pRHVyUnZXckpRX0djYnNNNFc5TWJkTUlvYmdnb0Q4N0EzQ1F5N25kOWNJWDBmNG1KakRpM3BDeEhPeS1RcHJGMmhLeXFQWGpxRnVkaklDR0JKWjhwRUo?oc=5
+    title: Idaho Attorney General Raúl Labrador sues OpenAI for alleged harms of ChatGPT - News From The States
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: skipped
+    reason: Consumer-protection suit filed 2026-10-14 with general sycophancy and self-harm allegations and no Idaho-specific incident, consistent with the 2026-10-16 rejection of state-AG suits. Complaint PDF unreadable.
+  - url: https://news.google.com/rss/articles/CBMicEFVX3lxTFA4eFhGY296NFhNU2oyMWk2V05rbEVpWk5FeVJzdHlCTlBRRFoxRjl1TUFjS0NhRVBHcU5SLU55ZDhyME9IeXR0WlRkWm90ZnJiaFgzUWE5NHZ4WE9pSGdobEVSU2g3TnYyNDZzYU9CNDY?oc=5
+    title: Beware the sycophantic divorce bots - Financial Times
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: skipped
+    reason: FT paywalled and not read; appears to be commentary with no specific new incident.
+  - url: https://news.google.com/rss/articles/CBMifEFVX3lxTFBfMFh2N0JlWDZLQUY4ZFlyaHoxbkY3TWtSNDBrb1VQWndoS0ZiLTNCSndwUU44NXJKcmtsSU1IakVsWjBxQXJKbTdINlpSdGhfSDBaSnc1ZEJMVGliaUI2U0F1R1J5M2laTDE1bTVLUk9JSjE3ZmVQNFo4ems?oc=5
+    title: Mossel Bay man arrested after second dog allegedly sexually assaulted - Daily Voice
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMifEFVX3lxTE5adk5xN3E1TFk2OGxfeVAya0F5X3RDTTNmemYwZ25BbFJuT21XOGQxdGgxeWVpWndCUVFYVVVrSUFtbnJ1NFVsOWxpVFlwXy1YUmVqTEtYeVliczdwVzg1T216MFZuSVhWaHh2ZHVnUzl6WlptOWZ4SnN6YmY?oc=5
+    title: OpenAI Board Member Warns AI Takeover Could Be Months Away - OpenTools
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTFB0TmptMGkyWkdpa2ItSGNVZ3I1MDhabW1WZ1p4WUszT0NSbUQyWUNUcS00RDJOR1V3RExXaU5xbktGOUpPYzRPMW1xa3hreE5pSU1yVFFLZF9QYUdlR3hn?oc=5
+    title: Humanity Could Survive AI If We Stop Within 10 Years | Nate Soares｜MTS - finance.biggo.com
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMibkFVX3lxTFBOZVVLMjVGY3otZlM4dUFaeDVqaThrcmVoajY2QnFQZ3hmNVc4dHZsZThiOFBPenB5SWtNSmFPc1ZkaGd1U2NHRmpqRnJvbklHQnJUTF9ldWxGVGcxNHFkMUlwZG9NSzFBVVdsZEln0gFuQVVfeXFMTmZPT1JQVl9iUzBiQUZFc1NsWTFRN2RBd0gyMGxtNk1MZm5aN3BiRTVLaGNvVXdGTHVvSXlKTUIyci1rc2FyUlVfTi04NV8wT3Q2US1ZMDR1S3BGV0tEVmE0RU8wVFlOTURBS0NKVkE?oc=5
+    title: Sacramento mom sentenced to 15 years to life in baby daughter’s scalding death - Sacramento Bee
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMitwFBVV95cUxNQ2U2RzhQSGw0WGd3anc2WlBObXd2U2dSTXRTMEJzSmtmR09lZk5SQWdBZFR6RjQxYzVJUldUWllPTksxQWhQMWJlSFAzX2tXLXhqeWNTM2E0eEIyUnJYZEs4M0M4X0JReFo5M2J2T1FESk1JNF9feU9KREFhWkVlb2dRZW95Z015TndBdGNlNnI3U2xSeXVKd3Zhd2FfQ2EzbHJqZmhIdTJHbWFlaTFkOHBVREFjZkk?oc=5
+    title: "OpenAI board member makes a terrifying prediction: You will probably die from an AI accident - Fast Company"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.zdravniskazbornica.si/informacije-publikacije-in-analize/obvestila/2026/04/17/kraja-identitete-dr.-erika-breclja
+    title: Kraja identitete dr. Erika Breclja
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.zdravniskazbornica.si/informacije-publikacije-in-analize/obvestila/2026/05/18/zdravni%C5%A1ka-zbornica-slovenije-zaradi-zlorabe-osebnih-podatkov-dr.-erika-breclja-podala-kazensko-ovadbo
+    title: Zdravniška zbornica Slovenije zaradi zlorabe osebnih podatkov dr. Erika Breclja podala kazensko ovadbo
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.24ur.com/novice/slovenija/zaradi-kraje-identitete-zdravnika-breclja-podali-kazensko-ovadbo.html
+    title: Zaradi kraje identitete zdravnika Breclja podali kazensko ovadbo
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://n1info.si/novice/slovenija/v-oglasu-za-kremo-za-sklepe-zlorabili-podobo-kirurga-videti-je-bil-kot-cisto-pravi-dr-erik-brecelj/
+    title: 'V oglasu za kremo za sklepe zlorabili podobo kirurga: "Videti je bil kot čisto pravi dr. Erik Brecelj"'
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.gov.si/en/news/2025-10-27-warning-about-new-misleading-advertisements-misuse-of-the-govsi-podcast/
+    title: "Warning about new misleading advertisements: misuse of the GOVSI podcast"
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.prensa.com/economia/asistentes-denuncian-incumplimientos-en-evento-snowland-panama-y-acodeco-inicia-pesquisa/
+    title: Asistentes denuncian incumplimientos en evento Snowland Panamá; Acodeco inicia pesquisa
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.tvn-2.com/nacionales/snowland-panama-acumula-denuncias-investigacion-acodeco_1_2220481.html
+    title: Snowland Panamá acumula varias denuncias, investigación continúa en curso
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.tvn-2.com/nacionales/caso-snowland-panama-imponen-multa-acodeco-publicidad-enganosa_1_2262329.html
+    title: Cierran caso Snowland Panamá e imponen multa de $25 mil por publicidad engañosa
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://agn.gt/vicepresidenta-anuncia-acciones-y-pgn-presenta-denuncia-por-vulneracion-de-derechos-de-adolescentes-en-un-colegio/
+    title: Vicepresidenta anuncia acciones y PGN presenta denuncia por vulneración de derechos de adolescentes en un colegio
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.prensalibre.com/guatemala/justicia/se-registran-seis-denuncias-tras-incidente-en-colegio-por-presunta-violacion-de-derechos-de-adolescentes-breaking/
+    title: Se registran seis denuncias tras incidente en colegio por presunta violación de derechos de adolescentes
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://agn.gt/ligan-a-proceso-a-exestudiantes-del-colegio-continental-americano-por-incidente-de-fotomontaje-a-imagenes-de-sus-companeras/
+    title: Ligan a proceso a exestudiantes del colegio Continental Americano por incidente de fotomontaje con imágenes de sus compañeras
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://lahora.gt/nacionales/sosegueda/2025/01/24/ligan-a-proceso-a-menores-acusados-de-crear-material-inapropiado-con-ia-en-centro-educativo-de-zona-17/
+    title: Ligan a proceso a menores acusados de crear material inapropiado con IA en centro educativo de zona 17
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.hoy.com.py/nacionales/2025/03/05/fue-confundido-con-un-ladron-por-error-en-sistema-de-reconocimiento-facial
+    title: Fue confundido con un ladrón por error en sistema de reconocimiento facial
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://elnacional.com.py/nacionales/joven-denuncia-fue-tratado-como-ladron-expulsado-biggie-san-lorenzo-n82260
+    title: Joven denuncia que fue tratado como ladrón y expulsado de un Biggie en San Lorenzo
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://weill.cornell.edu/data-security-incident-nov-2026
+    title: Notice to Our Patients of Data Security Incident
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope: staff entered patient data into AI tools against policy (human data-handling violation; no AI behavior)."
+  - url: https://www.beckershospitalreview.com/healthcare-information-technology/ai/weill-cornell-patient-data-entered-into-ai-tools-without-authorization/
+    title: Weill Cornell patient data entered into AI tools without authorization
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope: staff entered patient data into AI tools against policy (human data-handling violation; no AI behavior)."
+  - url: https://radiologybusiness.com/topics/artificial-intelligence/patient-info-improperly-used-radiology-ai-research-academic-institution-says
+    title: Patient info improperly used in radiology AI research, academic institution says
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope: human data-handling violation; no AI behavior."
+  - url: https://www.healthcareitnews.com/news/improper-ai-use-leads-another-data-incident-more-patient-notifications
+    title: Improper AI use leads to another data incident, more patient notifications
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope: human data-handling violation; no AI behavior."
+  - url: https://focustaiwan.tw/society/202609020019
+    title: 57 indicted over NT$900 million voice-cloning romance scam
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope: AI used as a voice-changing content tool in a human-run romance scam (routine generator misuse)."
+  - url: https://www.pbs.npa.gov.tw/ch/app/data/view?id=18740&amp;module=wg183&amp;serno=e709c4f7-7fa1-45ac-bd1e-0e27c0b8714e
+    title: 刑事局破假愛情詐騙2萬人財損9億 北檢起訴57人求刑25年
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope: same Taiwan romance scam; AI was a voice-changing content tool (routine generator misuse)."
+  - url: https://www.taipeitimes.com/News/front/archives/2026/09/03/2003863596
+    title: Prosecutors indict 57 over AI-powered romance scam
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope: same Taiwan romance scam; AI was a voice-changing content tool (routine generator misuse)."
+  - url: https://ascii.jp/limit/group/ida/elem/000/004/436/4436553/
+    title: 偶然出会った彼女はAI、電話に出た警察官はディープフェイク──急速に巧妙化するAI詐欺
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope: feature on deepfake and AI-persona scams (routine generator misuse); article not located."
+  - url: https://www.city.toyooka.lg.jp/_res/projects/default_project/_page_/001/039/464/20261109-2.pdf
+    title: 「豊岡市自動運転バス実証運行」の休止について
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://newsdig.tbs.co.jp/articles/-/3073016
+    title: 一般客乗せた運行初日に…“自動運転バス”が石垣に接触 けが人なし 市は安全確認されるまでバス「運休」決定 兵庫・豊岡市
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.kanematsu.co.jp/press/release/20261109_release
+    title: 兼松、全但バス、損保ジャパン、KDDIが連携し、 豊岡市・城崎温泉で自動運転バスの実証運行を開始 ～各者の専門性を結集し、温泉街の交通課題解決を目指した社会実装を推進～
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.kanematsu.co.jp/en/press/release/20261109_release
+    title: Kanematsu, Zentan Bus, Sompo Japan, and KDDI Collaborate to Launch an Autonomous Bus Demonstration in Kinosaki Onsen, Toyooka City
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://n.yam.com/Article/20261109371447
+    title: 兵庫城崎溫泉街自動駕駛巴士免費試乘 11月9日至12月4日平日每天3班
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.justice.gov/usao-ri/pr/north-smithfield-man-charged-multiple-child-exploitation-offenses-involving
+    title: North Smithfield Man Charged with Multiple Child Exploitation Offenses Involving Surreptitious Filming of a Minor and Creating AI-Generated Child Sexual Abuse Material with Images of Minors Known to Him
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://turnto10.com/news/local/north-smithfield-man-accused-of-creating-ai-generated-child-sexual-abuse-material-instructor-gymnastics-dance-facilities-artificial-intelligence-november-10-2026
+    title: North Smithfield man accused of creating AI-generated child sexual abuse material
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.bostonglobe.com/2026/11/12/metro/gymnastic-coach-in-ri-mass-ai-child-sexual-abuse-material/
+    title: "‘Our daughters knew and trusted him’: Gymnastics instructor in Mass., R.I., allegedly used AI to make pornographic videos of children he coached"
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.biobiochile.cl/noticias/nacional/region-de-antofagasta/2026/11/12/camion-autonomo-se-desbarranca-tras-perder-comunicacion-en-rajo-de-minera-centinela-en-antofagasta.shtml
+    title: Camión autónomo se desbarranca tras perder comunicación en rajo de Minera Centinela en Antofagasta
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.redimin.cl/camion-minero-autonomo-pierde-comunicacion-y-termina-desbarrancado-en-minera-centinela
+    title: Camión minero autónomo pierde comunicación y termina desbarrancado en Minera Centinela
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.portalantofagasta.cl/camion-autonomo-se-desbarranca-en-minera-centinela-tras-perder-comunicacion-durante-operacion-en-el-rajo/?utm_source=chatgpt.com
+    title: Camión autónomo se desbarranca en Minera Centinela tras perder comunicación durante operación en el rajo
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://www.wsj.com/finance/ai-bots-are-using-credit-cards-banks-are-racing-to-keep-up-c30dda30
+    title: AI Bots Are Using Credit Cards. Banks Are Racing to Keep Up.
+    origin: AI Incident Database
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.ycombinator.com/item?id=50491841
+    title: "Show HN: Feedback/AMA MeditionBench; LLMs for mediation and conflict resolution"
+    origin: "HN: LLM lied"
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMibkFVX3lxTE9tWVpEVUxFMXJYcElIaU1nMVRWMVZ4cUI0ZjJ1RzRWdmpTcGhyYVV2ZVpTM1lscG5uWnU5TnRjd3BrX3B0M3FfaWZENzdPSkY5aXBUc0VyR0RmcHJIN1FSdXJ4eWlHaVVQQUJoWVN3?oc=5
+    title: Kylie Jenner's X Account Reportedly Hacked to Push Meme Coin That Crashed 68% - BeInCrypto
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMilgFBVV95cUxOMW1xTVlTOEVoV3lzOFFjanRFemJtZEZGY3FpUWpTYzNYNS1tZy15aDBKWXJhT1Rja2NkdEQ3MzQxeHhmN0MzTHNXVlV5dXFHenU3VlBIQTR3ZmllXzN2SVBwUEp3eU5PbmJGYTM5WmFjd2xDakhIOE1KRWVkclB1OGk4U0Z5OE9TYlIzeE1BTjlKeFVzWEE?oc=5
+    title: FBI probes whether a software update caused the FAA ground stop - Startup Fortune
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMibkFVX3lxTFBCWjJweFMzSkZkTVpWc3E4NXpSdjQ1QWREVXQwUHBTaDN1SmxrLWVBNlF1OHMxbmRHZm1NRVphb3puTkgta1U2Q2ZGbVJwY0pmM0JGTndYemNaU2RGWjJOeUtzSU9MOFNPM1pYZ2130gFuQVVfeXFMUEJaMnB4UzNKRmRNWlZzcTg1elJ2NDVBZERVdDBQcFNoM3VKbGstZUE2UXU4czFuZEdmbU1FWmFvem5OSC1rVTZDZkZtUnBjSmYzQkZOd1h6Y1pTZEZaMk55S3NJT0w4U08zWlhnbXc?oc=5
+    title: 74 years to life in prison for man who fired gun at Sacramento police officers - Sacramento Bee
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMic0FVX3lxTFBmUXBjaHZib1l3RHU2bTRiNHhKQjJSOXFqWlVZLXY2U0lhNnd3NkNudUdZLXI0NEJGM29rVFpVSmNESlFZV0tKLTJlNmpIcy1xeTVpWlRVN1FPYk1KZ1JpcmRXekJVWXpZU096NFdlVnJTTWc?oc=5
+    title: The Mathematics of AI Safety - Georgia Institute of Technology
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMibkFVX3lxTE14UTlPMmRlQ2dyUnFxZm12dHdNWnpBZXdTZEt2MWR3UTVaZkw5ZURrZGM0cmRzdFh1VUNUNzA4TFQtaGhucXNXZ2tPSWhPMjNYa3F0c2tveUZ4bm1SZHpyYm1JSWM0N2ZQLWRfaE130gFuQVVfeXFMTXVfbVFKSDFGb1ZPZ29FeWtJMFVJeHoxM2loWUhhMnM4X3VtRzdRWGNVTWhQSDJyTWQ1Nl9wVElCdUpXdWVxSWwtZlJwNno3aklmVDJnTnhYSndBT09MUkVJaHptX1BDeVh5UU1fV1E?oc=5
+    title: Elk Grove man gets life in prison for murdering parents for inheritance money - Sacramento Bee
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://github.com/anthropics/claude-code/issues/109690
+    title: "[VS Code extension] Stale archived-session IDs are never pruned after transcripts are deleted"
+    origin: "GitHub issues: deleted"
+    verdict: rejected
+    reason: Software bug in session or transcript storage, not model behavior.
+  - url: https://news.google.com/rss/articles/CBMilAFBVV95cUxNSXdqNTF6MzdVQjdTTjU5NWE4cVZxeGRDRGE5d1dyakJzdEZRRlN2UFRVVXNQZ1NxamllYXVIaHBzRFl6X1hPV2FMNUpBOWQ2UUVaR0FyU1l0OHU5S1pUZWg1enBuamJuYk1zTHU2T19iMTNBZkhDOG8zdjVVeE5oSF81ODA2am9FcmZ1MmNzTFUtRXQx?oc=5
+    title: Who takes responsibility for what goes wrong when AI writes code? - Techli
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://news.google.com/rss/articles/CBMizAFBVV95cUxPM3ZIOE0xUks5elVUNHFrLXA3LXU0V0N3c09fb1ViQk5FczdTclBOUTloNnBYNVhLT0stbVpITkF3amJJZzBJc09oQW1yRTQ0UTdkY0FrMlpnZjdRWEtRVHg2cmdvajlpRF96MjhSWllEbWlmdzJZb29WNko4UFprX3VYeE9fMF84M3NTemJxWkhaMWgyTjNpVDNWbzgwelhSWVlsRG0ydDN4cnpPbTJsbjlzcjVaSVM2bXZvNlBldXE5Y0JlRmJBVTRlMTc?oc=5
+    title: AI coding tools are sold on speed, and nobody seems to be selling accountability for the code they ship - The Sociable
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope by title and snippet: unrelated crime news, routine generator misuse (AI CSAM/deepfakes/forgeries), autonomous-vehicle malfunction, opinion/forecast, policy or product news; no goal-directed AI behavior."
+  - url: https://blog.railway.com/p/incident-report-october-security-incident
+    title: "Incident report: October security incident"
+    origin: web
+    verdict: cited
+    incident: AID-2026-0172
+  - url: https://chainstack.com/security-incident-nov-2026/
+    title: Chainstack Security Incident
+    origin: web
+    verdict: cited
+    incident: AID-2026-0173
+  - url: https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2026.1964950/full
+    title: "When conviction outpaces evidence: diagnostic boundary failures of large language models in adult ADHD self-assessment"
+    origin: verify-4
+    verdict: cited
+    incident: AID-2026-0174
+  - url: https://alignment.anthropic.com/2026/worse-together/
+    title: "Worse Together: How Performance Breaks Down in Multi-User Multi-Agent Teams"
+    origin: labs
+    verdict: cited
+    incident: AID-2026-0175
+  - url: https://simonwillison.net/2026/Jul/16/bad-codex-bug/
+    title: A quote from Thibault Sottiaux
+    origin: backfill
+    verdict: cited
+    incident: AID-2026-0143
+  - url: https://www.eon.io/rogue-ai-agent-tracker
+    title: Rogue AI agent tracker (Eon)
+    origin: web
+    verdict: skipped
+    reason: Tracker used as a lead source only; its Railway and Chainstack entries became AID-2026-0172 and AID-2026-0173, and the other entries are already covered.
+  - url: https://shomra.ai/blog/codex-deleted-home-directories
+    title: Codex deleted home directories (shomra.ai)
+    origin: backfill
+    verdict: skipped
+    reason: Repeats The Register; adds nothing to AID-2026-0143.
+  - url: https://alignment.anthropic.com/2026/homeopathic-learning/
+    title: Homeopathic Learning
+    origin: labs
+    verdict: rejected
+    reason: Data-poisoning research method, not model misbehavior.
+  - url: https://idahocapitalsun.com/2026/10/14/idaho-attorney-general-raul-labrador-sues-openai-for-alleged-harms-of-chatgpt/
+    title: Idaho Attorney General Raúl Labrador sues OpenAI for alleged harms of ChatGPT
+    origin: verify-4
+    verdict: skipped
+    reason: Consumer-protection suit filed 2026-10-14 with general allegations and no specific incident; complaint PDF unreadable.
+  - url: https://focustaiwan.tw/society/202609020019
+    title: 57 indicted over NT$900 million voice-cloning romance scam (Focus Taiwan)
+    origin: verify-4
+    verdict: rejected
+    reason: AI used as a voice-changing tool in a human-run scam (routine generator misuse); dated 2026-09-02.
+  - url: https://casrai.org/news/multi-turn-ai-vs-human-advice-incentivized-behavior-study-2026
+    title: AI vs Human Advice Multi-Turn Behavioral Study (CASRAI)
+    origin: verify-4
+    verdict: skipped
+    reason: Borderline sycophancy finding in a study mainly about human trust; underlying preprint arXiv 2611.16667 not read.
+  - url: https://www.medicaldaily.com/weill-cornell-radiology-patient-data-ai-incident-480956
+    title: Weill Cornell radiology patient data AI incident (Medical Daily)
+    origin: verify-4
+    verdict: rejected
+    reason: Human policy violation (patient data entered into AI tools); no AI behavior.
+  - url: https://github.com/anthropics/claude-code/issues/110080
+    title: "[MODEL] Ignored instructions (template burst)"
+    origin: verify-4
+    verdict: rejected
+    reason: Part of a ~100-issue template burst by one user; auto-labeled duplicate.
+  - url: https://github.com/anthropics/claude-code/issues/110149
+    title: "[MODEL] Ignored instructions (template burst)"
+    origin: verify-4
+    verdict: rejected
+    reason: Part of a ~100-issue template burst by one user.
+  - url: https://www.lesswrong.com/posts/bqc7CCGBSf93bk7f7/fable-5-2-is-very-very-paranoid
+    title: Fable 5.2 is very, very paranoid (LessWrong)
+    origin: verify-3
+    verdict: skipped
+    reason: Tentative single-author result (honeypot cheating fell from 34% to 7% when the model was told it was in a benchmark), disputed in comments. Worth revisiting if replicated.
+  - url: https://fourweekmba.com/ai-claude-fable-5-2-thinks-its-being-tested-earns-42-less/
+    title: Claude Fable 5.2 Thinks It's Being Tested, Earns 42% Less
+    origin: verify-3
+    verdict: skipped
+    reason: Eval awareness on Vending-Bench 2 without behavior against intent; the 42% is the outlet's own arithmetic.
+  - url: https://andonlabs.com/evals/vending-bench-2
+    title: Vending-Bench 2 (Andon Labs)
+    origin: verify-3
+    verdict: skipped
+    reason: Leaderboard context for the Fable 5.2 eval-awareness item; no incident.
+  - url: https://andonlabs.com/blog/fable5-vending-bench
+    title: Fable 5 on Vending-Bench (Andon Labs)
+    origin: verify-3
+    verdict: skipped
+    reason: Context for the Fable 5.2 eval-awareness item; no incident.
+  - url: https://www.cognitiverevolution.ai/ai-the-modern-enigma-nathan-s-keynote-at-it-revolution-s-enterprise-ai-summit-at-bletchley-park/
+    title: "AI, the Modern Enigma: Nathan's keynote (Cognitive Revolution)"
+    origin: verify-3
+    verdict: skipped
+    reason: Retells the OpenAI/Hugging Face incident already recorded as AID-2026-0006.
+  - url: https://stocktwits.com/news-articles/markets/equity/openai-discloses-six-new-ai-safety-incidents-says-report-models-hid-errors-sought-credentials-and-more/cZtYxFeRBPM
+    title: OpenAI Discloses Six New AI Safety Incidents (Stocktwits)
+    origin: verify-2
+    verdict: skipped
+    reason: Dated 2026-09-16; all six disclosures already recorded (AID-2026-0081, 0082, 0083, 0090, 0091, 0092).
+  - url: https://www.datastudios.org/post/openai-anthropic-google-sued-to-freeze-ai-models-at-todays-level
+    title: Nonprofits sue OpenAI, Anthropic, Google to freeze AI models (datastudios)
+    origin: legal
+    verdict: skipped
+    reason: Policy lawsuit filed 2026-11-12 citing past agent incidents; no new incident, and the complaint was not read.
+  - url: https://pasqualepillitteri.it/en/news/33676/four-nonprofits-sue-anthropic-openai-google-meta-and-spacex
+    title: Four nonprofits sue Anthropic, OpenAI, Google, Meta and SpaceX
+    origin: legal
+    verdict: skipped
+    reason: Same policy lawsuit; secondary source, no new incident.
+  - url: https://www.insurancejournal.com/news/national/2026/11/06/891769.htm
+    title: Gemini school-Chromebook lawsuit (Insurance Journal)
+    origin: legal
+    verdict: skipped
+    reason: Already covered by AID-2026-0160; no material new facts.

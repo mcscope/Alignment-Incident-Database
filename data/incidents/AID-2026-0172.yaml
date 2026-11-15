@@ -1,0 +1,169 @@
+id: AID-2026-0172
+slug: railway-build-infrastructure-breach-ai-key-theft
+title: "An attacker using abliterated AI models and agent fanouts breached Railway's build infrastructure to steal AI provider keys, Railway says"
+date: "2026-10-20"
+status: reported
+actor: human-misuse
+models: [unknown]
+organizations:
+  - id: railway
+    role: affected
+behaviors: [unauthorized-access]
+summary: >
+  An attacker exploited an unknown vulnerability in Railway's build
+  infrastructure, reached internal systems, and decrypted customer variables,
+  mainly to steal AI provider keys. Railway says the attacker used abliterated
+  models, and estimates unauthorized spend on the stolen keys at about $740,000.
+writeup: |
+  On October 20, 2026, an attacker exploited a previously unknown vulnerability
+  in Railway's build infrastructure to partially escape filesystem isolation and
+  read some files. That gave the attacker a credential that Railway's build
+  servers use to reach a subset of internal systems [@railway-report]. The
+  attacker had begun signing up on October 18. Railway engineers became aware
+  of the intrusion at 13:58 UTC on October 20. The attacker was fully evicted at
+  09:24 UTC on October 21 [@railway-report].
+
+  Railway's forensic investigation suggests AI provider keys were the primary
+  target. Railway says evidence indicates the attacker used abliterated models
+  with no safeguards. Once inside, the attacker could "run agent fanouts, find
+  any exploit, and move laterally with significant speed", and the response
+  became "a contest of agent speed" against abliterated models and a harness
+  similar to ARTEX, according to Wiz. The AI role is Railway's assessment, and
+  Railway does not say which models were used [@railway-report].
+
+  At most 1.85% (about 100,000) of workspaces may have had variables decrypted,
+  an upper bound. The attacker also read the stored histories of 353 builds, and
+  Railway reset linked-account tokens for 1,852 users. Unauthorized spend on the
+  stolen keys was estimated to reach about $740,000. Railway believes the stolen
+  credentials were passed to distributed transfer stations and resale
+  operations, and sent a formal complaint to the FBI's IC3 [@railway-report].
+claims:
+  - text: Railway reports the attacker exploited a previously unknown vulnerability in its build infrastructure at 07:28 UTC on October 20.
+    sources: [railway-report]
+    quote: "At 07:28 UTC on October 20th the attacker exploited a previously unknown vulnerability"
+  - text: The exploit let the attacker partially escape filesystem isolation and read some files.
+    sources: [railway-report]
+    quote: "to partially escape filesystem isolation, granting them the ability to read some files"
+  - text: This gave the attacker a credential the build servers use to authenticate to a subset of internal systems.
+    sources: [railway-report]
+    quote: "This allowed them to obtain a credential our build servers use to authenticate to a subset of internal systems"
+  - text: The attacker's first signups began on October 18.
+    sources: [railway-report]
+    quote: "The attacker's first signups began on October 18th"
+  - text: Railway engineers became aware of a threat actor at 13:58 UTC on October 20.
+    sources: [railway-report]
+    quote: "At 13:58 UTC on October 20th, Railway engineers became aware of a threat actor"
+  - text: Decryption of per-environment keys began at 04:42 UTC on October 21.
+    sources: [railway-report]
+    quote: "The attacker's decryption of per-environment keys began at 04:42 UTC on October 21st"
+  - text: The attacker was fully evicted at 09:24 UTC on October 21.
+    sources: [railway-report]
+    quote: "through 09:24 UTC on October 21st when the attacker was fully evicted from our systems"
+  - text: Railway's forensic investigation suggests AI provider keys were the primary target.
+    sources: [railway-report]
+    quote: "Our internal forensic investigation suggests AI provider keys were the primary target of the attack."
+  - text: Railway says the attacker was specifically targeting AI provider credentials that could be sold to distributed transfer stations.
+    sources: [railway-report]
+    quote: "the attacker was specifically targeting AI provider credentials, that they could sell to distributed transfer stations"
+  - text: Stolen AI credentials were being checked and used by resale operations.
+    sources: [railway-report]
+    quote: "stolen AI credentials being checked and used by resale operations."
+  - text: Railway says evidence indicates the attacker used abliterated models with no safeguards.
+    sources: [railway-report]
+    quote: "the malicious actor was using abliterated models with no safeguards"
+  - text: Railway says the attacker was able to run agent fanouts, find any exploit, and move laterally with significant speed.
+    sources: [railway-report]
+    quote: "run agent fanouts, find any exploit, and move laterally with significant speed"
+  - text: Railway describes the escalating situation as a contest of agent speed.
+    sources: [railway-report]
+    quote: "The escalating situation became a contest of agent speed"
+  - text: Railway defended against abliterated models and a harness similar to ARTEX, according to Wiz.
+    sources: [railway-report]
+    quote: "Railway defending against abliterated models and a harness similar to ARTEX, according to Wiz."
+  - text: Variables may have been decrypted for at most 1.85% (about 100,000) of workspaces.
+    sources: [railway-report]
+    quote: "for at most, 1.85% (~100,000) of workspaces."
+  - text: The attacker read the stored histories of 353 builds.
+    sources: [railway-report]
+    quote: "The attacker also read the stored histories of 353 builds"
+  - text: Linked-account tokens (BYOK agent keys and GitHub OAuth tokens) were reset for 1,852 users.
+    sources: [railway-report]
+    quote: "tokens (BYOK agent keys and GitHub OAuth tokens) for 1,852 users."
+  - text: Unauthorized spend on the stolen keys was estimated to reach about $740,000.
+    sources: [railway-report]
+    quote: "Unauthorized spend on the stolen keys was estimated to reach ~$740,000."
+  - text: Railway sent a formal complaint to the FBI's IC3.
+    sources: [railway-report]
+    quote: "During the response period we sent a formal complaint to the FBI’s IC3 to allow law enforcement to begin their investigation."
+sources:
+  - id: railway-report
+    url: https://blog.railway.com/p/incident-report-october-security-incident
+    title: "Incident report: October security incident"
+    publisher: Railway
+    published: "2026-11-10"
+    kind: primary
+    accessed: "2026-11-15"
+measurements:
+  - id: workspaces-affected
+    label: Share of workspaces that may have had variables decrypted (upper bound)
+    unit: percent
+    source: railway-report
+    values:
+      - { label: Workspaces, value: 1.85 }
+  - id: builds-read
+    label: Stored build histories read by the attacker
+    unit: count
+    unit_label: builds
+    source: railway-report
+    values:
+      - { label: Builds, value: 353 }
+  - id: users-tokens-reset
+    label: Users whose linked-account tokens were reset
+    unit: count
+    unit_label: users
+    source: railway-report
+    values:
+      - { label: Users, value: 1852 }
+  - id: unauthorized-spend
+    label: Estimated unauthorized spend on stolen keys
+    unit: usd
+    source: railway-report
+    values:
+      - { label: Spend, value: 740000, qualifier: "~" }
+tags: [agentic, abliterated-models, credential-theft]
+related: [AID-2026-0154, AID-2026-0173]
+assessment:
+  reach:
+    level: deployed
+    context: product
+    rationale: A real attack on Railway's production build infrastructure and customer data.
+  harm:
+    severity: moderate
+    categories: [financial, privacy, security]
+    rationale: Customer variables and linked-account tokens were exposed, and about $740,000 of unauthorized spend on stolen keys is estimated. The figure for decrypted workspaces is an upper bound.
+  monetary_damage:
+    low_usd: 740000
+    high_usd: 740000
+    confidence: medium
+    rationale: Railway's own estimate of unauthorized spend on the stolen keys. It covers token spend only, not Railway's response costs or other losses.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access, credential theft]
+    rationale: Exploiting a vulnerability to reach internal systems and steal credentials would be a computer crime. Railway filed a formal complaint with the FBI's IC3; no charges are reported.
+record:
+  created: "2026-11-15"
+  updated: "2026-11-15"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Single primary source, Railway's own report. The AI role (abliterated models,
+    agent fanouts, ARTEX-like harness) is Railway's assessment, partly
+    attributed to Wiz; no models are identified, and Wiz material was not
+    fetched. The report's timeline does not state the year; 2026 is inferred
+    from the Nov 10, 2026 publication date. The 1.85% figure is an upper bound.
+    Railway mentions Wiz's "Black October" campaign only as context, not
+    attribution. Wiz is not listed as an organization because Railway cites it
+    and the Wiz material was not read. All quotes were spot-checked for exact
+    wording against the page by the editor on 2026-11-15. Drafted by a Claude
+    writer because the Gemini writer was unavailable (OpenRouter credits
+    exhausted).

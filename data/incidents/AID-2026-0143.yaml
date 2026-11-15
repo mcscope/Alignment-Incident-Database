@@ -24,7 +24,7 @@ writeup: |
   irreversibly deleted files [@decoder-deleting]: Matt Shumer said it had
   deleted almost all of his Mac's files, and Bruno Lemos said it had deleted
   his production database [@register]. Thibault Sottiaux, who leads the Codex
-  team, said OpenAI had investigated "a handful of reports" [@techzine]. OpenAI
+  team, said OpenAI had investigated "a handful of reports" [@techzine; @willison]. OpenAI
   called it an honest mistake that is extremely rare but should not happen even
   in unprotected mode, and promised a post-mortem [@decoder-deleting; @techzine].
 
@@ -93,6 +93,9 @@ claims:
   - text: Sottiaux said a comprehensive post-mortem would follow in the coming days.
     sources: [techzine]
     quote: "a comprehensive post-mortem will follow in the coming days"
+  - text: Sottiaux's post, quoted in full by Simon Willison, lists the conditions as Full Access mode with Codex running without sandboxing protections or auto review, the model trying to override $HOME to define a temporary directory, and the model then mistakenly deleting $HOME.
+    sources: [willison]
+    quote: "The model makes an honest mistake and mistakenly deletes $HOME instead."
 sources:
   - id: decoder-deleting
     url: https://the-decoder.com/gpt-5-6-is-deleting-user-files-when-given-full-access-and-openai-says-it-shouldnt-but-did/
@@ -129,6 +132,13 @@ sources:
     published: "2026-07-16"
     kind: news
     accessed: "2026-11-13"
+  - id: willison
+    url: https://simonwillison.net/2026/Jul/16/bad-codex-bug/
+    title: A quote from Thibault Sottiaux
+    publisher: Simon Willison's Weblog
+    published: "2026-07-16"
+    kind: analysis
+    accessed: "2026-11-15"
 related: [AID-2026-0146, AID-2026-0144]
 tags: [agentic, coding-agent]
 assessment:
@@ -151,10 +161,15 @@ assessment:
     rationale: A human who accidentally deleted files through a faulty cleanup command would lack the intent required for computer-damage offenses.
 record:
   created: "2026-11-02"
-  updated: "2026-11-13"
+  updated: "2026-11-15"
   created_by: agent
   review_status: draft
   notes: >
+    2026-11-15 backfill added Simon Willison's 2026-07-16 page, which quotes
+    Sottiaux's X post (twitter.com/thsottiaux/status/2077630111499882637) in
+    full. The post itself is still not read directly. Willison's page links no
+    post-mortem. One blog seen in search claimed a post-mortem was published a
+    week later; it was not read, and no post-mortem was found.
     2026-11-13 backfill added The Register and Techzine (both 2026-07-16), which
     name OpenAI's Codex lead Thibault Sottiaux as the source of the explanation
     and the two developers (Matt Shumer, Bruno Lemos). Their X posts returned
