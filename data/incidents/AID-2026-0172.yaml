@@ -95,6 +95,12 @@ claims:
   - text: Railway sent a formal complaint to the FBI's IC3.
     sources: [railway-report]
     quote: "During the response period we sent a formal complaint to the FBI’s IC3 to allow law enforcement to begin their investigation."
+  - text: Wiz's account of the October 2026 wave of attacks on AI developer platforms lists Railway's incident as October 20 and says Railway believes initial access came through privilege escalation in its build infrastructure.
+    sources: [wiz-black-october]
+    quote: "Railway so far has shared they believe the initial access was via “privilege escalation in our build infrastructure,”"
+  - text: Wiz lists an alleged theft of about $371,000 in cryptocurrency using crypto keys stored in Railway, presented as an allegation.
+    sources: [wiz-black-october]
+    quote: "Alleged theft of cryptocurrency, to the tune of ~$371,000, using crypto keys stored in Railway"
 sources:
   - id: railway-report
     url: https://blog.railway.com/p/incident-report-october-security-incident
@@ -103,6 +109,13 @@ sources:
     published: "2026-11-10"
     kind: primary
     accessed: "2026-11-15"
+  - id: wiz-black-october
+    url: https://www.wiz.io/blog/black-october-for-ai-developer-platforms
+    title: "“Black October” for AI Developer Platforms"
+    publisher: Wiz
+    published: "2026-10-30"
+    kind: research
+    accessed: "2026-11-16"
 measurements:
   - id: workspaces-affected
     label: Share of workspaces that may have had variables decrypted (upper bound)
@@ -152,7 +165,7 @@ assessment:
     rationale: Exploiting a vulnerability to reach internal systems and steal credentials would be a computer crime. Railway filed a formal complaint with the FBI's IC3; no charges are reported.
 record:
   created: "2026-11-15"
-  updated: "2026-11-15"
+  updated: "2026-11-16"
   created_by: agent
   review_status: draft
   notes: >
@@ -167,3 +180,12 @@ record:
     wording against the page by the editor on 2026-11-15. Drafted by a Claude
     writer because the Gemini writer was unavailable (OpenRouter credits
     exhausted).
+    2026-11-16 backfill: Wiz's "Black October" post (published 2026-10-30,
+    updated through 11-10) is now read and cited. It lists Railway among the
+    affected platforms but does not mention abliterated models or an
+    ARTEX-like harness, so those details still rest on Railway's report alone.
+    Wiz says it "cannot definitively tie" the
+    LLMjacking operation it traced to the wider flood of abuse. Wiz's ~$371,000
+    figure is an alleged cryptocurrency theft, separate from Railway's ~$740,000
+    unauthorized-spend estimate; it is not added to monetary_damage because Wiz
+    presents it as unverified.
