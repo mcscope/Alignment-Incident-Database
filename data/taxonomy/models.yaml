@@ -163,6 +163,14 @@
   name: GPT-6.1 Terra
   developer: openai
   family: gpt-6
+- id: gpt-6.2-astra
+  name: GPT-6.2 Astra
+  developer: openai
+  family: gpt-6
+- id: gpt-6.2-sol
+  name: GPT-6.2 Sol
+  developer: openai
+  family: gpt-6
 - id: gpt-5.4
   name: GPT-5.4
   developer: openai

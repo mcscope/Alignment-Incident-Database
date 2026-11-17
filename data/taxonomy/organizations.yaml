@@ -382,3 +382,7 @@
   name: ByteDance
   url: https://www.bytedance.com
   type: company
+- id: malbear-labs
+  name: Malbear Labs
+  url: https://malbearlabs.com
+  type: company
