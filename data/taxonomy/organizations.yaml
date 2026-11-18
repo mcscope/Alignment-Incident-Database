@@ -386,3 +386,28 @@
   name: Malbear Labs
   url: https://malbearlabs.com
   type: company
+
+- id: palo-alto-networks
+  name: Palo Alto Networks (Unit 42)
+  url: https://unit42.paloaltonetworks.com
+  type: company
+
+- id: cloudsek
+  name: CloudSEK
+  url: https://www.cloudsek.com
+  type: company
+
+- id: oalabs
+  name: OALABS Research
+  url: https://research.openanalysis.net
+  type: research-org
+
+- id: unesco
+  name: UNESCO
+  url: https://www.unesco.org
+  type: government
+
+- id: university-college-london
+  name: University College London (UCL)
+  url: https://www.ucl.ac.uk
+  type: academic
