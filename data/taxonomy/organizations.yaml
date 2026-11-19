@@ -411,3 +411,13 @@
   name: University College London (UCL)
   url: https://www.ucl.ac.uk
   type: academic
+
+- id: godaddy
+  name: GoDaddy
+  url: https://www.godaddy.com
+  type: company
+
+- id: 123-reg
+  name: 123 Reg
+  url: https://www.123-reg.co.uk
+  type: company

@@ -1,0 +1,124 @@
+id: AID-2026-0185
+slug: 123-reg-godaddy-ai-driven-cyberattack
+title: "An AI-driven cyberattack read customer data at GoDaddy's 123 Reg and Websites + Marketing through an API, the companies say"
+date: "2026-09-18"
+status: reported
+actor: human-misuse
+models: [unknown]
+organizations:
+  - id: 123-reg
+    role: affected
+  - id: godaddy
+    role: affected
+behaviors: [unauthorized-access]
+summary: >
+  GoDaddy and its UK registrar 123 Reg say a third party used an AI-driven
+  cyberattack on September 18, 2026 to read customer contact and product data
+  through an API, "the first known AI-driven cyberattack" against the company.
+  123 Reg suspects a China-nexus actor.
+writeup: |
+  On September 18, 2026, a third party read customer data at 123 Reg, a
+  GoDaddy-owned UK domain registrar, and at GoDaddy's Websites + Marketing
+  product through an application programming interface. GoDaddy detected the
+  intrusion the next day. Both describe it as "the first known AI-driven
+  cyberattack" against the company [@register; @cudaily].
+
+  The exposed data included names, phone numbers, countries, language and
+  currency preferences, account creation dates, products and marketing
+  preferences. The companies say the activity was limited to reading, and that
+  the attacker did not get passwords or change customers' websites
+  [@register; @cudaily].
+
+  123 Reg says attacker infrastructure in China and Singapore indicates "a
+  strong Chinese nexus". On Chinese infrastructure it found AI attack skills,
+  including copies of skills open-sourced by Anthropic. It suspects either a
+  state-sponsored group known for abusing Claude Code, or the actor that used
+  the agentic tool ARTEX against South Korean banks. Neither attribution is
+  confirmed, and no technical report has been published. The companies
+  reported the attack to law enforcement and notified the FTC and UK and EU
+  data protection authorities [@register; @cudaily].
+claims:
+  - text: 123 Reg describes the incident as the first known AI-driven cyberattack against the company.
+    sources: [register]
+    quote: "the first known AI-driven cyberattack against our company"
+  - text: GoDaddy says that on Sept. 18 it experienced an AI-driven cyberattack exposing information about users of its Websites + Marketing product.
+    sources: [cudaily]
+    quote: "on Sept. 18 it experienced an AI-driven cyberattack"
+  - text: GoDaddy says it detected the incident on Sept. 19.
+    sources: [cudaily]
+    quote: "detected the incident on Sept. 19 and responded immediately."
+  - text: The third party accessed the data from an API.
+    sources: [cudaily]
+    quote: "from an application programming interface (API),"
+  - text: Exposed 123 Reg data included names, phone numbers, countries, language and currency preferences, and account creation dates.
+    sources: [register]
+    quote: "names, phone numbers, countries, language and currency preferences, account creation dates"
+  - text: The companies say the activity was limited to reading data.
+    sources: [register, cudaily]
+    quote: "was limited to reading"
+  - text: GoDaddy says the third party did not obtain passwords, access accounts, or change websites.
+    sources: [cudaily]
+    quote: "did not obtain your password, access your account, make changes to your website"
+  - text: 123 Reg says attacker infrastructure indicates a strong Chinese nexus.
+    sources: [register]
+    quote: "indicating a strong Chinese nexus"
+  - text: 123 Reg found AI attack skills on Chinese infrastructure, including copies of skills open-sourced by Anthropic.
+    sources: [register]
+    quote: "copies of skills open sourced by Anthropic"
+  - text: 123 Reg suspects a group known for abusing Claude Code, or the actor behind ARTEX attacks on South Korean financial institutions.
+    sources: [register]
+    quote: "known for abusing Claude Code in attacks against at least 30 organizations"
+  - text: The company reported the attack to law enforcement and notified the FTC and UK and EU data protection authorities.
+    sources: [cudaily]
+    quote: "We voluntarily notified the Federal Trade Commission and data protection authorities in the UK and EU."
+sources:
+  - id: register
+    url: https://www.theregister.com/cyber-crime/2026/10/28/123-reg-discloses-ai-cyberattack-on-customer-data-suspects-china-nexus/5305936
+    title: "123 Reg discloses 'AI cyberattack' on customer data, suspects China nexus"
+    publisher: The Register
+    published: "2026-10-28"
+    kind: news
+    accessed: "2026-11-19"
+  - id: cudaily
+    url: https://thecudaily.com/godaddy-says-its-been-penetrated-by-its-first-ai-driven-cyber-attack/
+    title: GoDaddy Says Its Been Penetrated by its First AI-Driven Cyber Attack
+    publisher: The CU Daily
+    published: "2026-10-29"
+    kind: news
+    accessed: "2026-11-19"
+related: [AID-2026-0068, AID-2026-0063]
+tags: [agentic, cyberattack]
+assessment:
+  reach:
+    level: deployed
+    rationale: A real intrusion into production customer systems of a commercial registrar and website builder.
+  harm:
+    severity: moderate
+    categories: [privacy, security]
+    rationale: Customer contact and account data was read and possibly copied. The companies say no passwords were taken and no sites were changed.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No figures in the sources.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access, data theft]
+    rationale: Unauthorized access to and reading of customer data is a computer crime regardless of AI's role, and the companies reported it to law enforcement. No one has been charged.
+record:
+  created: "2026-11-19"
+  updated: "2026-11-19"
+  created_by: agent
+  review_status: draft
+  notes: >
+    The AI role rests on the companies' own characterization ("AI-driven") and
+    123 Reg's finding of AI attack skills on suspected attacker infrastructure;
+    no technical report, model, or tool is confirmed, hence status reported.
+    The GoDaddy customer notice was not found at a primary URL (a LowEndTalk
+    reproduction returned 403), and no GoDaddy newsroom post or SEC filing was
+    found. Exposed fields listed in the writeup beyond the claim's quote
+    (products, marketing preferences) come from The Register's article. The
+    tomsher.com page is a marketing article and was not cited. Quotes were
+    checked through WebFetch excerpts (shell fetching was unavailable in this
+    run). Written directly by the lead editor because the Gemini writer failed
+    (OpenRouter out of credits).
