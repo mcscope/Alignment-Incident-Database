@@ -1,0 +1,171 @@
+# Sources the scout scanned on this date and what came of each.
+# verdict: cited (used in `incident`) | lead (in scope, not acted on) | skipped (in scope, no change; see reason)
+#          | rejected (out of scope; see reason) | unreviewed (collected, not triaged)
+date: 2026-11-20
+scanned:
+  - url: https://arkviz.io
+    title: "Show HN: ArkViz – AI generated software architecture diagrams"
+    origin: "HN: system card"
+    verdict: rejected
+    reason: Product launch; matched the keyword only.
+  - url: https://github.com/openai/codex/issues/62734
+    title: "[ChatGPT iOS/Web] Inconsistent deletion behavior across platforms: deleted conversations remain accessible and generated images persist depending on deletion order"
+    origin: "GitHub issues: deleted"
+    verdict: rejected
+    reason: Ordinary data-sync software bug; no model behavior.
+  - url: https://openai.com/index/combatting-adversarial-distillation
+    title: Combatting adversarial distillation
+    origin: OpenAI News
+    verdict: rejected
+    reason: Human actors extracting model capabilities, and OpenAI's defenses; not an AI acting against intent.
+  - url: https://hy.tencent.ai/Hy4_system_card.pdf
+    title: Hy4 System Card [pdf]
+    origin: "HN: system card"
+    verdict: lead
+    reason: Tencent Hy4 system card. The PDF could not be read (WebFetch and the r.jina.ai mirror returned no text; curl/pdftotext not permitted in this run). Read its safety sections next run.
+  - url: https://metr.org/blog/2026-11-20-q4-2026-capability-update/
+    title: AI R&amp;D-relevant model capabilities are improving rapidly and are getting harder to measure
+    origin: METR
+    verdict: cited
+    incident: AID-2026-0146
+  - url: https://github.com/anthropics/claude-code/issues/111315
+    title: "[BUG] [BUG] Severe Claude Code Pro usage degradation: 3 rate limits in 12 hours, repeated failures, ignored instructions and endless debugging loops"
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: rejected
+    reason: Usage and quality complaint; a wrong command was proposed but not executed, and the user corrected it. No concrete harmful agent action.
+  - url: https://openai.com/business/customer-stories/hebbia
+    title: Hebbia sees improvements in financial research with GPT-6 Astra
+    origin: OpenAI News
+    verdict: rejected
+    reason: Customer story.
+  - url: https://openai.com/index/introducing-medchembench
+    title: Can AI help scientists identify promising drug candidates?
+    origin: OpenAI News
+    verdict: rejected
+    reason: Benchmark launch.
+  - url: https://stass.github.io/erXos/
+    title: "Show HN: erXos – a microkernel OS in Erlang based on Genera/Plan 9/QNX ideas"
+    origin: "HN: system card"
+    verdict: rejected
+    reason: Unrelated software project.
+  - url: https://forum.cursor.com/t/cursor-automation-failing-to-trigger/178863
+    title: Cursor Automation Failing to Trigger
+    origin: Cursor forum
+    verdict: rejected
+    reason: Topic deleted by author; product bug.
+  - url: https://arxiv.org/abs/2611.26131v1
+    title: "SCARVA: Interpretable Agentic Reasoning in Software Supply-Chain Analysis"
+    origin: 'arXiv: abs:"reward hacking"'
+    verdict: rejected
+    reason: Methods paper; mentions reward hacking only as a general risk.
+  - url: https://arxiv.org/abs/2611.25998v1
+    title: Reinforcing Few-Step Diffusion Models via Shadow Posterior Matching
+    origin: 'arXiv: abs:"reward hacking"'
+    verdict: rejected
+    reason: Diffusion RL methods paper; no model incident.
+  - url: https://arxiv.org/abs/2611.25457v1
+    title: "CANDOR: Contrastive Self-Denoising Rewards for Label-Free Text-to-Image Post-Training"
+    origin: 'arXiv: abs:"reward hacking"'
+    verdict: rejected
+    reason: Reward-design methods paper; no model incident.
+  - url: https://openai.com/business/learn/codex-security-plugin-demo
+    title: Explore the Codex Security Plugin
+    origin: OpenAI News
+    verdict: rejected
+    reason: Product demo.
+  - url: https://openai.com/business/learn/pr-scans-demo
+    title: See PR scans in action
+    origin: OpenAI News
+    verdict: rejected
+    reason: Product demo.
+  - url: https://openai.com/business/learn/daybreak-blue-onboarding-demo
+    title: Get started with Daybreak Blue
+    origin: OpenAI News
+    verdict: rejected
+    reason: Product demo.
+  - url: https://openai.com/business/learn/deploying-daybreak-red
+    title: Deploying Daybreak Red
+    origin: OpenAI News
+    verdict: rejected
+    reason: Product reference architecture.
+  # Watch pages (labs lane)
+  - url: https://alignment.openai.com/misalignment-reports/generating-scripts-to-copy-outgoing-email-to-an-unauthorized-address/
+    title: "OpenAI misalignment report (generating-scripts-to-copy-outgoing-email)"
+    origin: "labs: OpenAI Misalignment Reports"
+    verdict: skipped
+    reason: Already recorded; no new development.
+    incident: AID-2026-0182
+  - url: https://www.anthropic.com/news/ipo-close
+    title: "Anthropic news post (ipo-close)"
+    origin: "labs: Anthropic News"
+    verdict: rejected
+    reason: Corporate news.
+  - url: https://www.anthropic.com/news/anthropic-prices-initial-public-offering
+    title: "Anthropic news post (anthropic-prices-initial-public-offering)"
+    origin: "labs: Anthropic News"
+    verdict: rejected
+    reason: Corporate news.
+  - url: https://www.anthropic.com/research/claude-black-hole-physics
+    title: "Anthropic research post (claude-black-hole-physics)"
+    origin: "labs: Anthropic Research"
+    verdict: rejected
+    reason: Capability write-up; no misbehavior.
+  - url: https://www.apolloresearch.ai/blog/towards-embedded-evaluations-for-ai-monitoring
+    title: "Apollo Research post (towards-embedded-evaluations-for-ai-monitoring)"
+    origin: "labs: Apollo Research"
+    verdict: rejected
+    reason: Methodology post (2026-11-19); no specific incident, model, or figures.
+  - url: https://x.ai/news/grok-bot-accounting
+    title: "xAI news post (grok-bot-accounting)"
+    origin: "labs: xAI News"
+    verdict: rejected
+    reason: Product post.
+  # Web searches (web lane)
+  - url: https://emergent.sh/news/3-charged-using-ai-commit-129-million-fraud
+    title: "emergent.sh news item (3-charged-using-ai-commit-129-million-fraud)"
+    origin: "web: criminal charges AI-assisted"
+    verdict: rejected
+    reason: Dated 2026-11-07; names no court or defendants and cites no primary source. Unverifiable.
+  - url: https://www.digitaltrends.com/computing/a-tv-shows-entire-season-was-reportedly-erased-by-an-ai-agent-just-weeks-before-it-was-set-to-premiere/
+    title: "Digital Trends article on a TV season reportedly erased by an AI agent"
+    origin: "web: AI agent incident this week"
+    verdict: rejected
+    reason: Older story resting on anonymous, disputed sourcing; not a new development.
+  - url: https://fortune.com/2026/05/22/they-created-ai-nudes-that-got-millions-of-views-online-now-theyre-being-charged-with-crimes/
+    title: "Fortune article (2026-05-22) on charges over AI-generated nudes"
+    origin: "web: criminal charges AI-generated"
+    verdict: rejected
+    reason: Routine deepfake charges; out of scope.
+  # Legal lane
+  - url: https://oodaloop.com/briefs/technology/how-a-lone-hacker-used-autonomous-ai-agents-and-a-few-thousand-dollars-to-breach-dozens-of-enterprise-systems/
+    title: How a lone hacker used autonomous AI agents and a few thousand dollars to breach dozens of enterprise systems
+    origin: "legal: web search"
+    verdict: skipped
+    reason: Dated 2026-10-19 and already logged in earlier scans. Secondary brief; names no defendant, court, or charges.
+  - url: https://www.redhotcyber.com/en/post/us-brothers-accused-of-destroying-96-databases-with-ai
+    title: "Red Hot Cyber post (us-brothers-accused-of-destroying-96-databases-with-ai)"
+    origin: "legal: web search"
+    verdict: rejected
+    reason: Page returned 410. The 2025 Akhter case was human-driven deletion, and the AI was incidental.
+  # Backfill lane
+  - url: https://www.seroundtable.com/bing-gpt-4-35056.html
+    title: Bing Has Been Using OpenAI's New GPT-4 For Five-Weeks
+    origin: "backfill: AID-2026-0017"
+    verdict: cited
+    incident: AID-2026-0017
+  - url: https://www.tweaktown.com/news/90726/microsoft-confirms-bing-chat-is-powered-by-gpt-4-openais-newest-upgrade/index.html
+    title: Microsoft confirms Bing Chat is powered by GPT-4, OpenAI's newest upgrade
+    origin: "backfill: AID-2026-0017"
+    verdict: skipped
+    reason: Duplicates the Search Engine Roundtable report of Microsoft's confirmation; not needed.
+    incident: AID-2026-0017
+  - url: https://openai.com/index/mental-health-litigation-approach/
+    title: Our approach to mental health-related litigation
+    origin: "backfill: AID-2026-0020"
+    verdict: lead
+    reason: Missing source for AID-2026-0020 (Raine). Read again only as a WebFetch summary, so quotes could not be verified verbatim; not added. Retry with a raw-text fetch.
+  - url: https://storage.courtlistener.com/recap/gov.uscourts.flmd.433581/gov.uscourts.flmd.433581.1.0.pdf
+    title: Garcia v. Character Technologies complaint (Doc. 1)
+    origin: "backfill: AID-2026-0021"
+    verdict: lead
+    reason: Missing source for AID-2026-0021. The PDF exceeded WebFetch's 10 MB limit, and curl/pdftotext were not permitted in this run.
