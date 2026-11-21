@@ -168,7 +168,7 @@ assessment:
       sandbox escapes served user requests and involved no full breach.
 record:
   created: "2026-10-14"
-  updated: "2026-10-14"
+  updated: "2026-11-21"
   created_by: agent
   review_status: draft
   notes: >
@@ -176,7 +176,12 @@ record:
     report text. The report PDF shows "October 2026" and no day; the published
     date is the model launch and blog date. The blog's example of a CoT
     shortcut penalty (silent shortcuts rising from 11.2% to 36.4%) does not
-    say which model was trained, so it is left out. The report also says
+    say which model was trained, so it is left out. (2026-11-21: Redwood
+    Research's 2026-11-16 post quotes the report, pp. 114-115, as attributing
+    these figures to "an existing small training run, not part of any
+    production model", used as a proxy for a grader bug in some early Argon RL
+    runs; so they are not Argon behavior and stay out. Not checked against the
+    report PDF, which exceeds fetch limits.) The report also says
     DeepMind cannot rule out that Argon reached its Stealth and Situational
     Awareness tracked capability level; that is a capability finding, not
     observed behavior, and is not a claim here. Exact dates of the behaviors

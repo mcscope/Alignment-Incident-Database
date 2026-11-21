@@ -421,3 +421,13 @@
   name: 123 Reg
   url: https://www.123-reg.co.uk
   type: company
+
+- id: minimax
+  name: MiniMax
+  url: https://www.minimax.io
+  type: ai-lab
+
+- id: mistral
+  name: Mistral AI
+  url: https://mistral.ai
+  type: ai-lab
