@@ -1,0 +1,134 @@
+id: AID-2026-0197
+slug: exploit-agent-llm-framework-automated-exploitation
+title: "exploit_agent, an LLM attack framework, found and exploited web vulnerabilities with no human in the loop, GTIG finds"
+date: "2026"
+status: reported
+actor: human-misuse
+models: [unknown]
+organizations:
+  - id: google
+    role: reporter
+behaviors: [unauthorized-access]
+summary: >
+  Google Threat Intelligence Group found an exposed attacker server running
+  exploit_agent, a multi-agent framework that compared code before and after
+  patches, drafted exploits, and ran them automatically. GTIG says it is the
+  first time it has seen threat actors fully automate vulnerability discovery
+  and exploitation with no human in the loop.
+writeup: |
+  Google Threat Intelligence Group (GTIG) found an exposed staging server
+  hosting exploit_agent, a multi-agent vulnerability research and weaponization
+  framework that connects to multiple frontier and local LLMs [@gtig-tracker].
+  The report does not name the models. exploit_agent continuously compared the
+  code of popular web applications before and after patch announcements,
+  identified potential vulnerabilities, drafted exploits, and executed them
+  automatically without human intervention [@gtig-tracker]. In one example, it
+  inspected the access control checks of version 2.19.25 of the Spectra
+  (Ultimate Addons for Gutenberg) WordPress plugin [@gtig-tracker].
+
+  Victim telemetry on the server suggests the operator was targeting French
+  websites in media, entertainment, and education. GTIG found data exfiltrated
+  from targeted victims, plus scripts for internal reconnaissance,
+  brute-forcing, installing webshells, and removing other attackers' webshells
+  [@gtig-tracker]. Russian-language comments in a configuration file suggest a
+  Russian-speaking operator. GTIG attributes the activity to no named group
+  [@gtig-tracker]. The report gives no count of victims or successful exploits.
+
+  GTIG says this is the first time it has seen threat actors use LLM frameworks
+  to fully automate vulnerability discovery and exploitation without a human in
+  the loop [@gtig-tracker]. It expects unsophisticated attacks needing little
+  human interaction within about three months and sophisticated, fully
+  autonomous attacks within about six [@bleepingcomputer].
+
+claims:
+  - text: GTIG identified an exposed staging server hosting exploit_agent, a multi-agent vulnerability research and weaponization framework that integrates with multiple frontier and local LLMs.
+    sources: [gtig-tracker]
+    quote: "that integrates with multiple frontier and local LLMs"
+  - text: The framework conducts continuous differential analysis of popular web application software, comparing code before and after patch announcements, identifying potential vulnerabilities, drafting exploits, and executing them automatically without human intervention.
+    sources: [gtig-tracker]
+    quote: "It compares code before and after patch announcements, analyzes findings to identify potential vulnerabilities, drafts exploits, and automatically executes them without human intervention."
+  - text: GTIG says that in the past quarter it identified threat actors using LLM frameworks to fully automate vulnerability discovery and exploitation without a human in the loop for the first time.
+    sources: [gtig-tracker]
+    quote: "In the past quarter, GTIG identified threat actors using LLM frameworks to fully automate vulnerability discovery and exploitation without a human in the loop for the first time."
+  - text: Victim telemetry on the server suggests the operator was interested in French websites associated with the media and entertainment industries and the education sector.
+    sources: [gtig-tracker]
+    quote: "Victim telemetry on the server suggests the operator was specifically interested in targeting French websites associated with the media and entertainment industries, as well as the education sector."
+  - text: GTIG found data exfiltrated from targeted victims, along with scripts for post-compromise activity including internal reconnaissance, brute-forcing, installing webshells, and removing other attackers' webshells.
+    sources: [gtig-tracker]
+    quote: "Along with data exfiltrated from targeted victims, we identified multiple scripts capable of facilitating various post-compromise activities, including internal reconnaissance, brute-forcing, installing webshells, and removing other attackers’ webshells."
+  - text: GTIG's report shows the agentic framework inspecting access control implementations in the Spectra (Ultimate Addons for Gutenberg) WordPress plugin, version 2.19.25.
+    sources: [gtig-tracker]
+    quote: "Agentic framework inspecting access control implementations in the Spectra (Ultimate Addons for Gutenberg) WordPress plugin, version 2.19.25"
+  - text: A comment, translated from Russian, in an environment file configuring LLM API keys reads "LLM API keys for auto-exploitation (exploit_agent pilot)", which GTIG treats as suggesting a Russian-speaking operator.
+    sources: [gtig-tracker]
+    quote: "LLM API keys for auto-exploitation (exploit_agent pilot)"
+  - text: BleepingComputer reports Google's estimate that threat actors will be able to launch unsophisticated attacks needing little to no human interaction within three months, and that sophisticated, fully autonomous agentic attacks are likely within six months.
+    sources: [bleepingcomputer]
+    quote: "are likely to emerge in the next six months"
+  - text: Latin Times reports that Google's threat intelligence group described the finding as a "critical inflection point" in the global cybersecurity threat landscape.
+    sources: [latin-times]
+    quote: "critical inflection point"
+sources:
+  - id: gtig-tracker
+    url: https://cloud.google.com/blog/topics/threat-intelligence/agentic-threat-activity-crosses-a-significant-threshold
+    title: "GTIG AI Threat Tracker: Agentic Threat Activity Crosses a Significant Threshold"
+    publisher: Google Threat Intelligence Group
+    published: "2026-11-16"
+    kind: primary
+    accessed: "2026-11-22"
+  - id: bleepingcomputer
+    url: https://www.bleepingcomputer.com/news/security/google-warns-that-fully-automated-ai-attacks-are-coming-soon
+    title: Google warns that fully-automated AI attacks are coming soon
+    publisher: BleepingComputer
+    published: "2026-11-16"
+    kind: news
+    accessed: "2026-11-22"
+  - id: latin-times
+    url: https://www.latintimes.com/google-ai-autonomous-cyberattack-french-websites-601494
+    title: Google AI autonomous cyberattack French websites
+    publisher: Latin Times
+    published: "2026-11-18"
+    kind: news
+    accessed: "2026-11-22"
+related: [AID-2026-0068, AID-2026-0098, AID-2026-0119, AID-2026-0064]
+tags: [threat-intel, cyberattack, agentic, vulnerability-exploitation]
+assessment:
+  reach:
+    level: deployed
+    rationale: GTIG found data exfiltrated from targeted victims on the operator's server, so the framework was used against real websites, not only tested in a lab.
+  harm:
+    severity: moderate
+    categories: [security, privacy]
+    rationale: Data was exfiltrated from targeted victims and post-compromise tooling was present. The report gives no victim count, number of successful exploits, or type of data taken, so moderate is a conservative estimate.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No sourced figures for losses, ransom, or remediation costs.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access, data theft]
+    rationale: Exploiting vulnerabilities in third-party websites and exfiltrating data without authorization is a crime in most jurisdictions. No arrests or charges are sourced, and no named actor is identified.
+record:
+  created: "2026-11-22"
+  updated: "2026-11-22"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Date is "2026" because the report does not date the activity. Its only
+    timing reference is that GTIG identified this "in the past quarter" of a
+    report published 2026-11-16; the exact period was not stated, so no month
+    is given. Status is reported (single primary vendor source, threat-intel
+    attribution; the two news articles are derivative of it). The models are
+    not named, so models is unknown. No victim counts, successful exploit
+    counts, named actor, arrests, or charges are sourced. The Russian-speaking
+    operator is GTIG's inference from configuration comments, not an
+    attribution. GTIG's report also covers other agentic activity (a suspected
+    MIDNIGHT NEPTUNE cluster, PentAGI), left out to keep this record on
+    exploit_agent. The editor re-checked every quote against the pages through
+    a fetch tool (not raw HTML) on 2026-11-22; all matched. The BleepingComputer
+    and Latin Times quotes are fragments of longer sentences. The tag
+    vulnerability-exploitation is new and free-form. Whether the AI was the
+    sole actor in each intrusion is GTIG's claim and was not independently
+    confirmed. GTIG describes exploit_agent as executing exploits automatically,
+    but the report does not say how much of each intrusion ran without a human.

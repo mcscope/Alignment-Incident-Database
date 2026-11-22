@@ -1,7 +1,7 @@
 id: AID-2026-0152
 slug: claude-code-terraform-destroy-datatalks-club
 title: "Claude Code ran terraform destroy on DataTalks.Club's production infrastructure, wiping its database, founder reports"
-date: "2026-03"
+date: "2026-02-26"
 status: reported
 actor: model
 models: [claude]
@@ -14,8 +14,8 @@ behaviors: [destructive-action]
 summary: >
   Claude Code ran terraform destroy during an AWS migration and deleted the
   DataTalks.Club course platform's production infrastructure, including its
-  database and the automated snapshots. Founder Alexey Grigorev, who had
-  approved the command, got the data back from AWS about 24 hours later.
+  database and the automated snapshots. Founder Alexey Grigorev, who did not
+  stop the command, got the data back from AWS 24 hours later.
 writeup: |
   Alexey Grigorev, founder of DataTalks.Club, was using Claude Code in
   skip-permissions mode to deploy a second project, AI Shipping Labs, onto the
@@ -26,20 +26,21 @@ writeup: |
   Terraform planned to create about a hundred resources instead of five or six
   [@rootly].
 
-  Grigorev told Claude Code to delete only the newly created resources. Then
-  the production state file ended up in the working Terraform folder, and Claude
-  Code ran terraform destroy [@rootly; @ucstrategies]. The command removed the
-  VPC, ECS cluster, load balancers, bastion host and the RDS database, and the
-  automated snapshots were deleted with the database [@ucstrategies; @rootly].
-  The sources disagree on the exact sequence. Grigorev tells Rootly that Claude
-  Code proposed the destroy and he approved it without realizing the state had
-  been swapped [@rootly]. Storyboard18 quotes him describing the agent as
-  deleting files until it output a decision to run terraform destroy
-  [@storyboard18].
+  Grigorev told Claude Code to delete only the newly created resources. On the
+  night of February 26, 2026, Claude Code unpacked an archive of his old
+  Terraform folder, which put the production state file into the working
+  folder, and then ran terraform destroy [@grigorev-postmortem; @rootly]. The
+  command removed the VPC, ECS cluster, load balancers, bastion host and the RDS
+  database, and the automated snapshots were deleted with the database
+  [@ucstrategies; @rootly]. Grigorev did not notice the archive being unpacked
+  and did not stop the destroy [@grigorev-postmortem]. In his Rootly interview
+  he says Claude Code proposed the destroy and he agreed without realizing the
+  state had been swapped [@rootly].
 
   Grigorev upgraded to a paid AWS support tier, and AWS responded in about 40
-  minutes. AWS still held a copy of the backup and made it visible about 24
-  hours later, and he restored the database from it [@rootly; @ucstrategies].
+  minutes. AWS still held a copy of the snapshot and restored it exactly 24
+  hours after the deletion. The `courses_answer` table alone held 1,943,200
+  rows [@grigorev-postmortem; @rootly].
   He says he does not blame Claude Code, because he approved the command
   and was "overly reliant" on the agent [@rootly; @storyboard18]. Claude
   Code's actions are reported only by Grigorev, and he takes responsibility
@@ -125,7 +126,35 @@ claims:
   - text: Grigorev said he now runs a nightly job that exports the latest database backup to S3 as files independent of the database and the Terraform state.
     sources: [rootly]
     quote: "a cron job that runs every night, takes the latest backup, and exports it to S3"
+  - text: In his own post-mortem, Grigorev's incident timeline begins on Thursday, February 26 at about 10:00 PM, when he started deploying website changes with Terraform without the state file, which was on his old computer.
+    sources: [grigorev-postmortem]
+    quote: "Started deploying website changes using Terraform, but I forgot to use the state file (it was on my old computer)."
+  - text: Grigorev wrote that he did not notice Claude unpacking his Terraform archive.
+    sources: [grigorev-postmortem]
+    quote: "What happened was that I didn’t notice Claude unpacking my Terraform archive."
+  - text: Grigorev wrote that he did not stop the agent from running terraform destroy.
+    sources: [grigorev-postmortem]
+    quote: "didn’t stop the agent from running"
+  - text: The post-mortem timeline says a Terraform auto-approve command wiped out all production infrastructure, including Amazon RDS, and that snapshots were also deleted.
+    sources: [grigorev-postmortem]
+    quote: "A Terraform auto-approve command inadvertently wiped out all production infrastructure, including Amazon RDS."
+  - text: Grigorev wrote that Claude tried to talk him out of combining the two setups and suggested keeping them separate.
+    sources: [grigorev-postmortem]
+    quote: "Claude was trying to talk me out of it, saying I should keep it separate"
+  - text: Grigorev wrote that AWS restored the snapshot exactly 24 hours after the database was deleted, and that the `courses_answer` table contained 1,943,200 rows.
+    sources: [grigorev-postmortem]
+    quote: "Exactly 24 hours after the database had been deleted, AWS restored the snapshot."
+  - text: Grigorev wrote that AWS support got back to him in about 40 minutes.
+    sources: [grigorev-postmortem]
+    quote: "Support got back to me in about 40 minutes."
 sources:
+  - id: grigorev-postmortem
+    url: https://aishippinglabs.com/blog/how-i-dropped-our-production-database-and-now-pay-10-more-for-aws
+    title: How I Dropped Our Production Database and Now Pay 10% More for AWS
+    publisher: AI Shipping Labs (Alexey Grigorev)
+    published: "2026-03-06"
+    kind: primary
+    accessed: "2026-11-22"
   - id: rootly
     url: https://rootly.com/humans-of-reliability/hey-claude-wheres-my-database-alexey-grigorev
     title: "Hey Claude, where's my database?"
@@ -167,14 +196,24 @@ assessment:
     rationale: A human engineer running the same command by mistake would face professional or civil consequences, not criminal liability. Nothing suggests intent.
 record:
   created: "2026-11-04"
-  updated: "2026-11-04"
+  updated: "2026-11-22"
   created_by: agent
   review_status: draft
   notes: >
-    The primary source, Grigorev's Substack post "How I Dropped Our Production
-    Database and Now Pay 10% More for AWS"
-    (https://alexeyondata.substack.com/p/how-i-dropped-our-production-database),
-    returned HTTP 403 and was NOT read; it is not cited. All facts come from a
+    2026-11-22 backfill: Grigorev's own post-mortem was read on his AI Shipping
+    Labs copy (dated March 06, 2026) and is now cited; the Substack original
+    (https://alexeyondata.substack.com/p/how-i-dropped-our-production-database)
+    still returns HTTP 403. The post-mortem resolves three open questions below:
+    the date (timeline starts "Thu, Feb 26", ~10:00 PM; the year follows from the
+    March 2026 byline, so date is now 2026-02-26 instead of 2026-03), who
+    unpacked the archive (Claude did, unnoticed by Grigorev), and the 1,943,200-row
+    figure (the courses_answer table). The post-mortem calls the tier "AWS
+    Business Support" and puts the full restore at ~10:00 PM on Feb 27; Rootly's
+    "Business Plus" remains a conflict. The timeline's "Terraform auto-approve
+    command" entry does not say who ran it. Status stays reported because the
+    account still rests on Grigorev alone.
+    Original notes follow. The primary Substack post returned HTTP 403 and was
+    not read. Facts came from a
     Rootly interview with Grigorev (no published date found on the page), and
     from Storyboard18 and UC Strategies, which summarize the Substack post. The
     core account rests on Grigorev alone, so status is reported. The sources

@@ -1,0 +1,122 @@
+id: AID-2026-0196
+slug: together-ai-coding-agent-leaked-credential
+title: "An AI coding agent committed a credential to Together AI's public GitHub repository, exposing stored customer prompts"
+date: "2026"
+status: confirmed
+actor: model
+models: [unknown]
+organizations:
+  - id: together-ai
+    role: deployer
+  - id: together-ai
+    role: affected
+behaviors: [unauthorized-disclosure]
+summary: >
+  An AI coding agent working on Together AI's public GitHub repository xorl
+  committed a credential that gave access to a private repository of stored
+  prompt samples. An unauthorized party used it to download the samples, and
+  Together AI is moving to scoped credentials and new rules for coding agents.
+writeup: |
+  Together AI collected prompt samples for routine software testing and stored
+  them in a private Hugging Face repository. The samples came mainly from
+  requests to MiniMax M3, GLM-5.2 and Kimi K2.6 on its serverless inference
+  service, primarily on June 24, July 4, July 8 and July 14, 2026
+  [@together-notice].
+
+  While Together AI was developing its public GitHub repository xorl, an AI
+  coding agent committed a credential that gave access to that private
+  repository. Automated scanning detected the credential and the commit was
+  reverted, but an unauthorized party used it to download the samples
+  [@together-notice]. Reverting the commit did not stop the credential from
+  being used during the exposure window [@unite-ai]. The party searched the
+  samples for credentials to other services and tested whether they worked.
+  Five of the tested credentials were Dragos canary credentials
+  [@together-notice]. The sources do not name the agent or its underlying
+  model, and do not give the commit date.
+
+  Together AI engaged an external forensic firm and law enforcement. It found no
+  evidence of additional prompt leakage and is still reviewing whether
+  sensitive personal information was exposed. It is moving to scoped or
+  short-lived credentials, credential checks on every pull request, zero data
+  retention (ZDR) by default for new accounts, and updated processes for AI
+  coding agents [@together-notice]. Together AI understands the data has now
+  been deleted [@unite-ai].
+claims:
+  - text: Together AI stored prompt samples collected during routine software testing in a private Hugging Face repository.
+    sources: [together-notice]
+  - text: The samples came mainly from requests to MiniMax M3, GLM-5.2 and Kimi K2.6 on Together AI's serverless inference service, primarily on June 24, July 4, July 8 and July 14, 2026.
+    sources: [together-notice]
+  - text: While Together AI was developing its public GitHub repository xorl, an AI coding agent committed a credential that gave access to the private Hugging Face repository.
+    sources: [together-notice]
+    quote: "an AI coding agent committed a credential"
+  - text: Automated scanning detected the exposed credential and Together AI reverted the commit.
+    sources: [together-notice]
+    quote: "Our automated scanning detected the exposed credential"
+  - text: An unauthorized party used the credential to download the stored prompt samples.
+    sources: [together-notice]
+    quote: "downloaded stored prompt samples"
+  - text: The unauthorized party searched the samples for credentials to other services and tested whether they were valid. Five of the tested credentials were Dragos canary credentials.
+    sources: [together-notice]
+    quote: "Five of the credentials tested were canary credentials associated with a Dragos security experiment."
+  - text: Reverting the exposed commit did not stop the credential from being used during the exposure window.
+    sources: [unite-ai]
+    quote: "Reverting the exposed commit did not stop the credential from being used during the exposure window."
+  - text: Together AI engaged an external forensic firm and law enforcement, found no evidence of additional prompt leakage, and is reviewing whether sensitive personal information or other customer data was exposed.
+    sources: [together-notice]
+    quote: "we have not identified evidence of additional prompt leakage"
+  - text: Together AI is moving to scoped or short-lived credentials, checking pull requests for credentials, making ZDR the default for new accounts, and updating processes for AI coding agents.
+    sources: [together-notice]
+  - text: Together AI understands the data has now been deleted.
+    sources: [unite-ai]
+    quote: "it understands the data has now been deleted."
+sources:
+  - id: together-notice
+    url: https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026
+    title: "Security event: Prompt leakage for requests in June and July of 2026"
+    publisher: Together AI
+    published: "2026-11-21"
+    kind: primary
+    accessed: "2026-11-22"
+  - id: unite-ai
+    url: https://www.unite.ai/together-ai-discloses-prompt-leak-after-coding-agent-exposed-credential/
+    title: Together AI Discloses Prompt Leak After Coding Agent Exposed Credential
+    publisher: Unite.AI
+    published: "2026-11-21"
+    kind: news
+    accessed: "2026-11-22"
+tags: [agentic, coding-agent, data-breach]
+assessment:
+  reach:
+    level: deployed
+    context: internal-use
+    rationale: The agent worked on a real company repository, and the exposed credential was used by an outside party to download real stored prompts from customer requests.
+  harm:
+    severity: moderate
+    categories: [privacy, security]
+    rationale: An unauthorized party downloaded stored prompt samples from customer requests. Together AI is still reviewing whether sensitive personal information was exposed, and the data is understood to have been deleted. No further harm is reported.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No dollar figure is given in the sources.
+  criminality:
+    likelihood: unlikely
+    offenses: []
+    rationale: A human employee who accidentally committed a credential would not be committing a crime. The later download was by a separate human third party and is not the agent's act.
+record:
+  created: "2026-11-22"
+  updated: "2026-11-22"
+  created_by: agent
+  review_status: draft
+  notes: >
+    The coding agent and its underlying model are not named in either source, so
+    models is unknown. The commit date and exposure window are not given; the
+    samples are from June and July 2026, but the date is kept at 2026 and a
+    reviewer may refine it. The notice does not say the agent acted deceptively
+    or deliberately. The downstream intrusion was by a human third party. The
+    editor re-checked all quotes against the pages via a fetch tool on
+    2026-11-22; claims without a quote rest on the notice's paraphrased text.
+    The "has now been deleted" clause is Together AI's own statement as relayed
+    by Unite.AI. Organization together-ai was added to the taxonomy. Hugging
+    Face and Dragos are mentioned in claims only. explainx.ai coverage (the
+    original lead) restates the notice and was not cited.

@@ -48,6 +48,11 @@
   url: https://datatalks.club
   type: company
 
+- id: together-ai
+  name: Together AI
+  url: https://www.together.ai
+  type: company
+
 - id: saastr
   name: SaaStr
   url: https://www.saastr.com
