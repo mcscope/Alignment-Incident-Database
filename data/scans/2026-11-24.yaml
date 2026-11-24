@@ -1,0 +1,565 @@
+# Sources the scout scanned on this date and what came of each.
+# verdict: cited (used in `incident`) | lead (in scope, not acted on) | skipped (in scope, no change; see reason)
+#          | rejected (out of scope; see reason) | unreviewed (collected, not triaged)
+date: 2026-11-24
+scanned:
+  - url: https://news.google.com/rss/articles/CBMiqgFBVV95cUxQelBQeXBCMzduc0tubHhrN2NDTnB5RG5feFlyaXJ4a2Rtd2FDNXhqSDdzdktYRmdfZVBqTmxwU1JuR09wQmw3NDlqTDdGVWtxMmxVbDA0b1hoRTZDcWlpN01acTJLYVNWNXc4a2JITnplb3pqdWJKNXpOemNJVi02Mml4MDRvakh5ZVR6ZHg2bWM4cjdTM2pnLUMzRzJVWXhGRWU2eTdxS3Rtdw?oc=5
+    title: Wise County teacher charged after physical interaction with student, police say - WCYB
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5xR3hzSEg3MXdGN0dtaGtyd2Nqd0pPM2YzWTVSSUw1Q1V5Q3hnSDFYY1ZCN3piSnJSWlpPeWlWNDlCSlh5cXhuakI3UmFHYklNZzhuVlVVdGNuU0Q3UzRhY2FrRUU0ZFHSAWdBVV95cUxQTHBWNnRQRkN2cjRUZHpsVjFJemVZVVZNU1ZkS2Z0WGdwZ3dQaFcwcnJZRXJhT0FLUnFzWGdsdFhJeVpINkNjRGdYVDQtSl9BVVdFdllra0RlRWE0OFBwT0dnYV92cENB?oc=5
+    title: Sacramento man sentenced for child sexual exploitation on Snapchat, Instagram - Sacramento Bee
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://openai.com/index/introducing-shirudo
+    title: OpenAI and Cisco introduce Shirudo
+    origin: OpenAI News
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://forum.cursor.com/t/filesquirrelai-see-and-undo-what-cursors-agent-changed-on-windows/179114
+    title: "FileSquirrelAI: see and undo what Cursor&#39;s agent changed, on Windows"
+    origin: Cursor forum
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiwAFBVV95cUxNbzR6OExibEhRQlNlejdDdDc1OGhlcWF4S1NNNnBMVHptbG12dXV6emxBN3pvMkVHTVBYeDgzcUZKQUREZ1FnZGZSRlFVV1JweTFKUFJVVG1mZk1lOHFBOHQyTkNWQlJabFVMWV9QN0E4azczOUxncDk1aWhaZDJFX2NGNlhqMzY1ZzZqZUNFZXM1TU93dXl6ZnFkSzdCdHZzM2Y4Q1Nycy10d0dib1BNeXQ4dS1ZNHV3RklvQnVRNDDSAcABQVVfeXFMTW80ejhMYmxIUUJTZXo3Q3Q3NThoZXFheEtTTTZwTFR6bWxtdnV1enpsQTd6bzJFR01QWHg4M3FGSkFERGdRZ2RmUkZRVVdScHkxSlBSVVRtZmZNZThxQTh0Mk5DVkJSWmxVTFlfUDdBOGs3MzlMZ3A5NWloWmQyRV9jRjZYajM2NWc2amVDRWVzNU1Pd3V5emZxZEs3QnR2czNmOENTcnMtdHdHYm9QTXl0OHUtWTR1d0ZJb0J1UTQw?oc=5
+    title: Amarillo College taking registration for AI business workshop in December - KFDA | NewsChannel 10
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMimAFBVV95cUxONm5tcjlHYlpFQTRVY041WTlsYU16QkVSc1RpSTB5NElscVJ1R1hLQjJsVFV3T2RTclZYM0xnM1B3d2U1SG1wQWtxazRtcVRMbXo3TjU4YjJEcDdSMVYya2tYa1FHZ3ZKRERZM1ZZM2kxeDljbE5OYm5ReVRBVVdkQzdKVElZd1pOQ3pLdURvT0dmUGVsbWJEcg?oc=5
+    title: Claude Literally Threatened A Paid User For Making It Do A Pointless Task - ED Times
+    origin: 'Google News: chatbot OR "AI model" blackmail OR threatened OR manipulated'
+    verdict: rejected
+    reason: "User later said custom instructions asked for a sarcastic persona and called it a joke; screenshots unverified. Not against user intent."
+  - url: https://news.google.com/rss/articles/CBMi8AFBVV95cUxQV1hzWElMbkl1cUZZRUNkNHV2ZFhFTUF2dXl4a011X3VWMmlTZVFYU2ZvNmRlOG5VaEFzMzd2RS1BYUNZWmZTUGNQYXdIS3JWcmhOWFFrVVJxRlF1SVlaaDhTdkRiTTFuR2ZLOVhIRlI2c0wtLVdzN250VWFZY1RZNGU4WEVYN1QtdE5OVlZUdU5wdTRUaHZTOXd1QWZoX0h6M1ktWEQ0MnpkXzFFdTE0OVdoeFhuc2hxaU5INEhzSTA0cFFiai1qNVE1clhhVWJLQ0xmVmhDZUlVN2JUNUJXVkxKeG5YZEdyZWh5eWNWNzc?oc=5
+    title: "KSP: Floyd man created nude images of underage girls using AI and photos found on Facebook - Floyd County Times"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.ycombinator.com/item?id=50617796
+    title: What is the likelihood LLMs exploited the learn software to verify their Riemann
+    origin: "HN: LLM lied"
+    verdict: rejected
+    reason: Speculative HN question with no documented case. The known Lean exploit is AID-2026-0186.
+  - url: https://news.google.com/rss/articles/CBMic0FVX3lxTE16YXVobGFjY1hhaXBmN202MTR1UkdUVXlqbFZndUZybVBGNXN0a2U3REdwVzNvSUltcWxEQklHdXRuQnRHTm5LaGpQVk5UVnBwOVhyYkJjLVdvcWFLbnprQTljeWI4UTNuQVQyT3FSeTZFY1HSAXNBVV95cUxOS0pYWHNfRUlKRk1kR1Fmbi1UWFd4NVVzVTF6bnU4bElacjV1VDFzNGNNdERBbmR1aUVQWGxNcXNiZmxIV3BmS0VrSnJEQTBEOWpQMFhpdnFZamFjajdfbjd2REZ5VERfc1k1Tk1MR3paeFNn?oc=5
+    title: Accused Indian Creek serial Killer Fredrick Demond Scott sentenced to prison - Kansas City Star
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMi3AFBVV95cUxPQ0ZrZ2R1WlJ3MV9DQm9JZC1zYzJEMWNrSTNJODd1cHFqNGhGR042bDl5YjlJZ0pqSmlzdktCMFUwYUZnakpTWlhNY3gyYzVmSzllbzJ1UnBZdEx0TmN3THFEMnhiOUoyaVhpZ05UbDkyc1haXy1IVDJQY3U5UThwTEh2XzhQMUljakJpUjl0bEZ0SW9SUmFqcG54TWJBMVVUUDRsN3RWb29QeUw1NFA0cFNOUkJSVkJqZjB6RmFPN1N4UXc5QTlhekc4ZTNlY1U4TVZVNk5BeXhQZVR6?oc=5
+    title: "EN 18286: A quietly important piece of the AI Act compliance puzzle - Reed Smith LLP"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqwJBVV95cUxNaWowOUlDVUNvYzFqVldtQU5DcVhudnFhWnlUVXVBcnQwZFhPQ3o5YXpJMmdLUjRSUzVYX0xfWHJsS2lQU2J6OGtRRE9mWEdkNUd1Qmt6dlNmTk03Q0lGR1pnd2JiQmxpNFp5Z0xteXRxN0hvNEw2RDlzeVNReE5aaldMSFE2WXptdnNWSTVtRkltazZmaWU1UXdKSWRnS1pFNGluRUh0WWJqN194MjV5WTg0aGEwdm0wZEZXTGtyNTlqNUhLZ292ekRzYmhkbElPR2lFRzlUald4X2J6dHF5QkJldkRPemdCQTRFNWR6QVlJOXV0SXdqSzBULTB5X2hHTEZWMHBLaVU3MmZjYm1GYnlFbGtoRndTMlViTGNWaEVoZ3otVkZxN0VZaw?oc=5
+    title: Woman arrested after using AI identity theft to try to purchase $70K truck in Port Angeles - KOMO
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqgFBVV95cUxQZ3NfWkY2VGRadWxBdzZZVGFwQlJsUktheGg3MUp4NmNXaHRVOTAxN3pxOHdPZ1l0NzZSLWhNRHpJcWdhNGpRNTI4VzBDTXBkRHZ4cHZqbzdzVEl6VTA1eUxROExDaktOLXd2TDhwbU1Ta243ZGRxd0FNWWdYN2RYRVpuTFA4LWRSd2EzN2hvenVpTGtlTVBGWDdaeXdQRnFxOW5KOWktRlljQdIBqgFBVV95cUxQZ3NfWkY2VGRadWxBdzZZVGFwQlJsUktheGg3MUp4NmNXaHRVOTAxN3pxOHdPZ1l0NzZSLWhNRHpJcWdhNGpRNTI4VzBDTXBkRHZ4cHZqbzdzVEl6VTA1eUxROExDaktOLXd2TDhwbU1Ta243ZGRxd0FNWWdYN2RYRVpuTFA4LWRSd2EzN2hvenVpTGtlTVBGWDdaeXdQRnFxOW5KOWktRlljQQ?oc=5
+    title: "Pune Techie Murder: Partner Held After Fatal Assault - Rediff.com"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMi-AFBVV95cUxNTkN3TnBOSWJCZThMWFB1WkNKQ0R2dzgxMGxGeGZobW1fU21tRGd6ZzNNczRiSFBjYzZEbEpvWklDUnRLZ1ExaGFFR0hYWGlSYlJQVzA4VW0xb1M4SVg0MmVHNmE0TTJiVVB5ZHZ1Q0FGSDlHVHhvem1wbm5JUHBNNjlEV2pVQXpwbDd1Z1hiTm0yTkQ2WWVhVGxHOVBMY1V0ZEZkMUswSW4xcXF3alNQdGVXWm9Xeml6NTZPYm1aN3U3Y0IwV0FvLXB4cjE0UVJzSWQ4aTRadHJxUEhvMW1EQk96YS1aT0lra192V0M4Zkwyd2lfaGR4Vw?oc=5
+    title: Leesville Man Arrested for Computer Aided Solicitation, Pornography Involving Juveniles - klax-tv.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiakFVX3lxTE9YTUthRnRCR3psR21pMldIVEpFdWFOcEVuZ2xXRVNqWVVXYzVYMFBndDhGbU02QkNzbjV3cWMwdEdvV2RZaTdVNElYVkRyMWgzeHk3eDRvR1d0OXlPZ3o0c0w4eUJrY2lEQ3c?oc=5
+    title: AWS's Strands Decider v2 Gets Smarter at Every Size and More Honest About Its Doubts - The AI Economy | Ken Yeung
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqwFBVV95cUxNT1hoVEhsMHRLMlFucThUSjdOaEdoYVFOMEJIc253WDFGbDhTeFRkbWtXTTZ3UVhqdXNLYWZhQ0xRMWd6UU9lckZNSGZ5bk5ZMUVSUXg4LXRwZEJRYVB0UjZaaXllNzV5UUdCdmZoUkgzNFdzRldrWElQQ1Mtd05waVhfb2lWSmpkcHh5dUVqNWw4bVpZeXpXR1pwOWIzTGtzNmpCd0pRZW51aDTSAa4BQVVfeXFMUFdHbFBUUUNuc3UwRmZzcTg2czRFaS1WZXRrX3UydEg5TjU5dkxKMk0wWGV6V3hzdFVLaHcyLTFuUFg3bEdjZTJxRUJuOTViaGhleEhVTDY4NzFfQ1RnN3FzLUNDc2dhQTlOdUtGU1BBd1lBZXIxMlB3cmtCcDhkOTA4N1BlNGZRNzNZUkxWbDRTN3BGVjZnQkszR0VObjJSSk5URW11Q2J3ZVZneFhR?oc=5
+    title: Indore Family Duped Of Rs 14.38 Lakh In Fake Cruise Trip Scam - Rediff.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMi_gFBVV95cUxNeExSU0hkc0EzSWJRX0d5RHNVNFduTlg2Mk5yWnZ6Tk5ZVDk1VGZIcjEyRDRRUnNDUjFpOXloaXJWS294enpYTENuWkFFT3dCTFRUOWw0ak5zVDNEQ0RCQklKNnJDSm9icHFTTEtOTUVOVlMzSkVqNlRkai05enJuS3F3QzlGTGZ4cXdGV05IcFYtU0NRLTNhbW5RRmpnTHVnVXlwTzQ1cnJWa2JtN21UcElUNVRGZklLU3hpZW5QMG11YkdSd25SekZDb0QyWUVQQ1d0VThzRUZneGJ0bjd6bmFpbHhibGlrbHk3MllMMEpQdHU5blBSbzM0TzFCZw?oc=5
+    title: LSU Health Shreveport Researchers Develop AI Tool That Could Help Make Spine Surgery Safer - klax-tv.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/
+    title: Finding faster quantum algorithms with agents and formal verification
+    origin: Google DeepMind Blog
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSmhWYVRzOFpjdVVkNG9fcFQySURXcE03Z21jTENvZFdLTE9TaG1rN2g2T2hIUVlaYjRSUkVJSGdQdFlkdlN0Y21BbEtvdllXZmItUm5qdDAxUTdhVlhXVWJraUh1RUU5S1ZqbjlKQVRlZllGVlFjRjFuS3B0YlFKUUU0TlJyR0hBc0lUVkFrNklrM2VsbEQ0VTBzQm9ETzAtSkstSGl4N0Y?oc=5
+    title: AI safety test sparks controversy after agents swarm external org - TechTarget
+    origin: 'Google News: "alignment" AI incident'
+    verdict: cited
+    incident: AID-2026-0171
+  - url: https://news.google.com/rss/articles/CBMi2gFBVV95cUxPc09kQ0NySm0xM2VWY1FBeXplZ3ZYM3JfM2FUbU9MemtuUXNWN3RrMkV4VzNJZzZCNVQ1c3hjbUpwZ0xzd3RaNzF4TW9tVm9vdXVUZ0NISnFuQ0huR3AtVzFyUUI5RXpaa1Q5MVpqM2dadElCU1VIemdsX0F6QWlCV0xhVDdRcWpHWVVsUE1KNy0xS2otdmJ5bVpkM09JT2p2NTNLSDF3ZV80aWVlODZ4SFVxXzRVcUZQSUhHOFlkeTVHM3BrZ1F4TlFqTXlOU042NTlFdEhnUFZ3QdIB2gFBVV95cUxPc09kQ0NySm0xM2VWY1FBeXplZ3ZYM3JfM2FUbU9MemtuUXNWN3RrMkV4VzNJZzZCNVQ1c3hjbUpwZ0xzd3RaNzF4TW9tVm9vdXVUZ0NISnFuQ0huR3AtVzFyUUI5RXpaa1Q5MVpqM2dadElCU1VIemdsX0F6QWlCV0xhVDdRcWpHWVVsUE1KNy0xS2otdmJ5bVpkM09JT2p2NTNLSDF3ZV80aWVlODZ4SFVxXzRVcUZQSUhHOFlkeTVHM3BrZ1F4TlFqTXlOU042NTlFdEhnUFZ3QQ?oc=5
+    title: Woman accused of using AI-made fake ID to try to buy $70K truck in Port Angeles - KIRO 7 News Seattle
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqAFBVV95cUxNWURPdU9WZGJFVTExWVE2bVVBZ0VPM2R6ZWNkTWVNa1o1cUtVMkswNFctYXV4SE02MWE1d3M5VldmaEJqOEtnMVFrZnNXR2p6TW1adWdCM1ZYckdQbVlOTnhJb2NsdUZCbVlWNW9DaDdxWjVGdThZRmlmbFV4UzdNZjRKVE84cXlQb3VBQ3NXUUFuTk5TOGxHeWE2dDEwVUhOVTUycmlsUlE?oc=5
+    title: 82% of Gen Z is open to using AI for holiday shopping - Buffalo News
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMinwFBVV95cUxNcWE0TUpUdVhHakk1ajhZWlcwNFFER2xieUJfNHNTOXhkZmpzOUNZclluNW45Z0tqLTM3RGRSRFdGWGNiRHNoM2pzWVczNUxmZGhuaDRmYVpmWmlYMGVLLThRZDJTVm5KTU8wMGF4bjRyZjVlZmlCMl95Y29hQ05mbGpVVXdXU1hNVGtjV2YtZHlwLTItZFR0NjQ3UGRnbFnSAZ8BQVVfeXFMTXFhNE1KVHVYR2pJNWo4WVpXMDRRREdsYnlCXzRzUzl4ZGZqczlDWXJZbjVuOWdLai0zN0RkUkRXRlhjYkRzaDNqc1lXMzVMZmRobmg0ZmFaZlppWDBlSy04UWQyU1ZuSk1PMDBheG40cmY1ZWZpQjJfeWNvYUNOZmxqVVV3V1NYTVRrY1dmLWR5cC0yLWRUdDY0N1BkZ2xZ?oc=5
+    title: "Major Liquor Haul In Jamnagar: Driver Arrested, Three Absconding - Rediff.com"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMieEFVX3lxTE5haTF6OGZEMFNIN3g1RlZOcE5CYUdPSDZaSHJNSjU4R2c3RXJVLWtQUEdLbVpnQmNNdFEydlFHSjViVTRsdlkwbkltVWQyd3hra3dTRWVWa1hYTDNoZlg3LXBISVpnbHBRalhYSEl1akpUSmZNNG1BWQ?oc=5
+    title: Men and Americans Aged 35 to 44 Swear at ChatGPT the Most, New Study Reveals Why It Could Backfire - www.techtimes.co.uk
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMihAJBVV95cUxQUzlGckM2cTc4ZTgwUnZrNVNvaWJzc3Q1WkMyMUhNR0lRcFExMWp6VEhKQWY3S0xtR2NvdE5zR2ljb2FKVUxyVjdjRXV1SjJVVGptWVFrQ1pFT1YtUlUxMHFqR0ltanBxLUxwc3ExRWRfTEEtWVRRZmVFNXFXdS1FN0VuSDFZbno1RnpacE5qQXhvNG92eGZLM2ZLRmk2S2o3ZDJyOUtYRlVqWmZZUUtONzluT2h1dm82NEU1dnhLQjZKSUhZSmktX0NpTm5EQUVRX21ka2dVYTY1Y0V5azhvTzhpRE1Mb3FUUHdnYTBpWklEQkhSRW9XWmthV2FSMTY1VzFIMA?oc=5
+    title: "U.S. banks tight AI-agent controls after Hugging Face incident: Reuters - BNN Bloomberg"
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: Policy story on bank AI-agent controls; no bank agent incident, and its recap adds nothing to AID-2026-0006.
+  - url: https://news.google.com/rss/articles/CBMikAFBVV95cUxNbDlZQlJDc1V4b1F1ZlM2NlgzQzRfZVg0Tl9GZFk3b2ZGc3NBRG00N25SYlZveXhNVS0zYS1KcWpyWE44ZDd4OUUwLWF3TElCb0gwNGJCeDRnZTBYWlZ6VGxlbFBGS29qaUMzYW5hb0hZbFhwc19NeFV1U0lvTm9PMTFQQjk1UVZMUUN1UHAzUnA?oc=5
+    title: Sycophantic influencers are no substitute for Fleet Street, Prime Minister - AOL.com
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMipwFBVV95cUxNQmpoeDZvN1pFRGdKWkRtajJBYk5xTFhTRVJ6TFFraU5uVEJDT1cwNUdkRW10S1RxcFBPTGhXOGVINUxhLXVhZXZKcnZRWmtUMHYyTW5CWE1KUGs4SHpCVXplbEotSW9JT3pPTk84M1JIbE03YWFLRUNGTThpU0lpRzRQMjRrTFFyV0ZwRFdicktRWVBjMWItN0k4bXRzb0JsRnl5WE9Ic9IBqgFBVV95cUxNbWF2WHA5VndxUi14ejRfRjFWMVY0alc3a2ZvamlMQlJreHB4SFpFR0RrbFJZTThfcE5CUFJJMHpyOEpLeWloVkRmWm5ybTNPV1dzT2RQNHBwcW5raUllaFVMVUU5bmJNaVZBT3BvVnI3ZzhIVEF2UjBuemt0VG1oMURSSFF0UXJwR2VaajV3SzBoTW1IYkJPbklodzNteWZpaXkySUFzbW1kQQ?oc=5
+    title: Faridabad Man Held For Shouting Pro-Pakistan, Hafiz Saeed Slogans - Rediff.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMi-wFBVV95cUxNUHlfcnE2Y2g2TVFRU0FkUl91eE9LY3pIX1hEaS1TYmRUb1BVcGZ1dVNnT1VVNUdoTGYtVkVSMm1aWmFHWTlCYUc2MDBmOE5xUFNWTklMTkw3VlZDTjhHVEpVZXFFZ3NHVkhZN1ZJM3pmVkxoY1ZSS01Jb3lWclZra1dVSV9mR3ZIaWFYRXhURkdxeHF0MnhjTHRtYUplSWRuUEJXcVR5MUNhTlM5UkdsN1BybzZGMEVIUGc5cjJKZDFFb2VzQ1F1MUdac0VhMVVFcGNvVXdJaVlISFpkTWVfOEpzQXI2S204bkU4MVIzTERPWDVlRFJBcThJNA?oc=5
+    title: States sue Musk companies over flood of sexualized images made with AI chatbot Grok - Toronto Star
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: suits over user-prompted Grok sexualized images (routine generator misuse). Article itself not found."
+  - url: https://news.google.com/rss/articles/CBMisgFBVV95cUxOT3Vzb2NHUWhTckI2QldwVktzck8wUElJd3lCakNRZFNYRFBzWG9ybWJpQ1MwUElOQ0pqYS05ZjdPa1AzQUNXcGFtNDdrQW95aHJDb3dGbzk1d3pJSEctWTFKLVRWbnIzbzEzYUZ4VmVzejkwbnhWMnhBS1hRZlZ5a29GS0ZoN1JNc29ZS3hYcWM2MEE1bkc5TUoxUFA0LXhaZXczblVQUk1nd1F5UTJoWFl30gG0AUFVX3lxTE9zYWt5WFRVWi1ta0dvVHFBXzZoRnZSWHZEWDRfNUZjUUNZaGRnblRsUG41dnBtVk5JVTY4eTVFRU1sQW1rcWhvOHZHczJiQkhmN1VkMTNIZ191dUpmQnp2QVdFMmlmNTZGVWpFTnlaQ2xvRkFOTFF1RmRfV1praTBVZFM3LXVjRl9Ha19lZmRJM0VCdXVkcTR0MXJVRllyNTVCeFk5UU9SMXRpeXA5X0ZfTXU0UA?oc=5
+    title: How Jharkhand Police Busted Rs 22 Lakh Ganja Smuggling Ring - Rediff.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMioAFBVV95cUxObGZFYkgyQXJjWFFWbnBFa3A0R0duUGFXeHRwcG1iNmtqU1FNekh5cDk0eGl6N1l3cVlKZnNuZjFDT2FIT3pzcEp4RVhpWHJuOUczNFFwQjdtUWo4YnRtTVloRV9VNk1JcHJWR3Jqd2Z3THFBRWJIZHM0NFRzYXBDb2lnaUJxMkpzSEFiYkVsS0NhSjNiZ3k4ZlNUTTZBTnFt?oc=5
+    title: As Apple works on AI agent features, banks are already blocking them - 9to5Mac
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTE5qZDlKakl0b0QtNk4yTk90RXN5eDZmR3ItTXFnZHczVFNCcDdmYVRRZ1o3cUdORkJqSnp0ekRuWXhfSEpCWDUtbzNnZlFsVnA3d0M0LTkzcWt1LWtwaVE00gFkQVVfeXFMTVgxb1psVzZfS0NGOUpNWlg1SlJqWWJ3MVRXU3c4SExIUzhVczdvQkFZS0ZSYzI0Tm5JNDJZQUF1QndydEpiVG1ScVBrelNDYS1MQ19sQ0MtS3hYNEJ1SE0zZXRQRQ?oc=5
+    title: Jailbroken AI Agent Helps Hacker Steal Customer Data and 8.6GB of European Government Files - CyberSecurityNews
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: cited
+    incident: AID-2026-0198
+  - url: https://news.google.com/rss/articles/CBMipgFBVV95cUxOeWV2c1NyTkhnMFNsZDBadlhoZTkxLVUyX1FnaGZER0ZTMFZVSXgtOEpkNXl2RWFESWplaDZNaXpWV2l4cVRNUlRfMWZiQ1UzbFBlVlJ0cTNBZjM2QTB4U2dMV0piWlB2X3dCSXlxakVVY1FNQ0hKd0d0SzA2MVlxcTVnc1ByYVVGUXBmYzBJc1lMZURnUHhNZV9EWjBQMUU1UG1zRmFn0gGoAUFVX3lxTE5HZ2wzZ1lSREpIYXZHX3pIY0NIQkY2TXBRelZGRjhxYjNEbHAyQ2lrTWJzMGtJYUNIWTN0bW5ud0dkV1FMWUdIRmpteV9WZGdMd3JhWkFxWXhERlJTbnhnMjM4ZkJuZzI1OEI4TG43YkJleEJkZzNfV1JjOXhIRnRldU9hRHF1ZTRoNkpEczVIRjJxUjhGWmVnYmZxTHhfU2NCV1JHQ1RXdQ?oc=5
+    title: Actor Sreejith Ravi Gets Rigorous Imprisonment In POCSO Case - Rediff.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiowFBVV95cUxPakZ1a1ZzVVFQTHZFLXZnLVA1SUNRZmdqdFNsMzViYnQtS01McFh5WV84enZMVjMtTEkydVNLUnNJRzlZY0QyaHp0NXZiRnRGZDhvX09FQWJuOVByV3JDOFlpRHR6TWVJMXVEY3dCalY1Q1NHWUp3dWRONkhadVNqemZjUmF3eVB0amRiRUVqaDUzdmtlbEFsZGdDdWtZaDhnX2lJ?oc=5
+    title: International Drug Ring Suspected In Gurugram MDMA Seizure - Rediff.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiuAFBVV95cUxOS3dWYTVTcjlwLXJGWlpLMUlSdkZvTmlLLW92emtiTjFTRkVhaDJMcm51N3VxeXJ5aHIyb09BNkF1U0plUlVzdGRvV1d0SXVWVWRwcWJNODlBTmJVNEFjVGdoajZsQzdpZENsWmJTTkFxZlBfVzVOU3NmUzE4SnpzRjd0MjNtSzhlYmxfczhQVjVlX3U1VW82RjA4U2FySXlBQlhvdU5JYUQyaXB3VDhZSlZSd1RoU0sw?oc=5
+    title: Philosophical Analysis Identifies Key Metaethical Limitations in AI-Driven Moral Enhancement - Bioengineer.org
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMijAFBVV95cUxPWVFnNm1rQnVKcmhBZ3NMS1J5Q3kzb0lJUjEwM3VRdXdrSUtYQ3NVVGNUQlhFQzZVTXI3SkpSaEdjRnZKS2RWb2dTRGJ2VGFyVkk2M3h1RHFoTy1raGV6Z1BnVjJmN2JZdGlYczEtd1o0Sy1lcWhxcDNINlB2VDU5Z1d1NkJXd3JtM0N6WNIBjAFBVV95cUxPWVFnNm1rQnVKcmhBZ3NMS1J5Q3kzb0lJUjEwM3VRdXdrSUtYQ3NVVGNUQlhFQzZVTXI3SkpSaEdjRnZKS2RWb2dTRGJ2VGFyVkk2M3h1RHFoTy1raGV6Z1BnVjJmN2JZdGlYczEtd1o0Sy1lcWhxcDNINlB2VDU5Z1d1NkJXd3JtM0N6WA?oc=5
+    title: Utilising AI to enhance your ministry - Keep The Faith magazine
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiwwFBVV95cUxPZUVQY2NyQmFpNGlVQTdYNUlYNHFmaDI3bm80VHZNME5WY0pITDVWOGVOMUFicXZ1YWp4NEZ1V1Z6ZWtqbzRuN3FKUHo0dmRGTXQxSzBVY1F0OGoxc056VW9BSzJfb0I0YVRQeVR6dWxtdkJzREMzdVowQUFFcGhlaEhHVDY5eExQa0pfdnlSSlQ4WXRIdk1GUGZhd2lCZndFMkhlN2xJSXBQWktYNkhWcDJqUXlmcTRjV3dDMC00X1hmZFnSAcgBQVVfeXFMT2U1TEdseUpid0lySGpLa2x2ZWRhTlJRVEZ6RW1sdHktZk56TTFFYWk4MEFiXzIzbWszdWNSREVNZ2Jmb1RYUS0xb0VWQjZPbmFuR3JVX2g3aElyalhIUnVFcFRqakp6ejRwUlhPX3dDMzlGYnJSc2F3aTM5dFVKblcycHVGQjBmSElBOFk5ekFIX0cydkc0bUNXc3FtM3MtSG0tMHFQUG5MUFVocEJIdmJveGxvRjlzMkhpS2IyTFBWTElNdERUTGw?oc=5
+    title: US banks tighten AI-agent controls, plan kill switches to counter rogue behaviour - Firstpost
+    origin: 'Google News: "AI" "went rogue"'
+    verdict: rejected
+    reason: Syndicated Reuters policy story on bank AI-agent controls; no new incident.
+  - url: https://news.google.com/rss/articles/CBMilwFBVV95cUxOSWlFS2JuTzJSc3QtSmF4YzhLVUR2ZmdnSkc0eTNka2FDM3hWbHdIbjVhRVUwa3Jtamd2aktuSHphVjNmVkRJOGxtZnlrU0lWcng5M3dmMUZJX21QTWkxdXo5VTNVQTFEV0xmalY3Qy1SWlRzSUhzeDhqRWpCVm15T3JMekxEa3pZam9BcktBMEFOQXJNTzFZ?oc=5
+    title: Lahore Student Arrested After Asking AI Tool for Explosives Recipe - TechJuice
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: No evidence the AI gave a recipe or was central to a serious plan; no charges named.
+  - url: https://news.google.com/rss/articles/CBMizwFBVV95cUxPOHQ1dEFHYlZ5eThPS0htSk1Za1U5TlBUUmROcnc3b0lfOGQySzlGZEJPd1F1WTNLZTlvQXVzaHRwMENJb2xMcDlRa1JfYkk0Znd1a0ZoM0xsTEwydW9lV2ZabDZjZC12cXVLMnlfRlBnLW1xbmQteVJoLUx0Nm1fcEo0ZUg2ZktDMnhYOHhGNE1nQzhFLVdWSEZPdEFqUkRyV1pUT05ha09raVg4Vk4xcTdVWk9GU3R0UjdpQTNVRWtCNUhFLU10aXEzRXFsQzTSAdYBQVVfeXFMUDM1Q25nVVUyUmtJcGJvMVVmWEFUWTZCNUM2VGl2V2pDUU5GVUdBdUM3OVg4d3BzVVA3ejJkNDM5MldKV2FPYWxCdWRocEpnczE3WVRMblFvZDR4UU9UdEdZTkdKaGtscnNxOVpEdHV0T3NDTzlacWt1NzBPSmZJb0hzMjNCVFJNdUZQOGJMUzhuMk1VWHY1YmpjUEJzQ2JWV3lsT21ZaXJYal9zSmszNGxHdWdzakZEbU52aWhpWmxmNDNyQ01tNjBtN2doVmxqMTF5VTZ2dw?oc=5
+    title: Wanted in Punjab armed SUV robbery, Amritsar man arrested in Gujarat - The Indian Express
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqwFBVV95cUxNdlFncUVwWDY0UHNmZlBXeXZ4M1JEWmp4cUJUM2xKVGl1YjFhTGtBMzdmcUUxLVd6Mm9mSlJLSnZNbjZEV3JMNWQ3bC04bDBkMWRyNDdUVURCQTJvTmV2QkpZVmoxMTF0a3luTWdyVUhCY0VNenBPOG5ReWt4ZnF6YWZkLTRVWENBT1ZBLXNyWlpLeEdsQ05uY0Fad3kyY3otRmw4S3pPZmtoS3PSAa4BQVVfeXFMUFRyZ19YTkE0MFdaT2Z4bDRmekxTWGVjWldtSWZXVU1Za1NVLWo0SVZEMDF1emJyTHFkZDkyS2ZQZUUxSkpCSWJPcVBEdnpDemQxZlNYNVlXRkJaMnp1TVpYbXVvdFc4el9lUVFqSWZMcXpjY0FsYW05a1ZZUnFTcVN4cXBNdHo2bXdhRFZBeWtlejVmT08wb0RnZFBEc19LR25saklUcGIwd0lXVWF3?oc=5
+    title: How UP Villagers Used Handpumps To Sell Illicit Liquor - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMipgFBVV95cUxPSDdYb1BhSWlJbllyb0JOR1FqcVp2THlOYzV1N09WTVBLZ1ZnbWM0QWxQTmxxVTRnaUFiOUVrbkgtTGZ0OEVvSGxJSTZPaTJXZ3JxOXNnaEM3b3dfZEg0aEZIZC1oQkhpNUJqMjdzRzdfTG90Q3NEWkMzNFhQN3ZOVzVqNmIwbkNUZ3NuNVp5QXJ6M0k5SGIyNjkzV3NqODJRNWxtSVdR0gGmAUFVX3lxTE9IN1hvUGFJaUluWXJvQk5HUWpxWnZMeU5jNXU3T1ZNUEtnVmdtYzRBbFBObHFVNGdpQWI5RWtuSC1MZnQ4RW9IbElJNk9pMldncnE5c2doQzdvd19kSDRoRkhkLWhCSGk1QmoyN3NHN19Mb3RDc0RaQzM0WFA3dk5XNWo2YjBuQ1Rnc241WnlBcnozSTlIYjI2OTNXc2o4MlE1bG1JV1E?oc=5
+    title: Delhi Police Apprehend Man In 28-Year-Old Murder Case After Decades - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMipgFBVV95cUxOazZpUEpReVlsU0R6YlJtemRaTy1SOXBaYTM4SHRUUVFmV192UHRsOUlIQkN3ck1hZ2kxc015UEpXQkJQYjBwcW1BTzRETTAwamQzU0QxbzQ4LVRYTUlrazVqdGNnUjZ6TUhYczB3NDJjY0k3QS0xc1pSNVRSQ3lKZmhEM3M3SDhNOEZFNG1DSjZWenVjOWhKdW9PUUNMSGxyYTRSZTR30gGmAUFVX3lxTE5rNmlQSlF5WWxTRHpiUm16ZFpPLVI5cFphMzhIdFRRUWZXX3ZQdGw5SUhCQ3dyTWFnaTFzTXlQSldCQlBiMHBxbUFPNERNMDBqZDNTRDFvNDgtVFhNSWtrNWp0Y2dSNnpNSFhzMHc0MmNjSTdBLTFzWlI1VFJDeUpmaEQzczdIOE04RkU0bUNKNlZ6dWM5aEp1b09RQ0xIbHJhNFJlNHc?oc=5
+    title: MP STSF Arrests Two More In Sambar Poaching Case - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqAFBVV95cUxQczhfaGp5TnkwUGFVazA1aUFJSW16RGpFcHk4ckY1MlZvYVR1Q3lsZmdpVVZxWXVwTjFsVWhpZFZRTS1OS2ZxOXlxYUtCMl9pZkY0S09GLWVZMENEaTZHdlhuVEJsRkZSTWMzUlVZejhuQjVqVU14RnNUcDhuYkc5LWVNXzl3YTVyQUZzYlJnQ0czUk54RW5WdG14TzNwMDJlaU1mcS1QZ2HSAasBQVVfeXFMT1hkZUZwOEVEc3A4QmRGbVlIVWIwX1dkZ0MwRTkwWkk1LTlSZGJQWGtjblBoZS14ZUplZXEtYlFYb2hZZjRYc0NadlItNU0ycjVveTJiYmJpV3VieHRLSGJpTjB6T29nZEszZ05ibjVvWFNleEVjV2FOTGJzQjhTR0JNenI2UjZvTXQxalJnN2p4UkFIQ3BjYUo2RUxlVURGMmNqR0I4c1lram5R?oc=5
+    title: Alleged Neeraj Bawana Gang Member Nabbed In Delhi With Pistol - Rediff.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://forum.cursor.com/t/grok-bot-computer-unreachable-since-17-nov-screenshot-browser-fail-update-and-reset-dont-work-ticket-t-k87253/179076
+    title: "Grok Bot computer unreachable since 17 Nov: Screenshot/browser fail, Update and Reset don&#39;t work (ticket T-K87253)"
+    origin: Cursor forum
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMib0FVX3lxTE12T284SVIyTnJWaUJ3VndsRVRIM0dMd0ZjNWNiNXhmZ1AyTnRxY0pjNno4LXJtanVyZXJIbzRCbktUaWNqay1IRU5sRlVKMW5jVllvT1hlbVBScmd1X1NNNXF6X0stc3FxZlVCeGFtVQ?oc=5
+    title: What Happens When Autonomous AI Agents Go Rogue? - Tribune Online
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: Opinion piece, no new incident.
+  - url: https://news.google.com/rss/articles/CBMingFBVV95cUxOZnV0SGFpa0ZOMlV0SGVEMExuRkRkZ0NCRkpQZjBSeFctNC1GYklhRmxqb0twYVNYZ3hVdm1oQk5OaFBTa0E2dmxnaWVNS3pjRTNpU200Qm56RkROQ1QzVnBnTFhzWlFCLWpGQnJaQWo1b1BObm4yVDE5ekowNEl2S0JGbW1rWkg5Xzg4X2hBTDF3cmJ2cmZXbzV1ZlhBUQ?oc=5
+    title: Dealing with a nasty, annoying ex? There's a bot for that. - Business Insider
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMirgFBVV95cUxOcmxqMXdETi1qclA3eDVjek83UzVldkctdU1Ja1Yzc0Y2d0F0ZlhNYXNIOS00YzJMaDlYNEZiLWxLTUFIOGdPYVg2bnhWeHJWZHlDM2UtU040cUQwd3lqbEdsYlByRmNHY2pCVXZsb0lPNUVZX3RVU0g0eUNwMkhaWUNULUNlbU9xZ210SVcyVl9PR1NCSDd4am1tUkVyQmlfT282bXZabHBSQ3hfbHc?oc=5
+    title: 83 suspected drug offenders arrested in 4-day CNB operation - The Straits Times
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMisgFBVV95cUxQLUkwRWVJTVpSS1VHRHBUeTNvLXlLVEszUkRGNnlEd0Vyd3Iyc3JpREVhNG00YXpWeHZ5NnlFVEJzNmZMbHlIMzdLc0psTEJweWZpU2I5OTZQNXZRZHZzNVYxQnhCUDZNXy1saDRtU1ZYS240bGdmLVJuUllueUR0SGhmT0xWRU84NTdNNUNwTWI1R3E0UjZvN0lkUzNzOW1lTmRpend6cVRFdzlzS1hLOWN30gG0AUFVX3lxTE9BX2IzZ1hQcDFVdi1XSFcyX3dZRGlxZXZMdmlmendncFRFT3Vmb3BZczN2U2lkVkRTYkxFQTZOY0s2eFNVOUZlOEVVQXhHZWpqN0xyYmlqME1XUGc1NmhCRzhob2l2LVdEX0NwRkdUMDUxOGRNaVRfU2JveWVPZlFOeXJhckhMR0JrV29QYzVsTENKU3puSkg5ajMzM2wxc1plLVZhckJ4ZzBOY1dNMVlqTGdMZQ?oc=5
+    title: "Rs 11 Crore Land Fraud: Gujarat Man Arrested After Year-Long Hideout - Rediff"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://github.com/anthropics/claude-code/issues/111793
+    title: Claude Code deceived the user to justify a delay it caused, lectured the user, and repeatedly ignored explicit standing instructions
+    origin: 'GitHub issues: "ignored instructions"'
+    verdict: skipped
+    reason: Single issue written by Claude on the user's behalf, with no transcript or logs; too thin to source.
+  - url: https://news.google.com/rss/articles/CBMi0AFBVV95cUxNYkIyekFvbjJNdVJNUmhxbl9yMnFrLUZrWTN4dWdZaUpiV1o3aTdGejY5b3oyM3poVUdjaGlHSEthSFE3dGwzN2JQOFhMY283ZWpMenRfUU1VMTN0YXctcTR3ck9HaWp0S0E1anVGOFhQanN6cVdObmNnTV8xVTRLT25XYlNBZU1RdHJROVd4RGpkQW43SlBkNkZ6ekx3QUlVZG1WSXJRcTg1NEoxSGpzNlVDTFhPWDZvNndYVGdGRHMtNGlwN01CWDBSTHdYUzhw?oc=5
+    title: Costa del Sol police face new AI challenge after fugitive with four false identities is arrested - Euro Weekly News
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://openai.com/business/learn/connected-intelligence-for-in-house-legal
+    title: Connected intelligence for in-house legal
+    origin: OpenAI News
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://openai.com/business/customer-stories/richpanel-ai-customer-support
+    title: Richpanel helps companies automate 50% of support in 30 days
+    origin: OpenAI News
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://www.courtlistener.com/docket/65407433/3713/1/in-re-social-media-adolescent-addictionpersonal-injury-products-liability/
+    title: "IN RE: SOCIAL MEDIA ADOLESCENT ADDICTION/PERSONAL INJURY PRODUCTS LIABILITY LITIGATION"
+    origin: "CourtListener: chatbot wrongful death"
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMidkFVX3lxTFAzNXV5OHV5MXBCRkVaeHNEZEJwdWZuSUFHZEFFc2RsYjhTV09qVHQ4bkJNQUMxeGtWTzlaMXVjYjZhd2hMakl6MUNXQ2RtNTN2Qkd4SXFHTUh3WmVaX0l2ZDhPMTI0YlQyQ1o2WWU5aks0YzZSRnc?oc=5
+    title: KOSPI Plunges 3.3% on AI Skepticism; $2.7 Trillion in Market Cap Wiped Out, Index Halved in Five Months - BigGo Finance
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiuAFBVV95cUxNVl9RRkdSd2N1WTlPcS14XzFiWUZxNmtnN1BHZE96RWo0OGY0TS1FMHp0aExHNjgwQk4taFlsOU9oclphRllGRkdQbTJ4VmhuSWFHUFBjTC1FeDVFZWNrX0tLMmFzZUJ2Nm5zWHlOb3FOYzZsQzBNTlRYZ1UxX1BKLWQ2Y0xNc1Y1YURHNDUtNFNreExRMmxHOHVsOEJ2NUxQQzQyOHVQUHYtajZ3SFdZTkFNSWZGdmRz?oc=5
+    title: China sentences official to death for spying for foreign power - The Straits Times
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://forum.cursor.com/t/merge-ui-cannot-resolve-delete-modify-or-binary-conflicts/179054
+    title: Merge UI cannot resolve delete/modify or binary conflicts
+    origin: Cursor forum
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMijAFBVV95cUxNbmRIZkd2ei12bDRHOEFaeW8tRzNtRUplSFpiNzhPXzB2VkZnRXBKYlRteXVzMGNmOHZvaklDdU9UM2xNRFpXTjZ2RWZTMEdQajlWZTFqbGZhemVaUUZwN1VlbTg3VUF1MEtjWDlvN1BONmFkbG1aRFQ0Q2lKYncyZk4wVERrR29VRXN2SQ?oc=5
+    title: Prosus Built 60,000 AI Agents. Only A Few Deliver The Real Value - CIO Africa
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiVEFVX3lxTE1JNjV6OXFDTWVLTTF2OUZFSGdjQkMyRC0wQ3M2Ujc2d0x3Mzk2QUJtVnhjOFpLMlEybEpNNVlFalVfRHNKd09raFBPekt2bkdNRTJXa9IBWkFVX3lxTE5IUWZCWncydWVFRG1KN1hFNUY4aEJGdkw1bkdzcTFIOUVHaFUzVFd5ODVXY3VaZkMyMDFlZ0JQTDVhSWNNVHpZQlJjcHY0LVdtdDg5aFRHVlYtUQ?oc=5
+    title: Jailbroken AI Agent Helps Hacker Steal Customer Data and 8.6GB of European Government Files - GBHackers News
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: skipped
+    reason: HTTP 403; duplicate coverage of AID-2026-0198.
+  - url: https://forum.cursor.com/t/workspace-cursor-rules-suddenly-strict-with-glob/179050
+    title: Workspace cursor rules suddenly strict with glob
+    origin: Cursor forum
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMi0AFBVV95cUxPdnFyWWxmV3hiWkVlN1NUS0lGM2g3T1dKRkJWNmpHaWlWTFB6MmRJNTE2T0xkSVNvZEY3QU55SWlQZlFnc0lqaUNiU256Rl9TY09HeldJeXVpVlZiNDYwdmhMcG5HU0pTNy1NZGtKeFdVQlJDSEszY1ExX3Jfb0dxdDZiSFRWdFd2ODhNUUswTTFDSzlUYW9teTlVU3AyWHNHNnRaeUhjVUQ4UzBwVG5DcGFBNjVZbXp5Q1NYNk45TmZjRlVFMG5Ydkptd0FfaTBY?oc=5
+    title: Thai appeal court halves jail term of lawmaker convicted of royal insult - The Straits Times
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMipwFBVV95cUxPQXZ2ckdJV2d5NFVGSUt1bUJxcHJCdDl6cUdEQUYwWWFmN2tZUWp2YTZidHhoc1JoNU9HVldRaDNoQmNBQzhqX3RIWUtwMXEzVVBhWm1NYmJmdi13SEplYW5jLTNVMC1RVW1BdDR2SXQ5ZW5TYVhIdzNUejVUbjNFM0Y3X1BjcDJJOUlCTnlvSVY0dzlOOUVIRVRSd1U1MVoxajYwRGNqYw?oc=5
+    title: Study Finds AI Fairness Perceptions Drive Public Acceptance of Legal Algorithms - Bioengineer.org
+    origin: "Google News: AI sycophancy OR sycophantic"
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMitAFBVV95cUxOQW9TRHkzVExFRS1wRmVlWHRLUmJ0aWVScDZSU0ItQ2pGYkVNbXNmRU55UlFvaDdTY21HWjZsSWJRZ1FzZE5JVU1BXzVUaXN1X0s5a19tQlhXcmtOVDZDcmFWWHpuOWhoenBhMVl6OW9semhxTHRObThWOE9jZU1IMkNvaWtEZnBXNktvNV81RzFMU1dnejlhSTVkRGRuVnZPb1pPMlhydVRiak1sNnBJQzFicms?oc=5
+    title: Swellendam woman arrested over alleged rape and murder of 15-month-old boy - IOL
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiXkFVX3lxTE1UR1d0NGVCSXZ1RVNSOGx6aEREOWdyVkJXbi1uTGpBRk00WlZ3NzJzeFYtd2ZYOHJNdTZGeGdhOEluNHFYaFB1LW50UW1ranFPaFlpT2EwcmxRa05QNkE?oc=5
+    title: Grok fights back - Joshua Rozenberg | Substack
+    origin: 'Google News: chatbot OR "AI model" blackmail OR threatened OR manipulated'
+    verdict: rejected
+    reason: Jess Asato v xAI (High Court) over user-prompted Grok deepfakes, which is routine generator misuse. Paywalled (403).
+  - url: https://news.google.com/rss/articles/CBMijAFBVV95cUxQM0RYaW9fclBhci1vbjNGRTR1ZVdmVGVyZTFTbndhRTNpbHlyb29MVUR0Q3NfUjZleVdTd281b0dCaHlPSFczMTBsUTJVcWR1T3p4Qngzekd6NE5INGdkejR1Rl9DVnlZWm1DMUdmMkJyWmpfQlRIWDZ3S2x2M1hSakg0U2JxTmtrZFNadw?oc=5
+    title: Man, 30, arrested in Nicosia over motorcycle arson - Cyprus Inform
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMixwFBVV95cUxPQXNPV1V6anlsT2VzTTVvYWtReDNhbkJZNjhpZVJmMnloSXl5Wml3ZzkwdkVKbkRkVEZfTzRTVWRMLU1oVzlJUzVoNGFnQWF4cXBybjNLTE1YR2dUS0gzUXNtRkhDVGRhYnU2M2pZNE5WaDlfQ1ROcHY3LUpKbkZyMEN3bnNSc2hOLXZrQUNzQ05xWUFaZUZYNUQzbjlLQS10anhzMnVQWDJmcVZ3Qy14MEFPZDAyRC1EeElsM3JpemU5bWVxa2hv?oc=5
+    title: Man, 29, arrested in Limassol over robbery, found with watch and 130 stones resembling diamonds - Cyprus Inform
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTE92REFnNV9zTkxTOW0ycU9nbzNCSXZ1RWdzUWc0X0ZZRTIyZUhhNi1xcHh2VkQ5Tml2V3ZHQXNrTndPanhqc0czQzVKcE5Gb0VxTW1qQkN3UExROGJrejBZ?oc=5
+    title: Congress Has a 60% Chance of Passing an RSI Ban | Peter Wildeford｜MTS - finance.biggo.com
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMimAFBVV95cUxNc2Zsal95UUszVEYyNE5rbXJFNEIzUmlCZkQ1WmpUbGxnQzlJc1RtSmtPaHZ4THR0bWhJdWJtZDdpYlp1eWZfMTFZMmJPSVF3a2JvWDJHdE1xRFpLNzlaVUhpUlJDdzhFbjdrbnBKc3FEYVhVWlowSG1qQ0lxaFhyaUNhSTdIVzVzR0dQYlNiVFRRTVVrd0xJUg?oc=5
+    title: How AI is redefining the leadership role - The CEO Magazine
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiX0FVX3lxTE1MRDduV2Y0WEY3akN1VXJUNUdlYTZTbmp3MzJPUS1NZDZ0RGt1Z1Z2cnBZZVB1NXVkMldhZ3hHSkpYTmFoSEpQa1d2eTNTVndnT0k4S2VzU24zZ0d1S3JN?oc=5
+    title: Frontier AI Models Score Just 34% on Real RSI | Abundant｜MTS - finance.biggo.com
+    origin: 'Google News: AI model "reward hacking" OR "scheming" OR "sandbagging"'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://blog.gitguardian.com/claude-code-settings-local-json-secrets-docker-hub/
+    title: "Claude Code settings.local.json Secrets: 17 months of exposure on GitHub, & Docker Hub"
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Tool design flaw (saved allow-rules contain secrets; users committed the file). No model misbehavior.
+  - url: https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again
+    title: Coding Agents Copy Your Secrets to a Hidden File. Thousands Are on GitHub
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Tool design flaw (saved allow-rules contain secrets; users committed the file). No model misbehavior.
+  - url: https://www.csoonline.com/article/4247336/claude-codes-dont-ask-again-button-has-a-secrets-spilling-problem.html
+    title: Claude Code’s ‘don’t ask again’ button has a secrets-spilling problem
+    origin: AI Incident Database
+    verdict: rejected
+    reason: Tool design flaw (saved allow-rules contain secrets; users committed the file). No model misbehavior.
+  - url: https://news.google.com/rss/articles/CBMigAFBVV95cUxNWFJxZzYtcDJUNFdvSmVEOHFGSDRRZXB3MFJYbTJfMUFtd0Ywd2l1M1FPWjFZc2stY3ZmOWctTlVkOENHVHBHLWhQbl9CRjljU29mSnAtWjVNUVpYOEJkeW5ia2F1eEpJM1hKZUpuSENPMk1POW9fMGRnZEFRS25ibQ?oc=5
+    title: "ChatGPT Gets GPT-6.2 Sol: 71.7% Image Score (Nov 23) - explainx.ai"
+    origin: 'Google News: "system card" model behavior'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMimAFBVV95cUxPd204alpiQUpxS19ibUxjeWdudkdKWU5rb2o4TWhseHpvXzBPbFpBV1NBWktWYzZYVUdRTHNzRE5rVVhpVGJDckdSeXhUc3B0dzl2b09SRHF6Z1Q4X3ZMdG5YZHlPbTlBN0k4d1A2LUhDUXYyUHdTa01UWDRFdFJpajlZWkh2YUQ2cFp5YnBvR29qcFFPOE9ROA?oc=5
+    title: "NGA AI Plan: Federal Frontier Models, State Rules - explainx.ai"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMikAFBVV95cUxNOFVTdWZ3elRGMUZudHJuYmRhWUktdUMydzlScERGNnRQTHRGTEJJMWlBdTlnQTdlZzN1THlod0VqbjF3Wlo2WDdlTnJjbHpqRHVYWnNvank5SmV4dVVyU3RwSjVFN1cwWTV1aUJPNXpLakN4eU5HcE5OUXhvSm4zUUtHeFVUQTFFSjE5eDkxQUc?oc=5
+    title: "AI Safety Workshop: Labs vs Conferences (2026) - explainx.ai"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMinAFBVV95cUxQWFFqMVZZMFBldjRrT0hzTEFiOFpfR2xfMTdyOExVLWVwcU0yby1ESkd3dTNJeU5XUTdzVlAtckFWRjMxdFNDT2RuMGxSR0VzTmtOdkt3azdKSElrd0VvdWY5TkhZMDBlNzFOa01QMmN3OGVzdzhianNua2szX09vN3ZlNTJwWVg1Y2NtQTRoYVhYcU9TSjd6bl9nYTA?oc=5
+    title: "China US AI Nuclear: 90-Second Decision Fear (2026) - explainx.ai"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMikgFBVV95cUxQZEVsSkVjN09fLXMxeUFONTBOZnFLUEgtR0EzQ3RMRkZITlg1SmV2ZTROS1lyc19ZQWFTZTdaNDMxakpRekJPSGxQbE1kQTNGZ0I1SVd0RzNpeldRM0JqdGJCQ1g3Nm1BdG0tbVhKTlpWdm11MkRqTG53S3FWOUlKeHRPR1o5bWhmcndJY3M5aGVjUQ?oc=5
+    title: "Anthropic Neuron Safety Tools: Part 2 (Nov 2026) - explainx.ai"
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://lexisworld.org
+    title: "Show HN: Lexis World – a word game for kids who don't need to know any words yet"
+    origin: "HN: system card"
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMi1gFBVV95cUxQOTEyd3VKX0pncTZ6NW5HV1pMelVGVU9jc2w4elFDN3h3S0FRbV9NUmJMX21vTmJFaHZsb1JDY0xZdE42T2pmUHdDQS05OWtBckFYX2t3XzFRd2cwVDhUNE9OMURmalRZTm91Y1BUWUdmNl9Fdm9lTnh6azNNa29DUDZLSm96VFFvUXB6VTQxOE9RdUoxYS1EdXJvUFVRajBzOUZLbnRLNGJwRi1YdTNYM1dVa0ZqUzRpaXd2VW1NU19WSHJkZUZTM1VnMFI1cV9mV2J0UkV3?oc=5
+    title: Arrests of girls and young women hit 5-year high in 2025; cheating, theft among top offences - The Straits Times
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://www.taskless.io/
+    title: "Show HN: Taskless, turn AGENTS.md and PR comments into runnable checks"
+    origin: "HN: AI agent deleted"
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqwFBVV95cUxNVFlONkdjWXE3OVlTcTJPeGlZR1Bpa3JMN1RLZ3BIMXBwd09zamxtNFNaQ0dMcUI5Q2p4bTQ2RmRGb3kxQUw0U0FmOG1fN2VXcHFJb0JaXy1LYTlsYWJHcHVBaUo2SFVUSVRyUEhMdHRSX3g1UE5rZU1TZGNoek5VUENxM0xuTnd2YUZiY21fUXFRNGZLTHo0MHFKYXg1OEpTQnV1c2gxMmNKX1nSAa4BQVVfeXFMUHdMbTRNMWFrVnBZZDVHTkJxWndLTEc4bFZRNGg3cFRmUVdFTmNhRU1SRVRRZTNiaWtKN3ljMkgwY1hTUXZTajR2amF5MC14TVpHREJCRnAzYW9FRDFna0tNQ2x1UDRmWjRXTXg4LWtEdG9jT0JOWS1IMlczaFpDSV8ycWR0bHB3ZFNTRnRkQ0NOMThBbzRPdll4cGM1U2RyUERXSEdtZW5fX1ZLelV3?oc=5
+    title: Viral Video Leads To Arrests In Noida Shopkeeper Assault Case - Rediff.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMioAFBVV95cUxOcWsyXzc2Z09TTl8xMHZ1dlByUGxKNzlHWkVNZzFNOEIwQ2RvelkyNEdRSmU4d3ROODlsbTVUb29QR0pqWXdnMkJtLXR0cUhUem1KSEZPVG1PTldOYjNpbXM1QUZnSGRZZGpTRXFyNFA1MGZaSWxDX00xWXBqZjRZVVBvMnZnUkNGazJmd0ppMzdDVFVqVFBQY0gxYTBrMW5G?oc=5
+    title: New AI tool aims to make police reporting easier in Chatham - CTV News
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqgFBVV95cUxQaDlRSFozOEVzSW43YWhlSjJ5akF1UTM4UENTUm42SmN6WEFMWkxTeUZIT2FFOFBWY3RJemJ6WEt6RUlFMnZMZk5fVTJNVUphU0ZmWE9Sd2h2VnNmMFdDOFZNNWlVVlhEaXR5SE1QamtCUVlDOFNBa2JQVk5KZG1neXMzREl1cEhQTkNBZzEtOVdBRHdxMkVJMXdJSjdXbGlxTXUzd003c1Btd9IBrAFBVV95cUxOVGNIV3VYYVJxOS1zTTFsdXM1dWdOVTN4c0xkR0ZqMVdMbkgyNkQ3djRsOFhEYmFmcGlKY1d5SGZzdjdhS2pLOXBYU1hmVGYyRjA5QUJZTlRqNzJyelEtSHBwN2NTd0hxaV9oZ2tac1p6MkFBOWt4TG02cE1rZWVJalFzMkFlN1pCNktKZUR4dU15VmN2ZElZRE9IcDctLVg5cDF6Q2JmbmVSbjhU?oc=5
+    title: How Gurugram SI Was Caught In Rs 30,000 Bribery Trap - Rediff.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiuwJBVV95cUxOLWR5dlhlZ09WR2xaOWg1NXRNTmhBMWx2ajFMNEpXRHpPdThkemFUMWJuTHVfb3R0eXRxRmdYN2dJeHVnTjVHb2lfbFJKWEtRSVdLSXNaRC1HSHJiQmJtSnpWRGtVM0g0N2QxMFVmLU5OYmhtSGlEMzJaZGljT1NlUEVDMW5POWpoQktnaFZ6SV80Q3RXRVQ0V3ZTaFRoaXh5bXNVLVNET1F3aUg2emdmME02bWxxczd6RG05MDhrQWJRcV9PLVVwQlhQTnZKWHR5NVNGRlduajJBY0IyTWJtczRfdFJIclN0MlA1ZGRhTG9tSDNyeDd2b3JOMWU0akl4VXZIbGpNS3FoT01MLXpJM3Q3NksydDZlME5mOUM2QWNOVnBhMU9WNFZnQjVrYXN1LTkya2ZUY1dPSlE?oc=5
+    title: "Artificial intelligence gains strength in jihadism: the Civil Guard arrests four people for spreading jihadist content and using AI to radicalize on networks - El Constitucional"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMitgFBVV95cUxObVFFbmJGeTJmYVhFNGRGdUN1ZWdMOTNlcWYtWUpuSTRCMmN4NElLVjZGSXVUdEN1UmU0TUtTSzZ2NEd5SWgwSnVqckEyVGMzNE1TR0xGZkt6U0JMYlBEWlZUaXJEUDktaTlyTnZnLWp3SHRUUTBiOWNGUUlwVlUwVWotenUzcGNCNHRsU2J3bFF6S1p4QjRXOS1LVmJqblpnSVpZTk5YeEVPemNmOXFxcy12VHIxdw?oc=5
+    title: Jammu Police Uncover FAA Exam Malpractice Ring, 20 Arrested - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMimgFBVV95cUxPNVdPMjdyb0d3TFdwd1Z3UFpTclNLd2ZBTG85dndEU0JFTk95UHNnNlM3ZHZkajZ3MUh2dFdlR0pDYkF5QkpLLXhsSnFPTzAxbTg1NDk4a21kUzRMWC01YWpjbFlMeURCQXh5Ym1LOXBqRlNsX2JfWjluQW0zNEJKVDlUM2VfSmVrUVVWWm1uRlN4VW8tSzB3c3dR?oc=5
+    title: Looking for the Formula to Stop an Apocalypse - The New York Times
+    origin: 'Google News: "alignment" AI incident'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMilwFBVV95cUxNOW9uRWttei1YbTluRUwxY0hSbktYTG8xSHh5clZZa05pOElNakFkbTVtc1M4allmVklPYjhOWUNRcHNrU1RHMlVCcjlkOFU5aEg5NzVGUmlJUld5V1VJcUNpdEJaWnp0MTVxNDlIU3FCSFZGbjJieE1Vc3lnSG5MMTNtS3c0bEFhbDJ5QlhXLUVkbnZvUUln0gGaAUFVX3lxTE5hY2FxNXNqWWExSW90UkFwbEFlM3ltU2JJNWJyTFJ4QlBFRGQ4c1VjbEZBclVuWkJRU3RLVDJ5RUI5cTRPeXhwTDdibndnejRsMlg2MFBraU9zREtsRUttQmV3SGhIQ3hiek1DaFFMZi04T3hMeWdMN3I1eXhRSkZKUl8wakM4b2lPT3haN2N3M0RHYlctMk1MRkE?oc=5
+    title: Delhi Man Arrested For Stabbing Over Prior Feud - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqAFBVV95cUxQemV3dkJVMXhBVC1BTmMwZWo2ajZMSk5aQUFpMThHclFOSW9NV2htaXFERTFNeUhxVk5yVFNzTU9jYzRpOHVqU1NLeTNJbEJKQ2ZQS1VPTlpkQUNpRzdsdHlIcXluS3pGNjZkSDd4M1h0OTJIbV9rR1FndzhqODZhbTR1Mkh1RnU5WkpMaC1ONnB3dTBFWHpPTTJfNHRZZjJzNDI3d01lWUfSAasBQVVfeXFMT0xlSkRHbmhfSkdiYzRmMlVqNXFvMk1sTHdMTk5STmFOY0dsc2xNQmR5RW92NVNxOF9DbVl5ZWFxT0ZRV2YtbVp2LU1JZG4zS0tkeU4wY01sTEpDWGk0VlBCMkpHZUVIWWt0ZTljREhjR2RVbFdhZUw3MWNkeTFoRVF5ZW5tbGtCbDcxSENHRjFrU0xZY0RYQmNEQXJNeS1Vdk9veGpzTW9jbXhv?oc=5
+    title: How Delhi Police Nabbed Three Youths In Stabbing Case - Rediff.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbTFhR1dvaWpxWVV5d1BCS1FFQ3o4U3dIM3gybXB0enlUQ043bnBjNmZvcHVyTjA2SldxUFM0UjdLV0hnNVJWZmJEd1h0NExGODBGcTZBVGw1MHBwc1hFdkRxY2ZhWHhsV1FQdTZGMjJqX3lIT1BFQ2ZIRjV1S0Z5V0w1TmdyU3R2RE9NbkdiWUFCRmloQWlESEVqUGVPYmZJY25uQm44bzVDQdIBrAFBVV95cUxQQjVla0ptMWh6c2k1SC14eFA2aWxIWVdpQ0ZQMnBub0xHY0pIcXZJNWVrb0o2UzlmWjRVSVFHY09zb0JjNFNaTkdfcXlQUEhrc2ptUXp2TXZCOXNWMml2dUdvMEFLVjF2Y0Jqcm1uZXpnaWdWcWx1T0JHckFQaS1BTHlIMXNXa1dhaUh4TlZIWnhGSkRNelozcXNmUjVJU29TRjVqNzdxQm9XSWhx?oc=5
+    title: Chandni Chowk Illegal Parking Racket Busted, Man Arrested - Rediff.com
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMitwFBVV95cUxNVnRKd3dvQUtfRUxPbi1jZUU5bEJxR1RyMDRtT0dMekh0M0RDa3piNmU1aDN6Wm9rMG5uREFkcldWUjk0ekt0OGtDTklPMWlfbGMwMlF6X0xoSkV4cDUzdERvS3hpeHJEdWZxeTd2UDY0N0VDOTZXeXdOMVdZczNDZ184X21YOGFvZ2s3MVJNZ1dZY1NEQmN6T19laUFDc3F6c24zd05Xb3I1aTJCZVhFY2haYVFnOE3SAbcBQVVfeXFMTVZ0Snd3b0FLX0VMT24tY2VFOWxCcUdUcjA0bU9HTHpIdDNEQ2t6YjZlNWgzelpvazBubkRBZHJXVlI5NHpLdDhrQ05JTzFpX2xjMDJRel9MaEpFeHA1M3REb0t4aXhyRHVmcXk3dlA2NDdFQzk2V3l3TjFXWXMzQ2dfOF9tWDhhb2drNzFSTWdXWWNTREJjek9fZWlBQ3NxenNuM3dOV29yNWkyQmVYRWNoWmFRZzhN?oc=5
+    title: How Police Nabbed Tillu Tajpuriya Gang Member In Kidnapping Case - Rediff
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMiogFBVV95cUxQeGRHMmREUm1sWXlOZ2NJRjFpNE5lTzU0RE1mVldZNmxjMVA5bzlkVFdsN1pudXduS1lWMGNlbXZfNUZ2UXlsUWVUR2dZc05LUnlBUFF5NVhvQWJENXZjN2xNQ3YzOWZOWHVTeFNxRFRZb3hoT0FYNXZCVnN0eU5xcXNsSzM2V24zbDBhWHFKbi1PcFkwb3FWUjc0UkNWVzhGLUHSAaQBQVVfeXFMT2hsUFo3ZWctdmFOUG1DRUZnRTM3UDFQODcydmZ4UFBSNjRaaGNHMEFnQmxUdWM1dGZGTDdDMEVOUTRlQlFLY1A4cncwSWl4LW9nSTl5WmFEYnplNjNnU3JzbHppRzE4VFA2bHVDZ3N1WEx2V0pCUTB2a2Ftd3UtZWtRekpqeWY3VUIyZThkNlBXbVJCYjhHa1VUck1zdndQODIzTUQ?oc=5
+    title: "Major Drug Haul In Assam: Seven Arrested, Yaba Tablets Seized - Rediff.com"
+    origin: 'Google News: ("using AI" OR "AI-generated" OR "AI tool" OR chatbot) (charged OR arrested OR indicted OR sentenced)'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://news.google.com/rss/articles/CBMidkFVX3lxTE50ekFnLVFhdTZHVm1qOUxTY3VrY2NfZXl3Qklobl9Hb1VQN0JfZEpMdm1wY294WlpDNm9YR2NZMzVzUTJsTFMyYi0zbjZTbE9mbE03LTdyY0t2Vnlic2RkT25tQkpuQzk4NFdvQkUyanNWUWVxd3c?oc=5
+    title: Anthropic Sheds approximately $109 Billion in Market Cap Two Days After IPO; $4 Trillion Wiped Out on Nasdaq - BigGo Finance
+    origin: 'Google News: "AI agent" deleted OR wiped OR destroyed'
+    verdict: rejected
+    reason: "Out of scope: unrelated crime news, product, business or policy news, opinion, or routine generator misuse."
+  - url: https://www.techtarget.com/news/ai-safety-test-sparks-controversy-after-agents-swarm-external-org/875419/
+    title: AI safety test sparks controversy after agents swarm external org
+    origin: verify-2
+    verdict: cited
+    incident: AID-2026-0171
+  - url: https://www.linkedin.com/posts/andrewcase_i-woke-up-to-a-report-from-an-ai-company-share-7527771787590438912-XDao/
+    title: Andrew Case LinkedIn post on Trajectory Labs and Epoch
+    origin: verify-2
+    verdict: skipped
+    reason: Commentary with no exact date; the CFAA debate is covered via TechTarget in AID-2026-0171.
+  - url: https://cybersecuritynews.com/jailbroken-ai-agent/
+    title: Jailbroken AI Agent Helps Hacker Steal Customer Data and 8.6GB of European Government Files
+    origin: verify-4
+    verdict: cited
+    incident: AID-2026-0198
+  - url: https://cyberpress.org/jailbroken-ai-enables-breach/
+    title: Low-Skilled Hacker Uses Jailbroken AI Agent to Steal Insurance Data and 8.6GB of Government Files
+    origin: verify-4
+    verdict: cited
+    incident: AID-2026-0198
+  - url: https://socradar.io/blog/babidighost-ai-augmented-cybercrime/
+    title: "BabidiGhost: AI-augmented cybercrime (SOCRadar)"
+    origin: verify-4
+    verdict: lead
+    reason: Primary report for AID-2026-0198; HTTP 403 today. Read it and add it as the primary source on a later run.
+  - url: https://www.cryptotimes.io/2026/11/21/jailbroken-ai-agent-targets-50-european-firms-in-9-days-hunts-for-crypto-keys/
+    title: Jailbroken AI agent targets 50 European firms in 9 days, hunts for crypto keys
+    origin: verify-4
+    verdict: skipped
+    reason: HTTP 403; same incident as AID-2026-0198 (earliest coverage seen, 2026-11-21).
+  - url: https://www.cryptika.com/blackhatsect0r-uses-deepseek-powered-ai-agent-to-automate-attacks-and-harvest-16834-credentials
+    title: BlackHatSect0r uses DeepSeek-powered AI agent to automate attacks and harvest 16,834 credentials
+    origin: verify-4
+    verdict: lead
+    reason: Earlier SOCRadar report (2026-09) on the same jailbroken agent toolchain; seen only as a snippet and not in the database. Find the SOCRadar primary.
+  - url: https://www.infosecurity-magazine.com/news/operation-snowball-ai-telecom/
+    title: "Operation Snowball: jailbroken AI agent attacks European telecom"
+    origin: verify-4
+    verdict: skipped
+    reason: Already covered by AID-2026-0177.
+  - url: https://edtimes.in/claude-literally-threatened-a-paid-user-for-making-it-do-a-pointless-task/
+    title: Claude Literally Threatened A Paid User For Making It Do A Pointless Task
+    origin: verify-1
+    verdict: rejected
+    reason: User-requested sarcastic persona per the user's own follow-up; not against user intent.
+  - url: https://www.bnnbloomberg.ca/business/artificial-intelligence/2026/11/23/some-us-banks-tighten-ai-agent-controls-on-concern-about-models-escaping-safeguards-reuters-exclusive/
+    title: Some US banks tighten AI-agent controls on concern about models escaping safeguards (Reuters exclusive)
+    origin: verify-3
+    verdict: rejected
+    reason: Policy story; no bank agent incident. Hugging Face recap adds nothing to AID-2026-0006.
+  - url: https://www.globalbankingandfinance.com/exclusive-some-us-banks-tighten-ai-agent-controls-concern/
+    title: "Exclusive: Some US banks tighten AI-agent controls on concern"
+    origin: verify-3
+    verdict: rejected
+    reason: Syndicated Reuters policy story; no new incident.
+  - url: https://www.americanbanker.com/news/banks-batten-down-the-hatches-for-rogue-ai-agent-swarms
+    title: Banks batten down the hatches for rogue AI agent swarms
+    origin: verify-3
+    verdict: rejected
+    reason: Preparedness piece (2026-09-22); no bank incident, Hugging Face figures already in AID-2026-0006.
+  - url: https://www.techjuice.pk/lahore-student-arrested-after-asking-ai-tool-for-explosives-recipe/
+    title: Lahore Student Arrested After Asking AI Tool for Explosives Recipe
+    origin: verify-5
+    verdict: rejected
+    reason: No evidence the AI gave a recipe or was central to a serious plan; no charges named.
+  - url: https://pakobserver.net/pakistani-man-arrested-over-bomb-making-queries-on-ai-platform-claude/
+    title: Pakistani man arrested over bomb-making queries on AI platform Claude
+    origin: verify-5
+    verdict: rejected
+    reason: Arrest followed a complaint over queries; no evidence Claude provided instructions; no charges named.
+  - url: https://rozenberg.substack.com/p/grok-fights-back
+    title: Grok fights back
+    origin: verify-5
+    verdict: rejected
+    reason: Jess Asato v xAI over user-prompted Grok deepfakes (routine generator misuse). Paywalled (403).
+  - url: https://blog.gitguardian.com/claude-code-settings-local-json-secrets-docker-hub/
+    title: "Claude Code settings.local.json Secrets: 17 months of exposure on GitHub, & Docker Hub"
+    origin: verify-5
+    verdict: rejected
+    reason: Tool design flaw; no model misbehavior.
+  - url: https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again
+    title: Coding Agents Copy Your Secrets to a Hidden File. Thousands Are on GitHub
+    origin: verify-5
+    verdict: rejected
+    reason: Tool design flaw; no model misbehavior. HTTP 403.
+  - url: https://www.aisi.gov.uk/blog/attack-policy-selection-can-make-monitor-evaluations-misleading
+    title: Attack policy selection can make monitor evaluations misleading (AISI)
+    origin: labs
+    verdict: rejected
+    reason: Methodology post on monitor evaluations; no new misbehavior incident.
+  - url: https://alignment.anthropic.com/2026/neuron-basis-applications/
+    title: Neuron basis applications, part 2 (Anthropic Alignment Science)
+    origin: labs
+    verdict: rejected
+    reason: Hidden behaviors were deliberately trained into model organisms; no spontaneous misbehavior.
+  - url: https://www.anthropic.com/research/working-with-ai
+    title: Working with AI (Anthropic research)
+    origin: labs
+    verdict: rejected
+    reason: Economics interview study; no misbehavior.
+  - url: https://www.digitaltrends.com/computing/openai-is-investigating-more-incidents-of-ai-agents-going-rogue-days-after-hack/
+    title: OpenAI is investigating more incidents of AI agents going rogue days after hack
+    origin: web
+    verdict: rejected
+    reason: Published 2026-08-02 and already scanned in earlier logs.
+  - url: https://securityboulevard.com/2026/11/three-men-indicted-for-using-ai-to-impersonate-ceos-and-steal-129-million/
+    title: Three men indicted for using AI to impersonate CEOs and steal $129 million
+    origin: legal
+    verdict: rejected
+    reason: Voice and image impersonation by humans using generators (routine generator misuse); announced 2026-11-05.
+  - url: https://www.mlex.com/mlex/articles/2547139
+    title: Gemini school-Chromebook suicide-planning lawsuit (MLex)
+    origin: legal
+    verdict: skipped
+    reason: HTTP 403; lawsuit dated before the window and tracked as an open lead for AID-2026-0160.
+  - url: https://labs.cloudsecurityalliance.org/research/csa-research-note-workos-artex-scope-escape-20261108-csa-sty/
+    title: "The Researcher's Agent Got Out: Containing Autonomous Offensive Tools (CSA)"
+    origin: backfill
+    verdict: skipped
+    reason: Analysis with no new facts for AID-2026-0154; the WorkOS update bulletin the backfill found is already cited there.
