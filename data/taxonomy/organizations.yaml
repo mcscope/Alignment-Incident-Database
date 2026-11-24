@@ -436,3 +436,14 @@
   name: Mistral AI
   url: https://mistral.ai
   type: ai-lab
+
+# Added by scout 2026-11-24
+- id: goodhart-labs
+  name: Goodhart Labs
+  url: https://goodhartlabs.com
+  type: research-org
+
+- id: harvard-business-school
+  name: Harvard Business School
+  url: https://www.hbs.edu
+  type: academic

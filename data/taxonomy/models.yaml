@@ -463,3 +463,9 @@
   name: Hy4 preview
   developer: tencent
   family: hy
+
+# Added by scout 2026-11-24
+- id: fable-5.2
+  name: Fable 5.2
+  developer: anthropic
+  family: claude-5
