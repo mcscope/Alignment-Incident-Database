@@ -91,6 +91,10 @@
   name: Claude Sonnet 5.5
   developer: anthropic
   family: claude-5
+- id: claude-haiku-5.5
+  name: Claude Haiku 5.5
+  developer: anthropic
+  family: claude-5
 - id: claude-opus-4.8
   name: Claude Opus 4.8
   developer: anthropic
