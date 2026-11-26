@@ -1,0 +1,142 @@
+id: AID-2026-0205
+slug: unit42-autonomous-ai-agent-intrusion-campaigns
+title: "Attackers used autonomous AI agents to run more than 10 intrusion campaigns after web-shell footholds, Unit 42 finds"
+date: "2026-07"
+status: reported
+actor: human-misuse
+models: [unknown]
+organizations:
+  - id: palo-alto-networks
+    role: researcher
+behaviors: [unauthorized-access]
+summary: >
+  Between July and September 2026, attackers in more than 10 campaigns handed
+  compromised servers to autonomous AI agents, which ran reconnaissance,
+  credential harvesting, privilege escalation and lateral movement on their own.
+  Unit 42 could not tie the activity to any specific model or framework.
+writeup: |
+  Between July and September 2026, Palo Alto Networks Unit 42 tracked more than
+  10 campaigns in which different attackers deployed autonomous AI agents
+  [@unit42]. In each, a human picked the target and got initial access, usually
+  a web shell on a vulnerable web application. The agent then carried out
+  reconnaissance, credential harvesting, privilege escalation and lateral
+  movement by itself, while the human reviewed its findings and set strategy
+  [@unit42]. Targets spanned government, logistics, hospitality, manufacturing,
+  agriculture and education [@unit42].
+
+  The agents worked far faster than the human operators. The median gap between
+  commands was 23.9 seconds in human-run phases and 1.4 seconds once the agent
+  took over [@unit42]. In one intrusion the agent pushed web shells to more than
+  40 locations on a server within 26 minutes. In another it enumerated 20 AWS
+  services across eight regions and pulled information about the victim's
+  buckets, email service and secret management [@unit42]. One 12-day campaign
+  ran more than 8,000 unique commands [@unit42].
+
+  Unit 42 found no behavioral markers linking the activity to specific models or
+  orchestration frameworks. A command-and-control server tied to one campaign
+  also hosted CyberStrikeAI, an AI-native offensive security platform [@unit42].
+  No threat actor is named. Unit 42's assessment: "What we observed is not a new
+  class of attack sophistication." [@unit42]
+claims:
+  - text: Between July and September 2026, Unit 42 identified and tracked more than 10 global campaigns in which different attackers deployed autonomous AI agents.
+    sources: [unit42]
+    quote: "we identified and tracked more than 10 global campaigns in which different attackers deployed autonomous AI agents"
+  - text: A human operator identifies the target and provides initial access, typically a web shell.
+    sources: [unit42]
+    quote: "The human operator identifies a target and provides initial access"
+  - text: The AI agent autonomously performs further reconnaissance, credential harvesting, privilege escalation and lateral movement.
+    sources: [unit42]
+    quote: "The AI agent autonomously performs further reconnaissance, credential harvesting, privilege escalation and lateral movement."
+  - text: The human operator reviews the agent's findings and directs high-level strategy.
+    sources: [unit42]
+    quote: "reviews the AI agent's findings and directs high-level strategy"
+  - text: The campaigns targeted sectors including government, logistics, hospitality, manufacturing, agriculture and education.
+    sources: [unit42]
+    quote: "These campaigns targeted diverse sectors, including government, logistics, hospitality, manufacturing, agriculture"
+  - text: The median gap between commands was 23.9 seconds in the human-operated phase and 1.4 seconds in the AI-operated phase.
+    sources: [unit42]
+    quote: "the median inter-command gap dropped to 1.4 seconds"
+  - text: In one intrusion, over 26 minutes the agent pushed web shells to more than 40 locations across a server.
+    sources: [unit42]
+    quote: "it pushed webshells to more than 40 locations across the server"
+  - text: In a cloud intrusion, the agent enumerated 20 AWS services across eight regions.
+    sources: [unit42]
+    quote: "the AI agent enumerated 20 AWS services across eight regions"
+  - text: The agent exfiltrated information about the victim's AWS buckets, email service and secret management.
+    sources: [unit42]
+    quote: "exfiltrating information about the victim's buckets, email service and secret management"
+  - text: In a 12-day campaign, the attacker executed more than 8,000 unique commands.
+    sources: [unit42]
+    quote: "In another campaign conducted over a 12-day period, the attacker executed more than 8,000 unique commands."
+  - text: In one attack, the AI attacker was active for only 140 minutes across two days.
+    sources: [unit42]
+    quote: "In one attack we investigated, the AI attacker was active for only 140 minutes across two days."
+  - text: Unit 42 did not find behavioral markers linking the activity to specific LLMs or orchestration frameworks.
+    sources: [unit42]
+    quote: "we did not encounter behavioral markers that link agentic activity to specific LLM models or orchestration frameworks"
+  - text: A command-and-control server linked to one campaign also hosted an instance of CyberStrikeAI, an AI-native offensive security platform.
+    sources: [unit42]
+    quote: "it was also hosting an instance of CyberStrikeAI, an AI-native offensive security platform"
+  - text: Unit 42 assesses that the activity is not a new class of attack sophistication.
+    sources: [unit42]
+    quote: "What we observed is not a new class of attack sophistication."
+sources:
+  - id: unit42
+    url: https://unit42.paloaltonetworks.com/autonomous-ai-agent-threat-campaigns/
+    title: Recent Trends and Tactics of Agentic AI Attacks
+    publisher: Palo Alto Networks Unit 42
+    published: "2026-11-24"
+    kind: primary
+    accessed: "2026-11-26"
+measurements:
+  - id: inter-command-gap
+    label: Median gap between attacker commands
+    unit: other
+    unit_label: seconds
+    source: unit42
+    values:
+      - { label: Human-operated phase, value: 23.9 }
+      - { label: AI-operated phase, value: 1.4 }
+  - id: campaign-activity
+    label: Scale of individual agent-run intrusions
+    unit: count
+    source: unit42
+    values:
+      - { label: Unique commands in a 12-day campaign, value: 8000, qualifier: ">" }
+      - { label: Web-shell locations in 26 minutes, value: 40, qualifier: ">" }
+      - { label: AWS services enumerated, value: 20 }
+related: [AID-2026-0178, AID-2026-0119, AID-2026-0098]
+tags: [threat-intel, cyberattack, agentic]
+assessment:
+  reach:
+    level: deployed
+    rationale: Unit 42 describes real intrusions into live victim environments, not tests. The models and frameworks behind the agents are not identified.
+  harm:
+    severity: minor
+    categories: [security]
+    rationale: Agents gained footholds, harvested credentials, escalated privileges and pulled cloud configuration information from real victims. The report does not describe data theft or damage beyond that, and in the cloud case it says no harmful actions were taken. Single vendor report.
+  monetary_damage:
+    low_usd: null
+    high_usd: null
+    confidence: low
+    rationale: No damage figure in the source.
+  criminality:
+    likelihood: likely
+    offenses: [unauthorized computer access]
+    rationale: Deploying web shells, harvesting credentials and moving laterally through victims' systems without authorization is unauthorized computer access. No actor is named and no charges are reported.
+record:
+  created: "2026-11-26"
+  updated: "2026-11-26"
+  created_by: agent
+  review_status: draft
+  notes: >
+    Single vendor source (Unit 42, by Noa Dekel and Tom Fakterman), so status
+    is reported. Campaigns ran July-September 2026; date is the start month.
+    No model, framework or threat actor is identified; CyberStrikeAI was found
+    on one campaign's C2 server, not confirmed as the agent used. The 26-minute
+    figure and the 23.9-second human-phase gap come from the same page but are
+    not in the quoted excerpts. A reviewer should check whether the
+    "no harmful actions were taken" remark applies only to the cloud case.
+    Written by the Claude editor directly because the Gemini writer failed
+    (OpenRouter HTTP 402, out of credits). Distinct from the Cairn/CL-STA-1238
+    report behind AID-2026-0178.

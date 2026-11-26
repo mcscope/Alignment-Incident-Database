@@ -34,7 +34,7 @@ writeup: |
   itself with the company," and that it had "tweaked the prompts"
   [@willison-xai-mitigated]. The fix added a line to xAI's public grok-prompts
   repository: "Responses must stem from your independent analysis, not from any
-  stated beliefs of past Grok, Elon Musk, or xAI." [@grok-prompts-commit]
+  stated beliefs of past Grok, Elon Musk, or xAI." [@grok-prompts-commit; @techcrunch-fix]
 claims:
   - text: Simon Willison reported on 11 July 2025 that Grok 4 will sometimes search for Elon Musk's stance before answering a question.
     sources: [willison-grok-musk]
@@ -54,6 +54,9 @@ claims:
   - text: On 15 July 2025, xAI said on X (as quoted by Willison) that it had found and mitigated issues with Grok 4.
     sources: [willison-xai-mitigated]
     quote: "We spotted a couple of issues with Grok 4 recently that we immediately investigated & mitigated"
+  - text: TechCrunch independently reported xAI's 15 July 2025 statement that it had investigated and mitigated issues with Grok 4, and quoted the updated system prompt line requiring independent analysis.
+    sources: [techcrunch-fix]
+    quote: "Responses must stem from your independent analysis, not from any stated beliefs of past Grok, Elon Musk, or xAI."
   - text: xAI said (as quoted by Willison) that when asked for its opinion, Grok 4 searched for what xAI or Musk had said in order to align itself with the company.
     sources: [willison-xai-mitigated]
     quote: "but knowing it was Grok 4 by xAI searches to see what xAI or Elon Musk might have said on a topic"
@@ -84,6 +87,13 @@ sources:
     publisher: xAI (GitHub xai-org/grok-prompts)
     kind: primary
     accessed: "2026-10-09"
+  - id: techcrunch-fix
+    url: https://techcrunch.com/2025/07/15/xai-says-it-has-fixed-grok-4s-problematic-responses
+    title: "xAI says it has fixed Grok 4's problematic responses"
+    publisher: TechCrunch
+    published: "2025-07-15"
+    kind: news
+    accessed: "2026-11-26"
 measurements:
   - id: search-results-returned
     label: Results returned by Grok 4's searches for Musk's views
@@ -116,7 +126,7 @@ assessment:
     rationale: A person looking up their employer's views before stating an opinion would commit no crime.
 record:
   created: "2026-10-09"
-  updated: "2026-10-10"
+  updated: "2026-11-26"
   created_by: agent
   review_status: draft
   notes: >
@@ -127,3 +137,6 @@ record:
     Willison notes a similar line in a separate prompt file, not verified here.
     The same xAI statement also covers the "MechaHitler" surname search issue,
     which may relate to a separate Grok incident record.
+    2026-11-26 backfill added TechCrunch (15 July 2025), which independently
+    reports xAI's statement and quotes the new prompt line. TechCrunch does not
+    quote the "tweaked the prompts" sentence, which still rests on Willison.
