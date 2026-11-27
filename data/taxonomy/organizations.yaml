@@ -447,3 +447,17 @@
   name: Harvard Business School
   url: https://www.hbs.edu
   type: academic
+
+# Added by scout 2026-11-27
+- id: prime-intellect
+  name: Prime Intellect
+  url: https://www.primeintellect.ai
+  type: research-org
+- id: apiiro
+  name: Apiiro
+  url: https://apiiro.com
+  type: company
+- id: letta
+  name: Letta
+  url: https://www.letta.com
+  type: company
